@@ -1,0 +1,63 @@
+% !TeX root = ../tfg.tex
+% !TeX encoding = utf8
+
+\chapter{Símplices y complejos simpliciales}
+
+\section{Símplices}
+
+INTRO
+
+\begin{definicion}
+	Sea $\{a_0, \dots, a_n\}$ un conjunto de puntos en $\mathbb{R}^N$. 
+	Diremos que dicho conjunto es \textbf{afínmente independiente} si 
+	para cualesquiera $t_i \in \mathbb{R}$, las ecuaciones
+	\[ \sum_{i=0}^{n}t_i=0 \quad \text{y} \quad \sum_{i=0}^{n}t_ia_i=0 \]
+	implican que $t_0 = t_1 = \dots = t_n$.
+\end{definicion}
+
+TEXTO
+
+\begin{definicion}
+	Sea $\{a_0, \dots, a_n\}$ un conjunto de puntos afínmente independiente. 
+	Definimos el \textbf{n-plano} $P$ generado por $\{a_0, \dots, a_n\}$ como
+	el conjunto de puntos $x \in \mathbb{R}^N$ tales que
+	\[ x = a_0 + \sum_{i=1}^{n}t_i(a_i - a_0) \]
+	para algunos $t_1, \dots, t_n \in \mathbb{R}$. Diremos entonces que $P$ es el 
+	plano que pasa por $a_0$ paralelo a los vectores $a_i - a_0$, $i \in \{1, \dots, n\}$.
+\end{definicion}
+
+\begin{definicion}
+	Def de aplicación afín.
+\end{definicion}
+
+\begin{definicion}
+	Sea $\{a_0, \dots, a_n\}$ un conjunto de puntos afínmente independiente en 
+	$\mathbb{R}^N$. Definimos el \textbf{símplice} $\sigma = [a_0, \dots, a_n]$ 
+	generado por $a_0, 	\dots, a_n$ como el conjunto de todos los $x \in \mathbb{R}^N$ 
+	tales que
+	\[ x=\sum_{i=0}^{n}t_ia_i \quad \text{y} \quad \sum_{i=0}^{n}t_i=1 \]
+	con $t_i \geq 0$, $i \in \{1, \dots, n\}$.
+\end{definicion}
+Los coeficientes $t_i$ están determinados de manera única por el punto $x$. Al conjunto 
+$\{t_0, \dots, t_n \}$ lo llamamos las \textbf{coordenadas baricéntricas} de $\sigma$
+con respecto a $a_0, \dots, a_n$.
+
+Los puntos $a_0, \dots, a_n$ que generan $\sigma$ los llamaremos \textbf{vértices} de $\sigma$
+y al número $n$ lo llamaremos la \textbf{dimensión} de $\sigma$.
+
+\begin{definicion}
+	Sea $\sigma=[a_0, \dots, a_n]$ un símplice. Una \textbf{cara} de $\sigma$ será cualquier
+	símplice generado por un subconjunto de $\{a_0, \dots, a_n\}$.
+\end{definicion}
+En particular, la cara de $\sigma$ generada por $a_0, \dots, a_{i-1}, a_{i+1}, \dots, a_n$ la 
+llamamos la \textbf{cara opuesta} de $a_i$, $i \in \{0, \dots, n\}$. Las caras de $\sigma$ 
+diferentes de $\sigma$ diremos que son \textbf{caras propias} de $\sigma$ y la unión de todas ellas la 
+llamaremos el \textbf{borde} de $\sigma$. Finalmente, definimos el \textbf{interior} de $\sigma$
+como el conjunto de puntos de $\sigma$ que no pertenecen a su borde.
+
+\section{Complejos simpliciales}
+
+\endinput
+%--------------------------------------------------------------------
+% FIN DEL CAPÍTULO. 
+%--------------------------------------------------------------------

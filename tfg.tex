@@ -7,6 +7,14 @@
 
 \documentclass[print, color]{ugrTFG}
 
+% Importamos paquetes
+\setlength{\parskip}{5pt}%
+%\setlength{\parskip}{\baselineskip}%
+\setlength{\parindent}{0pt}%
+\usepackage{tikz}
+\usepackage{subcaption}
+\usepackage{enumitem}
+
 % VERSIÓN ELECTRÓNICA PARA TABLETA
 % Cambiando la opción "print" por "tablet" generaremos un pdf adaptado para leerlo en tabletas de 9 pulgadas.
 
@@ -14,20 +22,20 @@
 % INFORMACIÓN DEL TFG Y EL AUTOR
 % -------------------------------------------------------------------
 
-\newcommand{\miTitulo}{Título del trabajo\xspace}
-\newcommand{\miNombre}{Nombre apellidos\xspace}
-\newcommand{\miGrado}{Grado en Matemáticas}
-\newcommand{\miFacultad}{Facultad de Ciencias}
+\newcommand{\miTitulo}{Aplicación de la topología algebraica en redes neuronales\xspace}
+\newcommand{\miNombre}{Pablo Olivares Martínez\xspace}
+\newcommand{\miGrado}{Grado en Ingeniería Informática y Matemáticas}
+\newcommand{\miFacultad}{Facultad de Ciencias Escuela Técnica Superior de Ingenierías Informática y de Telecomunicación}
 \newcommand{\miUniversidad}{Universidad de Granada}
 
 % Añadir tantos tutores como sea necesario separando cada uno de ellos mediante el comando `\medskip` y una línea en blanco
 \newcommand{\miTutor}{
-  Nombre del tutor 1 \\ \emph{Departamento del tutor 1} 
+  Miguel Ortega Titos \\ \emph{Departamento de Geometría y Topología} 
 
   % Añadir tantos tutores como sea necesario. 
 
   \medskip
-  Nombre del tutor 2 \\ \emph{Departamento del tutor 2}
+  Julián Luengo Martín \\ \emph{Departamento de Ciencias de la Computación e Inteligencia Artificial}
 }
 \newcommand{\miCurso}{2023-2024\xspace}
 
@@ -58,9 +66,7 @@
 % -------------------------------------------------------------------
 \mainmatter % activa la numeración de capítulos, resetea la numeración de las páginas y usa números arábigos
 
-\part{Primera parte} % Dividir un TFG en partes OPCIONAL
-
-\input{capitulos/documentacion}
+\part{Fundamento teórico} % Dividir un TFG en partes OPCIONAL
 % Añadir tantos capítulos como sea necesario
 \input{capitulos/capitulo1}
 

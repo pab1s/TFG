@@ -1,0 +1,46 @@
+% !TeX root = ../tfg.tex
+% !TeX encoding = utf8
+
+\chapter{Homología}
+
+\section{Grupos de homología}
+
+\begin{definicion}
+	Sea $C$ un grupo abeliano junto a un endomorfismo  $d: C \rightarrow C$ tal que $d^2 = 0$. Diremos entonces que $C$ es un \textbf{grupo diferencial} y llamaremos a $d$ \textbf{operador borde} de $C$.
+\end{definicion}
+
+Llamaremos a los elementos de $C$ \textbf{cadenas}, a los de $\ker d$, \textbf{ciclos} y a los de $\im d$, \textbf{bordes}. Si nos fijamos, el requisito $d^2 = 0$ es equivalente a exigir que $\im{d} \subset \ker{d}$.
+
+\begin{definicion}
+	Sea $C$ un grupo diferencial. Definimos el \textbf{grupo de homología} de $C$ como el grupo cociente $H(C)$ tal que 
+	\[ H(C) = \frac{\ker d}{\im d}\]
+\end{definicion}
+
+Por tanto, el grupo de homología de un grupo diferencial $C$ está formado por las clases de equivalencia $[c] = c + \im d$ donde $c$ es un ciclo de $C$. A los elementos de $H(C)$ los llamaremos \textbf{clases de homología}. Dos ciclos $c$ y $c'$ diremos que son \textbf{homólogos} si ambos pertenecen a la misma clase de homología, esto es, $c \sim c'$.
+
+\begin{ejemplo}
+	contenidos...
+\end{ejemplo}
+
+\begin{definicion}
+	Sean $C$ y $C'$ dos grupos diferenciales y $d, d'$ sus respectivos operadores borde. Diremos que $f: C \rightarrow C'$ es un \textbf{homomorfismo de grupos diferenciales} si $f$ es un homomorfismo de grupos y además $d'f = fd$.
+\end{definicion}
+
+La anterior definición nos permite preservar la estructura algebraica del grupo diferencial. De esta forma, si tomamos una cadena $c \in C$ que sea un ciclo o un borde y $f:C \rightarrow C'$ es un homomorfismo de grupos diferenciales, $f(c) \in C'$ seguirá siendo un ciclo o un borde de manera correspondiente.
+
+\begin{definicion}
+	Sean $C, C'$ grupos diferenciales y $f:C \rightarrow C'$ un homomorfismo de grupos diferenciales. Definimos la función $f_* = H(f): H(C) \rightarrow H(C')$ satisfaciendo 
+	\[f_*([c]) = [f(c)] \]
+	Diremos que $H(f)$ es el \textbf{homomorfismo inducido} por $f$.
+\end{definicion}
+
+??? H FUNCTOR COVARIANTE
+
+\begin{ejemplo}
+	contenidos...
+\end{ejemplo}
+
+\endinput
+%--------------------------------------------------------------------
+% FIN DEL CAPÍTULO. 
+%--------------------------------------------------------------------

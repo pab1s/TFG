@@ -9,14 +9,14 @@
 	Sea $C$ un grupo abeliano junto a un endomorfismo  $d: C \rightarrow C$ tal que $d^2 = 0$. Diremos entonces que $C$ es un \textbf{grupo diferencial} y llamaremos a $d$ \textbf{operador borde} de $C$.
 \end{definicion}
 
-Llamaremos a los elementos de $C$ \textbf{cadenas}, a los de $\ker d$, \textbf{ciclos} y a los de $\im d$, \textbf{bordes}. Si nos fijamos, el requisito $d^2 = 0$ es equivalente a exigir que $\im{d} \subset \ker{d}$.
+Llamaremos a los elementos de $C$ \textbf{cadenas}. El subgrupo de \textbf{ciclos} será $Z(C) = \ker d$,  y el subgrupo de \textbf{bordes} $B(C) = \im d$. Si nos fijamos, el requisito $d^2 = 0$ es equivalente a exigir que $\im{d} \subset \ker{d}$.
 
 \begin{definicion}
 	Sea $C$ un grupo diferencial. Definimos el \textbf{grupo de homología} de $C$ como el grupo cociente $H(C)$ tal que 
-	\[ H(C) = \frac{\ker d}{\im d}\]
+	\[ H(C) = \frac{Z(C)}{B(C)}\]
 \end{definicion}
 
-Por tanto, el grupo de homología de un grupo diferencial $C$ está formado por las clases de equivalencia $[c] = c + \im d$ donde $c$ es un ciclo de $C$. A los elementos de $H(C)$ los llamaremos \textbf{clases de homología}. Dos ciclos $c$ y $c'$ diremos que son \textbf{homólogos} si ambos pertenecen a la misma clase de homología, esto es, $c \sim c'$.
+Por tanto, el grupo de homología de un grupo diferencial $C$ está formado por las clases laterales $[c] = c + B(C)$ donde $c$ es un ciclo de $C$. A los elementos de $H(C)$ los llamaremos \textbf{clases de homología}. Dos ciclos $c$ y $c'$ diremos que son \textbf{homólogos} si ambos pertenecen a la misma clase de homología, esto es, $c \sim c'$.
 
 \begin{ejemplo}
 	contenidos...
@@ -34,11 +34,38 @@ La anterior definición nos permite preservar la estructura algebraica del grupo
 	Diremos que $H(f)$ es el \textbf{homomorfismo inducido} por $f$.
 \end{definicion}
 
-??? H FUNCTOR COVARIANTE
+??? H FUNCTOR COVARIANTE, SPANIER 157
 
 \begin{ejemplo}
 	contenidos...
 \end{ejemplo}
+
+\section{Complejos de cadena}
+
+\begin{definicion}
+	Sea $R$ un anillo. Un \textbf{complejo de cadenas} $K$ de $R$-módulos es una familia $\{K_n, \partial_n\}$ donde $K_n$ son $R$-módulos y $\partial_n : K_n \rightarrow K_{n-1}$ homomorfismos de $R$-módulos tales que $\partial_n \partial_{n-1} = 0$ para todo $n \in \mathbb{Z}$.
+\end{definicion}
+
+La última condición es equivalente a que $\im{\partial_{n+1}} \subset \ker{\partial_n}$.
+
+Un complejo $K$  es por tanto una secuencia doblemente infinita
+\[ K : \cdots \rightarrow K_{-1} \rightarrow K_0 \rightarrow K_1 \rightarrow \cdots \]
+donde toda composición es el homomorfismo con imagen el cero. La \textbf{homología} $H(K)$ es la familia de módulos
+\[ H_n(K) = \frac{\ker \partial_n}{\im \partial_{n+1}} \]
+Luego $H_n(K)=0$ implica que la secuencia $K$ es exacta en $K_n$. A los elementos de $K_n$ los llamaremos \textbf{n-cadenas} o \textbf{cadenas de dimensión n}. Si la dimensión se sobrentiende, la llamaremos simplemente \textbf{cadena}. Un \textbf{n-ciclo} de $K$ es un elemento del submódulo $C_n(K) = \ker \partial_n$. Un \textbf{n-borde} es un elemento de $\partial_{n+1}K_{n+1}$. La clase lateral de un ciclo $c$ se escribe $[c] = c + \partial K_{n+1}$. Dos $n$-ciclos $c,c' \in C_n(K)$ pertenecientes a la misma clase lateral $[c]$ decimos que son \textbf{homólogos}, es decir, $c \sim c'$.
+
+\begin{definicion}
+	Sean $K,K'$ complejos de cadena. Una \textbf{aplicación de cadena} o \textbf{morfismo de cadena} $f: K \rightarrow K'$ es una familia de homomorfismos de $R$-módulos $f_n: K_n \rightarrow K_n'$ tal que $\partial_n'f_n = f_{n-1}\partial_n$ para todo $n \in \mathbb{Z}$.
+\end{definicion}
+
+La función $H_n(f) = f_*$ definida por $f_*([c]) = f_*(c + \partial K_{n+1}) = fc + \partial K'_{n+1}$ es un homomorfismo $H_n(f): H_n(K) \rightarrow H_n(K')$. Así mismo, cada $H_n$ es un functor covariante de la categoría de complejos de cadena y morfismos de cadenas a la categoría de módulos.
+
+\begin{definicion}
+	Sean $K,K'$ cadenas de complejos y $f,g: K \rightarrow K'$ dos aplicaciones de cadena entre ellos. Una \textbf{homotopía de cadenas} u \textbf{homotopía algebraica} $s$ es una familia de homomorfismos de módulos $s_n: K_n \rightarrow K_{n+1}'$ para cada dimensión $n \in \mathbb{Z}$ tal que
+	\[ \partial_{n+1}'s_n + s_{n-1} \partial_n = f_n - g_n \]
+	Diremos entonces que $f$ y $g$ son \textbf{algebraicamente homotópicas} y escribiremos $f \simeq g$.
+\end{definicion}
+
 
 \endinput
 %--------------------------------------------------------------------

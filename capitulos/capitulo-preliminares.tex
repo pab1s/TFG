@@ -1,0 +1,69 @@
+% !TeX root = ../tfg.tex
+% !TeX encoding = utf8
+
+\chapter{Preliminares algebraicos}
+
+\section{Módulos}
+
+\begin{definicion}
+	Sea $R$ un anillo cuyo elemento identidad $1 \neq 0$. Un \textbf{$R$-módulo izquierdo} $A$ es un grupo abeliano aditivo junto con una función $p: R \times A \rightarrow A$ con $(r, a) \to ra$ tal que dados $r,r' \in R$, $a,a' \in A$ se tiene
+	\begin{enumerate}
+		\item $(r+r')+a = ra + r'a$
+		\item $(rr')a = r(r'a)$
+		\item $r(a+a') = ra + ra'$
+		\item $1a = a$
+	\end{enumerate}
+\end{definicion}
+
+De la definición anterior se sigue que $0a = 0$ y $(-1)a = -a$.
+
+De manera análoga, definimos \textbf{$R$-módulo derecho} donde el anillo actúa por la izquierda en vez de por la derecha de forma que $p: A \times R \rightarrow A$. Si $R$ es un anillo conmutativo, los $R$-módulos izquierdos y derechos coinciden y les llamamos simplemente $R$-módulos. Como los resultados de $R$-módulos izquierdos y derechos son análogos, trabajaremos simplemente con los $R$-módulos izquierdos y nos referiremos a ellos como $R$-módulos a menos que se indique explícitamente lo contrario.
+
+\begin{ejemplo}
+	ej
+\end{ejemplo}
+
+\begin{definicion}
+	Sea $A$ un $R$-módulo izquierdo y $S$ un subconjunto de $A$. Diremos que $S$ es un submódulo izquierdo de $A$, esto es, $S \subset A$, si $S$ es cerrado respecto a la suma y si $r,s \in S$ entonces $rs \in S$. Por tanto, $S$ es un $R$-módulo.
+\end{definicion}
+
+Si un submódulo de $R$ es un subconjunto $L \subset R$ cerrado respecto a la suma tal que $rL \subset L$ para todo $r \in R$, lo llamaremos \textbf{ideal izquierdo} de $R$. Tomando un ideal izquierdo $L$ de $R$ y $A$ un $R$-módulo izquierdo, definimos el producto del ideal $L$ por el módulo $A$
+\[ LA = \{\text{todas las sumas finitas } \sum l_ia_i, \text{ para } l_i \in L,\ a_i \in A \} \]
+donde $LA$ es un submódulo de $A$. En particular, el producto de dos ideales izquierdos $LL'$ es también un ideal izquierdo y $(LL')A = L(L'A)$.
+
+\begin{definicion}
+	Sean $A$, $B$ $R$-módulos. Definimos el \textbf{homomorfismo de $R$-módulos} de $A$ a $B$ como la aplicación $\alpha: A \rightarrow B$ tal que
+	\begin{enumerate}
+		\item $\alpha(a+a') = \alpha a + \alpha a'$
+		\item $\alpha(ra) = r(\alpha a)$
+	\end{enumerate}
+	para todo $a,a' \in A$, $r \in R$.
+\end{definicion}
+
+También es frecuente escribir el homomorfismo de $R$-módulos $\alpha: A \rightarrow B$ como $A \xrightarrow{\alpha} B$.
+
+Cuando $\alpha: A \rightarrow B$ sea un homomorfismo de $R$-módulos, diremos que $A$ es el \textbf{dominio} y $B$ el \textbf{rango}. La \textbf{imagen} de $\alpha$ es el conjunto $\im(\alpha) = \{ \alpha(a) : a \in A \}$. El \textbf{núcleo} será el conjunto de elementos que se anulan en su imagen, esto es, $\ker(\alpha) = \{ a \in A : \alpha(a) = 0 \}$. Diremos que $\alpha$ es un \textbf{epimorfismo} cuando $\alpha(A) = B$, un \textbf{monomorfismo} cuando $\ker(\alpha) = \{0\}$ y un \textbf{isomorfismo} si $\alpha$ es un epimorfismo y un monomorfismo a la vez. Si existe un isomorfismo entre $A$ y $B$ diremos que son \textbf{isomorfos} y lo notaremos $A \cong B$. Un homomorfismo $\omega: A \rightarrow A$ lo llamaremos \textbf{endomorfismo}.
+
+Dados dos homomorfismos de $R$-módulos $\alpha_1, \alpha_2 : A \rightarrow B$, su \textbf{suma} $\alpha_1 + \alpha_2$ la definimos como $(\alpha_1 + \alpha_2)(a) = \alpha_1(a) + \alpha_2(a)$ para todo $a \in A$. Además, dados dos homomorfismos de $R$-módulos $\alpha: A \rightarrow B$, $\beta: B \rightarrow C$, su \textbf{composición} $\beta \circ \alpha: A \rightarrow C$ es también un homomorfismo de $R$-módulos. Nótese que para que la composición sea posible, el rango de $\alpha$ tiene que ser igual al dominio de $\beta$. En ocasiones usaremos la notación $\alpha\beta = \alpha \circ \beta$. Llamaremos \textbf{inversa} (por ambos lados) de $\alpha : A \rightarrow B$ al homomorfismo $\alpha^{-1} : B \rightarrow A$ tal que $\alpha^{-1} \circ \alpha = 1_A$ y $\alpha \circ \alpha^{-1} = 1_B$. Una \textbf{inversa izquierda} de $\alpha$ es una función $\gamma: A \rightarrow A$ tal que $\gamma \circ \alpha = 1_A$. No tiene por qué existir ni ser única.
+
+\begin{definicion}
+	Sea $\{A_i, \alpha_i\}$ una familia de $R$-módulos $A_i$ y homomorfismos entre ellos tal que $\alpha_i: A_i \rightarrow A_{i+1}$. Diremos que la secuencia
+	\[ \cdots \xrightarrow{\alpha_{i-2}} A_{i-1} \xrightarrow{\alpha_{i-1}} A_i \xrightarrow{\alpha_{i}} A_{i+1} \xrightarrow{\alpha_{i+1}} \cdots \]
+	es \textbf{exacta} cuando $\im \alpha_i = \ker \alpha_{i+1}$.
+\end{definicion}
+
+Para cada submódulo $T \subset B$, la inclusión de $T$ en $B$ es un monomorfismo $i: T \rightarrow B$. Las \textbf{clases laterales} de $T$ en $B$ son los conjuntos $b + T = \{b + t : t \in T\}$ donde $b \in B$. Dos clases laterales $b_1 + T$, $b_2 + T$ son iguales si $b_1 - b_2 \in T$. Como $T$ es un submódulo, el grupo abeliano $B/T$ se convierte en un $R$-módulo cuando $r(b+T) = rb + T$ para todo $r \in R$. A este $R$-módulo lo llamaremos el \textbf{módulo cociente} de $B$ sobre $T$. El homomorfismo $\pi: B \rightarrow B/T$ tal que $\pi(b) = b + T$ es un epimorfismo que llamaremos \textbf{proyección canónica} de $B$.
+
+
+
+\section{Categorías}
+
+\section{Functores}
+
+
+
+
+\endinput
+%--------------------------------------------------------------------
+% FIN DEL CAPÍTULO. 
+%--------------------------------------------------------------------

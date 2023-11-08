@@ -58,9 +58,40 @@ Para cada submódulo $T \subset B$, la inclusión de $T$ en $B$ es un monomorfis
 
 \section{Categorías}
 
+\begin{definicion}
+	Una \textbf{categoría} $\mathcal{C}$ es una tripleta $(\mathcal{O}, \hom, \circ)$ formada por
+	\begin{enumerate}
+		\item Una clase $\mathcal{O}$, cuyos elementos denominamos \textbf{objetos} de $\mathcal{C}$ y notamos por $Obj(\mathcal{C})$.
+		\item Por cada par de objetos $(A,B)$ de $\mathcal{C}$, un conjunto $\hom(A,B)$ cuyos elementos son llamados \textbf{morfismos} de $A$ a $B$. Si $f \in \hom(A,B)$, normalmente escribiremos $f: A \rightarrow B$ o $A \xrightarrow{f} B$.
+		\item Una \textbf{ley de composición} que asocia a cada morfismo $f: A \rightarrow B$ y a cada morfismo $g: B \rightarrow C$ un morfismo $g \circ f : A \rightarrow C$ satisfaciendo
+		\begin{itemize}
+			\item \textbf{Asociatividad}. Si $f: A \rightarrow B$, $g: B \rightarrow C$ y $h : C \rightarrow D$ son morfismos de $\mathcal{C}$, entonces $h \circ (g \circ f) = (h \circ g) \circ f$.
+			\item \textbf{Identidad}. A cada objeto $B$ le podemos asociar un morfismo identidad $1_B : B \rightarrow B$ tal que si $f: A \rightarrow B$ y $g: B \rightarrow C$ entonces $g \circ 1_B = g$ y $1_B \circ f = f$.
+		\end{itemize}
+		Llamaremos a este morfismo la \textbf{composición} de $f$ y $g$.
+	\end{enumerate}
+\end{definicion}
+
+\begin{ejemplo}
+	Como veremos a continuación, la definición anterior nos va a permitir trabajar con un gran número de espacios matemáticos que ya conocemos en el contexto de la teoría de categorías. Algunos de ellos son:
+	\begin{itemize}
+		\item \textbf{La categoría de espacios topológicos}, donde los objetos son todos los espacios topológicos y los morfismos todas las aplicaciones continuas entre espacios topológicos $f: X \rightarrow Y$.
+		\item \textbf{La categoría de grupos}, donde los objetos son todos los grupos y los morfismos todos los homomorfismos de grupos.
+		\item \textbf{La categoría de conjuntos}, cuyos objetos son todos los conjuntos y sus morfismos todas las aplicaciones entre conjuntos.
+	\end{itemize}
+\end{ejemplo}
+
+\begin{definicion}
+	Sea $f \in \hom(A,B)$ un morfismo en la categoría $\mathcal{C}$. Diremos que $f$ es una \textbf{equivalencia} en $\mathcal{C}$ si existe en $\mathcal{C}$ otro morfismo $g \in \hom(B,A)$ tal que $g \circ f = 1_A$ y $f \circ g = 1_B$.
+\end{definicion}
+
+Nótese que si $f \in \hom(A,B)$ es una equivalencia en $\mathcal{C}$, $g \in \hom(B,A)$ debe ser única. En efecto, si suponemos que existe $g' \in \hom(B,A)$ tal que $g' \circ f = 1_A$, entonces $g = g'\circ f \circ g = g' \circ 1_B = g'$.
+
 \section{Functores}
 
-
+\begin{definicion}
+	Sean $\mathcal{C}, \mathcal{D}$ dos categorías. Un \textbf{funtor covariante} de $\mathcal{C}$ a $\mathcal{D}$
+\end{definicion}
 
 
 \endinput

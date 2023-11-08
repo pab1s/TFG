@@ -10,7 +10,57 @@ a finales del siglo XIX nace un nuevo concepto: el símplice. Su simplicidad y
 propiedades lo convirtieron en una herramienta muy versátil en el estudio de la
 topología algebraica, dando lugar a lo que hoy conocemos como homología simplicial. 
 En esta sección definiremos lo que es un símplice y algunos conceptos asociados a él
-que nos serán de gran utilidad en el estudio de dicho campo.
+que nos serán de gran utilidad en el estudio de dicho campo. Comenzaremos recordando algunos conceptos de la geometría afín y seguiremos en la línea de MUNKRES.
+
+\begin{definicion}
+	Un \textbf{espacio afín} es una tripleta $(\mathcal{A}, V, \vec{}\ )$ donde:
+	\begin{itemize}
+		\item $\mathcal{A}$ es un conjunto no vacío, llamado \textbf{conjunto de puntos}.
+		\item $V$ es un espacio vectorial sobre un cuerpo.
+		\item $\vec{}: \mathcal{A} \times \mathcal{A} \rightarrow V$, $(p,q) \mapsto \vec{pq}$, 
+		es una aplicación que satisface:
+		\begin{enumerate}[label=\textbf{A\arabic*.}, ref=A\arabic*]
+			\item $\vec{pq} + \vec{qr} = \vec{pr}$
+			\item $\forall p \in \mathcal{A},\ \forall v \in V$, existe un único $q \in 
+			\mathcal{A}$ tal que $\vec{pq} = v$.
+		\end{enumerate}
+	\end{itemize}
+\end{definicion}
+
+Dados dos puntos $p,q \in \mathbb{R}^N$, notaremos como $p - q$ al vector 
+$\vec{pq}$, dotando de apariencia de cancelación algebraica al axioma \textbf{A1}. 
+
+\begin{definicion}
+	Sea $\{a_0, \dots, a_n\}$ un conjunto de puntos afínmente independiente. 
+	Definimos el \textbf{n-plano} $P$ generado por $\{a_0, \dots, a_n\}$ como
+	el conjunto de puntos $x \in \mathbb{R}^N$ tales que
+	\[ x = a_0 + \sum_{i=1}^{n}t_i(a_i - a_0) \]
+	para algunos $t_1, \dots, t_n \in \mathbb{R}$. Diremos entonces que $P$ es el 
+	plano que pasa por $a_0$ paralelo a los vectores $a_i - a_0$, $i \in \{1, \dots, n\}$.
+\end{definicion}
+
+\begin{definicion}
+	Sean $\mathcal{A}, \mathcal{A'}$ espacios afines y $V,V'$ sus espacios vectoriales 
+	asociados respectivamente. Sea $T: \mathcal{A} \rightarrow \mathcal{A'}$ una aplicación 
+	entre espacios afines. Diremos que $T$ es una \textbf{aplicación afín} si existe 
+	un punto $o \in \mathcal{A}$ de forma que la aplicación $\vec{T}: V \rightarrow V'$ 
+	dada por
+	\[ \vec{T}(\overrightarrow{op}) = \overrightarrow{T(o)T(p)} \quad \forall p \in \mathcal{A} \]
+	es una aplicación lineal.
+\end{definicion}
+
+\begin{definicion}
+	Sea $\mathcal{A}$ un espacio afín y sea $U$ un subespacio vectorial de $\vec{\mathcal{A}}$. Diremos que un subconjunto $S$ no vacío de $\mathcal{A}$ es un \textbf{subespacio afín paralelo a $U$} si existe un punto $p \in S$ tal que
+	\[ S = p + U = \{p + u : u \in U\}\]
+\end{definicion}
+
+\begin{definicion}
+	Sea $\mathcal{A}$ un espacio afín y sea $V$ su espacio vectorial asociado. Si $p \in \mathcal{A}$ y $v \in V$, el único punto $q \in \mathcal{A}$ dado por el axioma \textbf{A2} tal que $\overrightarrow{pq} = v$ será denotado por $p + v$. Como consecuencia las siguientes identidades son inmediatas:
+	\[ q = p + \overrightarrow{pq}, \quad \overrightarrow{p(p+v)}=v \]
+	Si escribimos
+	\[ G_p: V \rightarrow \mathcal{A}, \quad G_p(v) = p + v = q \]
+	es claro que $G_p = F_p^{-1}$ y por tanto $G_p$ es biyectiva.
+\end{definicion}
 
 \begin{definicion}
 	Sea $\{a_0, \dots, a_n\}$ un conjunto de puntos en $\mathbb{R}^N$. 
@@ -42,55 +92,98 @@ y al número $n$ lo llamaremos la \textbf{dimensión} de $\sigma$.
 En particular, la cara de $\sigma$ generada por $a_0, \dots, a_{i-1}, a_{i+1}, \dots, a_n$ la 
 llamamos la \textbf{cara opuesta} de $a_i$, $i \in \{0, \dots, n\}$. Las caras de $\sigma$ 
 diferentes de $\sigma$ diremos que son \textbf{caras propias} de $\sigma$ y la unión de todas ellas la 
-llamaremos el \textbf{borde} de $\sigma$. Finalmente, definimos el \textbf{interior} de $\sigma$
-como el conjunto de puntos de $\sigma$ que no pertenecen a su borde.
+llamaremos el \textbf{borde} de $\sigma$ y lo notaremos $\text{Bd}\ \sigma$. Finalmente, definimos el \textbf{interior} de $\sigma$, $\text{Int}\ \sigma$, como el conjunto de puntos de $\sigma$ que no pertenecen 
+a su borde.
 
-\begin{ejemplo}
 \begin{figure}[h]
-	\begin{minipage}{.24\textwidth}
+	\begin{subfigure}{.24\textwidth}
 		\centering
-		{
-			\begin{tikzpicture}
-				% 0-símplex
-				\draw (0,0);
-			\end{tikzpicture}
-		}\subcaption{0-símplex}
-	\end{minipage}
-	\begin{minipage}{.24\textwidth}
+		\begin{tikzpicture}
+			% 3-símplex
+			\node (n0) at (0.0,  0.0) {}; % root
+			
+			% DRAW NODES
+			\draw[color=black, fill=black] (n0) circle (.1);
+		\end{tikzpicture}
+		\caption{0-símplex}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{.24\textwidth}
 		\centering
-		{
-			\begin{tikzpicture}
-				% 1-símplex
-				\draw (0,0) -- (1,0);
-			\end{tikzpicture}
-		}\subcaption{1-símplex}
-	\end{minipage}
-	\begin{minipage}{.24\textwidth}
+		\begin{tikzpicture}
+			% 3-símplex
+			\node (n0) at (0.0,  0.0) {}; % root
+			\node (n1) at (1.0, 0.0) {}; % extreme
+			
+			% DRAW TREE
+			\path[draw] (n0)--(n1);
+			
+			% DRAW NODES
+			\draw[color=black, fill=black] (n0) circle (.1);
+			\draw[color=black, fill=black]  (n1) circle (.1);
+		\end{tikzpicture}
+		\caption{1-símplex}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{.24\textwidth}
 		\centering
-		{
-			\begin{tikzpicture}
-				% 2-símplex
-				\draw (0,0) -- (1,0) -- (0.5,0.87) -- cycle;
-			\end{tikzpicture}
-		}\subcaption{2-símplex}
-	\end{minipage}
-	\begin{minipage}{.24\textwidth}
+		\begin{tikzpicture}
+			% 3-símplex
+			\node (n0) at (0.0,  0.0) {}; % root
+			\node (n1) at (1.0, 0.0) {}; % extreme
+			\node (n2) at (0.5, 0.87) {}; % extreme
+			
+			% DRAW TREE
+			\fill[fill=gray!20] (n0.center)--(n1.center)--(n2.center);
+			\path[draw] (n0)--(n1);
+			\path[draw] (n1)--(n2);
+			\path[draw] (n2)--(n0);
+			
+			% DRAW NODES
+			\draw[color=black, fill=black] (n0) circle (.1);
+			\draw[color=black, fill=black]  (n1) circle (.1);
+			\draw[color=black, fill=black]  (n2) circle (.1);
+		\end{tikzpicture}
+		\subcaption{2-símplex}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{.24\textwidth}
 		\centering
-		{
-			\begin{tikzpicture}
-				% 3-símplex
-				\draw (0,0) -- (1,0) -- (0.5,0.87) -- cycle;
-				\draw (0.5,0.4) -- (0.5,0.87);
-				\draw (0.5,0.4) -- (0,0);
-				\draw (0.5,0.4) -- (1,0);
-			\end{tikzpicture}
-		}\subcaption{3-símplex}
-	\end{minipage}
-	\caption{Símplices en columnas}
+		\begin{tikzpicture}
+			% 3-símplex
+			\node (n0) at (0.0,  0.0) {}; % root
+			\node (n1) at (1.0, 0.0) {}; % extreme
+			\node (n2) at (0.5, 0.87) {}; % extreme
+			\node (n3) at (1.0, 0.4) {}; % inside
+			
+			% DRAW TREE
+			\fill[fill=gray!60] (n0.center)--(n1.center)--(n2.center);
+			\fill[fill=gray!60] (n0.center)--(n2.center)--(n3.center);
+			\fill[fill=gray!60] (n0.center)--(n1.center)--(n3.center);
+			\fill[fill=gray!60] (n3.center)--(n1.center)--(n2.center);
+			\path[draw] (n0)--(n1);
+			\path[draw] (n1)--(n2);
+			\path[draw] (n2)--(n0);
+			\path[draw] (n0)--(n3);
+			\path[draw] (n1)--(n3);
+			\path[draw] (n2)--(n3);
+			
+			% DRAW NODES
+			\draw[color=black, fill=black] (n0) circle (.1);
+			\draw[color=black, fill=black]  (n1) circle (.1);
+			\draw[color=black, fill=black]  (n2) circle (.1);
+			\draw[color=black, fill=black]   (n3) circle (.1);
+		\end{tikzpicture}
+		\caption{3-símplex}
+	\end{subfigure}
+	\caption{Símplices de dimensión $0$, $1$, $2$ y $3$}
+	\label{fig:simplex}
 \end{figure}
-\end{ejemplo}
+
 
 \section{Complejos simpliciales}
+
+BIB - MUNKRES, JOHN LEE
 
 \begin{definicion}
 	Un \textbf{complejo simplicial} $K$ en $\mathbb{R}^N$ es una colección de símplices en $\mathbb{R}^N$
@@ -110,11 +203,13 @@ un complejo simplicial o no. Para ello, el siguiente lema nos puede ser de utili
 	condiciones:
 	\begin{enumerate}
 		\item Toda cara de un símplice de $K$ está en $K$.
-		\item Los símplices de $K$ tienen interior disjunto dos a dos.
+		\item Los símplices de $K$ tienen interior disjunto dos a dos. REVISRA
 	\end{enumerate}
 \end{lema}
 \begin{proof}
-	Primero, asumamos que $K$ es un complejo simplicial. MUNKRES
+	Primero, asumamos que $K$ es un complejo simplicial. Dados dos símplices $\sigma, \tau \in K$ veamos que si el interior de ambos tiene un punto $x$ en común, entonces $\sigma = \tau$. Sea $s = \sigma \cap \tau$. Si $s$ fuera una cara propia de $\sigma$, entonces $x$ pertenecería a la frontera de $\sigma$, lo cual no se cumple ya que $x$ pertenece al interior de $\sigma$. Por tanto $s = \sigma$. De manera análoga, $s = \tau$, luego $\sigma = \tau$.
+	
+	Asumamos ahora que se cumplen \textit{(1)} y \textit{(2)}. Queremos ver que si el conjunto $\sigma \cap \tau \neq \emptyset$,  dicha intersección es la cara $\sigma'$ de $\sigma$ generada por los vértices $b_0,\dots,b_m$ de $\sigma$ que están en $\tau$. Primero, $\sigma' \subset \sigma \cap \tau$ por ser $\sigma \cap \tau$ convexa y contener a $b_0, \dots, b_m$. Para la otra inclusión supongamos que $x \in \sigma \cap \tau$. Esto implica que $x \in \text{Int}\ s \cap \text{Int}\ t$ para alguna cara $s$ de $\sigma$ y alguna cara $t$ de $\tau$. Se sigue de \textit{(2)} que $s = t$ por lo que los vértices de $s$ están en $\tau$ y por definición, son elementos del conjunto $\{b_0, \dots, b_m\}$.  Concluimos entonces que $s$ es una cara de $\sigma'$, lo que implica que $x \in \sigma'$, como queríamos ver.
 \end{proof}
 
 \begin{definicion}
@@ -125,19 +220,24 @@ Entre los subcomplejos de un complejo simplicial, cabe destacar el siguiente. Di
 de $K$ al subcomplejo formado por todas las caras de $K$ cuya dimensión sea menor o igual que $p$. Lo denotaremos por $K^{(p)}$. En particular, $K^{(0)}$ es el conjunto de vértices de $K$.
 
 \begin{definicion}
-	Sea $K$ un complejo simplicial de $\mathbb{R}^N$. Definimos el \textbf{politopo} de $K$ como el 
-	subconjunto $|K| \subset \mathbb{R}^N$ tal que $|K|$ es la unión de todos los símplices de $K$.
+	Sea $K$ un complejo simplicial de $\mathbb{R}^N$ y sea $|K|$ el subconjunto de $\mathbb{R}^N$ tal que $|K|$ es la unión de todos los símplices de $K$. Definimos el \textbf{politopo} o \textbf{espacio subyacente} 
+	de $K$ como el espacio topológico $(|K|, \mathcal{T})$ donde los abiertos de $\mathcal{T}$ son aquellos $O \subseteq |K|$ tal que $O \cap \sigma$ es abierto en $\sigma$ con la topología inducida de $\mathbb{R}^N$ para todo $\sigma \in K$.
 \end{definicion}
-Dotando a cada símplice de la topología inducida por la topología usual de $\mathbb{R}^N$, vamos a dotar ahora a $|K|$ de una topología. Diremos que un subconjunto $A \subset |K|$ es cerrado en $|K|$ si, y sólo si, $A \cap \sigma$ es cerrado en $\sigma$ para todo $\sigma \in K$. Si llamamos $T$ a la topología 
-definida de esta forma, podemos ver fácilmente que $(|K|, T)$ es un espacio topológico. Claramente, $\emptyset, |K| \in T$. SEGUIR DEMOSTRANDO
 
-Llamaremos \textbf{poliedro} a cualquier espacio topológico que sea el politopo de un complejo simplicial.
+Veamos que en efecto $(|K|, \mathcal{T})$ es un espacio topológico. $\emptyset, |K| \in \mathcal{T}$ ya que son abiertos trivialmente en $\sigma$, pues $\emptyset \cap \sigma = \emptyset$ y $|K| \cap \sigma = \sigma$ para todo $\sigma \in K$. Si $O_1, O_2 \in \mathcal{T}$, entonces $O_1 \cap \sigma$, $O_2 \cap \sigma$ son abiertos en $\sigma$ luego $(O_1 \cap O_2) \cap \sigma = (O_1 \cap \sigma) \cap (O_2 \cap \sigma)$ es abierto en $\sigma$ para todo $\sigma \in K$. Por tanto $O_1 \cap O_2 \in \mathcal{T}$. Finalmente, consideremos una familia $\{O_i\}_{i \in I} \subset \mathcal{T}$ donde $I$ es un conjunto de índices. Para cada $\sigma \in K$, $\cup_{i \in I} O_i \cap \sigma = \cup_{i \in I} (O_i \cap \sigma)$ que efectivamente es una unión arbitraria de abiertos de $\sigma$. En consecuencia, $\cup_{i \in I} O_i \in \mathcal{T}$.
+
+Si no hay lugar a confusión, simplemente notaremos al politopo de $K$ por $|K|$ y lo llamaremos el \textbf{poliedro} $|K|$.
+
+\begin{lema}\label{lem:cont_poly}
+	Sea $K$ un comlpejo simplicial y $X$ un espacio topológico. Una aplicación $f: |K| \rightarrow X$ es continua si, y sólo si, $f|_{\sigma}$ es continua para cada $\sigma \in K$.
+\end{lema}
+\begin{proof}
+	Si $f$ es continua, también lo es $f_{\sigma}$ por ser $\sigma$ un subespacio de $K$. Supongamos ahora que $f|_{\sigma}$ es continua para cada $\sigma \in K$. Si $C$ es un cerrado de $X$, $f^{-1}(C) \cap \sigma = f|_{\sigma}^{-1}(C)$ es un cerrado en $\sigma$ por la continuidad de $f|_{\sigma}$. Concluimos que $f^{-1}(C)$ es cerrado en $|K|$ por definición.
+\end{proof}
 
 \begin{definicion}
-	Un espacio topológico $X$ es \textbf{triangulable} si existe un complejo simplicial $K$ cuyo espacio subyacente (DEFINIR ESPACIO SUBYACENTE) es homeomorfo a $X$. Diremos entonces que $h: |K| \rightarrow X$ es una \textbf{triangulación}. BUSCAR BIBLIOGRAFIA PARA ESTO
+	Un espacio topológico $X$ es \textbf{triangulable} si existe un complejo simplicial $K$ cuyo espacio subyacente es homeomorfo a $X$. Diremos entonces que el homeomorfismo $h: |K| \rightarrow X$ es una \textbf{triangulación}.
 \end{definicion}
-
-TAL VEZ ALGUNAS PROPIEDADES LOCALMENTE COMPACTO Y EJEMPLO
 
 \section{Aplicaciones simpliciales}
 
@@ -150,8 +250,9 @@ transformaciones entre ellos pueden ser continuas o incluso homeomorfismos.
 	los puntos $f(v_0), \dots, f(v_n)$ son vértices de un símplice de $L$. Entonces podemos extender $f$ 
 	a una aplicación continua $g:|K| \rightarrow |L|$ tal que
 	\[ x = \sum_{i=0}^{n}t_iv_i \quad \implies \quad g(x) = \sum_{i=0}^{n}t_if(v_i) \]
+	Llamaremos a $g$ la \textbf{aplicación simplicial} (lineal) inducida por $f$.
 \end{lema}
-Llamaremos a $g$ la \textbf{aplicación simplicial} (lineal) inducida por $f$.
+
 \begin{proof}
 	Por hipótesis, los vértices $f(v_0), \dots, f(v_n)$ generan un símplice $\tau$ en $L$. Por 
 	ser $K$ un complejo simplicial, la suma de sus coeficientes $t_i$, con $i \in \{0, \dots, n\}$,  
@@ -161,7 +262,7 @@ Llamaremos a $g$ la \textbf{aplicación simplicial} (lineal) inducida por $f$.
 	
 	Ahora tan solo nos queda ver que $g:|K| \rightarrow |L|$ es continua. Bien, pues por ser 
 	$g: \sigma \rightarrow \tau$ continua, también lo es $g: \sigma \rightarrow |L|$. Finalmente 
-	por el lema METER LEMA ANTERIOR 2.3 DE MUNKRES, $g:|K| \rightarrow |L|$ es continua.
+	por el \autoref{lem:cont_poly}, $g:|K| \rightarrow |L|$ es continua.
 \end{proof}
 
 \begin{lema}\label{lem:homeo_complex}
@@ -243,7 +344,7 @@ siguiente teorema.
 	por $f(a_0), \dots, f(a_n)$ está en $K$. Por tanto $K$ es un complejo simplicial y 
 	$f$ es un isomorfismo entre $\mathcal{S}$ y el esquema de vértices de $K$.
 	
-	En cuanto a $(b)$, es una consecuencia inmediata del \autoref{lem:homeo_complex}
+	En cuanto a $(b)$, es una consecuencia inmediata del \autoref{lem:homeo_complex}.
 \end{proof}
 
 \begin{definicion}
@@ -251,19 +352,9 @@ siguiente teorema.
 	complejo simplicial $K$, diremos que $K$ es una \textbf{realización geométrica} de $\mathcal{S}$.
 \end{definicion}
 
-\begin{lema}
-	Sea $\mathcal{S}$ un comlpejo simplicial abstracto de dimensión $d$. Entonces $\mathcal{S}$ tiene 
-	una realización geométrica en $\mathbb{R}^{2d+1}$.
-\end{lema}
-\begin{proof}
-	TENGO LA DEMOSTRACION EN TDA PERO HAY QUE BUSCAR OTRA FUENTE.
-\end{proof}
-
-\begin{ejemplo}
-	ALGUN EJEMPLO QUE MUESTRE SU UTILIDAD.
-\end{ejemplo}
-
-\section{Algunos complejos simpliciales}
+%\begin{ejemplo}
+%	Supongamos que queremos encontrar un complejo simplicial $K$ que sea homeomorfo al cilindro $S^1 \times [0,1]$. Una forma de hacerlo sería definiendo $K$ como una colección de 6 $2-$símplices y sus caras tal y como se puede apreciar en la FIGURA ??. Otra forma sería definir un complejo simplicial $L$ cuyo espacio subyacente sea un rectángulo dotado de una serie de vértices  
+%\end{ejemplo}
 
 \endinput
 %--------------------------------------------------------------------

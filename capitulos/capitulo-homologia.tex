@@ -3,6 +3,8 @@
 
 \chapter{Homología}
 
+El término de homología se puede definir de manera puramente algebraica, lo cual marcó un avance significativo en el desarrollo de la topología algebraica. En este capítulo, presentaremos una síntesis concisa de los fundamentos que subyacen a las diversas aproximaciones para construir la teoría de la homología. Estos principios servirán como base para abordar casos específicos en capítulos posteriores y comprender mejor las propiedades topológicas de los espacios.
+
 \section{Grupos de homología}
 
 \begin{definicion}
@@ -34,7 +36,7 @@ La anterior definición nos permite preservar la estructura algebraica del grupo
 	Diremos que $H(f)$ es el \textbf{homomorfismo inducido} por $f$.
 \end{definicion}
 
-??? H FUNCTOR COVARIANTE, SPANIER 157
+En estas condiciones, $H$ es un funtor covariante de la categoría de grupos diferenciales a la categoría de grupos.
 
 \begin{ejemplo}
 	contenidos...
@@ -49,7 +51,7 @@ La anterior definición nos permite preservar la estructura algebraica del grupo
 La última condición es equivalente a que $\im{\partial_{n+1}} \subset \ker{\partial_n}$.
 
 Un complejo $K$  es por tanto una secuencia doblemente infinita
-\[ K : \cdots \rightarrow K_{-1} \rightarrow K_0 \rightarrow K_1 \rightarrow \cdots \]
+\[ K : \cdots \rightarrow K_{1} \rightarrow K_0 \rightarrow K_{-1} \rightarrow \cdots \]
 donde toda composición es el homomorfismo con imagen el cero. La \textbf{homología} $H(K)$ es la familia de módulos
 \[ H_n(K) = \frac{\ker \partial_n}{\im \partial_{n+1}} \]
 Luego $H_n(K)=0$ implica que la secuencia $K$ es exacta en $K_n$. A los elementos de $K_n$ los llamaremos \textbf{n-cadenas} o \textbf{cadenas de dimensión n}. Si la dimensión se sobrentiende, la llamaremos simplemente \textbf{cadena}. Un \textbf{n-ciclo} de $K$ es un elemento del submódulo $C_n(K) = \ker \partial_n$. Un \textbf{n-borde} es un elemento de $\partial_{n+1}K_{n+1}$. La clase lateral de un ciclo $c$ se escribe $[c] = c + \partial K_{n+1}$. Dos $n$-ciclos $c,c' \in C_n(K)$ pertenecientes a la misma clase lateral $[c]$ decimos que son \textbf{homólogos}, es decir, $c \sim c'$.
@@ -58,13 +60,50 @@ Luego $H_n(K)=0$ implica que la secuencia $K$ es exacta en $K_n$. A los elemento
 	Sean $K,K'$ complejos de cadena. Una \textbf{aplicación de cadena} o \textbf{morfismo de cadena} $f: K \rightarrow K'$ es una familia de homomorfismos de $R$-módulos $f_n: K_n \rightarrow K_n'$ tal que $\partial_n'f_n = f_{n-1}\partial_n$ para todo $n \in \mathbb{Z}$.
 \end{definicion}
 
-La función $H_n(f) = f_*$ definida por $f_*([c]) = f_*(c + \partial K_{n+1}) = fc + \partial K'_{n+1}$ es un homomorfismo $H_n(f): H_n(K) \rightarrow H_n(K')$. Así mismo, cada $H_n$ es un functor covariante de la categoría de complejos de cadena y morfismos de cadenas a la categoría de módulos.
+La función $H_n(f) = f_*$ definida por $f_*([c]) = f_*(c + \partial K_{n+1}) = fc + \partial K'_{n+1}$ es un homomorfismo $H_n(f): H_n(K) \rightarrow H_n(K')$. Así mismo, cada $H_n$ es un funtor covariante de la categoría de complejos de cadena y morfismos de cadenas a la categoría de módulos.
 
-\begin{definicion}
+\begin{definicion}\label{def:chain_homotopy}
 	Sean $K,K'$ cadenas de complejos y $f,g: K \rightarrow K'$ dos aplicaciones de cadena entre ellos. Una \textbf{homotopía de cadenas} u \textbf{homotopía algebraica} $s$ es una familia de homomorfismos de módulos $s_n: K_n \rightarrow K_{n+1}'$ para cada dimensión $n \in \mathbb{Z}$ tal que
-	\[ \partial_{n+1}'s_n + s_{n-1} \partial_n = f_n - g_n \]
+	\begin{equation}
+		\partial_{n+1}'s_n + s_{n-1} \partial_n = f_n - g_n
+	\end{equation}
 	Diremos entonces que $f$ y $g$ son \textbf{algebraicamente homotópicas} y escribiremos $f \simeq g$.
 \end{definicion}
+
+\begin{teorema}
+	Si $s$ es una homotopía de cadenas entre $f,g: K \rightarrow K'$, entonces
+	\[ H_n(f) = H_n(g) : H_n(K) \rightarrow H_n(K') \]
+\end{teorema}
+\begin{proof}
+	Si $c$ es un ciclo de $K_n$, tenemos que $\partial_n c = 0$. Por \ref{def:chain_homotopy} se cumple que $f_nc-g_nc =  \partial s_n c$. Como consecuencia $f_n c$ y $g_n c$ son homólogos lo que implica que $[f_nc] = [g_n c]$ en $H_n(K')$, como queríamos demostrar.
+\end{proof}
+
+\begin{definicion}
+	Una aplicación de cadena $f: K \rightarrow K'$ es una \textbf{equivalencia de cadena} si existe otra aplicación $h: K' \rightarrow K$ y homotopías $s: h \circ f \rightarrow 1_K$, $t: f \circ h \rightarrow 1_{K'}$ tales que $h \circ f \simeq 1_K$, $f \circ h \simeq 1_{K'}$.
+\end{definicion}
+
+Como $H_n(1_K) = 1$, del anterior teorema se deduce lo siguiente.
+
+\begin{corolario}
+	Si $f: K \rightarrow K'$ es una equivalencia de cadenas, la aplicación inducida $H_n(f): H_n(K) \rightarrow H_n(K')$ es un isomorfismo para cada dimensión $n \in \mathbb{Z}$.
+\end{corolario}
+
+\begin{proposicion}
+	Sean $f,g: K \rightarrow K'$ y $f',g': K' \rightarrow K''$ aplicaciones de cadena. Sean $s: f \rightarrow g$, $s': f' \rightarrow g'$ homotopías de cadena entre ellas tales que $f \simeq g$, $f' \simeq g'$. Entonces su composición
+	\[ f' s + s' g: f' \circ f \rightarrow g' \circ g \qquad g' \circ g : K \rightarrow K'' \]
+	es una homotopía de cadena.
+\end{proposicion}
+\begin{proof}
+	Por ser $s,s'$ homotopías de cadena tenemos que $\partial s + s\partial = f-g$ y $\partial s' + s'\partial = f'-g'$. Aplicando  $f'$ a la izquierda de la primera expresión y $g$ a la derecha de la segunda nos queda
+	\[ f'\partial s + f's\partial = f' \circ f-f' \circ g \]
+	\[ \partial s' g + s'\partial g = f' \circ g-g' \circ g \]
+	Sumando ambas igualdades
+	\[ f'\partial s + f's\partial + \partial s' g + s'\partial g = f' \circ f-f' \circ g + f' \circ g-g' \circ g \]
+	\[ f'\partial s + f's\partial + \partial s' g + s'\partial g = f' \circ f - g' \circ g \]
+	\[ \partial f' s + f's \partial + \partial s' g + s' g \partial = f' \circ f - g' \circ g \]
+	\[ \partial (f' s + s' g) + (f's + s' g) \partial = f' \circ f - g' \circ g \]
+\end{proof}
+
 
 
 \endinput

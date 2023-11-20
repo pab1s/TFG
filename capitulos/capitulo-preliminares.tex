@@ -54,7 +54,71 @@ Dados dos homomorfismos de $R$-módulos $\alpha_1, \alpha_2 : A \rightarrow B$, 
 
 Para cada submódulo $T \subset B$, la inclusión de $T$ en $B$ es un monomorfismo $i: T \rightarrow B$. Las \textbf{clases laterales} de $T$ en $B$ son los conjuntos $b + T = \{b + t : t \in T\}$ donde $b \in B$. Dos clases laterales $b_1 + T$, $b_2 + T$ son iguales si $b_1 - b_2 \in T$. Como $T$ es un submódulo, el grupo abeliano $B/T$ se convierte en un $R$-módulo cuando $r(b+T) = rb + T$ para todo $r \in R$. A este $R$-módulo lo llamaremos el \textbf{módulo cociente} de $B$ sobre $T$. El homomorfismo $\pi: B \rightarrow B/T$ tal que $\pi(b) = b + T$ es un epimorfismo que llamaremos \textbf{proyección canónica} de $B$.
 
+\begin{proposicion}\label{prop:first_iso}
 
+Sea \( \beta: B \rightarrow B' \) un homomorfismo de módulos con \( T \subset \ker \beta \). Existe entonces un único homomorfismo de módulos \( \beta': B/T \rightarrow B' \) con \( \beta'\pi = \beta \); es decir, el siguiente diagrama con \( \beta(T) = 0 \)
+\[
+\begin{array}{ccc}
+	B & \stackrel{\pi}{\longrightarrow} & B/T \\
+	& \searrow \beta & \downarrow \beta' \\
+	& & B'
+\end{array}
+\]
+es conmutativo.
+\end{proposicion}
+
+\begin{proof}
+Definamos \( \beta'(b + T) = \beta(b) \). Por estar $T$ contenida en el núcleo de $\beta$, la función está bien definida. En efecto, si $a,b \in B$ entonces $a+T = b+T \Rightarrow a-b \in T \subset \ker \beta \Rightarrow \beta(a-b) = 0 \Rightarrow \beta(a)=\beta(b)$. Como $\beta$ es un homomorfismo, $\beta'$ también lo es.
+\end{proof}
+
+En particular, si \( \beta: B \rightarrow B' \) es un epimorfismo con núcleo \( T \), \( \beta': B/T \rightarrow B' \) es un isomorfismo. Esta afirmación puede expresarse de la siguiente manera: cada \( \beta \) con \( \beta(T) = 0 \) \textit{factoriza de manera única} a través de la proyección \( \pi \). Esta propiedad caracteriza a \( \pi: B \rightarrow B/T \) hasta un isomorfismo de \( B/T \), de la siguiente manera:
+
+\begin{proposicion}
+	Si \( T \subset B \) y \( \eta: B \rightarrow D \) es tal que \( \eta(T) = 0 \) y cada \( \beta: B \rightarrow B' \) con \( \beta(T) = 0 \) factoriza de manera única a través de \( \eta \), entonces hay un isomorfismo \( \theta: B/T \cong D \) con \( \theta \pi = \eta \).
+\end{proposicion}
+
+\begin{proof}
+	Factorizar \(\eta\) a través de \(\pi\) y \(\pi\) a través de \(\eta\), así que \(\eta = (\eta' \pi) \eta = 1_\eta\). Pero \(\eta\) factoriza \textit{únicamente} a través de \(\pi\), así que \(\eta' \pi = 1\). Simétricamente, \(\pi' \eta = 1\). Por lo tanto \(\pi' = (\eta')^{-1}\) y \(\eta'\) es el isomorfismo deseado \(\theta\).
+\end{proof}
+
+Para cualquier \(T \subseteq B\) la inyección \(i\) y la proyección \(\pi\) producen una secuencia exacta.
+\[ 0 \rightarrow T \xrightarrow{i} B \xrightarrow{\pi} B/T \rightarrow 0. \]
+
+\begin{definicion}
+Sean $A,B$ y $C$ $R$-módulos y $\sigma: A \rightarrow B$, $\gamma: B \rightarrow C$ homomorfismos entre ellos. Diremos que la secuencia 
+\[ (\sigma, \gamma): 0 \rightarrow A \xrightarrow{\sigma} B \xrightarrow{\gamma} C \rightarrow 0 \]
+es una \textbf{secuencia exacta corta}. Es decir, una secuencia exacta de cinco \(R\)-módulos con los dos módulos exteriores siendo cero (y por lo tanto las dos funciones exteriores triviales).
+\end{definicion}
+
+La exactitud en \(A\) significa que \(\sigma\) es un monomorfismo, en \(B\) significa que \(\sigma A = \ker \gamma\) y en \(C\) que \(\gamma\) es un epimorfismo. Así la secuencia exacta corta puede escribirse como \(A \xrightarrow{\sigma} B \xrightarrow{\gamma} C\), con exactitud en \(B\). Ahora \(\sigma\) induce un isomorfismo \(\sigma': A \to A\) y \(\gamma\) un isomorfismo \(\gamma': B/\sigma A \to C\); juntos estos proveen un isomorfismo de secuencias exactas cortas, en la forma de un diagrama conmutativo
+\[
+\begin{tikzcd}
+	0 \arrow[r] & A \arrow[r, "\sigma"] \arrow[d, "\sigma'"] & B \arrow[r, "\gamma"] \arrow[d, no head, Rightarrow] & C \arrow[r] \arrow[d, "(\gamma')^{-1}"] & 0 \\
+	0 \arrow[r] & \sigma A \arrow[r, "i"]                    & B \arrow[r]                                          & B/\sigma A \arrow[r]                    & 0
+\end{tikzcd}
+\]
+
+En resumen, una secuencia exacta corta es simplemente otro nombre para un submódulo y su cociente.
+
+%Cada homomorfismo \(\alpha: A \rightarrow B\) determina dos módulos cociente
+%\[\text{Coim } \alpha = A / \text{Ker } \alpha, \quad \text{Coker } \alpha = B / \text{Im } \alpha,\]
+%llamados la \textbf{coimagen} y el \textbf{conúcleo} de \(\alpha\). Esta definición provee dos secuencias exactas cortas
+%\[ \text{Ker } \alpha \hookrightarrow A \twoheadrightarrow \text{Coim } \alpha, \quad \text{Im } \alpha \hookrightarrow B \twoheadrightarrow \text{Coker } \alpha, \]
+%un isomorfismo \(\text{Coim } \alpha \cong \text{Im } \alpha\) y una secuencia exacta más larga
+%\[ 0 \rightarrow \text{Ker } \alpha \xrightarrow{i} A \xrightarrow{\alpha} B \rightarrow \text{Coker } \alpha \rightarrow 0. \]
+%
+%Por la \ref{prop:first_iso}, \(\beta \alpha = 0\) implica que \(\beta\) factoriza de manera única a través de \(\pi\) como \(\beta = \beta' \pi\). Dualmente, si algún \(\gamma': A' \rightarrow A\) tiene \(\alpha \gamma' = 0\), entonces \(\gamma'\) factoriza a través de \(i\) como \(\gamma' = i \gamma''\) para un único \(\gamma'': A' \rightarrow \ker \alpha\). Esta propiedad caracteriza \(i: \ker \alpha \rightarrow A\) como un isomorfismo de \(\text{Ker } \alpha\). Observa las afirmaciones duales: \(\alpha\) es un monomorfismo si y solo si \(\ker \alpha = 0\), y es un epimorfismo si y solo si \(\text{Coker } \alpha = 0\).
+
+Si \(\alpha: A \rightarrow B\) y \(S \subseteq A\), el conjunto \(\alpha S\) de todos los elementos \(\alpha s\) para \(s \in S\) es un submódulo de \(B\) llamado la \textbf{imagen} de \(S\) bajo \(\alpha\). De manera similar, si \(T \subseteq B\), el conjunto \(\alpha^{-1}T\) de todos los \(s \in A\) con \(\alpha s \in T\) es un submódulo de \(A\), llamada la \textbf{imagen inversa} (completa) de \(T\). En particular, \(\ker \alpha = \alpha^{-1}0\), donde \(0\) denota el submódulo de \(B\) que consiste solo del elemento cero.
+
+Para \(K \subseteq S \subseteq A\) el módulo \(S/K\) es llamado un \textbf{subcociente} de \(A\); es un módulo cociente del submódulo \(S\) de \(A\), y simultáneamente un submódulo del módulo cociente \(A/K\). Además, si \(K' \subseteq K \subseteq S' \subseteq S \subseteq A\), entonces \(K'/K\) es un submódulo de \(S'/K\) y la proyección compuesta \(S' \rightarrow (S'/K)/(K'/K)\) tiene núcleo \(K'\), por lo tanto el isomorfismo familiar \((S'/K)/(K'/K) \cong S'/K'\). Esto nos permite escribir cada subcociente \((S'/K)/(K'/K)\) de un subcociente \(S/K\) directamente como un subcociente de \(A\). Si \( \alpha: A \rightarrow A'\) tiene \(\alpha S \subseteq S'\) y \(\alpha K \subseteq K'\), entonces \(\alpha s + K'\) es una clase lateral de \(S'/K'\) determinada de manera única por la clase lateral \(s+K\) de \(S/K\). Por lo tanto \(\alpha_{\ast}(s+K) = \alpha s + K'\) define un homomorfismo
+\[\alpha_{\ast}: S/K \rightarrow S'/K'\]
+\[(\alpha S \subseteq S', \alpha K \subseteq K')\]
+llamado el homomorfismo \textbf{inducido} por \(\alpha\) en los subcocientes dados.
+
+Si \(S\) y \(T\) son submódulos de \(A\), su \textbf{intersección} \(S \cap T\) (como conjuntos) es también un submódulo, así como su \textbf{unión} \(S + T\), consistiendo de todas las sumas \(s + t\) para \(s \in S\), \(t \in T\). El \textbf{teorema del isomorfismo de Noether} afirma que \(1_{A}\) induce un isomorfismo
+
+\[ 1_{\ast}: S/(S \cap T) \cong (S + T)/T. \]
 
 \section{Categorías}
 
@@ -87,12 +151,23 @@ Para cada submódulo $T \subset B$, la inclusión de $T$ en $B$ es un monomorfis
 
 Nótese que si $f \in \hom(A,B)$ es una equivalencia en $\mathcal{C}$, $g \in \hom(B,A)$ debe ser única. En efecto, si suponemos que existe $g' \in \hom(B,A)$ tal que $g' \circ f = 1_A$, entonces $g = g'\circ f \circ g = g' \circ 1_B = g'$.
 
-\section{Functores}
+\section{Funtores}
 
 \begin{definicion}
-	Sean $\mathcal{C}, \mathcal{D}$ dos categorías. Un \textbf{funtor covariante} de $\mathcal{C}$ a $\mathcal{D}$
+	Sean $\mathcal{C}, \mathcal{D}$ dos categorías. Un \textbf{funtor covariante} de $\mathcal{C}$ a $\mathcal{D}$ es una pareja de funciones \textit{denotadas por la misma letra $T$} tal que:
+	\begin{enumerate}
+		\item Una \textbf{función objeto} que asigna a cada objeto $C \in \mathcal{C}$ un objeto $T(C) \in \mathcal{D}$.
+		\item Una \textbf{función de morfismos} qu asigna a cada morfismo $\gamma: C \rightarrow C'$ de $\mathcal{C}$ un morfismo $T(\gamma): T(C) \rightarrow T(C')$ de $\mathcal{D}$. Este par de funciones satisfacen las siguientes condiciones:
+		\begin{equation}
+			T(1_C) = 1_{T(C)}, \qquad C \in \mathcal{C},
+		\end{equation}
+		\begin{equation}
+			T(\beta \gamma) = T(\beta)T(\gamma), \qquad \beta \gamma \text{ definido en } \mathcal{C}.
+		\end{equation}
+	\end{enumerate}
 \end{definicion}
 
+Es decir, un funtor covariante $T: \mathcal{C} \rightarrow \mathcal{D}$ es una aplicación que preserva el rango, dominio, identidades y composiciones de $\mathcal{C}$ en $\mathcal{D}$.
 
 \endinput
 %--------------------------------------------------------------------

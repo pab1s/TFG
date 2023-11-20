@@ -12,55 +12,7 @@ topología algebraica, dando lugar a lo que hoy conocemos como homología simpli
 En esta sección definiremos lo que es un símplice y algunos conceptos asociados a él
 que nos serán de gran utilidad en el estudio de dicho campo. Comenzaremos recordando algunos conceptos de la geometría afín y seguiremos en la línea de MUNKRES.
 
-\begin{definicion}
-	Un \textbf{espacio afín} es una tripleta $(\mathcal{A}, V, \vec{}\ )$ donde:
-	\begin{itemize}
-		\item $\mathcal{A}$ es un conjunto no vacío, llamado \textbf{conjunto de puntos}.
-		\item $V$ es un espacio vectorial sobre un cuerpo.
-		\item $\vec{}: \mathcal{A} \times \mathcal{A} \rightarrow V$, $(p,q) \mapsto \vec{pq}$, 
-		es una aplicación que satisface:
-		\begin{enumerate}[label=\textbf{A\arabic*.}, ref=A\arabic*]
-			\item $\vec{pq} + \vec{qr} = \vec{pr}$
-			\item $\forall p \in \mathcal{A},\ \forall v \in V$, existe un único $q \in 
-			\mathcal{A}$ tal que $\vec{pq} = v$.
-		\end{enumerate}
-	\end{itemize}
-\end{definicion}
-
-Dados dos puntos $p,q \in \mathbb{R}^N$, notaremos como $p - q$ al vector 
-$\vec{pq}$, dotando de apariencia de cancelación algebraica al axioma \textbf{A1}. 
-
-\begin{definicion}
-	Sea $\{a_0, \dots, a_n\}$ un conjunto de puntos afínmente independiente. 
-	Definimos el \textbf{n-plano} $P$ generado por $\{a_0, \dots, a_n\}$ como
-	el conjunto de puntos $x \in \mathbb{R}^N$ tales que
-	\[ x = a_0 + \sum_{i=1}^{n}t_i(a_i - a_0) \]
-	para algunos $t_1, \dots, t_n \in \mathbb{R}$. Diremos entonces que $P$ es el 
-	plano que pasa por $a_0$ paralelo a los vectores $a_i - a_0$, $i \in \{1, \dots, n\}$.
-\end{definicion}
-
-\begin{definicion}
-	Sean $\mathcal{A}, \mathcal{A'}$ espacios afines y $V,V'$ sus espacios vectoriales 
-	asociados respectivamente. Sea $T: \mathcal{A} \rightarrow \mathcal{A'}$ una aplicación 
-	entre espacios afines. Diremos que $T$ es una \textbf{aplicación afín} si existe 
-	un punto $o \in \mathcal{A}$ de forma que la aplicación $\vec{T}: V \rightarrow V'$ 
-	dada por
-	\[ \vec{T}(\overrightarrow{op}) = \overrightarrow{T(o)T(p)} \quad \forall p \in \mathcal{A} \]
-	es una aplicación lineal.
-\end{definicion}
-
-\begin{definicion}
-	Sea $\mathcal{A}$ un espacio afín y sea $U$ un subespacio vectorial de $\vec{\mathcal{A}}$. Diremos que un subconjunto $S$ no vacío de $\mathcal{A}$ es un \textbf{subespacio afín paralelo a $U$} si existe un punto $p \in S$ tal que
-	\[ S = p + U = \{p + u : u \in U\}\]
-\end{definicion}
-
-\begin{definicion}
-	Sea $\mathcal{A}$ un espacio afín y sea $V$ su espacio vectorial asociado. Si $p \in \mathcal{A}$ y $v \in V$, el único punto $q \in \mathcal{A}$ dado por el axioma \textbf{A2} tal que $\overrightarrow{pq} = v$ será denotado por $p + v$. Como consecuencia las siguientes identidades son inmediatas:
-	\[ q = p + \overrightarrow{pq}, \quad \overrightarrow{p(p+v)}=v \]
-	Si escribimos
-	\[ G_p: V \rightarrow \mathcal{A}, \quad G_p(v) = p + v = q \]
-	es claro que $G_p = F_p^{-1}$ y por tanto $G_p$ es biyectiva.
-\end{definicion}
+Como tan sólo será necesario trabajar en el espacio afín usual $N$-dimensional, lo notaremos por $\mathbb{R}^{N}$.
 
 \begin{definicion}
 	Sea $\{a_0, \dots, a_n\}$ un conjunto de puntos en $\mathbb{R}^N$. 
@@ -71,8 +23,19 @@ $\vec{pq}$, dotando de apariencia de cancelación algebraica al axioma \textbf{A
 \end{definicion}
 
 \begin{definicion}
+	Sea $\{a_0, \dots, a_n\}$ un conjunto de puntos afínmente independiente. 
+	Definimos el \textbf{plano afín} $P$ generado por $\{a_0, \dots, a_n\}$ como
+	el conjunto de puntos $x \in \mathbb{R}^N$ tales que
+	\[ x = \sum_{i=0}^{n}t_ia_i = a_0 + \sum_{i=1}^{n}t_i(a_i - a_0) \]
+	para algunos $t_1, \dots, t_n \in \mathbb{R}$. Diremos entonces que $P$ es el 
+	plano que pasa por $a_0$ paralelo a los vectores $a_i - a_0$, $i \in \{1, \dots, n\}$.
+\end{definicion}
+
+Nótese que la transformación afín $T$ de $\mathbb{R}^N$ tal que $T(x) = x - a_0$ es una traslación que lleva el plano $P$ al subespacio vectorial de $\mathbb{R}^N$ con base $a_1-a_0, a_2-a_0, \dots, a_n-a_0$. Si componemos dicha transformación con una aplicación lineal que lleve cada vector $a_1-a_0, a_2-a_0, \dots, a_n-a_0$ a los primeros $N$ vectores de la base usual, obtenemos una transformación afín $S: P \rightarrow \mathbb{R}^n \times 0$ tal que $S(a_i) = (0, \overset{i-1}{\dots}, 1, \overset{i+1}{\dots}, 0)$ con $i \in \{1, \dots, n\}$.
+
+\begin{definicion}
 	Sea $\{a_0, \dots, a_n\}$ un conjunto de puntos afínmente independiente en 
-	$\mathbb{R}^N$. Definimos el \textbf{símplice} $\sigma = [a_0, \dots, a_n]$ 
+	$\mathbb{R}^N$. Definimos el \textbf{n-símplex} o \textbf{símplice} $\sigma = [a_0, \dots, a_n]$ 
 	generado por $a_0, 	\dots, a_n$ como el conjunto de todos los $x \in \mathbb{R}^N$ 
 	tales que
 	\[ x=\sum_{i=0}^{n}t_ia_i \quad \text{y} \quad \sum_{i=0}^{n}t_i=1 \]

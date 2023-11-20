@@ -104,6 +104,49 @@ Como $H_n(1_K) = 1$, del anterior teorema se deduce lo siguiente.
 	\[ \partial (f' s + s' g) + (f's + s' g) \partial = f' \circ f - g' \circ g \]
 \end{proof}
 
+\section{Subcomplejos y complejos cociente}
+
+\begin{definicion}
+	Un \textbf{subcomplejo} $S$ de $K$ es una familia de submódulos $S_n \subset K_n$ tal que para cada $n \in \mathbb{Z}$, $\partial S_n \subset S_{n-1}$.
+\end{definicion}
+
+Por tanto, $S$ es un complejo en sí con el operador borde inducido $\partial = \partial_K$ y la inclusión $i: S \rightarrow K$ es una aplicación de cadena.
+
+\begin{definicion}
+	Sea $S$ un subcomplejo de $K$. El \textbf{complejo cociente} $K/S$ es la familia $(K/S)_n = K_n/S_n$ de módulos cocientes con operador borde $\partial': K_n/S_n \rightarrow K_{n-1}/S_{n-1}$ inducido por $\partial_K$.
+\end{definicion}
+
+La proyección es la aplicación de cadena $\pi: K \rightarrow K/S$ y la secuencia corta $S_n$ FLECHARARA $K_n FLECHA (K/S)_n$ es exacta para cada $n \in \mathbb{Z}$.
+
+Si \( f: K \to K' \) es una transformación de cadenas, entonces \( \ker(f) = \{\ker(f_n)\} \) es un subcomplejo de \( K \), \( \text{Im}(f) = \{f_n(K_n)\} \) es un subcomplejo de \( K' \), mientras que \( K'/\text{Im}(f) \) es el cociente de \( f \) y \( K/\ker(f) \) el conúcleo. 
+
+\begin{definicion}
+Un par de aplicaciones de cadenas \( K \xrightarrow{f} K' \xrightarrow{g} K'' \) es \textbf{exacto} en \( K' \) si \( \text{Im}(f) = \ker(g); \) es decir, si cada secuencia \( K_n \xrightarrow{f_n} K'_n \xrightarrow{g_n} K''_n \) de módulos es exacta en \( K'_n \).
+\end{definicion}
+
+Para cualquier \( f: K \to K', \)
+\[ 0 \to \ker(f) \to K \xrightarrow{f} K' \to \text{Coker}(f) \to 0 \]
+es una secuencia exacta de complejos.
+
+Un complejo \( K \) es \textbf{positivo} si \( K_n = 0 \) para \( n < 0 \). Su homología es entonces positiva (\( H_n(K) = 0 \) para \( n < 0 \)). De manera análoga, un complejo \( K \) es \textbf{negativo} si \( K_n = 0 \) para \( n > 0 \). Suele notarse con índices superiores positivos y tiene la forma
+\[ 0 \to K^0 \xrightarrow{\delta^0} K^1 \xrightarrow{\delta^1} K^2 \to \cdots, \quad \delta\delta = 0, \]
+con homología \( H^n(K) = \ker(\delta^n)/\text{Im}(\delta^{n-1}) \) positiva en los índices superiores. En esta forma, a menudo se le llama \textbf{complejo derecho} o \textbf{complejo de cocadenas}.
+
+\begin{definicion}
+Sean $f$ y $g$ aplicaciones de cadena de $K$ a $K'$ y sea $s$ una homotopía de cadenas entre ellas. Diremos que $s$ es una \textbf{homotopía de cocadena} si  está escrita con índices superiores. Esto es, \( s^n: K^n \to K'^{n-1} \) con \( \delta s + s \delta = f - g \).
+\end{definicion}
+
+Consideremos ahora el caso donde $A$ es un módulo y definimos un complejo positivo con \( A_0 = A \), \( A_n = 0 \) para \( n \neq 0 \) y \( \partial = 0 \).
+
+Un \textbf{complejo sobre \( A \)} es un complejo positivo \( K \) junto con una aplicación de cadenas \( \varepsilon: K \to A \) donde \( \varepsilon \) es un homomorfismo de módulos \( \varepsilon: K_0 \to A \) tal que \( \varepsilon \partial = 0: K_1 \to A \). Una \textbf{homotopía contráctil} para \( \varepsilon: K \to A \) es una aplicación de cadenas \( f: A \to K \) tal que \( \varepsilon f = 1_A \) junto con una homotopía \( s: 1_K \simeq f \varepsilon \). En otras palabras, una homotopía contráctil consiste en homomorfismos de módulos \( f: A \to K_0 \) y \( s_n: K_n \to K_{n+1}, n = 0, 1, \dots \), tal que
+
+\[ \varepsilon f = 1, \quad \partial_{1} s_0 + f \varepsilon = 1_{K_0}, \quad \partial_{n+1} s_n + s_{n-1} \partial_n = 1_{K_n} \quad (n > 0). \]
+
+Equivalentemente, extiende el complejo estableciendo \( K_{-1} = A \), \( \partial_0 = \varepsilon: K_0 \to K_{-1} \) y \( s_{-1} = f \). Entonces (2.5) establece simplemente que \( s: 1_K \simeq 0 \) para las aplicaciones 1, 0 del complejo extendido a sí mismo. Si \( \varepsilon: K \to A \) tiene una homotopía contráctil, sus grupos de homología son \( \varepsilon_*: H_0(K) \simeq A \) para \( n = 0 \) y \( H_n(K) = 0 \) para \( n > 0 \).
+
+Los complejos \( K \) de grupos abelianos libres surgen en topología. Si cada \( K_n \) es finitamente generado, entonces cada \( H_n(K) \) es un grupo abeliano finitamente generado. El teorema de estructura para tales grupos presenta \( H_n(K) \) como una suma directa
+\[ \mathbb{Z} \oplus \mathbb{Z} \oplus \ldots \oplus \mathbb{Z}_{m_1} \oplus \ldots \oplus \mathbb{Z}_{m_k}, \]
+donde el número \( b_n \), de sumandos cíclicos infinitos y los enteros \( m_1, \ldots, m_k \) (cada uno divisor del siguiente) dependen solo de \( H_n(K) \). El entero \( b_n \) se llama el n-ésimo número de Betti de \( K \), y los \( \{m_i\} \) los coeficientes de torsión n-ésimos.
 
 
 \endinput

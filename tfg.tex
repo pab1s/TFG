@@ -11,11 +11,8 @@
 \setlength{\parskip}{5pt}%
 %\setlength{\parskip}{\baselineskip}%
 \setlength{\parindent}{0pt}%
-\usepackage{tikz}
-\usepackage{subcaption}
-\usepackage{enumitem}
-\usepackage{tikz-cd}
 \DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\id}{id}
 % VERSIÓN ELECTRÓNICA PARA TABLETA
 % Cambiando la opción "print" por "tablet" generaremos un pdf adaptado para leerlo en tabletas de 9 pulgadas.
 
@@ -72,6 +69,10 @@
 \input{capitulos/capitulo-preliminares}
 \input{capitulos/capitulo-simplices}
 \input{capitulos/capitulo-homologia}
+\input{capitulos/capitulo-homologia-simplicial}
+\input{capitulos/capitulo-cw-complejo}
+\input{capitulos/capitulo-variadades}
+\input{capitulos/capitulo-tda}
 
 %\cleardoublepage\part{Segunda parte}
 %\input{capitulos/capitulo-ejemplo}
@@ -83,14 +84,14 @@
 \appendix % Reinicia la numeración de los capítulos y usa letras para numerarlos
 \pdfbookmark[-1]{Apéndices}{appendix} % Alternativamente podemos agrupar los apéndices con un nuevo \part{Apéndices}
 
-\input{apendices/apendice-ejemplo}
+%\input{apendices/apendice-ejemplo}
 % Añadir tantos apéndices como sea necesario 
 
 % -------------------------------------------------------------------
 % GLOSARIO: Opcional
 % -------------------------------------------------------------------
 
-\input{glosario} 
+%\input{glosario} 
 
 % -------------------------------------------------------------------
 % BACKMATTER

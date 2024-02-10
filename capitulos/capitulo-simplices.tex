@@ -3,14 +3,16 @@
 
 \chapter{Símplices y complejos simpliciales}
 
+Los espacios topológicos pueden llegar a ser complicados de estudiar. Los complejos simpliciales tienen la ventaja de ser estructuras fáciles de estudiar y definiéndolos en cierta forma como espacios topológicos admiten homeomorfismos a un gran número de espacios topológicos. En este capítulo nos centraremos en la definición y el estudio de estos objetos en profundidad en la línea de \cite{munkres2018elements} y lo complementaremos con alguna aportación de \cite{lee2010introduction}.
+
 \section{Símplices}
 
 Con la finalidad de generalizar estructuras como el triángulo y el tetraedro, 
-a finales del siglo XIX nace un nuevo concepto: el símplice. Su simplicidad y 
+a finales del siglo XIX nace un nuevo concepto: el símplice. Su sencillez y 
 propiedades lo convirtieron en una herramienta muy versátil en el estudio de la
 topología algebraica, dando lugar a lo que hoy conocemos como homología simplicial. 
 En esta sección definiremos lo que es un símplice y algunos conceptos asociados a él
-que nos serán de gran utilidad en el estudio de dicho campo. Comenzaremos recordando algunos conceptos de la geometría afín y seguiremos en la línea de MUNKRES.
+que nos serán de gran utilidad en el estudio de dicho campo. Comenzamos recordando algunos conceptos de la geometría afín.
 
 Como tan sólo será necesario trabajar en el espacio afín usual $N$-dimensional, lo notaremos por $\mathbb{R}^{N}$.
 
@@ -31,7 +33,7 @@ Como tan sólo será necesario trabajar en el espacio afín usual $N$-dimensiona
 	plano que pasa por $a_0$ paralelo a los vectores $a_i - a_0$, $i \in \{1, \dots, n\}$.
 \end{definicion}
 
-Nótese que la transformación afín $T$ de $\mathbb{R}^N$ tal que $T(x) = x - a_0$ es una traslación que lleva el plano $P$ al subespacio vectorial de $\mathbb{R}^N$ con base $a_1-a_0, a_2-a_0, \dots, a_n-a_0$. Si componemos dicha transformación con una aplicación lineal que lleve cada vector $a_1-a_0, a_2-a_0, \dots, a_n-a_0$ a los primeros $N$ vectores de la base usual, obtenemos una transformación afín $S: P \rightarrow \mathbb{R}^n \times 0$ tal que $S(a_i) = (0, \overset{i-1}{\dots}, 1, \overset{i+1}{\dots}, 0)$ con $i \in \{1, \dots, n\}$.
+Nótese que la transformación afín $T$ de $\mathbb{R}^N$ tal que $T(x) = x - a_0$ es una traslación que lleva el plano $P$ al subespacio vectorial de $\mathbb{R}^N$ con base $a_1-a_0, a_2-a_0, \dots, a_n-a_0$. Si componemos dicha transformación con una aplicación lineal que lleve cada vector $a_1-a_0, a_2-a_0, \dots, a_n-a_0$ a los primeros $N$ vectores de la base usual, obtenemos una transformación afín $S: P \rightarrow \mathbb{R}^n \times \{0\}$ tal que $S(a_i) = (0, \overset{i-1}{\dots}, 0, 1, 0, \overset{i+1}{\dots}, 0)$ con $i \in \{1, \dots, n\}$.
 
 \begin{definicion}
 	Sea $\{a_0, \dots, a_n\}$ un conjunto de puntos afínmente independiente en 
@@ -50,7 +52,7 @@ y al número $n$ lo llamaremos la \textbf{dimensión} de $\sigma$.
 
 \begin{definicion}
 	Sea $\sigma=[a_0, \dots, a_n]$ un símplice. Una \textbf{cara} de $\sigma$ será cualquier
-	símplice generado por un subconjunto de $\{a_0, \dots, a_n\}$.
+	símplice generado por un subconjunto no vacío de $\{a_0, \dots, a_n\}$.
 \end{definicion}
 En particular, la cara de $\sigma$ generada por $a_0, \dots, a_{i-1}, a_{i+1}, \dots, a_n$ la 
 llamamos la \textbf{cara opuesta} de $a_i$, $i \in \{0, \dots, n\}$. Las caras de $\sigma$ 
@@ -143,10 +145,15 @@ a su borde.
 	\label{fig:simplex}
 \end{figure}
 
+Dado un símplice $\sigma$ podemos definir un orden sobre sus vértices. Dos órdenes de $\sigma$ los consideraremos equivalentes si podemos pasar de uno a otro con un número par de permutaciones. Así, los ordenamientos posibles para los vértices de $\sigma$ se pueden agrupar en dos clases de equivalencia distintas, que definimos como las \textbf{orientaciones del símplice} $\sigma$.
+
+\begin{definicion}
+Decimos que un símplice $\sigma = [a_0, a_1, \ldots, a_n]$ está \textbf{orientado} si se le ha asignado una de estas orientaciones. Utilizaremos la misma notación $[a_0, a_1, \ldots, a_n]$ para denotar la clase de equivalencia dada por la orientación $a_0 < a_1 < \cdots < a_n$ del símplice generado por los vértices $a_0,a_1,\ldots, a_n$.
+\end{definicion}
 
 \section{Complejos simpliciales}
 
-BIB - MUNKRES, JOHN LEE
+La importancia de los complejos simpliciales reside en su capacidad para descomponer espacios topológicos en componentes manejables, permitiendo un análisis detallado de su estructura. Al considerar la forma en que estos símplices se conectan y orientan entre sí, los complejos simpliciales facilitarán la definición de cadenas y ciclos simpliciales que serán indispensables en el estudio de la homología simplicial.
 
 \begin{definicion}
 	Un \textbf{complejo simplicial} $K$ en $\mathbb{R}^N$ es una colección de símplices en $\mathbb{R}^N$
@@ -166,11 +173,11 @@ un complejo simplicial o no. Para ello, el siguiente lema nos puede ser de utili
 	condiciones:
 	\begin{enumerate}
 		\item Toda cara de un símplice de $K$ está en $K$.
-		\item Los símplices de $K$ tienen interior disjunto dos a dos. REVISRA
+		\item La intersección dos a dos del interior de los símplices de $K$ es disjunta.
 	\end{enumerate}
 \end{lema}
 \begin{proof}
-	Primero, asumamos que $K$ es un complejo simplicial. Dados dos símplices $\sigma, \tau \in K$ veamos que si el interior de ambos tiene un punto $x$ en común, entonces $\sigma = \tau$. Sea $s = \sigma \cap \tau$. Si $s$ fuera una cara propia de $\sigma$, entonces $x$ pertenecería a la frontera de $\sigma$, lo cual no se cumple ya que $x$ pertenece al interior de $\sigma$. Por tanto $s = \sigma$. De manera análoga, $s = \tau$, luego $\sigma = \tau$.
+	Primero, asumamos que $K$ es un complejo simplicial. Dados dos símplices $\sigma, \tau \in K$ veamos que si el interior de ambos tiene un punto $x$ en común, entonces $\sigma = \tau$. Sea $s = \sigma \cap \tau$ y considero $x \in s$. Si $s$ fuera una cara propia de $\sigma$, entonces $x$ pertenecería a la frontera de $\sigma$, lo cual no se cumple ya que $x$ pertenece al interior de $\sigma$. Por tanto $s = \sigma$. De manera análoga, $s = \tau$, luego $\sigma = \tau$.
 	
 	Asumamos ahora que se cumplen \textit{(1)} y \textit{(2)}. Queremos ver que si el conjunto $\sigma \cap \tau \neq \emptyset$,  dicha intersección es la cara $\sigma'$ de $\sigma$ generada por los vértices $b_0,\dots,b_m$ de $\sigma$ que están en $\tau$. Primero, $\sigma' \subset \sigma \cap \tau$ por ser $\sigma \cap \tau$ convexa y contener a $b_0, \dots, b_m$. Para la otra inclusión supongamos que $x \in \sigma \cap \tau$. Esto implica que $x \in \text{Int}\ s \cap \text{Int}\ t$ para alguna cara $s$ de $\sigma$ y alguna cara $t$ de $\tau$. Se sigue de \textit{(2)} que $s = t$ por lo que los vértices de $s$ están en $\tau$ y por definición, son elementos del conjunto $\{b_0, \dots, b_m\}$.  Concluimos entonces que $s$ es una cara de $\sigma'$, lo que implica que $x \in \sigma'$, como queríamos ver.
 \end{proof}
@@ -180,14 +187,14 @@ un complejo simplicial o no. Para ello, el siguiente lema nos puede ser de utili
 	elementos, entonces $L$ es un complejo simplicial que llamaremos \textbf{subcomplejo} de $K$.
 \end{definicion}
 Entre los subcomplejos de un complejo simplicial, cabe destacar el siguiente. Diremos \textbf{p-esqueleto} 
-de $K$ al subcomplejo formado por todas las caras de $K$ cuya dimensión sea menor o igual que $p$. Lo denotaremos por $K^{(p)}$. En particular, $K^{(0)}$ es el conjunto de vértices de $K$.
+de $K$ al subcomplejo formado por todas las caras de $K$ cuya dimensión sea menor o igual que $p$. Lo denotaremos por $K^{(p)}$. En particular, $K^{(0)}$ lo llamaremos el \textbf{conjunto de vértices} de $K$.
 
 \begin{definicion}
 	Sea $K$ un complejo simplicial de $\mathbb{R}^N$ y sea $|K|$ el subconjunto de $\mathbb{R}^N$ tal que $|K|$ es la unión de todos los símplices de $K$. Definimos el \textbf{politopo} o \textbf{espacio subyacente} 
 	de $K$ como el espacio topológico $(|K|, \mathcal{T})$ donde los abiertos de $\mathcal{T}$ son aquellos $O \subseteq |K|$ tal que $O \cap \sigma$ es abierto en $\sigma$ con la topología inducida de $\mathbb{R}^N$ para todo $\sigma \in K$.
 \end{definicion}
 
-Veamos que en efecto $(|K|, \mathcal{T})$ es un espacio topológico. $\emptyset, |K| \in \mathcal{T}$ ya que son abiertos trivialmente en $\sigma$, pues $\emptyset \cap \sigma = \emptyset$ y $|K| \cap \sigma = \sigma$ para todo $\sigma \in K$. Si $O_1, O_2 \in \mathcal{T}$, entonces $O_1 \cap \sigma$, $O_2 \cap \sigma$ son abiertos en $\sigma$ luego $(O_1 \cap O_2) \cap \sigma = (O_1 \cap \sigma) \cap (O_2 \cap \sigma)$ es abierto en $\sigma$ para todo $\sigma \in K$. Por tanto $O_1 \cap O_2 \in \mathcal{T}$. Finalmente, consideremos una familia $\{O_i\}_{i \in I} \subset \mathcal{T}$ donde $I$ es un conjunto de índices. Para cada $\sigma \in K$, $\cup_{i \in I} O_i \cap \sigma = \cup_{i \in I} (O_i \cap \sigma)$ que efectivamente es una unión arbitraria de abiertos de $\sigma$. En consecuencia, $\cup_{i \in I} O_i \in \mathcal{T}$.
+Veamos que en efecto $(|K|, \mathcal{T})$ es un espacio topológico. $\emptyset, |K| \in \mathcal{T}$ ya que son abiertos trivialmente en $\sigma$, pues $\emptyset \cap \sigma = \emptyset$ y $|K| \cap \sigma = \sigma$ para todo $\sigma \in K$. Si $O_1, O_2 \in \mathcal{T}$, entonces $O_1 \cap \sigma$, $O_2 \cap \sigma$ son abiertos en $\sigma$ luego $(O_1 \cap O_2) \cap \sigma = (O_1 \cap \sigma) \cap (O_2 \cap \sigma)$ es abierto en $\sigma$ para todo $\sigma \in K$. Por tanto $O_1 \cap O_2 \in \mathcal{T}$. Finalmente, consideremos una familia $\{O_i\}_{i \in I} \subset \mathcal{T}$ donde $I$ es un conjunto de índices. Para cada $\sigma \in K$, $(\cup_{i \in I} O_i) \cap \sigma = \cup_{i \in I} (O_i \cap \sigma)$ que efectivamente es una unión arbitraria de abiertos de $\sigma$. En consecuencia, $\cup_{i \in I} O_i \in \mathcal{T}$.
 
 Si no hay lugar a confusión, simplemente notaremos al politopo de $K$ por $|K|$ y lo llamaremos el \textbf{poliedro} $|K|$.
 
@@ -195,7 +202,7 @@ Si no hay lugar a confusión, simplemente notaremos al politopo de $K$ por $|K|$
 	Sea $K$ un comlpejo simplicial y $X$ un espacio topológico. Una aplicación $f: |K| \rightarrow X$ es continua si, y sólo si, $f|_{\sigma}$ es continua para cada $\sigma \in K$.
 \end{lema}
 \begin{proof}
-	Si $f$ es continua, también lo es $f_{\sigma}$ por ser $\sigma$ un subespacio de $K$. Supongamos ahora que $f|_{\sigma}$ es continua para cada $\sigma \in K$. Si $C$ es un cerrado de $X$, $f^{-1}(C) \cap \sigma = f|_{\sigma}^{-1}(C)$ es un cerrado en $\sigma$ por la continuidad de $f|_{\sigma}$. Concluimos que $f^{-1}(C)$ es cerrado en $|K|$ por definición.
+	Si $f$ es continua, también lo es $f|_{\sigma}$ por ser $\sigma$ un subespacio de $K$. Supongamos ahora que $f|_{\sigma}$ es continua para cada $\sigma \in K$. Si $C$ es un cerrado de $X$, $f^{-1}(C) \cap \sigma = f|_{\sigma}^{-1}(C)$ es un cerrado en $\sigma$ por la continuidad de $f|_{\sigma}$. Concluimos que $f^{-1}(C)$ es cerrado en $|K|$ por definición.
 \end{proof}
 
 \begin{definicion}
@@ -232,9 +239,9 @@ transformaciones entre ellos pueden ser continuas o incluso homeomorfismos.
 	Supongamos que $f:K^{(0)} \rightarrow L^{(0)}$ es una aplicación biyectiva tal que los vértices 
 	$v_0, \dots, v_n$ de $K$ generan un símplice de $K$ si, y sólo si, $f(v_0), \dots, f(v_n)$ 
 	generan un símplice de $L$. Entonces la aplicación simplicial inducida $g:|K| \rightarrow |L|$ 
-	es un homeomorfismo.
+	es un homeomorfismo. Diremos entonces que $g$ es un \textbf{homeomorfismo simplicial} de $K$ con $L$.
 \end{lema}
-Diremos entonces que $g$ es un \textbf{homeomorfismo simplicial} de $K$ con $L$.
+
 \begin{proof}
 	Por hipótesis, cada símplice $\sigma \in K$ se identifica con otro símplice $\tau \in L$. 
 	Por tanto, debemos comprobar que la aplicación lineal $h: \tau \rightarrow \sigma$ inducida por 
@@ -242,7 +249,6 @@ Diremos entonces que $g$ es un \textbf{homeomorfismo simplicial} de $K$ con $L$.
 	consideramos $x = \sum_{i=0}^{n}t_i v_i$, entonces por definición $g(x) = \sum_{i=0}^{n}t_if(v_i)$.
 	Luego
 	\[ h(g(x)) = h(\sum_{i=0}^{n}t_if(v_i)) = \sum_{i=0}^{n}t_i f^{-1}(v_i) = \sum_{i=0}^{n}t_i v_i = x \]
-	
 \end{proof}
 
 \section{Complejos simpliciales abstractos}
@@ -250,7 +256,7 @@ Diremos entonces que $g$ es un \textbf{homeomorfismo simplicial} de $K$ con $L$.
 Si bien la definición actual de los complejos simpliciales puede llegar a ser de gran utilidad, en 
 la práctica muchas veces no es necesario usar las herramientas que nos proporciona la geometría afín. 
 Es por ello que vamos a introducir una descripción puramente combinatoria de los complejos simpliciales 
-que, aun siendo más simples, son de gran utilidad a la hora de trabajar con espacios topológicos.
+que, aun siendo más simple, nos serán de gran utilidad a la hora de trabajar con espacios topológicos.
 
 \begin{definicion}
 	Un \textbf{complejo simplicial abstracto} (o simplemente complejo abstracto) es una 
@@ -286,7 +292,7 @@ siguiente teorema.
 	\begin{enumerate}[label=(\alph*)]
 		\item Todo complejo abstracto $\mathcal{S}$ es isomorfo al esquema de vértices de algún 
 		complejo simplicial $K$.
-		\item Dos complejos simpliciales son linealmente isomorfos si, y sólo si, sus esquemas 
+		\item Dos complejos simpliciales son afínmente isomorfos si, y sólo si, sus esquemas 
 		de vértices son isomorfos como complejos simpliciales abstractos.
 	\end{enumerate}
 \end{teorema}
@@ -298,7 +304,7 @@ siguiente teorema.
 	la base usual de $\mathbf{E}^J$. $\Delta^J$ es un complejo simplicial. 
 	Sean entonces $\sigma, \tau$ símplices de $\Delta^J$, la 
 	unión de sus conjuntos de vértices es afínmente independiente y genera un símplice en $\Delta^J$.
-	Diremos que $\Delta^J$ es un \textit{símplice de dimensión infinita}.
+	Diremos que $\Delta^J$ es un \textbf{símplice de dimensión infinita}.
 	
 	Sea ahora $\mathcal{S}$ un complejo abstracto con conjunto de vértices $V$. Tomamos un conjunto 
 	de índices $J$ lo bastante grande para que podamos tomar una aplicación inyectiva 

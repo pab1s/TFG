@@ -3,6 +3,133 @@
 
 \chapter{Homología simplicial}
 
+\section{title}
+ \begin{definicion}
+ 	Sea $K$ un complejo simplicial y $R$ un anillo conmutativo. Una \textbf{$p$-cadena} en $K$ sobre $R$ es una función $c$ del conjunto de $p$-símplices orientados de $K$ al anillo $R$ tal que:
+ 	\begin{enumerate}
+ 		\item $c(\sigma) = -c(\sigma')$ si $\sigma$ y $\sigma'$ representan al mismo símplice con orientaciones opuestas.
+ 		\item $c(\sigma) = 0$ para casi todo símplice orientado $\sigma$.
+ 	\end{enumerate}
+ \end{definicion}
+ 
+Dado un $p$-símplice $\sigma^p \in K$ donde $K$ es un complejo simplicial y sean $\sigma^p_1$ y $\sigma^p_2$ las dos posibles orientaciones de $\sigma^p$. Dado un anillo $R$, denotaremos por $C_p(K;R)$ al cociente del $R$-módulo libre con base todos los $p$-símplices orientados de $K$ por el submódulo generado por los elementos  $\sigma^p_1+\sigma^p_2$. Si $p<0$ o $p > \dim{K}$, $C_p(K,R)$ será el $R$-módulo trivial. Llamaremos a $C_p(K;R)$ el \textbf{$R$-módulo de las $p$-cadenas simpliciales orientadas} de $K$. Un análisis más formal se encuentra en Foundations of Algebraic Topology Cap 6 de SAMUEL ElLENBERG AND NORMAN STEENROD.
+
+\begin{definicion}
+	Sea $K$ un complejo simplicial y sean $C_p(K), C_{p-1}(K)$ $R$-módulos de $p$-cadenas. Definimos el \textbf{operador borde de $p$-cadenas} como el homomorfismo \(\partial_p : C_p(K) \to C_{p-1}(K)\) tal que
+	\[
+		\partial_p(\sigma) = \partial_p([v_0, v_1, \ldots, v_p]) = \sum_{i=0}^{n} (-1)^i[v_0, \ldots, \hat{v}_i, \ldots, v_p] .
+	\]
+	donde \(\hat{a}_i\) denota el vértice a eliminar.
+\end{definicion}
+
+Debemos verificar que \(\partial_p\) esté bien definido y que \(\partial_p(-\sigma) = -\partial_p \sigma\). Para este propósito, basta con mostrar que el lado derecho de (*) cambia de signo si intercambiamos dos vértices adyacentes en el arreglo \([v_0, \ldots, v_p]\). Así que comparemos las expresiones para
+\[
+\partial_p[v_0, \ldots, v_j, v_{j+1}, \ldots, v_p]
+\]
+y
+\[
+\partial_p[v_0, \ldots, v_{j+1}, v_j, \ldots, v_p].
+\]
+Para \(i \neq j, j+1\), los términos \(i\)-ésimos en estas dos expresiones difieren precisamente por un signo; los términos son idénticos excepto que \(v_j\) y \(v_{j+1}\) han sido intercambiados.
+
+¿Qué pasa con los términos \(i\)-ésimos para \(i = j\) y \(i = j + 1\)? En la primera expresión, uno tiene
+\[
+(-1)^j[\ldots, v_j, \hat{v}_{j}, v_{j+1}, \ldots] + (-1)^{j+1}[\ldots, v_j, v_{j+1}, \hat{v}_{j+1}, \ldots].
+\]
+En la segunda expresión, uno tiene
+\[
+(-1)^j[\ldots, v_{j+1}, \hat{v}_{j+1}, v_j, \ldots] + (-1)^{j+1}[\ldots, v_{j+1}, v_j, \hat{v}_j, \ldots].
+\]
+Comparando, se ve que estas dos expresiones difieren por un signo.
+
+\begin{lema}
+	La definición de $\partial_p$ no depende de la permutación que define $[v_0, \dots, v_p]$. De hecho, si $\sigma^p_1$ y $\sigma^p_2$ son las dos orientaciones de $\sigma^p$ se tiene
+	\[ \partial_p(\sigma^p_1+\sigma^p_2) = 0 \]
+\end{lema}
+\begin{proof}
+	Basta probar que si $\sigma_{1} = [v_{0}v_{1}...v_{p}]$ y $\sigma_{2} = [v_{1}v_{0}...v_{p}]$, se tiene $\partial_{p}\sigma_{1} + \partial_{p}\sigma_{2} = 0$.
+	Para ello, observamos que
+	
+	\begin{align*}
+		\partial_{p}\sigma_{1} &= [v_{1}v_{2}...] - [v_{0}v_{2}...] + \sum_{i\ne0,1}(-1)^{i}[v_{0}v_{1}...\hat{v}_{i}...v_{m}]\\
+		\partial_{p}\sigma_{2} &= [v_{0}v_{2}...] - [v_{1}v_{2}...] + \sum_{i\ne0,1}(-1)^{i}[v_{1}v_{0}...\hat{v}_{i}...v_{n}]
+	\end{align*}
+	De acuerdo con la definición de $C_{p-1}(K;R)$, $\partial_{p}(\sigma_{1}^{p}+\sigma_{2}^{p})=0$.
+	Sumando las ecuaciones para $\partial_{p}\sigma_{1}$ y $\partial_{p}\sigma_{2}$, obtenemos
+	\[
+		\partial_{p}\sigma_{1} + \partial_{p}\sigma_{2} = 2[v_{1}v_{2}...] - 2[v_{0}v_{2}...]
+		+ \sum_{i\ne0,1}(-1)^{i}[v_{0}v_{1}...\hat{v}_{i}...v_{m}] + \sum_{i\ne0,1}(-1)^{i}[v_{1}v_{0}...\hat{v}_{i}...v_{n}] = 0
+	\]
+	por lo que se cumple la condición deseada.
+\end{proof}
+
+\begin{lema}
+	\(\partial_{p-1} \circ \partial_p = 0\).
+\end{lema}
+\begin{proof}
+	\[
+	\partial_{p-1} \circ \partial_p[v_0, \ldots, v_p] = \sum_{i=0}^{p} (-1)^i\partial_{p-1}[v_0, \ldots, \hat{v}_i, \ldots, v_p]
+	\]
+	\[
+	= \sum_{j<i} (-1)^j(-1)^{i-1}[v_0, \ldots, \hat{v}_j, \ldots, \hat{v}_i, \ldots, v_p]
+	\]
+	\[
+	+ \sum_{j>i} (-1)^j(-1)^i[v_0, \ldots, \hat{v}_i, \ldots, \hat{v}_j, \ldots, v_p].
+	\]
+	Los términos de estas dos sumatorias se cancelan en pares.
+\end{proof}
+
+\begin{definicion}
+	El complejo de cadenas positivo $C_*(K;R) = \{C_p(K;R). \partial_p\}$ lo llamaremos \textbf{complejo de cadenas simpliciales} de $K$. La homología de dicho complejo la notaremos por $H_p(K;R)$ y la llamaremos \textbf{$p$-ésimo $R$-módulo de homología} de $K$. Si $R=\Z$, $H_p(K;\Z)$ lo notaremos simplemente por $H_p(K)$ y diremos que es el \textbf{$p$-ésimo grupo de homología} de $K$.
+\end{definicion}
+
+\begin{definicion}
+	Sea $f: K \rightarrow L$ una aplicación simplicial. Si $(v_0), \ldots, (v_k)$ es un símplice de $K$, entonces los puntos $f(v_0), \ldots, f(v_k)$ abarcan un símplice de $L$. Definimos un homomorfismo $\hat{f}: C_k(K) \rightarrow C_k(L)$ definiéndolo en los símplices orientados como sigue:
+	
+	$$\hat{f} [[v_0, \ldots, v_k]] =
+	\begin{cases}
+		(-1)^s \cdot sign(\sigma) & \text{si }(v_0), \ldots, (v_k) \text{ son distintos}, \\
+		1 & \text{en caso contrario}.
+	\end{cases}$$
+\end{definicion}
+
+Esta aplicación está claramente bien definida; intercambiar dos vértices en la expresión $[v_0, \ldots, v_k]$ cambia el signo del lado derecho de la ecuación. La familia de homomorfismos $\{\hat{f}\}$, uno en cada dimensión, se denomina mapa de cadena inducido por la aplicación simplicial $f$.
+
+\begin{proposicion}
+	Sean $K_1$ y $K_2$ complejos simpliciales y $\varphi: K_1 \rightarrow K_2$ una aplicación simplicial. Entonces induce un homomorfismo de complejos de cadenas $C(\varphi)$ definido por la extensión lineal de
+	
+	$$C(\varphi)[p_0, \ldots, p_q] = [\varphi(p_0), \ldots, \varphi(p_q)]$$
+	
+	si no aparecen vértices repetidos y $C(\varphi)[p_0, \ldots, p_q] = 0$ en caso contrario.
+	
+	En particular, si $\varphi = id$, entonces $C(\varphi) = id$, y si $\psi: K_2 \longrightarrow K_3$ es otra aplicación simplicial, se tiene $C(\psi \circ \varphi) = C(\psi) \circ C(\varphi)$.
+\end{proposicion}
+\begin{proof}
+	Es inmediato que la definición de $C(\varphi)$ no depende de la permutación que define la orientación. Comprobemos la igualdad $\partial_q \cdot C(\varphi) = C(\varphi) \cdot \partial_q$. Si no repite ningún vértice, tenemos
+	
+	\begin{align*}
+		C(\varphi) \partial_q([p_0, \ldots, p_q]) &= C(\varphi) \left( \sum_{i=0}^q (-1)^i [p_0, \ldots, \hat{p_i}, \ldots, p_q] \right) \\
+		&= \sum_{i=0}^q (-1)^i [\varphi(p_0), \ldots, \hat{\varphi(p_i)}, \ldots, \varphi(p_q)] \\
+		&= \partial_q C(\varphi)([p_0, \ldots, p_q]).
+	\end{align*}
+	
+	Si repite algún vértice, digamos $\varphi(p_i) = \varphi(p_j)$, entonces se tiene que $\partial_q C(\varphi)([p_0, \ldots, p_q]) = 0$. Por otro lado,
+	
+	\[
+	\sum_{i=0}^q (-1)^i C(\varphi)([p_0, \ldots, \hat{p_i}, \ldots, p_q]) = 0
+	\]
+	pues si $k \neq i$, $C(\varphi)([p_0, \ldots, \hat{p_k}, \ldots, p_q]) = 0$, y, suponiendo que $i < j$, se tiene
+	\[
+		(-1)^i [\varphi(p_0), \ldots, \varphi(p_i), \ldots, \varphi(p_j), \ldots, \varphi(p_q)] + (-1)^j [\varphi(p_0), \ldots, \varphi(p_i), \ldots, \varphi(p_j), \ldots, \varphi(p_q)] = 0,
+	\]
+	
+	ya que, en caso de no haber más vértices repetidos, como $\varphi(p_i) = \varphi(p_j)$, el número de transposiciones para pasar del primer símplice ordenado al segundo es \(j-i-1\) Observese que \(\varphi(p_{j})\) ocupa el lugar \(j-1\) en el primer
+	símplice. La fórmula \(C(\psi\circ\varphi)=C(\psi)C(\varphi)\) sigue fácilmente por la propia
+	definición de \(C(\varphi)\).
+\end{proof}
+
+
+
 \endinput
 %--------------------------------------------------------------------
 % FIN DEL CAPÍTULO. 

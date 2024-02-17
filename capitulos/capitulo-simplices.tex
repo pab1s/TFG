@@ -14,48 +14,81 @@ topología algebraica, dando lugar a lo que hoy conocemos como homología simpli
 En esta sección definiremos lo que es un símplice y algunos conceptos asociados a él
 que nos serán de gran utilidad en el estudio de dicho campo. Comenzamos recordando algunos conceptos de la geometría afín.
 
-Como tan sólo será necesario trabajar en el espacio afín usual $N$-dimensional, lo notaremos por $\mathbb{R}^{N}$.
+Como tan sólo será necesario trabajar en el espacio afín usual $N$-dimensional, lo notaremos simplemente por $\mathbb{R}^{N}$.
 
 \begin{definicion}
-	Sea $\{a_0, \dots, a_n\}$ un conjunto de puntos en $\mathbb{R}^N$. 
+	Sea $\{a_0, \dots, a_p\}$ un conjunto de puntos en $\mathbb{R}^N$. 
 	Diremos que dicho conjunto es \textbf{afínmente independiente} si 
 	para cualesquiera $t_i \in \mathbb{R}$, las ecuaciones
-	\[ \sum_{i=0}^{n}t_i=0 \quad \text{y} \quad \sum_{i=0}^{n}t_ia_i=0 \]
-	implican que $t_0 = t_1 = \dots = t_n$.
+	\[ \sum_{i=0}^{p}t_i=0 \quad \text{y} \quad \sum_{i=0}^{p}t_ia_i=0 \]
+	implican que $t_0 = t_1 = \dots = t_p$.
 \end{definicion}
 
 \begin{definicion}
-	Sea $\{a_0, \dots, a_n\}$ un conjunto de puntos afínmente independiente. 
-	Definimos el \textbf{plano afín} $P$ generado por $\{a_0, \dots, a_n\}$ como
+	Sea $\{a_0, \dots, a_p\}$ un conjunto de puntos afínmente independiente. 
+	Definimos el \textbf{plano afín} $P$ generado por $\{a_0, \dots, a_p\}$ como
 	el conjunto de puntos $x \in \mathbb{R}^N$ tales que
-	\[ x = \sum_{i=0}^{n}t_ia_i = a_0 + \sum_{i=1}^{n}t_i(a_i - a_0) \]
-	para algunos $t_1, \dots, t_n \in \mathbb{R}$. Diremos entonces que $P$ es el 
-	plano que pasa por $a_0$ paralelo a los vectores $a_i - a_0$, $i \in \{1, \dots, n\}$.
+	\[ x = \sum_{i=0}^{p}t_ia_i = a_0 + \sum_{i=1}^{p}t_i(a_i - a_0) \]
+	para algunos $t_1, \dots, t_p \in \mathbb{R}$. Diremos entonces que $P$ es el 
+	plano que pasa por $a_0$ paralelo a los vectores $a_i - a_0$, $i \in \{1, \dots, p\}$.
 \end{definicion}
 
-Nótese que la transformación afín $T$ de $\mathbb{R}^N$ tal que $T(x) = x - a_0$ es una traslación que lleva el plano $P$ al subespacio vectorial de $\mathbb{R}^N$ con base $a_1-a_0, a_2-a_0, \dots, a_n-a_0$. Si componemos dicha transformación con una aplicación lineal que lleve cada vector $a_1-a_0, a_2-a_0, \dots, a_n-a_0$ a los primeros $N$ vectores de la base usual, obtenemos una transformación afín $S: P \rightarrow \mathbb{R}^n \times \{0\}$ tal que $S(a_i) = (0, \overset{i-1}{\dots}, 0, 1, 0, \overset{i+1}{\dots}, 0)$ con $i \in \{1, \dots, n\}$.
+Nótese que la transformación afín $T$ de $\mathbb{R}^N$ tal que $T(x) = x - a_0$ es una traslación que lleva el plano $P$ al subespacio vectorial de $\mathbb{R}^N$ con base $a_1-a_0, a_2-a_0, \dots, a_p-a_0$. Si componemos dicha transformación con una aplicación lineal que lleve cada vector $a_1-a_0, a_2-a_0, \dots, a_p-a_0$ a los primeros $N$ vectores de la base usual, obtenemos una transformación afín $S: P \rightarrow \R^N \times \{0\}$ tal que $S(a_i) = (0, \overset{i-1}{\dots}, 0, 1, 0, \overset{i+1}{\dots}, 0)$ con $i \in \{1, \dots, p\}$.
 
 \begin{definicion}
-	Sea $\{a_0, \dots, a_n\}$ un conjunto de puntos afínmente independiente en 
-	$\mathbb{R}^N$. Definimos el \textbf{n-símplex} o \textbf{símplice} $\sigma = [a_0, \dots, a_n]$ 
-	generado por $a_0, 	\dots, a_n$ como el conjunto de todos los $x \in \mathbb{R}^N$ 
+	Sea $\{a_0, \dots, a_p\}$ un conjunto de puntos afínmente independiente en 
+	$\mathbb{R}^N$. Definimos el \textbf{p-símplice} o \textbf{símplice} $\sigma = [a_0, \dots, a_p]$ 
+	generado por $a_0, 	\dots, a_p$ como el conjunto de todos los $x \in \mathbb{R}^N$ 
 	tales que
-	\[ x=\sum_{i=0}^{n}t_ia_i \quad \text{y} \quad \sum_{i=0}^{n}t_i=1 \]
-	con $t_i \geq 0$, $i \in \{1, \dots, n\}$.
+	\[ x=\sum_{i=0}^{p}t_ia_i \quad \text{y} \quad \sum_{i=0}^{p}t_i=1 \]
+	con $t_i \geq 0$, $i \in \{1, \dots, p\}$.
 \end{definicion}
-Los coeficientes $t_i$ están determinados de manera única por el punto $x$. A los términos  
-$t_0, \dots, t_n$ los llamamos las \textbf{coordenadas baricéntricas} de $\sigma$
-con respecto a $a_0, \dots, a_n$.
+\begin{definicion}
+	Sea $\sigma$ un $p$-símplice. A los términos $t_0, \dots, t_p$ los llamamos las \textbf{coordenadas baricéntricas} de $\sigma$
+	con respecto a $a_0, \dots, a_p$.
+\end{definicion}
 
-Los puntos $a_0, \dots, a_n$ que generan $\sigma$ los llamaremos \textbf{vértices} de $\sigma$
-y al número $n$ lo llamaremos la \textbf{dimensión} de $\sigma$.
+\begin{proposicion}
+	Sea $\sigma=[a_0,a_1,\dots,a_p]$ un $p$-símplice. Entonces las coordenadas baricéntricas de cualquier $x \in \sigma$ están determinadas de manera única.
+\end{proposicion}
+\begin{proof}
+	Sea $y \in \sigma$ un punto arbitrario del $p$-símplice en $\R^N$. Como hemos definido nuestro símplice como combinación convexa de los puntos $a_0, a_1, \dots, a_p$ tenemos que dichas coordenadas existen (además de ser no negativas) y son solución de la siguiente ecuación
+	\[
+	Ax = \begin{pmatrix}
+		a_{01} & a_{02} & \cdots  & a_{0p} \\
+		a_{11} & a_{12} & \cdots & a_{1p} \\
+		 \vdots & \vdots & \ddots & \vdots \\
+		a_{N1} & a_{N2} & \cdots & a_{Np}  \\
+		1 & 1 & 1 & 1 
+	\end{pmatrix}
+	\begin{pmatrix}
+		t_0 \\
+		t_1 \\
+		\vdots \\
+		t_p
+	\end{pmatrix}
+	= 
+	\begin{pmatrix}
+		y_0 \\
+		y_1 \\
+		\vdots \\
+		y_p
+	\end{pmatrix}
+	\]
+	donde $a_i = (a_{0i}, \dots, a_{Ni})^T$ con $0 \leq i \leq p$, $x = (t_0,t_1,\dots,t_p)^T$ e $y = (y_0,y_1,\dots,y_p)^T$. El superíndice $T$ indica la matriz traspuesta. 
+	
+	En cuanto a la unicidad, basta suponer la existencia de otro $x'=(t_0',t_1', \dots, t_p')^T$ tal que $Ax = y = Ax'$. Sin embargo, dicha igualdad se cumple si, y sólo si, $A(x-x')=0$. Como $a_0,a_1,\dots,a_p$ son afínmenente independientes, tenemos que el determinante de $A$ no puede ser $0$ y por tanto $A$ no puede ser la matriz nula. Nos queda que $x-x'=0$ debe cumplirse luego $x=x'$.
+\end{proof}
+
+Los puntos $a_0, \dots, a_p$ que generan $\sigma$ los llamaremos \textbf{vértices} de $\sigma$
+y al número $p$ lo llamaremos la \textbf{dimensión} de $\sigma$.
 
 \begin{definicion}
-	Sea $\sigma=[a_0, \dots, a_n]$ un símplice. Una \textbf{cara} de $\sigma$ será cualquier
-	símplice generado por un subconjunto no vacío de $\{a_0, \dots, a_n\}$.
+	Sea $\sigma=[a_0, \dots, a_p]$ un símplice. Una \textbf{cara de dimensión $p$} de $\sigma$ será cualquier
+	símplice generado por un subconjunto no vacío de $\{a_0, \dots, a_p\}$.
 \end{definicion}
-En particular, la cara de $\sigma$ generada por $a_0, \dots, a_{i-1}, a_{i+1}, \dots, a_n$ la 
-llamamos la \textbf{cara opuesta} de $a_i$, $i \in \{0, \dots, n\}$. Las caras de $\sigma$ 
+En particular, la cara de $\sigma$ generada por $a_0, \dots, a_{i-1}, a_{i+1}, \dots, a_p$ la 
+llamamos la \textbf{cara opuesta} de $a_i$, $i \in \{0, \dots, p\}$. Las caras de $\sigma$ 
 diferentes de $\sigma$ diremos que son \textbf{caras propias} de $\sigma$ y la unión de todas ellas la 
 llamaremos el \textbf{borde} de $\sigma$ y lo notaremos $\text{Bd}\ \sigma$. Finalmente, definimos el \textbf{interior} de $\sigma$, $\text{Int}\ \sigma$, como el conjunto de puntos de $\sigma$ que no pertenecen 
 a su borde.
@@ -64,19 +97,19 @@ a su borde.
 	\begin{subfigure}{.24\textwidth}
 		\centering
 		\begin{tikzpicture}
-			% 3-símplex
+			% 3-símplice
 			\node (n0) at (0.0,  0.0) {}; % root
 			
 			% DRAW NODES
 			\draw[color=black, fill=black] (n0) circle (.1);
 		\end{tikzpicture}
-		\caption{0-símplex}
+		\caption{0-símplice}
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}{.24\textwidth}
 		\centering
 		\begin{tikzpicture}
-			% 3-símplex
+			% 3-símplice
 			\node (n0) at (0.0,  0.0) {}; % root
 			\node (n1) at (1.0, 0.0) {}; % extreme
 			
@@ -87,13 +120,13 @@ a su borde.
 			\draw[color=black, fill=black] (n0) circle (.1);
 			\draw[color=black, fill=black]  (n1) circle (.1);
 		\end{tikzpicture}
-		\caption{1-símplex}
+		\caption{1-símplice}
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}{.24\textwidth}
 		\centering
 		\begin{tikzpicture}
-			% 3-símplex
+			% 3-símplice
 			\node (n0) at (0.0,  0.0) {}; % root
 			\node (n1) at (1.0, 0.0) {}; % extreme
 			\node (n2) at (0.5, 0.87) {}; % extreme
@@ -109,13 +142,13 @@ a su borde.
 			\draw[color=black, fill=black]  (n1) circle (.1);
 			\draw[color=black, fill=black]  (n2) circle (.1);
 		\end{tikzpicture}
-		\subcaption{2-símplex}
+		\subcaption{2-símplice}
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}{.24\textwidth}
 		\centering
 		\begin{tikzpicture}
-			% 3-símplex
+			% 3-símplice
 			\node (n0) at (0.0,  0.0) {}; % root
 			\node (n1) at (1.0, 0.0) {}; % extreme
 			\node (n2) at (0.5, 0.87) {}; % extreme
@@ -139,7 +172,7 @@ a su borde.
 			\draw[color=black, fill=black]  (n2) circle (.1);
 			\draw[color=black, fill=black]   (n3) circle (.1);
 		\end{tikzpicture}
-		\caption{3-símplex}
+		\caption{3-símplice}
 	\end{subfigure}
 	\caption{Símplices de dimensión $0$, $1$, $2$ y $3$}
 	\label{fig:simplex}
@@ -148,7 +181,7 @@ a su borde.
 Dado un símplice $\sigma$ podemos definir un orden sobre sus vértices. Dos órdenes de $\sigma$ los consideraremos equivalentes si podemos pasar de uno a otro con un número par de permutaciones. Así, los ordenamientos posibles para los vértices de $\sigma$ se pueden agrupar en dos clases de equivalencia distintas, que definimos como las \textbf{orientaciones del símplice} $\sigma$.
 
 \begin{definicion}
-Decimos que un símplice $\sigma = [a_0, a_1, \ldots, a_n]$ está \textbf{orientado} si se le ha asignado una de estas orientaciones. Utilizaremos la misma notación $[a_0, a_1, \ldots, a_n]$ para denotar la clase de equivalencia dada por la orientación $a_0 < a_1 < \cdots < a_n$ del símplice generado por los vértices $a_0,a_1,\ldots, a_n$.
+Decimos que un símplice $\sigma = [a_0, a_1, \ldots, a_p]$ está \textbf{orientado} si se le ha asignado una de estas orientaciones. Utilizaremos $[a_0 a_1 \ldots a_p]$ para denotar la clase de equivalencia dada por la orientación $a_0 < a_1 < \cdots < a_p$ del símplice generado por los vértices $a_0,a_1,\ldots, a_p$.
 \end{definicion}
 
 \section{Complejos simpliciales}
@@ -196,6 +229,8 @@ de $K$ al subcomplejo formado por todas las caras de $K$ cuya dimensión sea men
 
 Veamos que en efecto $(|K|, \mathcal{T})$ es un espacio topológico. $\emptyset, |K| \in \mathcal{T}$ ya que son abiertos trivialmente en $\sigma$, pues $\emptyset \cap \sigma = \emptyset$ y $|K| \cap \sigma = \sigma$ para todo $\sigma \in K$. Si $O_1, O_2 \in \mathcal{T}$, entonces $O_1 \cap \sigma$, $O_2 \cap \sigma$ son abiertos en $\sigma$ luego $(O_1 \cap O_2) \cap \sigma = (O_1 \cap \sigma) \cap (O_2 \cap \sigma)$ es abierto en $\sigma$ para todo $\sigma \in K$. Por tanto $O_1 \cap O_2 \in \mathcal{T}$. Finalmente, consideremos una familia $\{O_i\}_{i \in I} \subset \mathcal{T}$ donde $I$ es un conjunto de índices. Para cada $\sigma \in K$, $(\cup_{i \in I} O_i) \cap \sigma = \cup_{i \in I} (O_i \cap \sigma)$ que efectivamente es una unión arbitraria de abiertos de $\sigma$. En consecuencia, $\cup_{i \in I} O_i \in \mathcal{T}$.
 
+En general, la topología de $|K|$ es más fina que la inducida de la topología usual de $\R^N$. Si $A$ es cerrado en $|K|$ con la topología inducida de la usual, $A=B \cap |K|$ para algún cerrado $B$ de $\R^N$ y por tanto $B \cap \sigma$ sería cerrado en $\sigma$ para cada símplice $\sigma$ de $K$. Como consecuencia, $B \cap |K|=A$ es cerrado en $|K|$ con la topología $\mathcal{T}$ definida anteriormente. 
+
 Si no hay lugar a confusión, simplemente notaremos al politopo de $K$ por $|K|$ y lo llamaremos el \textbf{poliedro} $|K|$.
 
 \begin{lema}\label{lem:cont_poly}
@@ -215,7 +250,7 @@ Cuando trabajemos con complejos simpliciales, será interesante tener en cuenta 
 transformaciones entre ellos pueden ser continuas o incluso homeomorfismos. 
 
 \begin{lema}
-	Sean $K$ y $L$ dos complejos simpliciales y sea $f: K^{(0)} \rightarrow L^{(0)}$ una aplicación. 
+	Sean $K$ y $L$ dos complejos simpliciales y sea $f: K^{(0)} \rightarrow L^{(0)}$ una aplicación entre los conjuntos de vértices de $K$ y $L$. 
 	Supongamos que siempre que los vértices $v_0, \dots, v_n$ de $K$ generen un símplice en $K$, 
 	los puntos $f(v_0), \dots, f(v_n)$ son vértices de un símplice de $L$. Entonces podemos extender $f$ 
 	a una aplicación continua $g:|K| \rightarrow |L|$ tal que
@@ -275,11 +310,11 @@ un complejo simplicial abstracto en sí.
 
 Sean $V_S$, $V_T$ los conjuntos de vértices de los complejos abstractos $\mathcal{S}$, $\mathcal{T}$  respectivamente. Dos complejos abstractos $\mathcal{S}$ y $\mathcal{T}$ diremos que son 
 \textbf{isomorfos} si existe una aplicación biyectiva $f: V_S \rightarrow V_T$ tal que 
-$\{a_0, \dots, a_n\} \in \mathcal{S}$ si, y sólo si, $\{f(a_0), \dots, f(a_n)\} \in \mathcal{T}$.
+$\{a_0, \dots, a_p\} \in \mathcal{S}$ si, y sólo si, $\{f(a_0), \dots, f(a_p)\} \in \mathcal{T}$.
 
 \begin{definicion}
 	Sean $K$ un complejo simplicial y $V$ su conjunto de vértices. Sea $\mathcal{K}$ la colección de 
-	todos los subconjuntos $\{a_0, \dots, a_n\} \subset V$ tales que los vértices $a_0, \dots, a_n$ 
+	todos los subconjuntos $\{a_0, \dots, a_p\} \subset V$ tales que los vértices $a_0, \dots, a_p$ 
 	generan un símplice de $K$. Entonces llamaremos a la colección $\mathcal{K}$ el 
 	\textbf{esquema de vértices} de $K$.
 \end{definicion}
@@ -309,8 +344,8 @@ siguiente teorema.
 	Sea ahora $\mathcal{S}$ un complejo abstracto con conjunto de vértices $V$. Tomamos un conjunto 
 	de índices $J$ lo bastante grande para que podamos tomar una aplicación inyectiva 
 	$f: V \rightarrow J$. A continuación, vamos a tomar un subcomplejo de $\Delta^J$ tal que para 
-	cada símplice abstracto $\{a_0, \dots, a_n\} \in \mathcal{S}$, el símplice (geométrico) generado 
-	por $f(a_0), \dots, f(a_n)$ está en $K$. Por tanto $K$ es un complejo simplicial y 
+	cada símplice abstracto $\{a_0, \dots, a_p\} \in \mathcal{S}$, el símplice (geométrico) generado 
+	por $f(a_0), \dots, f(a_p)$ está en $K$. Por tanto $K$ es un complejo simplicial y 
 	$f$ es un isomorfismo entre $\mathcal{S}$ y el esquema de vértices de $K$.
 	
 	En cuanto a $(b)$, es una consecuencia inmediata del \autoref{lem:homeo_complex}.

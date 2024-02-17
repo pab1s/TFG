@@ -52,16 +52,9 @@ Cuando $\alpha: A \rightarrow B$ sea un homomorfismo de $R$-módulos, diremos qu
 
 Dados dos homomorfismos de $R$-módulos $\alpha_1, \alpha_2 : A \rightarrow B$, su \textbf{suma} $\alpha_1 + \alpha_2$ la definimos como $(\alpha_1 + \alpha_2)(a) = \alpha_1(a) + \alpha_2(a)$ para todo $a \in A$. Además, dados dos homomorfismos de $R$-módulos $\alpha: A \rightarrow B$, $\beta: B \rightarrow C$, su \textbf{composición} $\beta \circ \alpha: A \rightarrow C$ es también un homomorfismo de $R$-módulos. Nótese que para que la composición sea posible, el rango de $\alpha$ tiene que ser igual al dominio de $\beta$. En ocasiones usaremos la notación por yuxtaposición $\alpha\beta = \alpha \circ \beta$. Llamaremos \textbf{inversa} (por ambos lados) de $\alpha : A \rightarrow B$ al homomorfismo $\alpha^{-1} : B \rightarrow A$ tal que $\alpha^{-1} \circ \alpha = \id_A$ y $\alpha \circ \alpha^{-1} = \id_B$. Una \textbf{inversa izquierda} de $\alpha$ es una función $\gamma: A \rightarrow A$ tal que $\gamma \circ \alpha = \id_A$. No tiene por qué existir ni ser única.
 
-\begin{definicion}
-	Sea $\{A_i, \alpha_i\}_{i \in \mathbb{Z}}$ una familia de $R$-módulos $A_i$ y homomorfismos entre ellos tal que $\alpha_i: A_i \rightarrow A_{i+1}$. Diremos que la secuencia
-	\[ \cdots \xrightarrow{\alpha_{i-2}} A_{i-1} \xrightarrow{\alpha_{i-1}} A_i \xrightarrow{\alpha_{i}} A_{i+1} \xrightarrow{\alpha_{i+1}} \cdots \]
-	es \textbf{exacta} cuando $\im \alpha_i = \ker \alpha_{i+1}$.
-\end{definicion}
-
 Sea \(T \subseteq B\) donde $B$ es un $R$-módulo, llamaremos \textbf{inclusión} o \textbf{inyección canónica} al homomorfismo $i: T \rightarrow B$ tal que $i(t) = t$ para todo $t \in T$. En particular, $i$ es un monomorfismo. Las \textbf{clases laterales} de $T$ en $B$ son los conjuntos $b + T = \{b + t : t \in T\}$ donde $b \in B$. Dos clases laterales $b_1 + T$, $b_2 + T$ son iguales si $b_1 - b_2 \in T$. Como $T$ es un submódulo, el grupo abeliano $B/T$ se convierte en un $R$-módulo cuando $r(b+T) = rb + T$ para todo $r \in R$. A este $R$-módulo lo llamaremos el \textbf{módulo cociente} de $B$ sobre $T$. El homomorfismo $\pi: B \rightarrow B/T$ tal que $\pi(b) = b + T$ es un epimorfismo que llamaremos \textbf{proyección canónica} de $B$.
 
 \begin{proposicion}\label{prop:first_iso}
-
 Sea \( \beta: B \rightarrow B' \) un homomorfismo de módulos con \( T \subset \ker \beta \). Existe entonces un único homomorfismo de módulos \( \beta': B/T \rightarrow B' \) con \( \beta'\pi = \beta \); es decir, el siguiente diagrama con \( \beta(T) = 0 \)
 \begin{equation}
     \label{firstisothm}
@@ -72,11 +65,9 @@ Sea \( \beta: B \rightarrow B' \) un homomorfismo de módulos con \( T \subset \
 \end{equation}
 es conmutativo.
 \end{proposicion}
-
 \begin{proof}
 Definamos \( \beta'(b + T) = \beta(b) \). Por estar $T$ contenida en el núcleo de $\beta$, la función está bien definida. En efecto, si $a,b \in B$ entonces $a+T = b+T \Rightarrow a-b \in T \subset \ker \beta \Rightarrow \beta(a-b) = 0 \Rightarrow \beta(a)=\beta(b)$. Como $\beta$ es un homomorfismo, $\beta'$ también lo es.
 \end{proof}
-
 %En particular, si \( \beta: B \rightarrow B' \) es un epimorfismo con núcleo \( T \), \( \beta': B/T \rightarrow B' \) es un isomorfismo. Esta afirmación puede expresarse de la siguiente manera: cada \( \beta \) con \( \beta(T) = 0 \) \textit{factoriza de manera única} a través de la proyección \( \pi \). Esta propiedad caracteriza a \( \pi: B \rightarrow B/T \) hasta un isomorfismo de \( B/T \), de la siguiente manera:
 %
 %\begin{proposicion}
@@ -86,38 +77,15 @@ Definamos \( \beta'(b + T) = \beta(b) \). Por estar $T$ contenida en el núcleo 
 %\begin{proof}
 %	Factorizamos \(\eta\) a través de \(\pi\) y \(\pi\) a través de \(\eta\), así que \(\eta = (\eta' \pi) \eta = 1_\eta\). Pero \(\eta\) factoriza \textit{únicamente} a través de \(\pi\), así que \(\eta' \pi = 1\). Simétricamente, \(\pi' \eta = 1\). Por lo tanto \(\pi' = (\eta')^{-1}\) y \(\eta'\) es el isomorfismo deseado \(\theta\).
 %\end{proof}
-
-La inclusión \(i\) y la proyección \(\pi\) producen una secuencia exacta.
-\[ 0 \rightarrow T \xrightarrow{i} B \xrightarrow{\pi} B/T \rightarrow 0. \]
-
-\begin{definicion}
-Sean $A,B$ y $C$ $R$-módulos y $\sigma: A \rightarrow B$, $\gamma: B \rightarrow C$ homomorfismos entre ellos. Diremos que la \textbf{secuencia exacta} es \textbf{corta} si
-\[ (\sigma, \gamma): 0 \rightarrow A \xrightarrow{\sigma} B \xrightarrow{\gamma} C \rightarrow 0 \]
-Es decir, una secuencia exacta de cinco \(R\)-módulos con los dos módulos exteriores siendo cero (y por lo tanto las dos funciones exteriores triviales).
-\end{definicion}
-
-La exactitud en \(A\) significa que \(\sigma\) es un monomorfismo, en \(B\) significa que \(\sigma A = \ker \gamma\) y en \(C\) que \(\gamma\) es un epimorfismo. Así la secuencia exacta corta puede escribirse como \(A \xrightarrow{\sigma} B \xrightarrow{\gamma} C\), con exactitud en \(B\). Ahora \(\sigma\) induce un isomorfismo \(\sigma': A \to A\) y \(\gamma\) un isomorfismo \(\gamma': B/\sigma A \to C\); juntos estos proveen un isomorfismo de secuencias exactas cortas, en la forma de un diagrama conmutativo
-\begin{equation}
-    \label{exactshortseq}
-    \xymatrix{
-    0 \ar[r] & A \ar[r]^{\sigma} \ar[d]^{\sigma'} & B \ar[r]^\gamma \ar@{=}[d] & C \ar[r] \ar[d]^{(\gamma')^{-1}} & 0 \\
-    0 \ar[r] & \sigma A \ar[r]_i & B \ar[r] & B/\sigma A \ar[r] & 0.
-    }
-\end{equation}
-
-En resumen, una secuencia exacta corta es simplemente otro nombre para un submódulo y su cociente.
-
 %Cada homomorfismo \(\alpha: A \rightarrow B\) determina dos módulos cociente
 %\[\text{Coim } \alpha = A / \text{Ker } \alpha, \quad \text{Coker } \alpha = B / \text{Im } \alpha,\]
-%llamados la \textbf{coimagen} y el \textbf{conúcleo} de \(\alpha\). Esta definición provee dos secuencias exactas cortas
+%llamados la \textbf{coimagen} y el \textbf{conúcleo} de \(\alpha\). Esta definición provee dos sucesiones exactas cortas
 %\[ \text{Ker } \alpha \hookrightarrow A \twoheadrightarrow \text{Coim } \alpha, \quad \text{Im } \alpha \hookrightarrow B \twoheadrightarrow \text{Coker } \alpha, \]
-%un isomorfismo \(\text{Coim } \alpha \cong \text{Im } \alpha\) y una secuencia exacta más larga
+%un isomorfismo \(\text{Coim } \alpha \cong \text{Im } \alpha\) y una sucesión exacta más larga
 %\[ 0 \rightarrow \text{Ker } \alpha \xrightarrow{i} A \xrightarrow{\alpha} B \rightarrow \text{Coker } \alpha \rightarrow 0. \]
-
 %Por la \autoref{prop:first_iso}, \(\beta \alpha = 0\) implica que \(\beta\) factoriza de manera única a través de \(\pi\) como \(\beta = \beta' \pi\). Dualmente, si algún \(\gamma': A' \rightarrow A\) tiene \(\alpha \gamma' = 0\), entonces \(\gamma'\) factoriza a través de \(i\) como \(\gamma' = i \gamma''\) para un único \(\gamma'': A' \rightarrow \ker \alpha\). Esta propiedad caracteriza \(i: \ker \alpha \rightarrow A\) como un isomorfismo de \(\text{Ker } \alpha\). Observa las afirmaciones duales: \(\alpha\) es un monomorfismo si y solo si \(\ker \alpha = 0\), y es un epimorfismo si y solo si \(\text{Coker } \alpha = 0\).
 
 Si \(\alpha: A \rightarrow B\) es un homomorfismo de módulos y \(S \subseteq A\), el conjunto \(\alpha S = \{\alpha(s) \ : \ s \in S \} \) es un submódulo de \(B\) llamado la \textbf{imagen} de \(S\) bajo \(\alpha\). De manera similar, si \(T \subseteq B\), el conjunto \(\alpha^{-1}T = \{ s \in A \ : \ \alpha(s) \in T \} \) es un submódulo de \(A\), llamado la \textbf{imagen inversa} (completa) de \(T\). En particular, \(\ker \alpha = \alpha^{-1}0\), donde \(0\) denota el submódulo de \(B\) que consiste solo del elemento cero.
-
 %Para \(K \subseteq S \subseteq A\) el módulo \(S/K\) es llamado un \textbf{subcociente} de \(A\). Este es, a su vez, un módulo cociente del submódulo \(S\) de \(A\) y un submódulo del módulo cociente \(A/K\). Además, si \(K' \subseteq K \subseteq S' \subseteq S \subseteq A\), entonces \(K'/K\) es un submódulo de \(S'/K\) y la proyección compuesta \(S' \rightarrow (S'/K)/(K'/K)\) tiene núcleo \(K'\), por lo tanto el isomorfismo familiar \((S'/K)/(K'/K) \cong S'/K'\). Esto nos permite escribir cada subcociente \((S'/K)/(K'/K)\) de un subcociente \(S/K\) directamente como un subcociente de \(A\). Si \( \alpha: A \rightarrow A'\) tiene \(\alpha S \subseteq S'\) y \(\alpha K \subseteq K'\), entonces \(\alpha s + K'\) es una clase lateral de \(S'/K'\) determinada de manera única por la clase lateral \(s+K\) de \(S/K\). Por lo tanto \(\alpha_{\ast}(s+K) = \alpha s + K'\) define un homomorfismo
 %\[\alpha_{\ast}: S/K \rightarrow S'/K'\]
 %\[(\alpha S \subseteq S', \alpha K \subseteq K')\]
@@ -126,6 +94,73 @@ Si \(\alpha: A \rightarrow B\) es un homomorfismo de módulos y \(S \subseteq A\
 %Si \(S\) y \(T\) son submódulos de \(A\), su \textbf{intersección} \(S \cap T\) (como conjuntos) es también un submódulo, así como su \textbf{unión} \(S + T\), consistiendo de todas las sumas \(s + t\) para \(s \in S\), \(t \in T\). El \textbf{teorema del isomorfismo de Noether} afirma que \(1_{A}\) induce un isomorfismo
 %
 %\[ 1_{\ast}: S/(S \cap T) \cong (S + T)/T. \]
+%\subsection{Módulos libres}
+%
+%\begin{definicion}
+%	Sea $A$ un $R$-módulo y $S$ un subconjunto de $A$. Llamaremos \textbf{submódulo generado por $S$} a la intersección de todos los submódulo de $A$ que contienen a $S$ y lo notaremos por $\langle S \rangle$.
+%\end{definicion}
+%
+%\begin{definicion}
+%	Sea $A$ un $R$-módulo y $S$ un subconjunto finito de $A$. Si $\langle S \rangle = A$, diremos que $A$ es \textbf{finitamente generado} por $S$.
+%\end{definicion}
+%
+%\begin{definicion}
+%	Sea $A$ un $R$-módulo. Una familia de elementos $(e_i)_{i\in I}$ indexada por $I$ diremos que es \textbf{linealmente independiente} si para cada combinación lineal $\sum_{i \in I}r_ie_i=0$ con $r_i \in R$, tenemos que $r_i=0$ salvo un número finito de índices $i$.
+%\end{definicion}
+
+\begin{definicion}
+	Sea $\{A_i\}_{i \in I}$ una familia de $R$-módulos indexada por $I$. Definimos el \textbf{producto directo} o \textbf{producto directo externo} de $\{A_i\}_{i \in I}$ como el producto cartesiano 
+	\[
+	\prod_{i \in I} A_i = \{(x_i)_{i \in I} : x_i \in A_i \}
+	\]
+	donde las operaciones se definen componente a componente:
+	\begin{align*}
+		(x_i)_{i \in I} + (y_i)_{i \in I} &= (x_i+y_i)_{i \in I} \\
+		r(x_i)_{i \in I} &= (rx_i)_{i \in I}
+	\end{align*}
+	para todo $r \in R$, $x_i,y_i \in A_i$.
+\end{definicion}
+
+\begin{definicion}
+	Sea $\{A_i\}_{i \in I}$ una familia de $R$-módulos indexada por $I$. Definimos la \textbf{suma directa} o \textbf{suma directa interna} de $\{A_i\}_{i \in I}$ como el submódulo de $\prod_{i \in I}$ tal que 
+	\[
+		\bigoplus_{i \in I} A_i = \{(x_i)_{i \in I} : x_i = 0 \ \text{p.c.t.} \ i\}
+	\]
+\end{definicion}
+
+\begin{definicion}
+	Sea $B$ un conjunto y sea $\mathcal{L}(B)$ un $R$-módulo tal que $\mathcal{L}(B) = \bigoplus_{b \in B}R_b$ donde $R_b=R$ para todo $b \in B$. Llamaremos a dicho $R$-módulo el \textbf{$R$-módulo libre de base $B$}. De esta forma cada $x \in \mathcal{L}(B)$ se representa por $x = \sum_{b\in B}\lambda_b \cdot b$ donde $\lambda_b \in R$ son coeficientes no nulos en un número finito de posiciones $b$.
+\end{definicion}
+
+\section{Sucesiones exactas}
+
+\begin{definicion}
+	Sea $\{A_i, \alpha_i\}_{i \in \mathbb{Z}}$ una familia de $R$-módulos $A_i$ y homomorfismos entre ellos tal que $\alpha_i: A_i \rightarrow A_{i+1}$. Diremos que la sucesión
+	\[ \cdots \xrightarrow{\alpha_{i-2}} A_{i-1} \xrightarrow{\alpha_{i-1}} A_i \xrightarrow{\alpha_{i}} A_{i+1} \xrightarrow{\alpha_{i+1}} \cdots \]
+	es \textbf{exacta} cuando $\im \alpha_i = \ker \alpha_{i+1}$.
+\end{definicion}
+
+\begin{definicion}
+	Sean $A,B$ y $C$ $R$-módulos y $\sigma: A \rightarrow B$, $\gamma: B \rightarrow C$ homomorfismos entre ellos. Diremos que la \textbf{sucesión exacta} es \textbf{corta} si
+	\[ (\sigma, \gamma): 0 \rightarrow A \xrightarrow{\sigma} B \xrightarrow{\gamma} C \rightarrow 0 \]
+	Es decir, una sucesión exacta de cinco \(R\)-módulos con los dos módulos exteriores siendo cero (y por lo tanto las dos funciones exteriores triviales).
+\end{definicion}
+
+La exactitud en \(A\) significa que \(\sigma\) es un monomorfismo, en \(B\) significa que \(\sigma A = \ker \gamma\) y en \(C\) que \(\gamma\) es un epimorfismo. Así la sucesión exacta corta puede escribirse como \(A \xrightarrow{\sigma} B \xrightarrow{\gamma} C\), con exactitud en \(B\). Ahora \(\sigma\) induce un isomorfismo \(\sigma': A \to A\) y \(\gamma\) un isomorfismo \(\gamma': B/\sigma A \to C\); juntos estos proveen un isomorfismo de sucesiones exactas cortas, en la forma de un diagrama conmutativo
+\begin{equation}
+    \label{exactshortseq}
+    \xymatrix{
+    0 \ar[r] & A \ar[r]^{\sigma} \ar[d]^{\sigma'} & B \ar[r]^\gamma \ar@{=}[d] & C \ar[r] \ar[d]^{(\gamma')^{-1}} & 0 \\
+    0 \ar[r] & \sigma A \ar[r]_i & B \ar[r] & B/\sigma A \ar[r] & 0.
+    }
+\end{equation}
+
+En resumen, una sucesión exacta corta es simplemente otro nombre para un submódulo y su cociente.
+
+\begin{ejemplo}
+	Respecto a la \autoref{prop:first_iso}, la inclusión \(i\) y la proyección \(\pi\) producen una sucesión exacta corta.
+	\[ 0 \rightarrow T \xrightarrow{i} B \xrightarrow{\pi} B/T \rightarrow 0. \]
+\end{ejemplo}
 
 \section{Categorías}
 \label{sec:cat}
@@ -152,7 +187,7 @@ La teoría de categorías fue introducida por primera vez por Samuel Eilenberg y
 		\item \textbf{La categoría de espacios topológicos}, donde los objetos son todos los espacios topológicos y los morfismos todas las aplicaciones continuas entre espacios topológicos $f: X \rightarrow Y$.
 		\item \textbf{La categoría de grupos}, donde los objetos son todos los grupos y los morfismos todos los homomorfismos de grupos.
 		\item \textbf{La categoría de conjuntos}, cuyos objetos son todos los conjuntos y sus morfismos todas las aplicaciones entre conjuntos.
-		\item \textbf{La categoría de secuencias exactas de $R$-módulos de longitud n}. Los objetos son dichas secuencias $S: A_1 \rightarrow \cdots \rightarrow A_n$. Para dos secuencias $S$ y $S'$, los morfismos son de la forma $\Gamma : S \rightarrow S'$ tal que $\Gamma = (\gamma_1, \dots, \gamma_n)$ es una tupla donde los $\gamma_i: A_i \rightarrow A_i'$ son homomorfismos de $R$-módulos tal que
+		\item \textbf{La categoría de sucesiones exactas de $R$-módulos de longitud n}. Los objetos son dichas sucesiones $S: A_1 \rightarrow \cdots \rightarrow A_n$. Para dos sucesiones $S$ y $S'$, los morfismos son de la forma $\Gamma : S \rightarrow S'$ tal que $\Gamma = (\gamma_1, \dots, \gamma_n)$ es una tupla donde los $\gamma_i: A_i \rightarrow A_i'$ son homomorfismos de $R$-módulos tal que
 		\begin{equation}
         \label{exactseqcat}
             \xymatrix{
@@ -189,6 +224,8 @@ Dentro de la teoría de categorías los funtores tienen un papel principal, pues
 \end{definicion}
 
 Es decir, un funtor covariante $T: \mathcal{C} \rightarrow \mathcal{D}$ es una aplicación que preserva el rango, dominio, identidades y composiciones de $\mathcal{C}$ en $\mathcal{D}$.
+
+%\section{Transformación natural}
 
 \endinput
 %--------------------------------------------------------------------

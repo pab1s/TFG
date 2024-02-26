@@ -46,15 +46,29 @@ donde $LA$ es un submódulo de $A$. En particular, el producto de dos ideales iz
 	\end{enumerate}
 	para todo $a,a' \in A$, $r \in R$.
 \end{definicion}
-Es frecuente escribir el homomorfismo de $R$-módulos $\alpha: A \rightarrow B$ como $A \xrightarrow{\alpha} B$. Respecto a la notación de la imagen de un elemento $a \in A$ por $\alpha$, pondremos $\alpha(a)$ o simplemente $\alpha a$. En cuanto a la imagen de $A$ por $\alpha$, lo representaremos de manera análoga por $\alpha(A)$ o $\alpha A$.
 
-Cuando $\alpha: A \rightarrow B$ sea un homomorfismo de $R$-módulos, diremos que $A$ es el \textbf{dominio} y $B$ el \textbf{rango}. La \textbf{imagen} de $\alpha$ es el conjunto $\im(\alpha) = \{ \alpha(a) : a \in A \}$. El \textbf{núcleo} será el conjunto de elementos que se anulan en su imagen, esto es, $\ker(\alpha) = \{ a \in A : \alpha(a) = 0 \}$. Diremos que $\alpha$ es un \textbf{epimorfismo} cuando $\alpha(A) = B$, un \textbf{monomorfismo} cuando $\ker(\alpha) = \{0\}$ y un \textbf{isomorfismo} si $\alpha$ es un epimorfismo y un monomorfismo a la vez. Si existe un isomorfismo entre $A$ y $B$ diremos que son \textbf{isomorfos} y lo notaremos $A \cong B$. Un homomorfismo $\omega: A \rightarrow A$ lo llamaremos \textbf{endomorfismo}.
+Cuando $\alpha: A \rightarrow B$ sea un homomorfismo de $R$-módulos, diremos que $A$ es el \textbf{dominio} y $B$ el \textbf{rango}. La \textbf{imagen} de $\alpha$ es el conjunto $\im(\alpha) = \{ \alpha(a) : a \in A \}$. El \textbf{núcleo} será el conjunto de elementos que se anulan en su imagen, esto es, $\ker(\alpha) = \{ a \in A : \alpha(a) = 0 \}$. Diremos que $\alpha$ es un \textbf{epimorfismo} cuando $\alpha$ sea sobreyectiva, un \textbf{monomorfismo} cuando $\alpha$ sea inyectiva y un \textbf{isomorfismo} si $\alpha$ es un epimorfismo y un monomorfismo a la vez. Si existe un isomorfismo entre $A$ y $B$ diremos que son \textbf{isomorfos} y lo notaremos $A \cong B$. Un homomorfismo $\omega: A \rightarrow A$ lo llamaremos \textbf{endomorfismo}.
+
+Dado que el núcleo y la imagen de un homomorfismo de $R$-módulos coincide con el de los grupos abelianos subyacentes, la siguiente caracterización es inmediata de la ya conocida para grupos:
+
+\begin{proposicion}
+	Sea $\alpha: A \to B$ un homomorfismo de $R$-módulos. Entonces
+	\begin{enumerate}
+		\item $\alpha$ es un monomorfismo si, y sólo si, $\ker(\alpha) = 0$.
+		\item $\alpha$ es un epimorfismo si, y sólo si, $\im(\alpha) = B$.
+	\end{enumerate}
+\end{proposicion}
+
+Es frecuente escribir el homomorfismo de $R$-módulos $\alpha: A \rightarrow B$ como $A \xrightarrow{\alpha} B$. Respecto a la notación de la imagen de un elemento $a \in A$ por $\alpha$, pondremos $\alpha(a)$ o simplemente $\alpha a$. En cuanto a la imagen de $A$ por $\alpha$, lo representaremos de manera análoga por $\alpha(A)$ o $\alpha A$.
 
 Dados dos homomorfismos de $R$-módulos $\alpha_1, \alpha_2 : A \rightarrow B$, su \textbf{suma} $\alpha_1 + \alpha_2$ la definimos como $(\alpha_1 + \alpha_2)(a) = \alpha_1(a) + \alpha_2(a)$ para todo $a \in A$. Además, dados dos homomorfismos de $R$-módulos $\alpha: A \rightarrow B$, $\beta: B \rightarrow C$, su \textbf{composición} $\beta \circ \alpha: A \rightarrow C$ es también un homomorfismo de $R$-módulos. Nótese que para que la composición sea posible, el rango de $\alpha$ tiene que ser igual al dominio de $\beta$. En ocasiones usaremos la notación por yuxtaposición $\alpha\beta = \alpha \circ \beta$. Llamaremos \textbf{inversa} (por ambos lados) de $\alpha : A \rightarrow B$ al homomorfismo $\alpha^{-1} : B \rightarrow A$ tal que $\alpha^{-1} \circ \alpha = \id_A$ y $\alpha \circ \alpha^{-1} = \id_B$. Una \textbf{inversa izquierda} de $\alpha$ es una función $\gamma: A \rightarrow A$ tal que $\gamma \circ \alpha = \id_A$. No tiene por qué existir ni ser única.
 
+Si \(T \subseteq B\), el conjunto \(\alpha^{-1}T = \{ s \in A \ : \ \alpha(s) \in T \} \) es un submódulo de \(A\), llamado la \textbf{imagen inversa} (completa) de \(T\). En particular, \(\ker \alpha = \alpha^{-1}0\), donde \(0\) denota el submódulo de \(B\) que consiste solo del elemento cero.
+
 Sea \(T \subseteq B\) donde $B$ es un $R$-módulo, llamaremos \textbf{inclusión} o \textbf{inyección canónica} al homomorfismo $i: T \rightarrow B$ tal que $i(t) = t$ para todo $t \in T$. En particular, $i$ es un monomorfismo. Las \textbf{clases laterales} de $T$ en $B$ son los conjuntos $b + T = \{b + t : t \in T\}$ donde $b \in B$. Dos clases laterales $b_1 + T$, $b_2 + T$ son iguales si $b_1 - b_2 \in T$. Como $T$ es un submódulo, el grupo abeliano $B/T$ se convierte en un $R$-módulo cuando $r(b+T) = rb + T$ para todo $r \in R$. A este $R$-módulo lo llamaremos el \textbf{módulo cociente} de $B$ sobre $T$. El homomorfismo $\pi: B \rightarrow B/T$ tal que $\pi(b) = b + T$ es un epimorfismo que llamaremos \textbf{proyección canónica} de $B$.
 
-\begin{proposicion}\label{prop:first_iso}
+\begin{proposicion}[Teorema de factorización]
+	\label{prop:teo-fact}
 Sea \( \beta: B \rightarrow B' \) un homomorfismo de módulos con \( T \subset \ker \beta \). Existe entonces un único homomorfismo de módulos \( \beta': B/T \rightarrow B' \) con \( \beta'\pi = \beta \); es decir, el siguiente diagrama con \( \beta(T) = 0 \)
 \begin{equation}
     \label{firstisothm}
@@ -63,12 +77,12 @@ Sea \( \beta: B \rightarrow B' \) un homomorfismo de módulos con \( T \subset \
         & B'
     }
 \end{equation}
-es conmutativo.
+es conmutativo. Al homomorfismo $\beta'$ lo llamaremos \textbf{homomorfismo inducido} por $\beta$.
 \end{proposicion}
 \begin{proof}
 Definamos \( \beta'(b + T) = \beta(b) \). Por estar $T$ contenida en el núcleo de $\beta$, la función está bien definida. En efecto, si $a,b \in B$ entonces $a+T = b+T \Rightarrow a-b \in T \subset \ker \beta \Rightarrow \beta(a-b) = 0 \Rightarrow \beta(a)=\beta(b)$. Como $\beta$ es un homomorfismo, $\beta'$ también lo es.
 \end{proof}
-%En particular, si \( \beta: B \rightarrow B' \) es un epimorfismo con núcleo \( T \), \( \beta': B/T \rightarrow B' \) es un isomorfismo. Esta afirmación puede expresarse de la siguiente manera: cada \( \beta \) con \( \beta(T) = 0 \) \textit{factoriza de manera única} a través de la proyección \( \pi \). Esta propiedad caracteriza a \( \pi: B \rightarrow B/T \) hasta un isomorfismo de \( B/T \), de la siguiente manera:
+En particular, si \( \beta: B \rightarrow B' \) es un epimorfismo con núcleo \( T \), \( \beta': B/T \rightarrow B' \) es un isomorfismo. Esta afirmación puede expresarse de la siguiente manera: cada \( \beta \) con \( \beta(T) = 0 \) \textit{factoriza de manera única} a través de la proyección \( \pi \). Esta propiedad caracteriza a \( \pi: B \rightarrow B/T \) hasta un isomorfismo de \( B/T \), de la siguiente manera:
 %
 %\begin{proposicion}
 %	Si \( T \subset B \) y \( \eta: B \rightarrow D \) es tal que \( \eta(T) = 0 \) y cada \( \beta: B \rightarrow B' \) con \( \beta(T) = 0 \) factoriza de manera única a través de \( \eta \), entonces hay un isomorfismo \( \theta: B/T \rightarrow D \) con \( \theta \pi = \eta \).
@@ -77,6 +91,17 @@ Definamos \( \beta'(b + T) = \beta(b) \). Por estar $T$ contenida en el núcleo 
 %\begin{proof}
 %	Factorizamos \(\eta\) a través de \(\pi\) y \(\pi\) a través de \(\eta\), así que \(\eta = (\eta' \pi) \eta = 1_\eta\). Pero \(\eta\) factoriza \textit{únicamente} a través de \(\pi\), así que \(\eta' \pi = 1\). Simétricamente, \(\pi' \eta = 1\). Por lo tanto \(\pi' = (\eta')^{-1}\) y \(\eta'\) es el isomorfismo deseado \(\theta\).
 %\end{proof}
+
+\begin{teorema}[Primer teorema de isomorfía]
+	\label{teo:first-iso}
+	Sea $\beta : B \to B'$ un homomorfismo de $R$-módulos. Entonces
+	\[
+		\frac{B}{\ker \beta} \cong \im \beta
+	\]
+\end{teorema}
+\begin{proof}
+	La demostración es análoga a la ya vista para grupos. Construimos un homomorfismo de $R$-módulos $\beta: B \to \im \beta$ donde aplicando el \nameref{prop:teo-fact} con $T = \ker \beta$, obtenemos el homomorfismo inducido $\beta' : B/\ker \beta \to \im \beta$ tal que $\beta'(b+\ker \beta) = \beta(b)$. Veamos que está bien definida y que es biyectiva. Para ello, consideremos que existe otro $c \in B$ tal que $b + \ker B = c + \ker B$ lo cual se cumple si, y sólo si, $(b + \ker B) - (c + \ker B) = (b - c) + \ker \beta = 0$. Esto es, que $b - c \in \ker \beta$ y por tanto $\beta(b-c) = \beta(b) - \beta(c) = 0$. Es decir, $\beta(b) = \beta(c)$. En consecuencia, la aplicación $\beta'$ está bien definida y además es inyectiva. Claramente $\beta: B \to \im \beta$ es sobreyectiva.
+\end{proof}
 %Cada homomorfismo \(\alpha: A \rightarrow B\) determina dos módulos cociente
 %\[\text{Coim } \alpha = A / \text{Ker } \alpha, \quad \text{Coker } \alpha = B / \text{Im } \alpha,\]
 %llamados la \textbf{coimagen} y el \textbf{conúcleo} de \(\alpha\). Esta definición provee dos sucesiones exactas cortas
@@ -84,8 +109,7 @@ Definamos \( \beta'(b + T) = \beta(b) \). Por estar $T$ contenida en el núcleo 
 %un isomorfismo \(\text{Coim } \alpha \cong \text{Im } \alpha\) y una sucesión exacta más larga
 %\[ 0 \rightarrow \text{Ker } \alpha \xrightarrow{i} A \xrightarrow{\alpha} B \rightarrow \text{Coker } \alpha \rightarrow 0. \]
 %Por la \autoref{prop:first_iso}, \(\beta \alpha = 0\) implica que \(\beta\) factoriza de manera única a través de \(\pi\) como \(\beta = \beta' \pi\). Dualmente, si algún \(\gamma': A' \rightarrow A\) tiene \(\alpha \gamma' = 0\), entonces \(\gamma'\) factoriza a través de \(i\) como \(\gamma' = i \gamma''\) para un único \(\gamma'': A' \rightarrow \ker \alpha\). Esta propiedad caracteriza \(i: \ker \alpha \rightarrow A\) como un isomorfismo de \(\text{Ker } \alpha\). Observa las afirmaciones duales: \(\alpha\) es un monomorfismo si y solo si \(\ker \alpha = 0\), y es un epimorfismo si y solo si \(\text{Coker } \alpha = 0\).
-
-Si \(\alpha: A \rightarrow B\) es un homomorfismo de módulos y \(S \subseteq A\), el conjunto \(\alpha S = \{\alpha(s) \ : \ s \in S \} \) es un submódulo de \(B\) llamado la \textbf{imagen} de \(S\) bajo \(\alpha\). De manera similar, si \(T \subseteq B\), el conjunto \(\alpha^{-1}T = \{ s \in A \ : \ \alpha(s) \in T \} \) es un submódulo de \(A\), llamado la \textbf{imagen inversa} (completa) de \(T\). En particular, \(\ker \alpha = \alpha^{-1}0\), donde \(0\) denota el submódulo de \(B\) que consiste solo del elemento cero.
+%
 %Para \(K \subseteq S \subseteq A\) el módulo \(S/K\) es llamado un \textbf{subcociente} de \(A\). Este es, a su vez, un módulo cociente del submódulo \(S\) de \(A\) y un submódulo del módulo cociente \(A/K\). Además, si \(K' \subseteq K \subseteq S' \subseteq S \subseteq A\), entonces \(K'/K\) es un submódulo de \(S'/K\) y la proyección compuesta \(S' \rightarrow (S'/K)/(K'/K)\) tiene núcleo \(K'\), por lo tanto el isomorfismo familiar \((S'/K)/(K'/K) \cong S'/K'\). Esto nos permite escribir cada subcociente \((S'/K)/(K'/K)\) de un subcociente \(S/K\) directamente como un subcociente de \(A\). Si \( \alpha: A \rightarrow A'\) tiene \(\alpha S \subseteq S'\) y \(\alpha K \subseteq K'\), entonces \(\alpha s + K'\) es una clase lateral de \(S'/K'\) determinada de manera única por la clase lateral \(s+K\) de \(S/K\). Por lo tanto \(\alpha_{\ast}(s+K) = \alpha s + K'\) define un homomorfismo
 %\[\alpha_{\ast}: S/K \rightarrow S'/K'\]
 %\[(\alpha S \subseteq S', \alpha K \subseteq K')\]
@@ -146,9 +170,24 @@ Si \(\alpha: A \rightarrow B\) es un homomorfismo de módulos y \(S \subseteq A\
 	Es decir, una sucesión exacta de cinco \(R\)-módulos con los dos módulos exteriores siendo cero (y por lo tanto las dos funciones exteriores triviales).
 \end{definicion}
 
-La exactitud en \(A\) significa que \(\sigma\) es un monomorfismo, en \(B\) significa que \(\sigma A = \ker \gamma\) y en \(C\) que \(\gamma\) es un epimorfismo. Así la sucesión exacta corta puede escribirse como \(A \xrightarrow{\sigma} B \xrightarrow{\gamma} C\), con exactitud en \(B\). Ahora \(\sigma\) induce un isomorfismo \(\sigma': A \to A\) y \(\gamma\) un isomorfismo \(\gamma': B/\sigma A \to C\); juntos estos proveen un isomorfismo de sucesiones exactas cortas, en la forma de un diagrama conmutativo
+\begin{proposicion}
+		Sean $A,B$ y $C$ $R$-módulos y $\sigma: A \rightarrow B$, $\gamma: B \rightarrow C$ homomorfismos entre ellos. Entonces
+		\begin{enumerate}
+			\item La sucesión $0 \to A \overset{\sigma}{\to} B$ es exacta (en $A$) si, y sólo si, $\sigma$ es inyectiva.
+			\item La sucesión $B \to C \overset{\gamma}{\to} 0$ es exacta (en $C$) si, y sólo si, $\gamma$ es sobreyectiva.
+		\end{enumerate}
+\end{proposicion}
+\begin{proof}
+	El único homomorfismo que cumple $0 \to A$ tiene imagen $0$ en $A$ y por tanto, el núcleo de $\sigma$ será este si, y sólo si, $\sigma$ es inyectiva. De manera similar, el único homomorfismo $C \to 0$ es el homomorfismo nulo para todo elemento de $C$, que es la imagen de $\gamma$ si, y sólo si, $\gamma$ es sobreyectiva.
+\end{proof}
+\begin{corolario}
+	La sucesión $0 \rightarrow A \xrightarrow{\sigma} B \xrightarrow{\gamma} C \rightarrow 0$ es exacta si, y sólo si, $\sigma$ es inyectiva, $\gamma$ es sobreyectiva y $\im \sigma = \ker \gamma$.
+\end{corolario}
+
+% PUEDE MEJORARSE CON DUMMIT PROPOSICION 22 DE MODULOS
+Como acabamos de probar, la exactitud en \(A\) significa que \(\sigma\) es un monomorfismo, en \(B\) significa que \(\sigma A = \ker \gamma\) y en \(C\) que \(\gamma\) es un epimorfismo. Así la sucesión exacta corta puede escribirse como \(A \xrightarrow{\sigma} B \xrightarrow{\gamma} C\), con exactitud en \(B\). Ahora \(\sigma\) induce un isomorfismo \(\sigma': A \to A\) y \(\gamma\) un isomorfismo \(\gamma': B/\sigma A \to C\); juntos estos proveen un isomorfismo de sucesiones exactas cortas, en la forma de un diagrama conmutativo
 \begin{equation}
-    \label{exactshortseq}
+    \label{exactshortseq-equiv}
     \xymatrix{
     0 \ar[r] & A \ar[r]^{\sigma} \ar[d]^{\sigma'} & B \ar[r]^\gamma \ar@{=}[d] & C \ar[r] \ar[d]^{(\gamma')^{-1}} & 0 \\
     0 \ar[r] & \sigma A \ar[r]_i & B \ar[r] & B/\sigma A \ar[r] & 0.
@@ -161,6 +200,42 @@ En resumen, una sucesión exacta corta es simplemente otro nombre para un submó
 	Respecto a la \autoref{prop:first_iso}, la inclusión \(i\) y la proyección \(\pi\) producen una sucesión exacta corta.
 	\[ 0 \rightarrow T \xrightarrow{i} B \xrightarrow{\pi} B/T \rightarrow 0. \]
 \end{ejemplo}
+
+\begin{definicion}
+	Sea $0 \rightarrow A \xrightarrow{\sigma} B \xrightarrow{\gamma} C \rightarrow 0$ una sucesión exacta corta. Diremos que la sucesión es \textbf{escindible} si existe un homomorfismo $\rho: C \to B$ tal que $\gamma \circ \rho = \id_C$.
+\end{definicion}
+\begin{observacion}
+	En las condiciones anteriores, $\rho$ tiene que ser inyectiva.
+\end{observacion}
+
+\begin{lema}[Lema de escisión]
+	\label{lem:escision}
+	Sea $0 \rightarrow A \xrightarrow{\sigma} B \xrightarrow{\gamma} C \rightarrow 0$ una sucesión exacta corta. Son equivalentes las siguientes afirmaciones
+	\begin{enumerate}
+		\item La sucesión es escindible.
+		\item B = $\im \sigma \oplus C'$ donde $C'$ es un submódulo de $B$ isomorfo a $C$. En particular, $B \cong A \oplus C$.
+		\item Existe $\eta : B \to A$ tal que $\eta \circ \sigma = \id_A$.
+	\end{enumerate}
+\end{lema}
+\begin{proof}
+	$(a) \implies (b)$. Por ser la sucesión escindible el diagrama
+	\[
+		\xymatrix{
+			C \ar@{->}[r]^{\rho} \ar@/_/@{->}[rr]_{\id} & B \ar@{->}[r]^{\gamma} & C
+		}
+	\]
+	implica que $B = \im \rho \oplus \ker \gamma$ ya que $x = \rho(\gamma(x)) + (x - \rho(\gamma(x)))$ para todo $x \in B$. En consecuencia, $B = C' \oplus \im \rho$. Además, por la exactitud de la sucesión deducimos que $\ker \gamma = \sigma(A)$.
+	
+	$(b) \implies (c)$. Es sufiente considerar $B \overset{\pi}{\to} \sigma(A) \overset{\sigma^{-1}}{\to}$ donde $\pi$ es la proyección canónica. Por ser la sucesión exacta, $\sigma$ es inyectiva.
+	
+	$(c) \implies (a)$. Siguiendo un razonamiento análogo al anterior, el diagrama
+	\[
+	\xymatrix{
+		A \ar@{->}[r]^{\sigma} \ar@/_/@{->}[rr]_{\id} & B \ar@{->}[r]^{\eta} & A
+	}
+	\]
+	implica que $B = \sigma(A) \oplus \ker \eta$. Por el \nameref{teo:first-iso} y como $\ker \gamma = \sigma(A)$, tenemos que $\ker \eta \cong B/\ker(\gamma) \overset{\overline{\gamma}}{\to} \im \gamma = C$ donde $\overline{\gamma}$ es el isomorfismo inducido por $\gamma$. Finalmente, $\rho = \overline{\gamma}^{-1}$.
+\end{proof}
 
 \section{Categorías}
 \label{sec:cat}

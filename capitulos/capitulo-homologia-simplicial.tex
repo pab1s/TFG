@@ -3,7 +3,7 @@
 
 \chapter{Homología simplicial}
 
-\section{title}
+\section{Homología simplicial orientada}
  \begin{definicion}
  	Sea $K$ un complejo simplicial y $R$ un anillo conmutativo. Una \textbf{$p$-cadena} en $K$ sobre $R$ es una función $c$ del conjunto de $p$-símplices orientados de $K$ al anillo $R$ tal que:
  	\begin{enumerate}
@@ -12,14 +12,16 @@
  	\end{enumerate}
  \end{definicion}
  
-Dado un $p$-símplice $\sigma^p \in K$ donde $K$ es un complejo simplicial y sean $\sigma^p_1$ y $\sigma^p_2$ las dos posibles orientaciones de $\sigma^p$. Dado un anillo $R$, denotaremos por $C_p(K;R)$ al cociente del $R$-módulo libre con base todos los $p$-símplices orientados de $K$ por el submódulo generado por los elementos  $\sigma^p_1+\sigma^p_2$. Si $p<0$ o $p > \dim{K}$, $C_p(K,R)$ será el $R$-módulo trivial. Llamaremos a $C_p(K;R)$ el \textbf{$R$-módulo de las $p$-cadenas simpliciales orientadas} de $K$. Un análisis más formal se encuentra en Foundations of Algebraic Topology Cap 6 de SAMUEL ElLENBERG AND NORMAN STEENROD.
-
+Dado un $p$-símplice $\sigma^p \in K$ donde $K$ es un complejo simplicial y sean $\sigma^p_1$ y $\sigma^p_2$ las dos posibles orientaciones de $\sigma^p$. Dado un anillo $R$, denotaremos por $C_p(K;R)$ al cociente del $R$-módulo libre con base todos los $p$-símplices orientados de $K$ por el submódulo generado por los elementos  $\sigma^p_1+\sigma^p_2$. Si $p<0$ o $p > \dim{K}$, $C_p(K,R)$ será el $R$-módulo trivial. Llamaremos a $C_p(K;R)$ el \textbf{$R$-módulo de las $p$-cadenas simpliciales orientadas} de $K$.
+\begin{observacion}
+	La definición anterior nos permite trabajar con los símplices y las orientaciones de una forma algebraica. Así, si tomamos un símplice $\sigma$ de $K$ con una orientación $\sigma_1 \in C_p(K,R)$ y $\sigma_2 \in C_p(K,R)$ es su orientación opuesta, éste último es simplemente $\sigma_2 = -\sigma_1$. A2.16
+\end{observacion}
 \begin{definicion}
-	Sea $K$ un complejo simplicial y sean $C_p(K), C_{p-1}(K)$ $R$-módulos de $p$-cadenas. Definimos el \textbf{operador borde de $p$-cadenas} como el homomorfismo \(\partial_p : C_p(K) \to C_{p-1}(K)\) tal que
+	Sea $K$ un complejo simplicial y sean $C_p(K;R), C_{p-1}(K;R)$ $R$-módulos de $p$-cadenas. Definimos el \textbf{operador borde de $p$-cadenas} como el homomorfismo \(\partial_p : C_p(K;R) \to C_{p-1}(K;R)\) tal que
 	\[
 		\partial_p(\sigma) = \partial_p([v_0, v_1, \ldots, v_p]) = \sum_{i=0}^{n} (-1)^i[v_0, \ldots, \hat{v}_i, \ldots, v_p] .
 	\]
-	donde \(\hat{a}_i\) denota el vértice a eliminar.
+	donde \(\hat{v}_i\) denota el vértice a eliminar.
 \end{definicion}
 
 Debemos verificar que \(\partial_p\) esté bien definido y que \(\partial_p(-\sigma) = -\partial_p \sigma\). Para este propósito, basta con mostrar que el lado derecho de (*) cambia de signo si intercambiamos dos vértices adyacentes en el arreglo \([v_0, \ldots, v_p]\). Así que comparemos las expresiones para
@@ -43,92 +45,285 @@ En la segunda expresión, uno tiene
 Comparando, se ve que estas dos expresiones difieren por un signo.
 
 \begin{lema}
-	La definición de $\partial_p$ no depende de la permutación que define $[v_0, \dots, v_p]$. De hecho, si $\sigma^p_1$ y $\sigma^p_2$ son las dos orientaciones de $\sigma^p$ se tiene
+	La definición de $\partial_p$ no depende de la permutación que define $[v_0 \dots v_p]$. De hecho, si $\sigma^p_1$ y $\sigma^p_2$ son las dos orientaciones de $\sigma^p$ tenemos que
 	\[ \partial_p(\sigma^p_1+\sigma^p_2) = 0 \]
 \end{lema}
 \begin{proof}
-	Basta probar que si $\sigma_{1} = [v_{0}v_{1}...v_{p}]$ y $\sigma_{2} = [v_{1}v_{0}...v_{p}]$, se tiene $\partial_{p}\sigma_{1} + \partial_{p}\sigma_{2} = 0$.
+	Para ello probaremos que la suma de la imagen por el operador borde de $\sigma_{1} = [v_{0}v_{1}...v_{p}]$ y $\sigma_{2} = [v_{1}v_{0}...v_{p}]$ es igual a $0$.
 	Para ello, observamos que
-	
 	\begin{align*}
-		\partial_{p}\sigma_{1} &= [v_{1}v_{2}...] - [v_{0}v_{2}...] + \sum_{i\ne0,1}(-1)^{i}[v_{0}v_{1}...\hat{v}_{i}...v_{m}]\\
+		\partial_{p}\sigma_{1} &= [v_{1}v_{2}...] - [v_{0}v_{2}...] + \sum_{i\ne0,1}(-1)^{i}[v_{0}v_{1}...\hat{v}_{i}...v_{n}]\\
 		\partial_{p}\sigma_{2} &= [v_{0}v_{2}...] - [v_{1}v_{2}...] + \sum_{i\ne0,1}(-1)^{i}[v_{1}v_{0}...\hat{v}_{i}...v_{n}]
 	\end{align*}
-	De acuerdo con la definición de $C_{p-1}(K;R)$, $\partial_{p}(\sigma_{1}^{p}+\sigma_{2}^{p})=0$.
-	Sumando las ecuaciones para $\partial_{p}\sigma_{1}$ y $\partial_{p}\sigma_{2}$, obtenemos
-	\[
-		\partial_{p}\sigma_{1} + \partial_{p}\sigma_{2} = 2[v_{1}v_{2}...] - 2[v_{0}v_{2}...]
-		+ \sum_{i\ne0,1}(-1)^{i}[v_{0}v_{1}...\hat{v}_{i}...v_{m}] + \sum_{i\ne0,1}(-1)^{i}[v_{1}v_{0}...\hat{v}_{i}...v_{n}] = 0
-	\]
-	por lo que se cumple la condición deseada.
+	Al sumar ambas expresiones, los dos primeros términos de $\partial_{p}\sigma_{1}$ y $\partial_{p}\sigma_{2}$ se cancelan entre sí. Como consecuencia de la definición de $C_{p-1}(K;R)$, los términos restantes definen orientaciones opuestas del mismo símplice por lo que se cancelan y $\partial_{p}(\sigma_{1}^{p}+\sigma_{2}^{p})=0$.
 \end{proof}
 
 \begin{lema}
-	\(\partial_{p-1} \circ \partial_p = 0\).
+	Sean $\partial_p : C_p(K,R) \to C_{p-1}(K,R)$, $\partial_{p-1} : C_{p-1}(K,R) \to C_{p-2}(K,R)$ operadores borde. Entonces \(\partial_{p-1} \circ \partial_p = 0\).
 \end{lema}
 \begin{proof}
-	\[
-	\partial_{p-1} \circ \partial_p[v_0, \ldots, v_p] = \sum_{i=0}^{p} (-1)^i\partial_{p-1}[v_0, \ldots, \hat{v}_i, \ldots, v_p]
-	\]
-	\[
-	= \sum_{j<i} (-1)^j(-1)^{i-1}[v_0, \ldots, \hat{v}_j, \ldots, \hat{v}_i, \ldots, v_p]
-	\]
-	\[
-	+ \sum_{j>i} (-1)^j(-1)^i[v_0, \ldots, \hat{v}_i, \ldots, \hat{v}_j, \ldots, v_p].
-	\]
-	Los términos de estas dos sumatorias se cancelan en pares.
+	\begin{gather*}
+	\partial_{p-1} \partial_p[v_0, \ldots, v_p] = \partial_{p-1} \left( \sum_{i=0}^{p} (-1)^i[v_0 \dots \hat{v}_i \dots v_p] \right) \\
+	= \sum_{i=0}^{p} (-1)^i \left[ \sum_{j>i}^{p} (-1)^{j-1}[v_0 \dots, \hat{v}_i \dots \hat{v}_j \ldots v_p]
+	+ \sum_{j=0}^{j<i} (-1)^j[v_0 \ldots \hat{v}_j \ldots \hat{v}_i \ldots v_p] \right].
+	\end{gather*}
+	Es decir, el símplice $[v_0\dots,\hat{v}_k\dots,\hat{v}_t \dots, v_p]$ aparece dos veces en la anterior expresión con signos opuestos, donde $k,t \in \{0, \dots, p\}$. Esto nos lleva a discutir los siguientes casos. Supongamos sin pérdida de generalidad que $k < t$. En el primer caso, $i = k < j = t$ donde el coeficiente es $(-1)^k(-1)^{t-1}$. En el segundo caso, $i = t > j = k$ con coeficiente $(-1)^t(-1)^k$. Concluimos por tanto que todo símplice de la expresión se anula y al anularse sobre los generadores, $\partial_{p-1} \partial_p$ es el homomorfismo nulo.
 \end{proof}
 
 \begin{definicion}
-	El complejo de cadenas positivo $C_*(K;R) = \{C_p(K;R). \partial_p\}$ lo llamaremos \textbf{complejo de cadenas simpliciales} de $K$. La homología de dicho complejo la notaremos por $H_p(K;R)$ y la llamaremos \textbf{$p$-ésimo $R$-módulo de homología} de $K$. Si $R=\Z$, $H_p(K;\Z)$ lo notaremos simplemente por $H_p(K)$ y diremos que es el \textbf{$p$-ésimo grupo de homología} de $K$.
+	El complejo de cadenas positivo $C_*(K;R) = \{C_p(K;R). \partial_p\}$ lo llamaremos \textbf{complejo de cadenas simpliciales} de $K$. La homología de dicho complejo la notaremos por $H_p(K;R)$ y la llamaremos \textbf{$p$-ésimo $R$-módulo de homología} de $K$.
 \end{definicion}
-
-\begin{definicion}
-	Sea $f: K \rightarrow L$ una aplicación simplicial. Si $(v_0), \ldots, (v_k)$ es un símplice de $K$, entonces los puntos $f(v_0), \ldots, f(v_k)$ abarcan un símplice de $L$. Definimos un homomorfismo $\hat{f}: C_k(K) \rightarrow C_k(L)$ definiéndolo en los símplices orientados como sigue:
-	
-	$$\hat{f} [[v_0, \ldots, v_k]] =
-	\begin{cases}
-		(-1)^s \cdot sign(\sigma) & \text{si }(v_0), \ldots, (v_k) \text{ son distintos}, \\
-		1 & \text{en caso contrario}.
-	\end{cases}$$
-\end{definicion}
-
-Esta aplicación está claramente bien definida; intercambiar dos vértices en la expresión $[v_0, \ldots, v_k]$ cambia el signo del lado derecho de la ecuación. La familia de homomorfismos $\{\hat{f}\}$, uno en cada dimensión, se denomina mapa de cadena inducido por la aplicación simplicial $f$.
-
+Si $R=\Z$, $H_p(K;\Z)$ lo notaremos simplemente por $H_p(K)$ y diremos que es el \textbf{$p$-ésimo grupo de homología} de $K$.
+%\begin{proposicion}
+%	Si $K \neq \emptyset$ es un complejo simplicial, entonces el complejo positivo $\{C_p(K;R), \partial_p\}$ admite un aumento.
+%\end{proposicion}
+%\begin{proof}
+%	Sea $\varepsilon: C_p(K;R) \to R$ un homomorfismo que extiende linealmente a $\varepsilon(v) = 1$ para todo vértice $v$ de $K$. Si consideramos el operador borde $\partial_1: C_1(K;R) \to C_0(K;R)$ entonces $\varepsilon \circ \partial_1 = 0$. En efecto, tomando el símplice $[v_0,v_1]$ se tiene que $\varepsilon \circ \partial_1([v_0,v_1]) = \varepsilon(v_1-v_0) = 1-1=0$.
+%\end{proof}
 \begin{proposicion}
-	Sean $K_1$ y $K_2$ complejos simpliciales y $\varphi: K_1 \rightarrow K_2$ una aplicación simplicial. Entonces induce un homomorfismo de complejos de cadenas $C(\varphi)$ definido por la extensión lineal de
-	
-	$$C(\varphi)[p_0, \ldots, p_q] = [\varphi(p_0), \ldots, \varphi(p_q)]$$
-	
-	si no aparecen vértices repetidos y $C(\varphi)[p_0, \ldots, p_q] = 0$ en caso contrario.
-	
-	En particular, si $\varphi = id$, entonces $C(\varphi) = id$, y si $\psi: K_2 \longrightarrow K_3$ es otra aplicación simplicial, se tiene $C(\psi \circ \varphi) = C(\psi) \circ C(\varphi)$.
+	\label{prop:aumento}
+	Sea $K$ un complejo simplicial no vacío. Entonces el complejo de cadenas positivo $\{ C_p(K;R), \partial_p \}$ admite un aumento.
 \end{proposicion}
 \begin{proof}
-	Es inmediato que la definición de $C(\varphi)$ no depende de la permutación que define la orientación. Comprobemos la igualdad $\partial_q \cdot C(\varphi) = C(\varphi) \cdot \partial_q$. Si no repite ningún vértice, tenemos
-	
-	\begin{align*}
-		C(\varphi) \partial_q([p_0, \ldots, p_q]) &= C(\varphi) \left( \sum_{i=0}^q (-1)^i [p_0, \ldots, \hat{p_i}, \ldots, p_q] \right) \\
-		&= \sum_{i=0}^q (-1)^i [\varphi(p_0), \ldots, \hat{\varphi(p_i)}, \ldots, \varphi(p_q)] \\
-		&= \partial_q C(\varphi)([p_0, \ldots, p_q]).
-	\end{align*}
-	
-	Si repite algún vértice, digamos $\varphi(p_i) = \varphi(p_j)$, entonces se tiene que $\partial_q C(\varphi)([p_0, \ldots, p_q]) = 0$. Por otro lado,
-	
+	Sea $\varepsilon: C_0(K;R) \to R$ el homomorfismo que extiende linealmente $\varepsilon(v) = 1$ para todo vértice $v \in K$. Veamos que $\varepsilon \circ \partial_1 : C_1(K;R) \to R$ es nulo. Tomando $[v_0,v_1] \in C_1(K;R)$ obtenemos que $\varepsilon \partial_1[v_0,v_1] = \varepsilon(v_1 - v_0) = 1-1 = 0$, como queríamos ver.
+\end{proof}
+\begin{definicion}
+	Sea $\widetilde{C}(K;R)$ el complejo aumentado del complejo de cadenas simpliciales $C(K;R)$. Denominaremos \textbf{$p$-ésimo homología reducida} de $C$ al módulo de homología $H_p(\widetilde{C})$ y lo denotaremos por $\widetilde{H}(C)$.
+\end{definicion}
+Esta aplicación está claramente bien definida; intercambiar dos vértices en la expresión $[v_0, \ldots, v_k]$ cambia el signo del lado derecho de la ecuación. La familia de homomorfismos $\{\hat{f}\}$, uno en cada dimensión, se denomina mapa de cadena inducido por la aplicación simplicial $f$.
+\begin{proposicion}
+	\label{prop:simpl_app_hom}
+	Sean \(K\) y \(L\) dos complejos simpliciales junto con una aplicación simplicial \(\varphi: K \to L\). Esta aplicación induce un homomorfismo entre los complejos de cadenas, \(C(\varphi)\), el cual se define extendiendo linealmente la función de la siguiente manera:
 	\[
-	\sum_{i=0}^q (-1)^i C(\varphi)([p_0, \ldots, \hat{p_i}, \ldots, p_q]) = 0
+		C(\varphi)[v_0, \ldots, v_p] =
+		\begin{cases}
+			[\varphi(v_0), \ldots, \varphi(v_p)] & \text{si los vértices son distintos entre sí}, \\
+			0 & \text{en caso contrario}.
+		\end{cases}
 	\]
-	pues si $k \neq i$, $C(\varphi)([p_0, \ldots, \hat{p_k}, \ldots, p_q]) = 0$, y, suponiendo que $i < j$, se tiene
+	En particular, si \(\varphi\) es la identidad, entonces \(C(\varphi)\) es simplemente la identidad también. Además, si \(\psi: L \longrightarrow M\) es otra aplicación simplicial, se cumple que \(C(\psi \circ \varphi) = C(\psi) \circ C(\varphi)\).
+\end{proposicion}
+\begin{proof}
+	Para demostrar esto, primero observamos que la definición de \(C(\varphi)\) es independiente de la orientación de los símplices. Luego, verificamos la igualdad \(\partial_p \circ C(\varphi) = C(\varphi) \circ \partial_p\). Si no hay vértices repetidos, se tiene que:
+	\begin{gather*}
+		C(\varphi) \partial_p([v_0 \ldots v_p]) = C(\varphi) \left( \sum_{i=0}^p (-1)^i [v_0 \ldots \hat{v}_i \ldots v_p] \right) = \\
+		\sum_{i=0}^p (-1)^i [\varphi(v_0) \ldots \widehat{\varphi(v_i)} \ldots \varphi(v_p)] = \partial_p C(\varphi)([v_0 \ldots v_p]).
+	\end{gather*}
+	Si hay vértices repetidos, digamos \(\varphi(v_i) = \varphi(v_j)\), entonces \(\partial_p C(\varphi)([v_0 \ldots, v_p]) = 0\). Por otro lado,
 	\[
-		(-1)^i [\varphi(p_0), \ldots, \varphi(p_i), \ldots, \varphi(p_j), \ldots, \varphi(p_q)] + (-1)^j [\varphi(p_0), \ldots, \varphi(p_i), \ldots, \varphi(p_j), \ldots, \varphi(p_q)] = 0,
+	\sum_{i=0}^p (-1)^i C(\varphi)([v_0 \ldots, \hat{v_i} \ldots v_p]) = 0
+	\]
+	debido a que \(C(\varphi)([v_0 \ldots \hat{v}_k \ldots v_p]) = 0\) para \(k \neq i,j\) y cuando \(i < j\),
+	\[
+	(-1)^i [\varphi(v_0) \ldots \widehat{\varphi(v_i)} \ldots \varphi(v_j) \ldots \varphi(v_p)] + (-1)^j [\varphi(v_0) \ldots \varphi(v_i) \ldots \widehat{\varphi(v_j)} \ldots \varphi(v_p)] = 0
+	\]
+	también se anula. Esto se debe a que si no hay más vértices repetidos, como \(\varphi(v_i) = \varphi(v_j)\), el número de trasposiciones necesarias para cambiar de un símplice orientado al otro es \(j-i-1\), dado que \(\varphi(v_j)\) ocupa el lugar \(j-1\) en el primer símplice. La fórmula \(C(\psi\circ\varphi)=C(\psi)C(\varphi)\) se sigue directamente de la definición de \(C(\varphi)\).
+\end{proof}
+\begin{definicion}
+	\label{def:chain-map-ind}
+	Sea $\varphi : K \to L$ una aplicación simplicial y sea $C(\varphi): C(K;R) \to C(L;R)$ una aplicación de cadenas definida como en la \autoref{prop:simpl_app_hom}. Llamaremos a $C(\varphi)$ la \textbf{aplicación de cadenas inducida por} $\varphi$ y la notaremos por $\varphi_\#$.
+\end{definicion}
+\begin{corolario}
+	Toda aplicación simplicial $\varphi: K \to L$ induce un homomorfismo de $R$-módulos
+	\[
+		\varphi_* : H_p(K;R) \to H_p(L;R)
+	\]
+	que cumple que si $\psi: L \to M$ es otra aplicación simplicial, entonces $(\psi \circ \varphi)_*=\varphi_* \circ \varphi_*$ e $\id_* = \id$.
+\end{corolario}
+\begin{observacion}
+	La última implicación del corolario se traduce en que tenemos un funtor covariante que va de la categoría de complejos simpliciales con los homeomorfismos simpliciales a la categoría de grupos abelianos con los homomorfismos.
+\end{observacion}
+\begin{lema}
+	La aplicación de cadenas $f_\# : C(K;R) \to C(L;R)$ preserva el homomorfismo de aumento y como resultado, induce un homomorfismo $f_\#$ de módulos de homología reducida.
+\end{lema}
+\begin{proof}
+	Sea $f : K \to L$ una aplicación simplicial, $f_\#$ su aplicación de cadenas inducida y sean $\varepsilon : C_0(K;R) \to R,\ \varepsilon : C_0(L;R) \to R$ aumentos de $C(K;R), C(L;R)$ respectivamente. Llamemos indistintamente $\varepsilon$ a ambos aumentos en función del dominio en el que nos encontremos. Ahora definamos $\varepsilon f_\#(v) = 1$ y $\varepsilon(v) = 1$ para todo vértice de $K$ y extendamos por linealidad. Por consiguiente $\varepsilon \circ f_\# = \varepsilon$. Esta ecuación implica que $f_\#$ lleva el núcleo de $\varepsilon_K: C_0(K;R) \to R$ al núcleo de $\varepsilon_L : C_0(L;R) \to R$, lo que induce un homomorfismo $f_* : \widetilde{H}_0(K;R) \to \widetilde{H}_0(L;R)$.
+\end{proof}
+\begin{teorema}
+	Sean $\varphi, \psi$ aplicaciones simpliciales de $K$ a $L$; $\varphi_\#, \psi_\#$ sus aplicaciones de cadenas inducidas y sea $s: \varphi_\# \to \psi_\#$ una homotopía de cadenas entre ellas. Entonces los homomorfismos inducidos $\varphi_*, \psi_*$ para sus módulos de homología son iguales.
+\end{teorema}
+\begin{proof}
+	Sea $z$ un $p$-ciclo de $K$. Entonces
+	\[
+		\psi_*(z) - \varphi_*(z) = \partial sz + s\partial z = \partial sz + 0
+	\]
+	por lo que $\varphi(z)$ y $\psi(z)$ tienen la misma clase de homología. Por tanto, $\varphi_*([z]) = \psi_*([z])$ como se quería.
+\end{proof}
+
+\section{Algunos resultados de homología simplicial}
+\begin{definicion}
+	Sea $K$ un complejo simplicial de $\R^N$ y sea $w \in \R^N$ tal que cada semirrecta con origen $w$ corta a $|K|$ a lo sumo en un punto. Definimos el \textbf{cono sobre $K$ con vértice $w$} como la colección de vértices $w,v_0,v_1,\dots,v_p$ donde $v_0,v_1,\dots,v_p$ forman un símplice en $K$  junto a	todas las caras de dichos símplices. Lo denotaremos por $w \star K$.
+\end{definicion}
+
+\begin{lema}
+	El cono $w \star K$ es un complejo simplicial.
+\end{lema}
+\begin{proof}
+	Sea $\sigma = [v_0,\dots,v_p]$ un símplice de $K$. Primero veamos que el conjunto $\{w,v_0,\dots,v_p\}$ es afínmente independiente. Si $w$ perteneciera al plano $P$ generado por los puntos $v_0,\dots,v_p$, podríamos considerar el segmento que une $w$ con un punto de $x \in \interior \sigma$. Dicho conjunto, por ser abierto en $P$, contendría un intervalo de puntos en el segmento, contradiciendo la hipótesis de que las semirrectas que parten de $w$ cortan a lo sumo en un punto a $|K|$.
+	
+	Veamos ahora que $w \star K$ es un complejo simplicial. Los símplices de $w \star K$ pueden ser de tres tipos:
+	\begin{enumerate}
+		\item Símplices $v_0,\dots v_p$ pertenecientes a $K$.
+		\item Símplices de la forma $wv_0,\dots v_p$.
+		\item El $0$-símplice $w$.
+	\end{enumerate}
+	Si $\sigma,\tau$ son símplices del primer tipo, entonces $\interior \sigma \cap \interior \tau = \emptyset$ puesto que $K$ es un complejo simplicial. El símplice $\interior wv_0,\dots,v_p$ es la unión de todos los segmentos abiertos que unen $w$ con $v_0,\dots, v_p$, luego dos símplices de esta forma tienen intersección vacía pues las semirrectas que parten de $w$ cortan a $K$ a lo sumo en un punto. Finalmente, si $\sigma$ es del primer tipo y $\tau$ del segundo, $\interior \sigma \cap \interior \tau = \emptyset$ por el mismo argumento recién dado.
+\end{proof}
+
+\begin{proposicion}
+	Sea $K$ un complejo simplicial y sea $w \star K$ el cono sobre $K$ de vértice $w$. Entonces la homología orientada de  $w \star K$ es $H_p(w \star K;R) = 0$ para todo $p \neq 0$ y $H_0(w \star K;R) \cong R$. En el caso de la homología reducida, $\widetilde{H}_0(w \star K;R) = 0$ para todo $p \in \Z$.
+\end{proposicion}
+\begin{proof}
+	Sea $D = \{D_p, \partial_p\}$ un complejo de cadenas tal que $D_p = 0$ para todo $p \neq 0$ y $D_0 = R$. Definimos la aplicación de cadenas $f: D \to C(w \star K;R)$ de forma que $f_p = 0$ para todo $p \neq 0$ y $f_0(r)=rw$. Por otro lado, por la \autoref{prop:aumento} podemos definir el aumento $\varepsilon: C(w \star K;R) \to D$ dado por $\varepsilon_p=0$ para todo $p \neq 0$ y $\varepsilon_0(v) = 1$ para todo vértice $v$ del cono. Nuestro objetivo es ver que efectivamente $f$ es una equivalencia de cadenas junto a $\varepsilon$. De manera directa tenemos que $\varepsilon \circ f = \id_D$, luego $\varepsilon \circ f \simeq \id_D$. Veamos ahora que $f \circ \varepsilon$ es homotópica a la identidad. Para ello vamos a definir $s$ como la familia $\{s_p\}$ de homomorfismos $s_p: C_p(w \star K;R) \to C_{p+1}(w \star K;R)$ tal que
+	\[
+	s_p([v_0\dots v_p]) =
+	\begin{cases}
+		[w,v_0 \dots v_p] \ &\text{si} \ v_i \neq w \quad 0 \leq i \leq p,\quad p \geq 0 \\
+		0 \ & \text{en caso contrario}
+	\end{cases}
+	\]
+	induce una extensión lineal. Dicha familia está bien definida para $C_p(w \star K;R)$. Veamos que $\partial_{p+1}s_p + s_{p-1}\partial_p = \id_{C_p(w \star K;R)} - f_p\varepsilon_p$ se cumple por lo que $s$ es una homotopía de cadenas. Para el caso en que $p \in \Z$ es menor que $0$ se cumple de manera trivial. Si $p = 0$ distinguimos dos casos. Cuando $v \neq w$ tenemos que $(\partial_1s_0+s_{-1}\partial_0)(v) = \partial_1[w,v] = v-w = (\id_0 - f_0\varepsilon_0)(v)$. Por el contrario si $v = w$, $(\partial_1s_0+s_{-1}\partial_0)(v) = 0$ y también $(\id_0 - f_0\varepsilon_0)(v) = \id_0(w) - (f_0\varepsilon_0)(w) = w - w = 0$. Por último, veamos que sucede cuando $p > 0$. Supongamos primero que $w \neq v_i$. Entonces
+	\begin{gather*}
+	(\partial_{p+1}s_{p} + s_{p-1} \partial_p)[v_0 \dots v_p] =\partial_{p+1}[w,v_{0}\dots v_{p}]+s_{p-1}\left(\sum_{i=0}^{p}(-1)^{i}[v_{0}\dots\hat{v}_{i}\dots v_{p}]\right) \\
+	=[v_{0}\dots v_{p}]+\sum_{i=0}^{p}(-1)^{i+1}[w,v_{0}\dots\hat{v}_{i}\dots v_{p}]+\sum_{i=0}^{p}(-1)^{i}[w,v_{0}\dots\hat{v}_{i}\dots v_p] \\
+	=[v_{0}\dots v_{p}]=(id_{C_{p}}-f_{p}\varepsilon_{p})[v_{0}\dots v_{p}].
+	\end{gather*}
+	Finalmente si $w = v_{i_0}$ para algún $i_0$ entonces
+	\begin{gather*}
+		(\partial_{p+1}s_{p}+s_{p-1}\partial_{p})[v _{0}\dots v _{p}]=s_{p-1}\partial_{p}[v _{0}\dots v _{p}] =s_{p-1} \left( \sum_{i=0}^{p-1} (-1)^i [v _0\dots \hat{v}_i \dots v _{p}] \right) \\
+		=(-1)^{i_0} s_{p-1}[v _0\dots \hat{v}_{i_0} \dots v _p] =(-1)^{i_0} [w,v _0\dots \hat{v}_{i_0} \dots v _p] \\ =(-1)^{i_0} [v_{i_0},v _0\dots \hat{v}_{i_0} \dots v _p]
+		=[v _0\dots v _p].
+	\end{gather*}
+	Es decir, $f \circ \varepsilon \simeq \id_{C(w \star K;R)}$ y por el \autoref{cor:equiv-homot} induce un isomorfismo $\varepsilon_*: H_p(w \star K;R) \to H_p(D)$.
+	
+	Para el caso reducido consideremos el complejo aumentado $D$ dado por el aumento $\id_R : D_0 \to R$. Como consecuencia, la homología de $\widetilde{D}$ es trivial. Además, podemos extender los homomorfismos $\varepsilon$ y $f$ a homomorfismos $\widetilde{\varepsilon}$ y $\widetilde{f}$ para los complejos aumentados de forma que $\widetilde{\varepsilon}_{-1} = \widetilde{f}_{-1} = \id_R$. Por la misma homotopía $s$ obtenemos que $\widetilde{\varepsilon}$ y $\widetilde{f}$ son equivalencias homotópicas entre los complejos aumentados y por tanto, $\widetilde{H}_p(w \star K;R) = 0$ para todo $p \in \Z$.
+\end{proof}
+\begin{corolario}
+	\label{cor:cono-nulo}
+	La homología simplicial reducida de cualquier símplice es nula.
+\end{corolario}
+\begin{corolario}
+	Sea $\sigma$ un $n$-símplice y sea $\bd \sigma$ su borde. Entonces $\widetilde{H}_p(\bd \sigma;R) = 0$ es trivial si $p = n-1$ y $\widetilde{H}_{n-1}(\bd \sigma; R) \cong R$. Además, para el caso no trivial un generador es la clase de la cadena $\partial(\sigma)$.
+\end{corolario}
+\begin{proof}
+	Dado el símplice anterior, los complejos de cadenas aumentados de $\sigma$ y su borde coinciden hasta dimensión $p \leq n-1$. Por el \autoref{cor:cono-nulo} deducimos que $\widetilde{H}_p(\bd \sigma; R) = 0$ para $p \leq n-2$. Además, $C_p(\bd \sigma; R) = 0$ para $p \geq n$. Por lo tanto, $\widetilde{H}_{n-1}(\bd\sigma;R)=\ker \partial_{n-1}$. Aquí, $\partial_{n-1}$ representa el operador borde en ambos complejos aumentados (es decir, $\partial_{0}=\varepsilon$ indica el aumento). Dado que el complejo aumentado de $\sigma$ tiene homología trivial, entonces $\ker \partial_{n-1}=\im, \partial_{n}$, y además $\partial_{n}$ es inyectivo donde el operador borde $\partial_n: C_n(\sigma; R) \rightarrow C_{n-1}(\sigma; R) = C_{n-1}(\bd \sigma; R)$ aparece en el complejo de $\sigma$. Puesto que $C_n(\sigma;R)$ es isomorfo a $R$ generado por $\sigma$, se sigue que $\im \partial_n$, y por tanto $\widetilde{H}_{n-1}(\bd\sigma;R)$, es isomorfo a $R$ generado por $\partial(\sigma)$.
+\end{proof}
+
+\section{Sucesión de Mayer-Vietoris}
+
+\begin{lema}[Lema zig-zag]
+	\label{lem:zig-zag}
+	Sean $A = \{A_n,\partial_A\}, B = \{B_n,\partial_A\}$ y $C = \{C_n,\partial_C\}$ complejos de cadena y sean $f,g$ aplicaciones de cadenas tal que la sucesión
+	\[
+		0 \to A \overset{f}{\to} B \overset{g}{\to} C \to 0
+	\]
+	es exacta. Existe entonces una sucesión exacta de homología
+	\begin{equation}
+		\label{eq:long-exact-hom}
+	\cdots \to H_p(A) \overset{f_*}{\to} H_P(B) \overset{g_*}{\to} H_p(C) \overset{\partial_*}{\to} H_{p-1}(A) \overset{f_*}{\to} H_{p-1}(B) \to \cdots
+	\end{equation}
+	donde $\partial_*$ es el operador borde inducido en $B$.
+\end{lema}
+\begin{proof}
+	Para realizar esta prueba usaremos una estrategia típica en álgebra conmutativa conocida como persecución de diagramas. Usaremos el siguiente diagrama como guía:
+	\[
+		\xymatrix{
+			0 \ar@{->}[r] & A_{p+1} \ar@{->}[r]^{f} \ar@{->}[d]_{\partial_A} & B_{p+1} \ar@{->}[r]^{g} \ar@{->}[d]_{\partial_B} & c_{p+1} \ar@{->}[r] \ar@{->}[d]_{\partial_C} & 0 \\
+			0 \ar@{->}[r] & A_p \ar@{->}[r]^{f} \ar@{->}[d]_{\partial_A} & B_p \ar@{->}[r]^{g} \ar@{->}[d]_{\partial_B} & C_p \ar@{->}[r] \ar@{->}[d]_{\partial_C} & 0 \\
+			0 \ar@{->}[r] & A_{p-1} \ar@{->}[r]^{f} & B_{p-1} \ar@{->}[r]^{g} & C_{p-1} \ar@{->}[r] & 0
+		}
+	\]
+	\textit{Paso 1}. Primero definamos $\partial_*$. Dado un ciclo $c_p$ de $C_p$ (esto es, $c_p \in \ker \partial_C$), escogemos $b_p \in B_p$ tal que $g(b_p) = c_p$ (recordemos que $g$ es sobreyectiva por ser una sucesión exacta corta). El elemento $\partial_B b_p$ de $B_{p-1}$ pertenece al núcleo de $g$ pues $g(\partial_B b_p)=\partial_C g(b_p)=\partial_C c_p=0$. Por tanto, existe un elemento $a_{p-1} \in A_{p-1}$ tal que $f(a_{p-1})=\partial_B b_p$, pues $\ker g = \im f$. Tenemos que dicho elemento es único por ser $f$ inyectiva. Además, $c_{p-1}$ es un ciclo. Como $f(\partial_A a_{p-1}) = \partial_B f(a_{p-1}) = \partial_B \partial_B b_p = 0$, entonces $\partial_A a_{p-1} = 0$ por ser $f$ inyectiva. Definimos $\partial_*[c_p] = [a_{p-1}]$ donde los corchetes denotan la clase de homología.
+	
+	\textit{Paso 2}. Queremos probar ahora que $\partial_*$ es un homomorfismo de módulos bien definido. Antes de continuar, fijaremos cierta notación para facilitar el desarrollo de la prueba. Sean $c_p, c_p'$ dos elementos del núcleo de $\partial_C: C_p \to C_{p-1}$. Sean $b_p, b_p'$ elementos de $B_p$ tal que $g(b_p) = c_p$ y $g(b_p')=c_p'$. Escojamos ahora $a_{p-1}'$ tal que $f(a_{p-1}) = \partial_B b_p$ y $f(a_p') = \partial_B b_p'$.
+	
+	Para probar que $\partial_*$ está bien definido, veamos que no depende del $b_p$ y $c_p$ escogido. Supongamos que $c_p \sim c_p'$ y veamos que entonces $a_{p-1}$ y $a_{p-1}'$ también lo son. Por tanto supongamos que $c_p - c_p' = \partial_C c_{p+1}$. Escogemos $b_{p+1}$ tal que $g(b_{p+1}) = c_{p+1}$. Esto implica que 
+	\[
+	f(b_p - b_p' - \partial_B b_{p+1}) = c_p - c_p' - \partial_C g(b_{p+1}) = c_p - c_p' - \partial_C c_{p+1} = 0
+	\]
+	En consecuencia, podemos tomar $a_p$ tal que $f(a_p) = b_p - b_p' - \partial_B b_{p+1}$ luego
+	\[
+		f(\partial_A a_p) = \partial_B f(a_p) = \partial_B (b_p - b_p') - 0 = f(a_{p-1} - a_{p-1}')
+	\]
+	Por ser $f$ inyectiva, $\partial_A a_p = a_{p-1} - a_{p-1}'$, como buscábamos.
+	
+	Ya sabemos que $\partial_*$ está bien definido, veamos que es un homomorfismo de módulos. Para ello basta fijarnos en que $g(b_p + b_p') = c_p + c_p'$ y que $f(a_{p-1}+ a_{p-1}') = \partial_B(b_p+ b_p')$. Por tanto $\partial_* [c_p + c_p'] = [a_{p-1} + a_{p-1}']$ por definición y en consecuencia, $\partial_* [c_p + c_p'] = \partial_*[c_{p}] + \partial_*[c_{p}']$. Ahora si $\lambda \in R$, de manera similar obtenemos que $\lambda \partial_*[b_p] = \lambda [c_p] = [ \lambda c_p ] = \partial_* [ \lambda b_p ]$.
+	
+	\textit{Paso 3}. Probaremos la exactitud de $H_p(B)$ por doble inclusión. Como $g \circ f = 0$ tenemos que $g_* \circ f_* = 0$ lo que implica que si $\gamma \in \im f_*$, entonces $g_*(\gamma) = 0$.
+	
+	Para probar la otra inclusión, consideremos $\gamma = [b_p]$ y supongamos que $g_*(\gamma) = 0$. Entonces $g(b_p) = \partial_C c_{p+1}$ para algún $c_{p+1} \in C_p$. Escogemos $b_{p+1}$ de manera que $g(b_{p+1}) = c_{p+1}$. Entonces
+	\[
+		g(b_p - \partial_B b_{p+1}) = g(b_p) - \partial_C g(b_{p+1}) = g(b_p) - \partial_C c_{p+1} = 0
+	\]
+	luego $b_p - \partial_B b_{p+1} = f(a_p)$ para algún $a_p$. Ahora, $a_p$ es un ciclo pues
+	\[
+		f(\partial_A a_p) = \partial_B f(a_p) = \partial_B b_p - 0 = 0 
+	\] 
+	y $f$ es inyectiva. Es más, $f_*[a_p] = [f(a_p)] = [b_p - \partial_B b_{p+1}] = [b_p]$ y por tanto $[b_p] \in \im f_*$ como queríamos.
+	
+	\textit{Paso 4}. Probemos la exactitud en $H_p(C)$. Fijemos notación de nuevo para este paso. Sea $\alpha = [c_p]$ un elemento de $H_p(C)$. Escojamos $b_p$ tal que $g(b_p) = c_p$ y ahora tomemos $a_{p-1}$ tal que $f(a_{p-1}) = \partial_B b_p$. En consecuencia, $\partial_*\alpha = [a_{p-1}]$ por definición.
+	
+	Procederemos de nuevo por doble inclusión. Consideremos primero que $\alpha \in \im g_*$. Entonces $\alpha = [g(b_p)]$ donde $b_p$ es un ciclo en $B$. Esto implica que $f(a_{p-1}) = 0$ de donde $a_{p-1} = 0$ y por tanto $\partial_* \alpha = 0$.
+	
+	Supongamos ahora que $\partial_* \alpha = 0$. Entonces $a_{p-1} = \partial_A a_p$ para algún $a_p$. Deducimos entonces que $b_p - f(a_p)$ es un ciclo y que $\alpha = g_*[b_p - f(a_p)]$ luego $\alpha \in \im g_*$. Realizando los cálculos obtenemos que
+	\[
+		\partial_B(b_p - f(a_p)) = \partial_B(b_p) - \partial_B(f(a_p)) = \partial_B(b_p) - f(a_{p-1}) = 0
+	\]
+	\[
+		g_*[b_p - f(a_p)] = [g(b_p) - 0] = [c_p] = \alpha
 	\]
 	
-	ya que, en caso de no haber más vértices repetidos, como $\varphi(p_i) = \varphi(p_j)$, el número de transposiciones para pasar del primer símplice ordenado al segundo es \(j-i-1\) Observese que \(\varphi(p_{j})\) ocupa el lugar \(j-1\) en el primer
-	símplice. La fórmula \(C(\psi\circ\varphi)=C(\psi)C(\varphi)\) sigue fácilmente por la propia
-	definición de \(C(\varphi)\).
+	\textit{Paso 5}. Finalmente obtengamos la exactitud para $H_{p-1}(A)$. Si $\beta \in \im \partial_*$, entonces $\beta = [a_{p-1}]$ donde $f(a_{p-1}) = \partial_B b_p$ para algún $b_p$ por definición. En consecuencia,
+	\[
+		f_*(\beta) = [f(a_{p-1})] = [\partial_B b_p] = 0
+	\]
+	
+	Consideremos ahora el caso donde $f_*(\beta) = 0$. Sea $\beta = [a_{p-1}]$. Entonces $[f(a_{p-1})] = 0$ por lo que $f(a_{p-1}) = \partial_B b_p$ para algún $b_p$. Definimos $c_p = g(b_p)$. En consecuencia, $c_p$ es un ciclo ya que $\partial_c c_p = g(\partial_B b_p) = g(f(a_{p-1})) = 0$ y $\beta = \partial_* [c_p]$ por definición. Esto es, $\beta \in \im \partial_*$.
+\end{proof}
+\begin{definicion}
+	En las condiciones del anterior lema, llamaremos a la sucesión obtenida \textbf{sucesión exacta larga de homología}.
+\end{definicion}
+Un resultado de interés puede ser la NATURALIDAD del resultado anterior.
+
+\begin{proposicion}[Sucesión de Mayer-Vietoris]
+	Sea $K$ un complejo simplicial y sean $K_1,K_2$ subcomplejos de $K$ tales que $K = K_1 \cup K_2$. Entonces existe una sucesión exacta
+	\[
+		\cdots \to H_p(K_1 \cap K_2;R) \overset{f}{\to} H_p(K_1;R) \oplus H_p(K_2;R) \overset{g}{\to} H_p(K;R) \to H_{p-1}(K_1 \cap K_2;R) \to \cdots
+	\]
+	tal que $f(c) = ({i_1}_\#(c),-{i_2}_\#(c))$, $g(d,e) = {j_1}_\#(d)+{j_2}_\#(e)$ donde $i_t: K_1 \cap K_2 \to K_t$ y $j_t: K_t \to K_1 \cup K_2$ para $t \in \{1,2\}$ son las respectivas inclusiones.
+\end{proposicion}
+\begin{proof}
+	La demostración consiste en construir la sucesión exacta corta de complejos de cadena
+	\[
+		0 \to C(K_1 \cap K_2;R) \overset{f}{\to} C(K_1;R) \oplus C(K_2;R) \overset{g}{\to} C(K;R) \to 0
+	\]
+	y aplicar el \nameref{lem:zig-zag}.
+	
+	Para ello comencemos describiendo el complejo de cadenas $C(K_1;R) \oplus C(K_2;R)$. Recordemos que la suma directa de un complejo de cadenas se definía como la suma directa de los $R$-módulos de dimensión $p$ $C_p(K_1;R) \oplus C_p(K_2;R)$, cuyo operador borde $\partial'(d,e) = (\partial_1d, \partial_2 e)$ donde $\partial_1, \partial_2$ corresponden a los operadores borde de $K_1$ y $K_2$ respectivamente.
+	
+	Para comprobar la exactitud de la sucesión,  comencemos estudiando la exactitud en los extremos de la sucesión. Es claro que $f$ es inyectiva por ser una inclusión. En cuanto a la sobreyectividad de $g$, tomemos $d \in C_p(K;R)$ donde $d$ sea la suma de símplices orientados. Notemos por $d_1$ a los elementos de dicha suma provenientes de $K_1$. Entonces $d - d_1 \in K_2$ y $g(d_1, d-d_1) = d$.
+	
+	Para estudiar la exactitud en $C(K_1;R) \oplus C(K_2;R)$, consideremos la inclusión $k: K_1 \cap K_2 \to K$ y la respectiva inclusión de cadenas inducida $k_\#: C(K_1 \cap K_2;R) \to C(K;R)$. Nótese que $g(f(c)) = k_\#(c) - k_\#(c) = 0$. Sea ahora $g(d,e) = 0$, entonces $d = -e$ si las consideramos como cadenas de $K$. Como $d$ proviene de $K_1$ y $e$ de $K_2$, ambas deben de provenir de $K_1 \cap K_2$ y en consecuencia, $(d,e) = (d,-d) = f(d)$, como queríamos.
+	
+	La homología de $K_1 \oplus K_2$ en dimensión $p$ es entonces
+	\[
+		H_p(K_1 \oplus K_2;R) = \frac{\ker \partial'}{\im \partial'} = \frac{\ker \partial_1 \oplus \ker \partial_2}{\im \partial_1 \oplus \im \partial_2} \cong H_p(K_1;R) \oplus H_p(K_2;R)
+	\]
+	por su isomorfismo natural. Finalmente aplicamos el \nameref{lem:zig-zag} y en consecuencia tenemos la sucesión deseada.
+	
+	Para obtener la sucesión de Mayer-Vietoris de homología reducida reemplazaremos los complejos de cadenas anteriores por sus correspondientes complejos de cadenas aumentados. Consideremos para ello el siguiente diagrama
+	\[
+	\xymatrix{
+		0 \ar@{->}[r] & C_0(K_1 \cap K_2) \ar@{->}[d]^{\varepsilon_{K_1 \cap K_2}} \ar@{->}[r] & C_0(K_1) \oplus C_0(K_2) \ar@{->}[r] \ar@{->}[d]^{\varepsilon_1 \oplus \varepsilon_2} & C_0(K) \ar@{->}[d]^{\varepsilon} \ar@{->}[r] & 0 \\
+		0 \ar@{->}[r] & R \ar@{->}[r]_{\widetilde{f}} & R \oplus R \ar@{->}[r]_{\widetilde{g}} & R \ar@{->}[r] & 0
+	}
+	\]
+	La conmutatividad y la exactitud se mantienen en la parte inferior del diagrama si definimos $\widetilde{f}(r) = (r,r)$ y $\widetilde{g}(r',r) = r'+r$. Las aplicaciones $\varepsilon_{K_1 \cap K_2}, \varepsilon_1 \oplus \varepsilon_2$ y $\varepsilon$ son sobreyectivas pues la intersección de $K_1$ y $K_2$ es no vacía. De este modo, la homología de sus respectivos complejos de cadenas es nula en dimensión $-1$ y en dimensión $0$ es igual a la de sus respectivos módulos de homología reducida $\widetilde{H}_0(K_1 \cap K_2)$, $\widetilde{H}_0(K_1) \oplus \widetilde{H}_0(K_2)$ y $\widetilde{H}_0(K)$. Para finalizar, aplicamos de nuevo el \nameref{lem:zig-zag}.
 \end{proof}
 
 
+
+\section{Computabilidad de la homología}
 
 \endinput
 %--------------------------------------------------------------------

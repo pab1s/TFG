@@ -93,10 +93,14 @@ La función $H_n(f) = f_*$ definida por $f_*([c]) = f_*(c + \partial K_{n+1}) = 
 \begin{definicion}
 	Una aplicación de cadenas $f: K \rightarrow K'$ es una \textbf{equivalencia de cadenas} si existe otra aplicación $h: K' \rightarrow K$ y homotopías $s: h \circ f \rightarrow \id_K$, $t: f \circ h \rightarrow \id_{K'}$ tales que $h \circ f \simeq \id_K$, $f \circ h \simeq \id_{K'}$.
 \end{definicion}
+\begin{nota}
+	En ocasiones diremos que $f$ y $h$ \textbf{son equivalentes}.
+\end{nota}
 
 Como $H_n(\id_K) = \id_{H_n(K)}$, del anterior teorema se deduce lo siguiente.
 
 \begin{corolario}
+	\label{cor:equiv-homot}
 	Si $f: K \rightarrow K'$ es una equivalencia de cadenas, la aplicación inducida $H_n(f): H_n(K) \rightarrow H_n(K')$ es un isomorfismo para cada $n \in \Z$.
 \end{corolario}
 
@@ -152,9 +156,13 @@ Los complejos negativos suelen notarse con índices superiores positivos donde $
 \[ 0 \to K^0 \xrightarrow{\delta^0} K^1 \xrightarrow{\delta^1} K^2 \to \cdots, \quad \delta \circ \delta = 0 \]
 donde el $n$-ésimo módulo de homología \( H^n(K) = \ker(\delta^n)/\text{Im}(\delta^{n-1}) \) es positivo en los índices superiores. A dicho complejo lo llamaremos \textbf{complejo de cocadenas}.
 
-%\begin{definicion}
-%	Sea $K$ un complejo positivo de $R$-módulos. Denominaremos \textbf{aumento de $K$} al homomorfismo sobreyectivo $\varepsilon : K_0 \to R$ de forma que $\varepsilon \circ \partial_1 = 0$.
-%\end{definicion}
+\begin{definicion}
+	Sea $K$ un complejo positivo de $R$-módulos. Denominaremos \textbf{aumento de $K$} al homomorfismo sobreyectivo $\varepsilon : K_0 \to R$ de forma que $\varepsilon \circ \partial_1 = 0$.
+\end{definicion}
+
+\begin{definicion}
+	Sea $K$ un complejo de cadenas positivo, $\varepsilon : K_0 \to R$ un aumento de $K$ y sea $n \in \Z$. Consideremos el complejo positivo $\widetilde{C}$ tal que $\widetilde{K_n} = K$ para todo $n \geq 0$, $\widetilde{K_n} = 0$ para todo $n < -1$ y $\widetilde{K_{-1}}=R$. Consideremos también $\widetilde{\partial_n} = \partial_n$ para todo $n \geq 1$ y $\widetilde{\partial_0= \epsilon}$. Llamaremos a este complejo \textbf{complejo aumentado} de $K$.
+\end{definicion}
 
 \begin{definicion}
 Sean $f$ y $g$ aplicaciones de cadenas de $K$ a $K'$ y sea $s$ una homotopía de cadenas entre ellas. Diremos que $s$ es una \textbf{homotopía de cocadenas} si  está escrita con índices superiores. Esto es, \( s^n: K^n \to K'^{n-1} \) con \( \delta s + s \delta = f - g \).

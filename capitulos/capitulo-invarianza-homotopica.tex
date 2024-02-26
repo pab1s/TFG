@@ -1,0 +1,70 @@
+% !TeX root = ../tfg.tex
+% !TeX encoding = utf8
+
+\chapter{Invarianza homotópica}
+\section{Subdivisión baricéntrica}
+\section{Teorema de aproximación simplicial}
+\section{Invarianza homotópica de la homología simplicial}
+
+\begin{definicion}
+	\label{def:op_subdiv}
+	Sea $\{C_n(K;R), \partial_n\}$ un complejo de cadenas simpliciales. Llamaremos \textbf{operador subdivisión} al homomorfismo ${\sd_*}_n : C_n(K;R) \to C_n(\sd K;R)$ tal que
+	\[
+	{\sd_*}_n(\sigma) = ?
+	\]
+\end{definicion}
+
+\begin{lema}
+	Sea $\{C_n(K;R), \partial_n\}$ un complejo de cadenas simpliciales y sean ${\sd_*}_n : C_n(K;R) \to C_n(\sd K;R)$ sus respectivos operadores subdivisión para todo $n \geq 0$. Entonces la familia $\{{\sd_*}_n\}$ es un homomorfismo de complejos de cadenas.
+\end{lema}
+\begin{proof}
+	contenidos...
+\end{proof}
+
+\begin{lema}
+	\label{lem:subdiv_cadenas}
+	Sea $f: |K| \to |L|$ una aplicación simplicial y sea $f: |\sd K| \to |\sd L|$ la misma aplicación para sus subdivisiones baricéntricas. Entonces el siguiente diagrama es conmutativo
+	
+	DIAGRAMA
+	
+	donde $f_*$ denota $C_n(f)$.
+\end{lema}
+\begin{proof}
+	contenidos...
+\end{proof}
+
+\begin{proposicion}
+	Sea $\{C_n(K;R), \partial_n\}$ un complejo de cadenas simpliciales y  y sean $\{{\sd_*}_n\}$ sus respectivos operadores subdivisión para todo $n \geq 0$. Entonces dicha familia induce un homomorfismo $\sd_*: H_n(K;R) \to H_n(\sd K;R)$ que de la misma forma llamaremos \textbf{operador subdivisión}. Si $f: |K| \to |L|$ es una aplicación simplicial, entonces el siguiente diagrama es conmutativo
+	
+	DIAGRAMA
+\end{proposicion}
+\begin{proof}
+	Es consecuencia inmediata de \autoref{lem:subdiv_cadenas}.
+\end{proof}
+
+\begin{definicion}
+	Sea $\sd_*: H_n(K;R) \to H_n(\sd K;R)$ el operador subdivisión asociado al módulo de homología $H_n(\sd K;R)$. Entonces diremos que 
+	\[
+	\sd_*^m = \sd_* \circ \sd_* \circ \overset{m}{\cdots} \circ \sd_*: H_n(K;R) \to H_n(\sd K;R)
+	\]
+	es el \textbf{$m$-ésimo operador subdivisión} del complejo $K$.
+\end{definicion}
+
+\begin{proposicion}
+	Sea $K$ un complejo simplicial finito. Se tiene que su $m$-ésimo operador subdivisión es un isomorfismo.
+\end{proposicion}
+\begin{proof}
+	contenidos... IMPORTANTE: CONOS, MAYER-VIETORIS, LEMA DE LOS CINCO (III*1.7)
+\end{proof}
+
+\begin{proposicion}
+	Sea $K$ un complejo simplicial. Por tanto existe una aproximación simplicial $\lambda: \sd^n K \to K$ de la identidad $\id: |K| \to |K|$ tal que $\lambda_* \circ \sd_* = \id_*$.
+\end{proposicion}
+\begin{proof}
+	contenidos...
+\end{proof}
+
+\endinput
+%--------------------------------------------------------------------
+% FIN DEL CAPÍTULO. 
+%--------------------------------------------------------------------

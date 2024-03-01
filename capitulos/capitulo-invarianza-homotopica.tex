@@ -3,9 +3,125 @@
 
 \chapter{Invarianza homotópica}
 \section{Subdivisión baricéntrica}
-\section{Teorema de aproximación simplicial}
-\section{Invarianza homotópica de la homología simplicial}
 
+\begin{definicion}
+	Sea $K$ un complejo simplicial geométrico en $\R^N$ ESPACIO HE PUESTO FINITO PERO PUEDE SER NO. Un comple simplicial $K'$ diremos que es una \textbf{subdivisión} de $K$ si:
+	\begin{enumerate}
+		\item Cada símplice de $K'$ está contenido en $K$.
+		\item Cada símplice de $K$ es igual a la unión finita de símplices de $K'$.
+	\end{enumerate} 
+\end{definicion}
+\begin{lema}
+	\label{lem:compl-cons}
+	Si $K$ es un complejo, entonces la intersección de cualquier colección de subcomplejos de $K$ es un subcomplejo de $K$. Por otro lado, si $\{K_{\alpha}\}$ es una colección de complejos en $\R^N$ DE NUEVO RN y todas las intersecciones $|K_{\alpha}| \cap K_{beta}$ es el politopo de un complejo que es subcomplejo de ambos, entonces la unión es un complejo.
+\end{lema}
+\begin{proof}
+	contenidos...
+\end{proof}
+Para construir una subdivisión seguiremos el siguiente procedimiento:
+
+Sea $K$ un complejo. Supongamos que $L_p$ es una subdivisión del $p$-esqueleto de $K$. Sea $\sigma$ un símplice de dimensión $p+1$ de $K$. El conjunto $\bd \sigma$ es el politopo de un subcomplejo del $p$-esqueleto de $L_{\sigma}$. Si $w_{\sigma}$ es un punto del interior de $\sigma$, entonces el cono $x_\sigma \star L_{\sigma}$ es un complejo cuyo espacio subyacente es $\sigma$. Definimos $L_{p+1}$ como la unión de $L_p$ con los complejos $w_{\sigma} \star L_{\sigma}$ para todo símplice de dimensión $p+1$ de $K$.
+
+Veamos que $L_{p+1}$ es un complejo. Notemos que $|w_{\sigma} \star L_{\sigma}|\cap|L_p| = \bd \sigma$, que es el politopo del subcomplejo $L_{\sigma}$ de $|w_{\sigma} \star L_{\sigma}|$ y $|L_p|$. De manera similar, si $\tau$ es otro símplice de dimensión $p+1$, entonces los espacios $|w_{\sigma} \star L_{\sigma}|$ y $|w_{\tau} \star L_{\tau}|$ intersecan en el símplice $\sigma \cap \tau$ de $K$. Esto es, el politopo del subcomplejo de $L_p$ y en consecuencia, también de $L_{\sigma}$ y $L_{\tau}$. Por el \autoref{lem:compl-cons}, $L_{p+1}$ es un complejo.
+ 
+\begin{definicion}
+	Siguiendo el anterior procedimiento, llamaremos a $L_{p+1}$ la \textbf{subdivisión de $K^{p+1}$ obtenida por STARRING $L_p$ de los puntos $w_{\sigma}$}.
+\end{definicion}
+Puesto que el complejo $L_{p+1}$ depende de la elección de los puntos $w_{\sigma}$, los escogeremos de la siguiente forma.
+\begin{definicion}
+	Sea $\sigma = [v_0, \dots, v_p]$ un $p$-símplice. Definimos el \textbf{baricentro} de $\sigma$ como el punto
+	\[
+	\overline{\sigma} = \sum_{i=0}^{p}\frac{1}{p+1} v_i.
+	\]
+	Esto es, el punto del interior de $\sigma$ cuyas coordenadas baricéntricas con respecto a los vértices de $\sigma$ son iguales.
+\end{definicion}
+\begin{definicion}
+	Sea $K$ un complejo. Definimos la secuencia de subdivisiones de esqueletos de $K$ de la siguiente forma. Sea $L_0 = K^(0)$ el $0$-esqueleto de $K$. En general, si $L_p$ es una subdivisión del $p$-esqueleto de $K$, entonces definimos $L_{p+1}$ como la subdivisión del esqueleto $p+1$ obtenido STARRING $L_p$ de los baricentros de los $p+1$ símplices de $K$. Por el \autoref{lem:compl-cons}, la unión de los complejos $L_p$ es una subdivisión de $K$ que llamaremos \textbf{subdivisión baricéntrica} de $K$ y la denotaremos por $\sd K$.
+\end{definicion}
+\begin{lema}
+	Sea $K$ un complejo simplicial. Entonces el complejo $\sd K$ es igual a la colección de todos los símplices de la forma
+	\[
+		[\overline{\sigma}_0,\overline{\sigma}_1,\dots,\overline{\sigma}_n]
+	\]
+	donde $\sigma_0 < \sigma_1 < \dots < \sigma_n$.
+\end{lema}
+\begin{proof}
+	Procederemos por inducción. Es inmediato que los símplices de $\sd K$ de la subdivisión de $K^{(0)}$ son de esta forma, pues cada símplice es un vértice de $K$ y sus baricentros coinciden con dicho vértice.
+	
+	Supongamos ahora que cada símplice de $\sd K$ perteneciente a $|K^{(p)}|$ es de esta forma. Sea $\tau$ un símplice de $\sd K$ perteneciente a $K^{p+1}$ pro no a $|K^{(p)}|$. Entonces $\tau$ pertenece a uno de los complejos $\overline{\sigma} \star L_{\sigma}$, donde $\sigma$ es un símplice de dimensión $p+1$ de $K$ y $L_{\sigma}$ es la primera subdivisión baricéntrica del complejo formado por las caras propias de $\sigma$. Por hipótesis de inducción, cada símplice de $L_{\sigma}$ es de la forma $[\overline{\sigma}_0,\overline{\sigma}_1,\dots,\overline{\sigma}_n]$, donde $\sigma_0 < \sigma_1 < \dots < \sigma_n$ y $\sigma_0$ es una cara propia de $\sigma$. Concluimos que $\tau$ debe ser de la forma $[\overline{\sigma},\overline{\sigma}_0,\overline{\sigma}_1,\dots,\overline{\sigma}_n]$, como buscábamos.
+\end{proof}
+
+\begin{definicion}
+	Sea $\sigma$ un símplice. Definimos el \textbf{diámetro} de $\sigma$ como la mayor distancia entre dos puntos de $\sigma$. Formalmente,
+	\[
+		\diam \sigma = \max{\{||x-y||\ :\ x,y \in \sigma\}}
+	\]
+	donde en nuestro caso trabajamos con la norma euclídea.
+\end{definicion}
+\begin{lema}
+	\label{lem:char-diam}
+	Sea $\sigma = [v_0, \dots, v_n]$ un $n$-símplice. Entonces
+	\[
+		\diam \sigma = \max{\{||v_i-v_j||\ :\ 0 \leq i,\ j \leq n\}}.
+	\]
+\end{lema}
+\begin{proof}
+	Sean $p,q \in \sigma$. En particular, si $p = \sum_{i=0}^{n} \lambda_i v_i$, entonces
+	\[
+		||p-q||=||\sum_{i=0}^{n} \lambda _ {i} v_{i} - q||=| \sum _{i=0}^{n}(\lambda _{i} v_{i} - \lambda_{i} q)|| \leqslant \sum_{i=0}^{n} \lambda_{i} ||v_{i}-q|| \leqslant\max ||v_{i} -q||.
+	\]
+	De manera análoga, si $q = \sum_{j=0}^{n} \mu_j v_j$, $||v_i - q|| \leq \max_{0 \leq j \leq n} ||v_i -v_j||$. Por consiguiente tenemos que \[||p-q|| \leq \max_{0\leq i, j\leq n}||v_i-v_j||\] para cualesquiera $p,q \in \sigma$ y por tanto, $\diam \sigma \leq \max_{0\leq i, j\leq n}||v_i-v_j||$.
+\end{proof}
+\begin{teorema}
+	Dado un complejo simplicial finito $K$, una métrica para $|K|$ y $\varepsilon > 0$, existe un natural $N$ tal que cada símplice de $\sd^N K$ tiene un diámetro menor que $\varepsilon$.
+\end{teorema}
+\begin{proof}
+	Vamos a demostrar el caso para la primera subdivisión y procedamos por inducción. Sea $\mu \in \sd K$ y sean $\overline{\sigma}_0, \overline{\sigma}_1, \dots, \overline{\sigma}_k$ los vértices de $\mu$ donde $\sigma_0 < \sigma_1 < \dots < \sigma_k$. Por el \autoref{lem:char-diam}, podemos suponer que $\diam \mu = ||\overline{\sigma}_0 - \overline{\sigma}_1||$ por simplicidad, donde $\sigma_0 = [v_0, \dots, v_n]$ y $\sigma_2 = [v_0, \dots, v_n, v_{n+1}, \dots, v_s]$. Entonces,
+	\[||\sum_{i=0}^{n}\frac{1}{n+1}p_{i}-b(\sigma_{2})||=\frac{1}{n+1}||\sum_{i=0}^{n}(p_{i}-b(\sigma_{2}))||\le max\{||p_{i}-b(\sigma_{2})||;i\le n\}\]
+	De manera similar,
+	\[||p_{i}-b(\sigma_{2})||=||p_{i}-\sum_{j=0}^{s}\frac{1}{s+1}p_{j}||=\frac{1}{s+1}||\sum_{j=0}^{s}p_{i}-p_{j}||\le\]
+	\[\le\frac{s}{s+1}max\{||p_{i}-p_{j}||\}\le\frac{s}{s+1}\delta(\sigma_{2}).\]
+	Finalmente, como $\dim \sigma_1 = s \leq r = \dim K$
+	\[\delta(\mu)\le\frac{s}{s+1}\delta(\sigma_{2})\le\frac{s}{s+1}m(K)\le\frac{r}{r+1}m(K).\]
+\end{proof}
+
+\section{Teorema de aproximación simplicial}
+\begin{definicion}
+	Sean $K, L$ complejos simppliciales y sea $f: |K| \to |L|$ una aplicación continua. Diremos que la aplicación simplicial $\phi: K \to L$ es una \textbf{aproximación simplicial} de $f$ si para todo $x \in |K|$ se tiene que $\phi(x)$ pertenece al símplice SOPORTE de $f(x)$ en $L$. AMPLIAR DEF?
+\end{definicion}
+
+\begin{proposicion}
+	Sean $K, L$ complejos simpliciales y sea $f: |K| \to |L|$ una aplicación continua. Si  $\phi: K \to L$ es una aproximación simplicial de $f$ entonces $d(f,\phi) \leq m(L)$ donde $d(f,\phi) = \sup{||f(x) - \phi(x)\ : \ x \in |K|||}$.
+\end{proposicion}
+\begin{proof}
+	contenidos...
+\end{proof}
+\begin{proposicion}
+	Sean $K, L$ complejos simpliciales y sea $f: |K| \to |L|$ una aplicación continua. Sea  $\phi: K \to L$ es una aproximación entre los vértices de $K$ y $L$. Entonces $\phi$ es una aproximación simplicial de $f$ si, y sólo si, para todo vértice $v \in K$ tenemos que $f( \int\st(v;K)) \subseteq \int \st(\phi(x);L)$.
+\end{proposicion}
+\begin{proof}
+	contenidos...
+\end{proof}
+\begin{corolario}
+	Sea $f: |K| \to |L|$ una aplicación continua. Entonces $f$ admite una aproximación simplicial $\phi : K \to L$ si, y sólo si, para cada vértice de $v$ de $K$ existe algún vértice de $L$ tal qu $\int \st(v;K) \subseteq f^{-1}(\int \st(w;L))$.
+\end{corolario}
+\begin{proof}
+	contenidos...
+\end{proof}
+\begin{teorema}[Teorema de aproximación simplicial]
+	Sean $K,L$ complejos simpliciales y $f: |K| \to |L|$ una aplicación continua. Entonces existe una subdivisión baricéntrica $\sd^n$ y una aplicación $\phi : |\sd^n K| \to |L|$ tal que $\phi$ es una aproximación simplicial de de $f$.
+\end{teorema}
+\begin{proof}
+	contenidos...
+\end{proof}
+\begin{corolario}
+	Sean $K,L$ complejos simpliciales y $f: |K| \to |L|$ una aplicación continua. Para todo $\varepsilon > 0$ existen subdivisiones baricéntricas de $K$ y $L$ y una aproximación simplicial $\phi : \sd^n K \to \sd^m L$ tal que $d(f,\phi) < \varepsilon$.
+\end{corolario}
+\begin{proof}
+	contenidos...
+\end{proof}
+
+\section{Operador subdivisión}
 \begin{definicion}
 	\label{def:op_subdiv}
 	Sea $\{C_n(K;R), \partial_n\}$ un complejo de cadenas simpliciales. Llamaremos \textbf{operador subdivisión} al homomorfismo ${\sd_*}_n : C_n(K;R) \to C_n(\sd K;R)$ tal que
@@ -63,6 +179,96 @@
 \begin{proof}
 	contenidos...
 \end{proof}
+
+\section{Invarianza homotópica de la homología simplicial}
+\begin{definicion}
+	Sean $f,g : |K| \to |L|$ aplicaciones simpliciales. Diremos que $f$ y $g$ son \textbf{contiguas} si para todo $p$-símplice de $K$ se tiene que $f(\sigma)$ y $g(\sigma)$ son caras de un símplice común en $L$.
+\end{definicion}
+\begin{lema}
+	Si $\phi,g : |K| \to |L|$ son aproximaciones simpliciales de $f$, entonces son contiguas.
+\end{lema}
+\begin{proof}
+	Sea $\sigma = v_0, \dots, v_p$ un símplice de $K$ y sea $x = \sum_{i=0}^p \lambda_i v_i$ un punto del interior de $\sigma$, donde $\lambda_i$ es la $i$-ésima coordenada baricéntrica de $x$ respecto a los vértices de $\sigma$. Esto implica que $t(x) = \sum_{i=0}^p \lambda_i t(v_i)$ y por tanto, $t(x)$ pertenece al interior de $t(\sigma)$. Por hipótesis, $t(x) \in sop(f(x))$. Por el \autoref{label} LEMA 2.1b??? concluimos que $t(\sigma) < sop(f(x))$ y análogamente, $s(\sigma) < sop(f(x))$.
+\end{proof}
+\begin{lema}
+	Si $f,g : |K| \to |L|$ son aplicaciones simpliciales contiguas, entonces sus APLICACIONES de cadenas inducidas son algebraicamente homotópicas.
+\end{lema}
+\begin{proof}
+	Por ser $s,t$ continguas podemos definir. MAS
+\end{proof}
+
+\begin{corolario}
+	Si $f,g : |K| \to |L|$ son aplicaciones simpliciales contiguas, entonces $f_*,g_*$ son iguales.
+\end{corolario}
+\begin{proof}
+	Es consecuencia inmediata del \autoref{lem:} y del \autoref{teo:homot-cad-misma-homologia}.
+\end{proof}
+
+\begin{teorema}
+	Toda aplicación continua $f: |K| \to |L|$ induce un homomorfismo $f_*$ en $H$.
+\end{teorema}
+\begin{proof}
+	Tomemos una aproximación simplicial $s : |\sd^m K| \to |L|$ de $f: |K| \to |L|$. Sea ahora $\sd_\#^m : C(K;R) \to C(\sd^m K; R)$ el operador subdivisión. Definimos ahora el homomorfismo $f_* : H_p(K;R) \to H_p(L;R)$ como la composición $s_* \circ \sd_\#$.
+	
+	Puesto que la definición de $f_*$ depende de la aproximación simplicial escogida, veamos que realmente dicha elección es indifirente. Para ello, supongamos que $s : |\sd^n K| \to |L|$ es otra aproximación simplicial de $f$ tal que $m \leq n$ y consideremos ahora el operador subdivisión $\sd_\#^{n-m} : C(\sd^m K;R) \to C(\sd^n K)$. Por tanto, tenemos el siguiente diagrama
+	
+	DIAGRAMA
+	
+	y queremos ver que es conmutativo. Esto es, que $s_* \circ \sd_\# = t_* \circ \sd_\#^{n-m} \circ \sd_\#^{m}$. Por tanto, bastará considerar una aplicación simplicial CUALQUIERA $\varphi : |\sd^n K| \to |\sd^m K|$ y ver que efectivamente $s \circ \varphi$ es una aproximación simplicial de $f$. Sea $x \in |\sd^n K|$ y sea $\sigma = [v_0, \dots, v_p]$ el símplice soporte de $x$. Sea ahora $\tau = [w_0, \dots, w_p]$ el símplice de $\sd^m K$ que al subdividirse $m-n$ veces contiene a $\sigma$. Es claro entonces que $x \in \interior \tau$. Por ser $s$ una aplicación simplicial, también es claro que $s(x) \in \interior [s(w_0), \dots, s(w_p)]$ y por ser una aproximación simplicial de $f$, $f(x)$ pertenece al soporte de $f(x)$ y en consecuencia, $[s(w_0), \dots, s(w_p)]$ es una cara del soporte de $f(x)$. Por otro lado, $\varphi(x)$ pertenece al interior de $[\varphi(v_0), \dots, \varphi(v_p)]$ que es una cara propia de $\tau$ y por tanto,
+	\[
+		s \circ \varphi(x) \in \interior [s \circ \varphi(v_0), \dots, s \circ \varphi(v_p)] < [s(w_0), \dots, s(w_p)] < sop(f(x)).
+	\]
+	Es decir, para cualquier $x \in |\sd^n K|$, $s \circ \varphi(x) \in sop(f(x))$ y por consiguiente, $s \circ \varphi$ y $t$ son aproximaciones simpliciales de $f$. \textbf{De acuerdo a los resultados anteriores de esta sección}, se establece que $s_*\varphi_* = t_* : H_p(\sd^n K;R) \to H_p(L;R)$. Además, se sabe que $\varphi_*$ y $\sd_*^{n-m}$ son inversas una de otra, por lo que $t_* \sd_*^{n-m} \sd_*^m = s_*\varphi_*\sd_*^{n-m} \sd_*^m = s_* \sd_*^m$. Por tanto, $f_* : H_p(K;R) \to H_p(L;R)$ es un homomorfismo bien definido para cada $p \in \Z$.
+\end{proof}
+
+\begin{teorema}
+	Si $f: |K| \to |L|$, $g: |L| \to |M|$ son aplicaciones continuas, entonces $(g \circ f)_* = g_*f_*$. Además, $H(\id) = \id_*$.
+\end{teorema}
+\begin{proof}
+	Dadas las aplicaciones continuas $f$ y $g$, consideremos las aproximaciones simpliciales $s : |\sd^m K| \to |\sd^n L|$ de $f$ y $t : |\sd^n L| \to |M|$ de $g$. A continuación consideremos los operadores subdivisión $\sd_\#^n : |K| \to |\sd^n K|$, $\sd_\#^m : |L| \to |\sd^m L|$ y una aplicación simplicial $\varphi : |\sd^n L| \to |L|$. 
+	
+	DIAGRAMA
+	
+	Primero comprobemos que $\varphi s$ es una aproximación simplicial de $f$. COMPROBAR. Además, $ts$ es una aproximación simplicial de $gf$. Para comprobarlo, sea $x \in |\sd^m K|$ y sea $\sigma = [v_0, \dots, v_p]$ el $p$-símplice tal que $x \in \interior \sigma$. Por ser $s$ una aproximación simplicial de $f$, tenemos que $[s(v_0), \dots, s(v_p)]$ pertenece al soporte de $f(x)$ en $|\sd^n L|$ y por tanto
+	\[
+		[ts(v_0), \dots, ts(v_p)] < t(sop(f(x))).
+	\]
+	En particular, $f(x)$ pertenece al soporte de $f(x)$ en $|\sd^n L|$ y por ser $t$ una aproximación simplicial de $g$,
+	\[
+		t(sop(f(x))) < sop(g(f(x)))
+	\]
+	Es decir, $t(s(x)) \in sop(g(f(x)))$.  En consecuencia,
+	\[
+		g_*f_* = (t_* \sd_*^n)(\varphi_* s_* \sd_*^m) = t_* s_* \sd_*^m = (ts)_* \sd_*^m = (gf)_*
+	\]
+	A continuación verifiquemos que la identidad topológica induce la identidad de módulos de homología. Consideremos el operador subdivisión $\sd_\#^n : C(K;R) \to C(\sd^n K;R)$ y sea $\varphi : |\sd^n K| \to |K|$ una aplicación simplicial. Veamos que $\varphi$ es una aproximación simplicial de $\id : |K| \to |K|$. Notemos por $\sigma'$ al soporte de $f(x)$ en $|\sd K|$ y $\sigma$ al soporte de $x$ en $|K|$. Por la definición de $\varphi$, $\varphi(\sigma)$ es una cara propia de $\sigma'$ y por ser simplicial, si $x \in \sigma'$, entonces $\varphi(x) \in \varphi(\sigma') < \sigma$. Es decir, $\varphi(x) \in \sigma$. Concluimos entonces que $\id_* = \varphi_* \sd_\#$ es la identidad.
+\end{proof}
+
+\begin{lema}
+	Algo de lebesgue.
+\end{lema}
+\begin{proof}
+	contenidos...
+\end{proof}
+
+\begin{teorema}
+	Si $f,g$ son aplicaciones homotópicas, entonces $f_*=g_*$.
+\end{teorema}
+\begin{proof}
+	contenidos...
+\end{proof}
+\begin{corolario}
+	Sean $K,L$ complejos simpliciales y sean $|K|,|L|$ sus espacios subyacentes. Si $|K|,|L|$ son espacios HOMOTOPICOS, entonces sus módulos de homología son isomorfos.
+\end{corolario}
+\begin{proof}
+	Consideremos dos aplicaciones continuas $f: |K| \to |L|$ y $g: |K| \to |L|$ tales que $g \circ f \simeq \id_{|K|}$ y $f \circ g \simeq \id_{|L|}$. Por tanto, la composición de los homomorfismos inducidos
+	\begin{gather*}
+		H_p(K;R) \overset{f_*}{\to} H_p(L;R) \overset{g_*}{\to} H_p(K;R), \\
+		H_p(L;R) \overset{g_*}{\to} H_p(K;R) \overset{f_*}{\to} H_p(L;R)
+	\end{gather*}
+	son la identidad para todo $p \in \Z$. En consecuencia, $f_*$ es un isomorfismo.
+\end{proof}
+ULTIMO COROLARIO
 
 \endinput
 %--------------------------------------------------------------------

@@ -28,54 +28,89 @@ Por tanto, el grupo de homología de un grupo diferencial $C$ está formado por 
 
 La anterior definición nos permite preservar la estructura algebraica del grupo diferencial. De esta forma, si tomamos una cadena $c \in C$ que sea un ciclo o un borde y $f:C \rightarrow C'$ es un homomorfismo de grupos diferenciales, $f(c) \in C'$ seguirá siendo un ciclo o un borde de manera correspondiente.
 
+Los grupos diferenciales definen una categoría donde los objetos son los grupos diferenciales y los morfismos son los homomorfismos de grupos diferenciales. Tomamos como ley de composición interna la composición de dichos homomorfismos. Claramente es asociativa pues si $C,C',\bar{C}, \tilde{C} \in \obj()$ y $f: C \to C'$, $g: C' \to \bar{C}$, $h: \bar{C} \to \tilde{C}$, entonces $h \circ (g \circ f)$ se cumple si, y sólo si,
+\begin{gather*}
+	\tilde{d}(h \circ (g \circ f)) 
+	= (\tilde{d}h) \circ (g \circ f) \\
+	=(h\bar{d}) \circ (g \circ f)) 
+	=h \circ (\bar{d} g) \circ f \\
+	=h \circ (g d') \circ f
+	=h \circ g \circ (d' f) \\
+	=h \circ g \circ (fd)
+	=(h \circ g) \circ fd \\
+	=((h \circ g) \circ f) d
+\end{gather*}
+y por tanto $h \circ (g \circ f) = (h \circ g) \circ f$. La propiedad de identidad se sigue de existir el homomorfismo identidad de grupos.
 \begin{definicion}
 	Sean $C, C'$ grupos diferenciales y $f:C \rightarrow C'$ un homomorfismo de grupos diferenciales. Definimos la función $f_* = H(f): H(C) \rightarrow H(C')$ tal que 
 	\[f_*([c]) = [f(c)] \]
 	Diremos que $H(f)$ es el \textbf{homomorfismo inducido} por $f$.
 \end{definicion}
-
-En estas condiciones, $H$ es un funtor covariante de la categoría de grupos diferenciales a la categoría de grupos.
+\begin{proposicion}
+	En estas condiciones, $H$ es un funtor covariante de la categoría de grupos diferenciales a la categoría de grupos.
+\end{proposicion}
+\begin{proof}
+	Por la definición dada del grupo de homología, es claro que la función objeto $H$ asigna a cada grupo diferencial $C$ un grupo de homología $H(C)$. En cuanto a la función de morfismos, la identidad de grupos diferenciales se preserva pues $H(\id)([c]) = \id_*([c]) = [\id(c)] = [c]$ para todo $c \in C$. Además, si $f,g \in \hom(C)$, entonces $H(g \circ f)([c]) = (g \circ f)_*([c]) = [(g \circ f)(c)] = [g (f (c))] = g_*([f(c)]) = g_* ( f_*([c])) = (H(g) \circ H(f)) ([c])$ para todo $c \in C$, manteniendo la ley de composición.
+\end{proof}
 
 \section{Complejos de cadenas}
 
 \begin{definicion}
-	Sea $R$ un anillo. Un \textbf{complejo de cadenas} $K$ de $R$-módulos es una familia $\{K_n, \partial_n\}$ donde $K_n$ son $R$-módulos y $\partial_n : K_n \rightarrow K_{n-1}$ homomorfismos de $R$-módulos tales que $\partial_n \partial_{n+1} = 0$ para todo $n \in \Z$.
+	Sea $R$ un anillo. Un \textbf{complejo de cadenas} $C_{\bullet}$ de $R$-módulos es una familia $\{C_n, \partial_n\}$ donde $C_n$ son $R$-módulos y $\partial_n : C_n \rightarrow C_{n-1}$ homomorfismos de $R$-módulos tales que $\partial_n \partial_{n+1} = 0$ para todo $n \in \Z$.
 \end{definicion}
+\begin{nota}
+	Usualmente notaremos directamente $\partial$ al homomorfismo $\partial_n$ independientemente del valor de $n$ siempre y cuando se sobrentienda por el contexto.
+\end{nota}
 \begin{observacion}
 	La última condición es equivalente a que $\im{\partial_{n+1}} \subset \ker{\partial_n}$.
 \end{observacion}
+Un complejo $C_{\bullet}$  es por tanto una sucesión doblemente infinita
+\[ C_{\bullet} : \cdots \rightarrow C_{1} \rightarrow C_0 \rightarrow C_{-1} \rightarrow \cdots \]
+donde toda composición de homomorfismos de dicha familia es el homomorfismo nulo. La \textbf{homología} $H(C_{\bullet})$ es la familia de $R$-módulos
+\[ H_n(C_{\bullet}) = \frac{\ker \partial_n}{\im \partial_{n+1}} \]
+donde $H_n(C_{\bullet})$ es el \textbf{$n$-ésimo módulo de homología} de $C_{\bullet}$.
 
-Un complejo $K$  es por tanto una sucesión doblemente infinita
-\[ K : \cdots \rightarrow K_{1} \rightarrow K_0 \rightarrow K_{-1} \rightarrow \cdots \]
-donde toda composición de homomorfismos de dicha familia es el homomorfismo nulo. La \textbf{homología} $H(K)$ es la familia de $R$-módulos
-\[ H_n(K) = \frac{\ker \partial_n}{\im \partial_{n+1}} \]
-donde $H_n(K)$ es el \textbf{$n$-ésimo módulo de homología} de $K$.
+Luego $H_n(C_{\bullet})=0$ implica que la sucesión $C_{\bullet}$ es exacta en $C_n$. A los elementos de $C_n$ los llamaremos \textbf{n-cadenas} o \textbf{cadenas de dimensión n}. Un \textbf{n-ciclo} o \textbf{ciclo de dimensión n} de $C_{\bullet}$ es un elemento del submódulo $Z_n(C_{\bullet}) = \ker \partial_n$. Un \textbf{n-borde} o \textbf{borde de dimensión n} es un elemento de $B_n(C_{\bullet})= \im{\partial_{n+1}}$. Si la dimensión se sobrentiende en estos casos, no es necesario indicarla de manera explícita. La clase lateral de un ciclo $c$ la notaremos por $[c] = c + \partial C_{n+1}$. Dos $n$-ciclos $c,c' \in C_n$ pertenecientes a la misma clase lateral $[c]$ decimos que son \textbf{homólogos}, es decir, $c \sim c'$.
 
-Luego $H_n(K)=0$ implica que la sucesión $K$ es exacta en $K_n$. A los elementos de $K_n$ los llamaremos \textbf{n-cadenas} o \textbf{cadenas de dimensión n}. Un \textbf{n-ciclo} o \textbf{ciclo de dimensión n} de $K$ es un elemento del submódulo $Z_n(K) = \ker \partial_n$. Un \textbf{n-borde} o \textbf{borde de dimensión n} es un elemento de $B_n(K)= \im{\partial_{n+1}}$. Si la dimensión se sobrentiende en estos casos, no es necesario indicarla de manera explícita. La clase lateral de un ciclo $c$ la notaremos por $[c] = c + \partial K_{n+1}$. Dos $n$-ciclos $c,c' \in C_n(K)$ pertenecientes a la misma clase lateral $[c]$ decimos que son \textbf{homólogos}, es decir, $c \sim c'$.
-
-\begin{definicion}
-	Sean $K,K'$ complejos de cadenas. La \textbf{suma directa} \( K \oplus K' \) es un complejo de cadenas cuyos operadores bordes vienen definidos por $\partial_n \oplus \partial'_n : K_{n} \oplus K'_{n} \to K_{n-1} \oplus K'_{n-1}$.
+\begin{definicion}HACER BIEN
+	Sea $\{C_{\bullet}^i, \partial_i\}_{i \in I}$ una familia de complejos de cadenas. Su \textbf{suma directa} \( \bigoplus_{i \in I} C^i \) la definimos como el complejo de cadenas $\bigoplus_{i \in I} C^i_{\bullet}$ cuyos operadores borde vienen dados por $\bigoplus_{i \in I} {\partial}^i_n : \bigoplus_{i \in I} C^i_n \to \bigoplus_{i \in I} C^i_{n-1}$ para todo $n \in \Z$.
 \end{definicion}
-
+\begin{proposicion}
+	\label{prop:hom-free-commute}
+	Sea $\{{C_{\bullet}}_i, \partial_i\}_{i \in I}$ una familia de complejos de cadenas. Entonces su homología conmuta con la suma directa, esto es, $H_n(\bigoplus_{i \in I} {C_{\bullet}}_i) \cong \bigoplus_{i \in I} H_n({C_{\bullet}}_i)$ para todo $n \in \Z$.
+\end{proposicion}
+\begin{proof}
+	Para demostrar que el homomorfismo $\log$ conmuta con sumas directas, queremos mostrar que para una colección de complejos de cadenas $\{ (C_i, d_i) \}_{i \in I}$, el isomorfismo
+	\[ \phi: H_n \left( \bigoplus_{i \in I} C_i \right) \rightarrow \bigoplus_{i \in I} H_n (C_i) : [(c_i)] \mapsto ([c_i]), \]
+	y su inverso
+	\[ \psi: \bigoplus_{i \in I} H_n (C_i) \rightarrow H_n \left( \bigoplus_{i \in I} C_i \right) : ([c_i]) \mapsto [(c_i)], \]
+	están bien definidos y son inversos mutuos.
+	
+	En primer lugar, para establecer la bien definición, observamos que $[(c_i)] = [(c_i')]$ si y solo si $[0] = [(c_i - c_i')]$. Esto ocurre si y solo si existe un $b_i \in C_i$ tal que $d_i(b_i) = (c_i - c_i')$, lo cual es equivalente a $c_i + d_i(b_i) = c_i'$ para cada $i \in I$. Por lo tanto, $[(c_i)] = [(c_i')]$ si y solo si $\phi([(c_i)]) = \phi([(c_i')]) = [(c_i' + d_i(b_i))] = [(c_i')]$. De manera similar, $[(c_i)] = [(c_i')]$ si y solo si $\psi([(c_i)]) = \psi([(c_i')])$. Por lo tanto, tanto $\phi$ como $\psi$ están bien definidos.
+	
+	En segundo lugar, es evidente que tanto $\phi$ como $\psi$ son homomorfismos de grupos abelianos. Además, $\phi$ mapea $[(c_i)]$ a $([c_i])$, y $\psi$ mapea $([c_i])$ a $[(c_i)]$, lo que demuestra que son inversos entre sí.
+	
+	Por lo tanto, $\phi$ es un isomorfismo con $\psi$ como su inverso, estableciendo que $\bigoplus_{i \in I} H_n (C_i) \cong H_n \left( \bigoplus_{i \in I} C_i \right)$.
+\end{proof}
 \begin{definicion}
-	Sean $K,K'$ complejos de cadenas. Una \textbf{aplicación de cadenas} o \textbf{morfismo de cadenas} $f: K \rightarrow K'$ es una familia de homomorfismos de $R$-módulos $f_n: K_n \rightarrow K_n'$ tal que $\partial_n'f_n = f_{n-1}\partial_n$ para todo $n \in \Z$.
+	Sean $C_{\bullet},C_{\bullet}'$ complejos de cadenas. Una \textbf{aplicación de cadenas} o \textbf{morfismo de cadenas} $f: C_{\bullet} \rightarrow C_{\bullet}'$ es una familia de homomorfismos de $R$-módulos $f_n: C_n \rightarrow C_n'$ tal que $\partial_n'f_n = f_{n-1}\partial_n$ para todo $n \in \Z$.
 \end{definicion}
 
 \begin{equation}
 	\label{chaincomplex}
 	\xymatrix{
-		\cdots & K_{n-1} \ar[l] \ar[d]^{f_{n-1}} \ar@{..>}[dr] & K_n \ar[l]_{\partial_{n}} \ar[d]^{f_n} \ar@{..>}[dr] & K_{n+1} \ar[l]_{\partial_{n+1}} \ar[d]^{f_{n+1}} & \cdots \ar[l] \\
-		\cdots & K'_{n-1} \ar[l] & K'_n \ar[l]^{\partial'_{n}} & K'_{n+1} \ar[l]^{\partial'_{n+1}} & \cdots \ar[l]
+		\cdots & C_{n-1} \ar[l] \ar[d]^{f_{n-1}} \ar@{..>}[dr] & C_n \ar[l]_{\partial_{n}} \ar[d]^{f_n} \ar@{..>}[dr] & C_{n+1} \ar[l]_{\partial_{n+1}} \ar[d]^{f_{n+1}} & \cdots \ar[l] \\
+		\cdots & C'_{n-1} \ar[l] & C'_n \ar[l]^{\partial'_{n}} & C'_{n+1} \ar[l]^{\partial'_{n+1}} & \cdots \ar[l]
     }
 \end{equation}
 
 Cuando se sobrentienda del contexto, notaremos simplemente por $\partial$ a los correspondientes $\partial_n$ y $\partial_n'$.
 
-La función $H_n(f) = f_*$ definida por $f_*([c]) = f_*(c + \partial K_{n+1}) = fc + \partial K'_{n+1}$ es un homomorfismo $H_n(f): H_n(K) \rightarrow H_n(K')$. Así mismo, cada $H_n$ es un funtor covariante de la categoría de complejos de cadenas y morfismos de cadenas a la categoría de módulos.
+La función $H_n(f) = f_*$ definida por $f_*([c]) = f_*(c + \partial C_{n+1}) = fc + \partial C'_{n+1}$ es un homomorfismo $H_n(f): H_n(C_{\bullet}) \rightarrow H_n(C_{\bullet}')$. Así mismo, cada $H_n$ es un funtor covariante de la categoría de complejos de cadenas y morfismos de cadenas a la categoría de módulos.
 
 \begin{definicion}
 	\label{def:chain_homotopy}
-	Sean $K,K'$ complejos de cadenas y $f,g: K \rightarrow K'$ dos aplicaciones de cadenas entre ellos. Una \textbf{homotopía de cadenas} u \textbf{homotopía algebraica} $s$ es una familia de homomorfismos de módulos $s_n: K_n \rightarrow K_{n+1}'$ para cada $n \in \Z$ tal que
+	Sean $C_{\bullet},C_{\bullet}'$ complejos de cadenas y $f,g: C_{\bullet} \rightarrow C_{\bullet}'$ dos aplicaciones de cadenas entre ellos. Una \textbf{homotopía de cadenas} u \textbf{homotopía algebraica} $s$ es una familia de homomorfismos de módulos $s_n: C_n \rightarrow C_{n+1}'$ para cada $n \in \Z$ tal que
 	\begin{equation}
 		\partial_{n+1}'s_n + s_{n-1} \partial_n = f_n - g_n
 	\end{equation}
@@ -83,30 +118,28 @@ La función $H_n(f) = f_*$ definida por $f_*([c]) = f_*(c + \partial K_{n+1}) = 
 \end{definicion}
 
 \begin{teorema}
-	Si $s$ es una homotopía de cadenas entre $f,g: K \rightarrow K'$, entonces
-	\[ H_n(f) = H_n(g) : H_n(K) \rightarrow H_n(K') \]
+	\label{teo:homot-cad-misma-homologia}
+	Si $s$ es una homotopía de cadenas entre $f,g: C_{\bullet} \rightarrow C_{\bullet}'$, entonces
+	\[ H_n(f) = H_n(g) : H_n(C_{\bullet}) \rightarrow H_n(C_{\bullet}') \]
 \end{teorema}
 \begin{proof}
-	Si $c$ es un ciclo de $K_n$, tenemos que $\partial_n c = 0$. Por la \autoref{def:chain_homotopy} se cumple que $f_nc-g_nc =  \partial s_n c$. Como consecuencia $f_n c$ y $g_n c$ son homólogos lo que implica que $[f_n c] = [g_n c]$ en $H_n(K')$, como queríamos demostrar.
+	Si $c$ es un ciclo de $C_n$, tenemos que $\partial_n c = 0$. Por la \autoref{def:chain_homotopy} se cumple que $f_nc-g_nc =  \partial s_n c$. Como consecuencia $f_n c$ y $g_n c$ son homólogos lo que implica que $[f_n c] = [g_n c]$ en $H_n(C_{\bullet}')$, como queríamos demostrar.
 \end{proof}
 
 \begin{definicion}
-	Una aplicación de cadenas $f: K \rightarrow K'$ es una \textbf{equivalencia de cadenas} si existe otra aplicación $h: K' \rightarrow K$ y homotopías $s: h \circ f \rightarrow \id_K$, $t: f \circ h \rightarrow \id_{K'}$ tales que $h \circ f \simeq \id_K$, $f \circ h \simeq \id_{K'}$.
+	Una aplicación de cadenas $f: C_{\bullet} \rightarrow C_{\bullet}'$ es una \textbf{equivalencia de cadenas} si existe otra aplicación $h: C_{\bullet}' \rightarrow C_{\bullet}$ y homotopías $s: h \circ f \rightarrow {\id_C}_{\bullet}$, $t: f \circ h \rightarrow {\id_C'}_{\bullet}$ tales que $h \circ f \simeq {\id_C}_{\bullet}$, $f \circ h \simeq {\id_{C'}}_{\bullet}$.
 \end{definicion}
-\begin{nota}
-	En ocasiones diremos que $f$ y $h$ \textbf{son equivalentes}.
-\end{nota}
 
-Como $H_n(\id_K) = \id_{H_n(K)}$, del anterior teorema se deduce lo siguiente.
+Como $H_n({\id_C}_{\bullet}) = \id_{H_n(C_{\bullet})}$, del anterior teorema se deduce lo siguiente.
 
 \begin{corolario}
 	\label{cor:equiv-homot}
-	Si $f: K \rightarrow K'$ es una equivalencia de cadenas, la aplicación inducida $H_n(f): H_n(K) \rightarrow H_n(K')$ es un isomorfismo para cada $n \in \Z$.
+	Si $f: C_{\bullet} \rightarrow C_{\bullet}'$ es una equivalencia de cadenas, la aplicación inducida $H_n(f): H_n(C_{\bullet}) \rightarrow H_n(C_{\bullet}')$ es un isomorfismo para cada $n \in \Z$.
 \end{corolario}
 
 \begin{proposicion}
-	Sean $f,g: K \rightarrow K'$ y $f',g': K' \rightarrow K''$ aplicaciones de cadenas. Sean $s: f \rightarrow g$, $s': f' \rightarrow g'$ homotopías de cadenas entre ellas tales que $f \simeq g$, $f' \simeq g'$. Entonces la composición
-	\[ f' s + s' g: f' \circ f \rightarrow g' \circ g \qquad g' \circ g : K \rightarrow K'' \]
+	Sean $f,g: C_{\bullet} \rightarrow C_{\bullet}'$ y $f',g': C_{\bullet}' \rightarrow C_{\bullet}''$ aplicaciones de cadenas. Sean $s: f \rightarrow g$, $s': f' \rightarrow g'$ homotopías de cadenas entre ellas tales que $f \simeq g$, $f' \simeq g'$. Entonces la composición
+	\[ f' s + s' g: f' \circ f \rightarrow g' \circ g \qquad g' \circ g : C_{\bullet} \rightarrow C_{\bullet}'' \]
 	es una homotopía de cadenas.
 \end{proposicion}
 \begin{proof}
@@ -127,63 +160,63 @@ Como $H_n(\id_K) = \id_{H_n(K)}$, del anterior teorema se deduce lo siguiente.
 \section{Subcomplejos y complejos cociente}
 
 \begin{definicion}
-	Un \textbf{subcomplejo} $S$ de $K$ es una familia de submódulos $S_n \subset K_n$ tal que para cada $n \in \Z$, $\partial S_n \subset S_{n-1}$.
+	Un \textbf{subcomplejo} $S_{\bullet}$ de $C_{\bullet}$ es una familia de submódulos $S_n \subset C_n$ tal que para cada $n \in \Z$, $\partial S_n \subset S_{n-1}$.
 \end{definicion}
 
-Por tanto, $S$ es un complejo en sí con el operador borde $\partial$ inducido de $K$ y la inclusión $i: S \rightarrow K$ es una aplicación de cadenas.
+Por tanto, $S_{\bullet}$ es un complejo en sí con el operador borde $\partial$ inducido de $C_{\bullet}$ y la inclusión $i: S_{\bullet} \rightarrow C_{\bullet}$ es una aplicación de cadenas.
 
 \begin{definicion}
-	Sea $S$ un subcomplejo de $K$. El \textbf{complejo cociente} $K/S$ es la familia $(K/S)_n = K_n/S_n$ de módulos cocientes con operador borde $\partial'_n: K_n/S_n \rightarrow K_{n-1}/S_{n-1}$ inducido por $\partial_K$.
+	Sea $S_{\bullet}$ un subcomplejo de $C_{\bullet}$. El \textbf{complejo cociente} $C_{\bullet}/S_{\bullet}$ es la familia $(C_{\bullet}/S_{\bullet})_n = C_n/S_n$ de módulos cocientes con operador borde $\partial'_n: C_n/S_n \rightarrow C_{n-1}/S_{n-1}$ inducido por ${\partial_C}_{\bullet}$.
 \end{definicion}
 
-%La proyección es la aplicación de cadenas $\pi: K \rightarrow K/S$ y la sucesión corta $S_n$ FLECHARARA $K_n FLECHA (K/S)_n$ es exacta para cada $n \in \Z$.
+%La proyección es la aplicación de cadenas $\pi: C_{\bullet} \rightarrow C_{\bullet}/S$ y la sucesión corta $S_n$ FLECHARARA $C_n FLECHA (C_{\bullet}/S)_n$ es exacta para cada $n \in \Z$.
 %
-%Si \( f: K \to K' \) es una aplicación de cadenas, entonces \( \ker(f) = \{\ker(f_n)\} \) es un subcomplejo de \( K \), \( \text{Im}(f) = \{f_n(K_n)\} \) es un subcomplejo de \( K' \), mientras que \( K'/\text{Im}(f) \) es el cociente de \( f \) y \( K/\ker(f) \) el conúcleo. 
+%Si \( f: C_{\bullet} \to C_{\bullet}' \) es una aplicación de cadenas, entonces \( \ker(f) = \{\ker(f_n)\} \) es un subcomplejo de \( C_{\bullet} \), \( \text{Im}(f) = \{f_n(C_n)\} \) es un subcomplejo de \( C_{\bullet}' \), mientras que \( C_{\bullet}'/\text{Im}(f) \) es el cociente de \( f \) y \( C_{\bullet}/\ker(f) \) el conúcleo. 
 
 \begin{definicion}
-Sean \( f: K \rightarrow K' \), \( g: K' \rightarrow K'' \) aplicaciones de cadenas. La sucesión de complejos \( K \xrightarrow{f} K' \xrightarrow{g} K'' \) es \textbf{exacta} en \( K' \) si \( \im(f) = \ker(g) \); es decir, si cada sucesión \( K_n \xrightarrow{f_n} K'_n \xrightarrow{g_n} K''_n \) de módulos es exacta en \( K'_n \).
+Sean \( f: C_{\bullet} \rightarrow C_{\bullet}' \), \( g: C_{\bullet}' \rightarrow C_{\bullet}'' \) aplicaciones de cadenas. La sucesión de complejos \[ C_{\bullet} \xrightarrow{f} C_{\bullet}' \xrightarrow{g} C_{\bullet}'' \] es \textbf{exacta} en \( C_{\bullet}' \) si \( \im(f) = \ker(g) \); es decir, si cada sucesión \( C_n \xrightarrow{f_n} {C'}_n \xrightarrow{g_n} {C''}_n \) de módulos es exacta en \( {C'}_n \).
 \end{definicion}
 
-%Para cualquier \( f: K \to K', \)
-%\[ 0 \to \ker(f) \to K \xrightarrow{f} K' \to \text{Coker}(f) \to 0 \]
+%Para cualquier \( f: C_{\bullet} \to C_{\bullet}', \)
+%\[ 0 \to \ker(f) \to C_{\bullet} \xrightarrow{f} C_{\bullet}' \to \text{Coker}(f) \to 0 \]
 %es una sucesión exacta de complejos.
 
 \begin{definicion}
-Un complejo \( K \) es \textbf{positivo} si \( K_n = 0 \) para todo \( n < 0 \) con $n \in \Z$. Su $n$-ésimo módulo de homología es entonces positivo  ya que \( H_n(K) = 0 \) para todo \( n < 0 \). De manera análoga, un complejo \( K \) es \textbf{negativo} si \( K_n = 0 \) para todo \( n > 0 \) con $n \in \Z$.
+Un complejo \( C_{\bullet} \) es \textbf{positivo} si \( C_n = 0 \) para todo \( n < 0 \) con $n \in \Z$. Su $n$-ésimo módulo de homología es entonces positivo  ya que \( H_n(C_{\bullet}) = 0 \) para todo \( n < 0 \). De manera análoga, un complejo \( C_{\bullet} \) es \textbf{negativo} si \( C_n = 0 \) para todo \( n > 0 \) con $n \in \Z$.
 \end{definicion}
 
-Los complejos negativos suelen notarse con índices superiores positivos donde $K_{-n}$ se sustituye por $K^n$ y $\partial_{-n} : K_{-n} \rightarrow K_{-n-1}$ por $\delta^n: K^n \rightarrow K^{n+1}$ quedando así
-\[ 0 \to K^0 \xrightarrow{\delta^0} K^1 \xrightarrow{\delta^1} K^2 \to \cdots, \quad \delta \circ \delta = 0 \]
-donde el $n$-ésimo módulo de homología \( H^n(K) = \ker(\delta^n)/\text{Im}(\delta^{n-1}) \) es positivo en los índices superiores. A dicho complejo lo llamaremos \textbf{complejo de cocadenas}.
+Los complejos negativos suelen notarse con índices superiores positivos donde $C_{-n}$ se sustituye por $C^n$ y $\partial_{-n} : C_{-n} \rightarrow C_{-n-1}$ por $\delta^n: C^n \rightarrow C^{n+1}$ quedando así
+\[ 0 \to C^0 \xrightarrow{\delta^0} C^1 \xrightarrow{\delta^1} C^2 \to \cdots, \quad \delta \circ \delta = 0 \]
+donde el $n$-ésimo módulo de homología \( H^n(C_{\bullet}) = \ker(\delta^n)/\text{Im}(\delta^{n-1}) \) es positivo en los índices superiores. A dicho complejo lo llamaremos \textbf{complejo de cocadenas}.
 
 \begin{definicion}
-	Sea $K$ un complejo positivo de $R$-módulos. Denominaremos \textbf{aumento de $K$} al homomorfismo sobreyectivo $\varepsilon : K_0 \to R$ de forma que $\varepsilon \circ \partial_1 = 0$.
-\end{definicion}
-
-\begin{definicion}
-	Sea $K$ un complejo de cadenas positivo, $\varepsilon : K_0 \to R$ un aumento de $K$ y sea $n \in \Z$. Consideremos el complejo positivo $\widetilde{C}$ tal que $\widetilde{K_n} = K$ para todo $n \geq 0$, $\widetilde{K_n} = 0$ para todo $n < -1$ y $\widetilde{K_{-1}}=R$. Consideremos también $\widetilde{\partial_n} = \partial_n$ para todo $n \geq 1$ y $\widetilde{\partial_0= \epsilon}$. Llamaremos a este complejo \textbf{complejo aumentado} de $K$.
+	Sea $C_{\bullet}$ un complejo positivo de $R$-módulos. Denominaremos \textbf{aumento de $C_{\bullet}$} al homomorfismo sobreyectivo $\varepsilon : C_0 \to R$ de forma que $\varepsilon \circ \partial_1 = 0$.
 \end{definicion}
 
 \begin{definicion}
-Sean $f$ y $g$ aplicaciones de cadenas de $K$ a $K'$ y sea $s$ una homotopía de cadenas entre ellas. Diremos que $s$ es una \textbf{homotopía de cocadenas} si  está escrita con índices superiores. Esto es, \( s^n: K^n \to K'^{n-1} \) con \( \delta s + s \delta = f - g \).
+	Sea $C_{\bullet}$ un complejo de cadenas positivo, $\varepsilon : C_0 \to R$ un aumento de $C_{\bullet}$ y sea $n \in \Z$. Consideremos el complejo positivo $\widetilde{C}_{\bullet}$ tal que $\widetilde{C}_n = C_n$ para todo $n \geq 0$, $\widetilde{C}_n = 0$ para todo $n < -1$ y $\widetilde{C}_{-1}=R$. Consideremos también $\widetilde{\partial}_n = \partial_n$ para todo $n \geq 1$ y $\widetilde{\partial}_0= \epsilon$. Llamaremos a este complejo \textbf{complejo aumentado} de $C_{\bullet}$.
 \end{definicion}
 
 \begin{definicion}
-	Sea $A$ un módulo. Definimos el siguiente complejo positivo donde \( A_0 = A \), \( A_n = 0 \) para \( n \neq 0 \) y \( \partial = 0 \). Un \textbf{complejo sobre \( A \)} es un complejo positivo \( K \) junto con una aplicación de cadenas \( \varepsilon: K \to A \) donde \( \varepsilon \) es un homomorfismo de módulos \( \varepsilon: K_0 \to A \) tal que \( \varepsilon \partial = 0: K_1 \to A \).
+Sean $f$ y $g$ aplicaciones de cadenas de $C_{\bullet}$ a $C_{\bullet}'$ y sea $s$ una homotopía de cadenas entre ellas. Diremos que $s$ es una \textbf{homotopía de cocadenas} si  está escrita con índices superiores. Esto es, \( s^n: C^n \to C'^{n-1} \) con \( \delta s + s \delta = f - g \).
+\end{definicion}
+
+\begin{definicion}
+	Sea $A$ un módulo. Definimos el siguiente complejo positivo donde \( A_0 = A \), \( A_n = 0 \) para \( n \neq 0 \) y \( \partial = 0 \). Un \textbf{complejo sobre \( A \)} es un complejo positivo \( C_{\bullet} \) junto con una aplicación de cadenas \( \varepsilon: C_{\bullet} \to A \) donde \( \varepsilon \) es un homomorfismo de módulos \( \varepsilon: C_0 \to A \) tal que \( \varepsilon \partial = 0: C_1 \to A \).
 \end{definicion}
 
 \begin{definicion}
 \label{def:contr_homotopy}
-Una \textbf{homotopía contráctil} para \( \varepsilon: K \to A \) es una aplicación de cadenas \( f: A \to K \) tal que \( \varepsilon f = \id_A \) junto con una homotopía \( s: \id_K \rightarrow f \varepsilon \) donde \( \id_K \simeq f \varepsilon \). En otras palabras, una homotopía contráctil consiste en homomorfismos de módulos \( f: A \to K_0 \) y \( s_n: K_n \to K_{n+1}, n = 0, 1, \dots \), tal que
+Una \textbf{homotopía contráctil} para \( \varepsilon: C_{\bullet} \to A \) es una aplicación de cadenas \( f: A \to C_{\bullet} \) tal que \( \varepsilon f = \id_A \) junto con una homotopía \( s: {\id_C}_{\bullet} \rightarrow f \varepsilon \) donde \( {\id_C}_{\bullet} \simeq f \varepsilon \). En otras palabras, una homotopía contráctil consiste en homomorfismos de módulos \( f: A \to C_0 \) y \( s_n: C_n \to C_{n+1}, n = 0, 1, \dots \), tal que
 
-\[ \varepsilon f = \id_A, \quad \partial_{1} s_0 + f \varepsilon = \id_{K_0}, \quad \partial_{n+1} s_n + s_{n-1} \partial_n = \id_{K_n} \quad n > 0 \]
+\[ \varepsilon f = \id_A, \quad \partial_{1} s_0 + f \varepsilon = \id_{C_0}, \quad \partial_{n+1} s_n + s_{n-1} \partial_n = \id_{C_n} \quad n > 0 \]
 \end{definicion}
 
-Podemos extender el complejo estableciendo \( K_{-1} = A \), \( \partial_0 = \varepsilon: K_0 \to K_{-1} \) y \( s_{-1} = f \). Aplicando la \autoref{def:contr_homotopy}, \( s: \id_K \rightarrow 0 \) es una homotopía de cadenas. Si \( \varepsilon: K \to A \) tiene una homotopía contráctil, sus grupos de homología son isomorfos por \( \varepsilon_*: H_0(K) \rightarrow A \) para \( n = 0 \) y \( H_n(K) = 0 \) para \( n > 0 \).
+Podemos extender el complejo estableciendo \( C_{-1} = A \), \( \partial_0 = \varepsilon: C_0 \to C_{-1} \) y \( s_{-1} = f \). Aplicando la \autoref{def:contr_homotopy}, \( s: {\id_C}_{\bullet} \rightarrow 0 \) es una homotopía de cadenas. Si \( \varepsilon: C_{\bullet} \to A \) tiene una homotopía contráctil, sus grupos de homología son isomorfos por \( \varepsilon_*: H_0(C_{\bullet}) \rightarrow A \) para \( n = 0 \) y \( H_n(C_{\bullet}) = 0 \) para \( n > 0 \).
 
-Los complejos \( K \) de $\Z$-módulos libres surgen en topología. Si cada \( K_n \) es finitamente generado, entonces cada \( H_n(K) \) es un grupo abeliano finitamente generado. El teorema de estructura para tales grupos presenta \( H_n(K) \) como una suma directa
+Los complejos \( C_{\bullet} \) de $\Z$-módulos libres surgen en topología. Si cada \( C_n \) es finitamente generado, entonces cada \( H_n(C_{\bullet}) \) es un grupo abeliano finitamente generado. El teorema de estructura para tales grupos presenta \( H_n(C_{\bullet}) \) como una suma directa
 \[ \Z \oplus \ldots \oplus \Z \oplus \ldots \oplus \Z_{m_1} \oplus \ldots \oplus \Z_{m_k}, \]
-donde el número \( \beta_n \) de sumandos cíclicos infinitos y los enteros \( m_1, \ldots, m_k \) (cada uno divisor del siguiente) dependen solo de \( H_n(K) \). El entero \( \beta_n \) lo llamaremos el \textbf{n-ésimo número de Betti} de \( K \) y a los \( \{m_i\} \) los \textbf{n-ésimos coeficientes de torsión}.
+donde el número \( \beta_n \) de sumandos cíclicos infinitos y los enteros \( m_1, \ldots, m_k \) (cada uno divisor del siguiente) dependen solo de \( H_n(C_{\bullet}) \). El entero \( \beta_n \) lo llamaremos el \textbf{n-ésimo número de Betti} de \( C_{\bullet} \) y a los \( \{m_i\} \) los \textbf{n-ésimos coeficientes de torsión}.
 
 %\section{Sucesión de Mayer-Vietoris}
 

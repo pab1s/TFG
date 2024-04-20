@@ -1,11 +1,204 @@
 % !TeX root = ../tfg.tex
 % !TeX encoding = utf8
 
-\chapter{Análisis de datos topológico}
+\chapter{Homología persistente}
 
-\section{Complejos simpliciales de Cech y Vietoris-Rips}
+\section{Complejos de Cech y Vietoris-Rips}
+\begin{definicion}
+	Sea $X$ un espacio topológico y sea $\mathcal{U} = \{U_v\}_{v \in V}$ un recubrimiento de $X$. Llamaremos \textbf{nervio} de $\mathcal{U}$ al complejo simplicial abstracto con conjunto de vértices $V$ tal que la familia $v_0, \dots, v_p$ genera un $p$-símplice si, y sólo si, $U_{v_0} \cap \dots \cap U_{v_p} \neq \emptyset$. Lo notaremos por $N(\mathcal{U})$.
+\end{definicion}
 
-\section{Homología persistente}
+\begin{teorema}[del Nervio]
+	Sea $X$ un espacio topológico y sea $\mathcal{U} = \{U_v\}_{v \in V}$ un recubrimiento por abiertos numerable de $X$. Supongamos además que para todo subconjunto no vacío de vértices $S \subseteq V$ tenemos que $\bigcap_{s \in S} U_s$ es contráctil o vacío. Entonces $N(\mathcal{U})$ es homotópicamente equivalente a $X$.
+\end{teorema}
+\begin{proof}
+	contenidos...
+\end{proof}
+\begin{definicion}
+	Sea $(X,d)$ un espacio métrico y sea $V$ un subconjunto de puntos de $X$.Definimos el \textbf{complejo de CEch} $C(V, \varepsilon)$ como el nervio $N(\mathcal{B}_\varepsilon)$, donde
+	\[
+		\mathcal{B}_\varepsilon = \{ B_{\varepsilon}(v) : v \in V \},
+	\]
+	siendo $B_{\varepsilon}(v)$ la bola abierta de centro $x$ y radio $\varepsilon > 0$.
+\end{definicion}
+
+% Tal vez lo de la variedad pseudoriemanniana
+
+\begin{definicion}
+	Sea $(X,d)$ un espacio métrico y sea $V$ un subconjunto de puntos de $X$. Definimos el \textbf{complejo de Vietoris-Rips} $VR(V,\varepsilon)$ como el complejo simplicial cuyo conjunto de vértices es $V$, de forma que $\{v_0, v_1, \dots v_p\} \subseteq V$ genera un $p$-símplice si, y sólo si, $d(v_i,v_j) \leq \varepsilon$ para todo $0 \leq i$, $j \leq p$.
+\end{definicion}
+\begin{proposicion}
+	Sea $(X,d)$ un espacio métrico y sea $V$ un subconjunto de puntos de $X$. Entonces
+	\[
+		C(V, \varepsilon) \subseteq VR(V, 2\varepsilon) \subseteq C(V, 2\varepsilon).
+	\]
+\end{proposicion}
+\begin{proof}
+	La primera imnclusión es inmediata pues si un punto $x$ pertenece a la intersección $\bigcap_{v \in V} B(v, \varepsilon)$, entonces la distancia para cada par de puntos de $V$ es, a lo sumo, $2 \varepsilon$. En consecuencia, cualquier símplice de $C(V,\varepsilon)$ se encuentra en $VR(V, 2\varepsilon)$.
+	
+	Para la segunda inclusión, consideremos ahora un símplice $\sigma = \{v_0, \dots, v_p\}$ de $VR(V, 2\varepsilon)$. Por la definición de complejo de Vietoris-Rips, tenemos que $d(v_i, v_j) \leq 2\varepsilon$ para todo $i,j \in \{0, \dots, p\}$. Considerando las bolas abiertas de radio $2\varepsilon$ centradas en $v_i$ y en $v_j$, tenemos que su intersección es no vacía, pues $v_i \in \overline{B}_{2\varepsilon}(v_j)$ y $v_j \in \overline{B}_{2\varepsilon}(v_i)$. En el supuesto de que los puntos pertenecieran a la frontera de las bolas, la intersección de las bolas abiertas también sería no vacía pues $\varepsilon > 0$. En consecuencia, tenemos que $\sigma \in C(V,2\varepsilon)$.
+\end{proof}
+
+\section{Módulos de homología persistente}
+\begin{definicion}
+	Sea $K$ un complejo simplicial. Una \textbf{filtración} $\mathcal{F}$ de $K$ es una familia totalmente ordenada de subcomplejos $\{K^n\}_{n \in \N}$ tal que $\emptyset, K \in \mathcal{F}$ y si $i \leq j$, entonces $K^i \subseteq K^j$. En particular, llamaremos a dicho orden \textbf{filtro}.
+\end{definicion}
+A partir de la definición anterior, podemos construir los complejos de cadenas asociados $C(K^i;R)$ para todo $i \in \N$. Así mismo, podemos obtener sus respectivos submódulos de ciclos $Z^i_p$ y bordes $B^i_p$ para cada cadena $C_p(K^i;R)$.
+\begin{definicion}
+	Sea $\mathcal{F}$ una filtración, sea $p$ un número natural y sean $i,j \in \{0, \dots, n\}$. Definimos el  \textbf{$(i,j)$-ésimo $R$-módulo de homología persistente de nivel $p$} asociado a $\mathcal{F}$ como
+	\[
+		H_p^{i \to j}(\mathcal{F}) := \im f_p^{i,j}.
+	\]
+	El rango de $H_p^{i \to j}(\mathcal{F})$ diremos que es el \textbf{$(i,j)$-ésimo número de Betti de persistencia de nivel $p$} y lo notaremos por $\beta_p^{i,j}$.
+\end{definicion}
+\begin{proposicion}
+	Sea $\mathcal{F}$ una filtración del complejo simplicial $K$. Entonces
+	\[
+		H_p^{i \to j}(\mathcal{F}) \cong \frac{Z_p(K_j)}{B_p(K_j) \cap Z_p(K_i)}
+	\]
+	es un isomorfismo de $R$-módulos.
+\end{proposicion}
+\begin{proof}
+	Sabemos que el cociente anterior está bien definid,o pues $Z_p(K_i) \cap B_p(K_j)$ es un submódulo de $Z_p(K_i)$. Para ver que en efecto existe un isomorfismo, consideraremos la proyección canónica $\pi_i : Z_p(K_i) \to H_p(K_j)$. Aplicando el \nameref{teo:first-iso}, tenemos que 
+	\[
+		\frac{Z_p(K_i)}{\ker \pi_i} \cong \im \pi_i
+	\]
+	es un isomorfismo. Sin embargo, nótese que
+	\begin{align*}
+		\ker \pi_i &= \{z \in Z_p(K_i) : \pi_i(z) = [0] \} \\
+				   &= \{z \in Z_p(K_i) : [z] = [0] \} \\ 
+				   &= \{z \in Z_p(K_i) : z \in B_p(K_j) \} \\ 
+				   &= B_p(K_j) \cap Z_p(K_i).
+	\end{align*}
+	Además, 
+	\begin{align*}
+		H_p^{i,j}(\mathcal{F}) &= \im f_p^{i,j} = \{f_p^{i,j}([z]) : [z] \in H_p(K_i) \} \\ 
+							   &= \{[({i_{i,j}}_*)_p(z)] : z \in Z_p(K_i) \} \\ 
+							   &= \{\pi_i(z) : z \in Z_p(K_i) \} \\
+							   &= \im \pi_i.
+	\end{align*}
+\end{proof}
+\begin{definicion}
+	Dada una filtración $F$, decimos que un elemento $\alpha \neq 0$ en $H^p(K_i)$ nace en $K_i$ si $\alpha \not\in H^{p-1}(K_{i-1},F)$. Además, decimos que $\alpha$ muere entrando en $K_j$ si se fusiona con una clase proveniente de un nivel anterior cuando se desplaza de $K_j$ a $K_{j-1}$; es decir, si $f_{i,j-1}^p(\alpha) \not\in H^{p-1}(K_{i-1},F)$ pero $f_{i,j}^p(\alpha) \in H^{p-1}(K_j,F)$.
+\end{definicion}
+
+\section{Representación de la homología persistente}
+\begin{lema}
+	Sea \( A \) un \( R \)-módulo. \( A \) es finitamente generado por \( n \) elementos si, y sólo si, existe un epimorfismo \( \phi : R^n \to A \).
+\end{lema}
+
+\begin{proof}
+	Sea \( M \) un módulo generado por un conjunto finito de elementos \( \{m_1, \ldots, m_n\} \). Consideremos el homomorfismo \( \phi: R^n \rightarrow M \) definido por
+	\[
+	\phi(a_1, \ldots, a_n) = \sum_{i=1}^n a_i m_i.
+	\]
+	Este homomorfismo \( \phi \) es claramente sobreyectivo, ya que cada elemento \( m \) en \( M \) puede ser expresado como \( \phi(a_1, \ldots, a_n) \) para algunos \( a_1, \ldots, a_n \in R \).
+	
+	Por otro lado, si existe un homomorfismo sobreyectivo \( \phi: R^n \rightarrow M \), entonces, para cada \( m \in M \) existe una \( n \)-tupla \( (a_1, \ldots, a_n) \) en \( R^n \) tal que \( \phi(a_1, \ldots, a_n) = m \). Los elementos \( \phi(e_i) \), donde \( e_i \) es el \( i \)-ésimo vector de la base estándar de \( R^n \), generan \( M \). De aquí se sigue que \( M \) es finitamente generado.
+\end{proof}
+
+\begin{definicion}
+	Sea \( A \) un \( R \)-módulo finitamente generado por \( n \) elementos y sea \( \phi : R^n \to A \) un epimorfismo. Diremos que \( A \) es \textbf{finitamente presentado} si \( \ker \phi \) es finitamente generado.
+\end{definicion}
+
+\begin{definicion}
+	Sea \( \{A_i\}_{i \in \mathbb{N}} \) una familia de \( R \)-módulos. Diremos que dicha familia es un \textbf{módulo de persistencia discreto} sobre el anillo \( R \) si para cada \( i \leq j \) existe un homomorfismo de \( R \)-módulos \( f_{i,j}: A_i \to A_j \) tal que:
+	\begin{enumerate}
+		\item \( f_{i,i} = \mathrm{id}_{A_i} \) para todo \( i \in \mathbb{N} \).
+		\item \( f_{j,k} \circ f_{i,j} = f_{i,k} \) para todo \( i \leq j \leq k \).
+	\end{enumerate}
+	Además, diremos que el módulo de persistencia es de \textbf{tipo finito} si cada \( A_i \) es finitamente generado y existe un \( n \in \mathbb{N} \) tal que para todo \( i, j \geq n \), el homomorfismo \( f_{i,j} \) es un isomorfismo.
+\end{definicion}
+
+\begin{definicion}
+	Sean $\mathcal{M} = \{o\}, \mathcal{N}$ dos módulos de persistencia discretos.  Diremos que la familia de homomorfismos $\varphi_\bullet = \{\varphi_i\}_{i \in \N}$ tales que $\varphi_i : M_i \to N_i$ es un \textbf{homomorfismo de módulos de persistencia discreto} si $g_{i,j} \circ \varphi_i = \varphi_j \circ f_{i,j}$.
+\end{definicion}
+La anterior definición es equivalente a decir que el diagrama
+\[DIAGRAMA\]
+conmuta. En las condiciones anteriores, los módulos de persistencia discretos junto a sus homomorfismos forman una categoría que notaremos por R-Persmod.
+
+\begin{definicion}
+	Sea \( R \) un anillo. Diremos que \( R \) es un \textbf{anillo graduado} si puede descomponerse como una suma directa
+	\[
+	R = \bigoplus_{n=0}^{\infty} R_n,
+	\]
+	donde \( R_m R_n \subseteq R_{m+n} \) para todos \( m, n \in \mathbb{Z} \). Los elementos de \( R_n \) distintos de cero se denominan \textbf{homogéneos de grado \( n \)}.
+\end{definicion}
+
+\begin{definicion}
+	Sea \( R \) un anillo graduado y sea \( M \) un \( R \)-módulo. Diremos que \( M \) es un \textbf{módulo graduado} si puede escribirse como
+	\[
+	M = \bigoplus_{n=0}^{\infty} M_n,
+	\]
+	donde \( M_n \) son grupos abelianos y \( R_m M_n \subseteq M_{m+n} \) para todos \( m, n \in \mathbb{Z} \). Un elemento de \( M_n \) distinto de cero se llama \textbf{homogéneo de grado \( n \)}.
+\end{definicion}
+VER QUE LOS MODULOS RGADUADOS FORMAN UNA CATEGORIA
+\begin{lema}
+	Las aplicaciones $\alpha$ y $\beta$ definidas respectivamente en 2 y 3 forman una pareja isomorfa de funtores entre R-PersMod y R[t]-Gr-Mod. En particular, ambas categorías son isomorfas.
+\end{lema}
+\begin{proof}
+	Sea $\varphi_\bullet : \mathcal{M} \to \mathcal{N}$ un morfismo de módulos de persistencia discretos. Definimos la aplicación $\alpha$
+	\[FYNTOR\]
+	y comprobemos que es un funtor. COMPROBAMOS
+	
+	Por otro lado, sea $\psi$ ...
+	
+	Finalmente, por la construcción de $\alpha$ y $\beta$ tenemos que $\beta \circ \alpha$ es el funtor identidad en R[t]-Gr-Mod y que $\alpha \circ \beta$ es el funtor identidad en R-PersMod.
+\end{proof}
+
+En la práctica generalmente trabajaremos con módulos de persistencia que cumplen ciertas condiciones de finitud. Por ello, resulta de gran interés conocer si la correspondencia recién realizada se sigue cumpliendo bajo estos casos.
+
+\begin{definicion}
+	Diremos que un módulo de persistencia discreto $\mathcal{M}$ es de \textbf{tipo finito} si existe $n \in \N$ de forma que para todo $i,j \in \N$ tal que $n \leq i \leq j$ la aplicación $f_{i,j}$ es un isomorfismo.
+\end{definicion}
+
+\begin{definicion}
+	Diremos que un módulo de persistencia discreto $\mathcal{M}$ es de \textbf{finitamente presentado (generado)} si es de tipo finito y además, $M_i$ es finitamente presentado (generado) para todo $i \in \N$.
+\end{definicion}
+
+\begin{lema}
+	Sea $\mathcal{M}$ un módulo de persistencia discreto. Si $\mathcal{M}$ es finitamente presentado, entonces $\alpha(\mathcal{M})$ es finitamente presentado.
+\end{lema}
+\begin{proof}
+	contenidos...
+\end{proof}
+
+Para los siguientes dos lemas fijaremos el $R[t]$módulo graduado finitamente presentado $\mathbf{M} = \oplus_{i \in \N} M_i$ junto con la aplicación $\mu : R[t]^n \to \mathbf{M}$ cuyo núcleo es finitamente generado. MAS
+
+\begin{lema}
+	Cada $M_i$ de $\mathbf{M}$ está finitamente presentado como un $R$-módulo.
+\end{lema}
+\begin{proof}
+	contenidos...
+\end{proof}
+
+\begin{lema}
+	$\beta(\mathbf{M})$ es de tipo finito. En particular, es de tipo finitamente presentado (lema anterior).
+\end{lema}
+\begin{proof}
+	contenidos...
+\end{proof}
+
+\begin{teorema}
+	Sea \( R \) un anillo. Entonces, todos los módulos de persistencia finitamente presentados están en correspondencia biunívoca con los \( R[t] \)-módulos graduados finitamente presentados.
+\end{teorema}
+
+\begin{proof}
+	% Aquí iría el desarrollo completo de la demostración del teorema.
+	% Suponiendo que este contenido está en desarrollo, se dejará como marcador de posición.
+\end{proof}
+
+\begin{teorema}[Teorema de descomposición de módulos graduados]
+	Sea \( A \) un \( R[t] \)-módulo graduado finitamente generado. Entonces \( A \) se descompone de manera única, salvo isomorfismos, como
+	\[
+	A \cong \left( \bigoplus_{i=1}^{n-m} R[t](-a_i) \right) \oplus \left( \bigoplus_{j=1}^{m} R[t]/(t^{c_j})(-b_j) \right),
+	\]
+	donde \( a_i, b_j, c_j \in \mathbb{N} \), y para cada \( j \), \( t^{c_j} \) es un elemento homogéneo tal que divide a \( t^{c_{j+1}} \).
+\end{teorema}
+
+\begin{proof}
+	% Al igual que con el teorema anterior, se presupone que la demostración está en proceso de redacción.
+\end{proof}
 
 \endinput
 %--------------------------------------------------------------------

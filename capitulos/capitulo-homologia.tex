@@ -3,55 +3,57 @@
 
 \chapter{Homología}
 
-Mediante el uso de estructuras algebraicas como grupos y complejos de cadenas, la homología asigna a cada espacio topológico una serie de grupos de homología, que reflejan características clave como agujeros y vacíos en diferentes dimensiones. Estos grupos permiten no sólo discernir la estructura interna de los espacios, sino también compararlos de manera abstracta. Usaremos de referencia \cite{maclane2012homology}.
+Mediante el uso de estructuras algebraicas como módulos y complejos de cadenas, la homología asigna a cada espacio topológico una serie de grupos de homología, que reflejan características clave como agujeros y vacíos en diferentes dimensiones. Estos grupos permiten no sólo discernir la estructura interna de los espacios, sino también compararlos de manera abstracta. Usaremos de referencia \cite{maclane2012homology}.
 
-\section{Grupos diferenciales}
+\section{Módulos diferenciales}
 
-Comenzaremos definiendo lo que es un grupo de homología y estableceremos la terminología que emplearemos cuando trabajemos con ellos.
+Comenzaremos definiendo lo que es un módulo de homología y estableceremos la terminología que emplearemos cuando trabajemos con ellos.
 
 \begin{definicion}
-	Sea $C$ un grupo abeliano junto a un endomorfismo  $d: C \rightarrow C$ tal que $d^2 = d \circ d = 0$. Diremos entonces que $C$ es un \textbf{grupo diferencial} y llamaremos a $d$ \textbf{operador borde} de $C$.
+	Sea $C$ un $R$-módulo junto a un endomorfismo  $d: C \rightarrow C$ tal que $d^2 = d \circ d = 0$. Diremos entonces que $C$ es un \textbf{módulo diferencial} y llamaremos a $d$ \textbf{operador borde} de $C$.
 \end{definicion}
 
 Llamaremos a los elementos de $C$ \textbf{cadenas}. El subgrupo de \textbf{ciclos} será $Z(C) = \ker d$,  y el subgrupo de \textbf{bordes} $B(C) = \im d$. Si nos fijamos, el requisito $d^2 = 0$ es equivalente a exigir que $\im{d} \subset \ker{d}$.
 
 \begin{definicion}
-	Sea $C$ un grupo diferencial. Definimos el \textbf{grupo de homología} de $C$ como el grupo cociente $H(C)$ tal que 
-	\[ H(C) = \frac{Z(C)}{B(C)}\]
+	Sea $C$ un grupo diferencial. Definimos el \textbf{$R$-módulo de homología} de $C$ como el módulo cociente $H(C;R)$ tal que 
+	\[ H(C;R) = \frac{Z(C)}{B(C)}\]
 \end{definicion}
 
-Por tanto, el grupo de homología de un grupo diferencial $C$ está formado por las clases laterales $[c] = c + B(C)$ donde $c$ es un ciclo de $C$. A los elementos de $H(C)$ los llamaremos \textbf{clases de homología}. Dos ciclos $c$ y $c'$ diremos que son \textbf{homólogos} si ambos pertenecen a la misma clase de homología, esto es, $c \sim c'$.
+En particular, cuando $C$ sea un $\Z$-módulo diferencial, lo llamaremos \textbf{grupo diferencial} y notaremos $H(C;\Z)$ simplemente por $H(C)$. 
+
+Por tanto, el módulo de homología de un módulo diferencial $C$ está formado por las clases laterales $[c] = c + B(C)$ donde $c$ es un ciclo de $C$. A los elementos de $H(C;R)$ los llamaremos \textbf{clases de homología}. Dos ciclos $c$ y $c'$ diremos que son \textbf{homólogos} si ambos pertenecen a la misma clase de homología, esto es, $c \sim c'$.
 
 \begin{definicion}
-	Sean $C$ y $C'$ dos grupos diferenciales y $d, d'$ sus respectivos operadores borde. Diremos que $f: C \rightarrow C'$ es un \textbf{homomorfismo de grupos diferenciales} si $f$ es un homomorfismo de grupos y además $d'f = fd$.
+	Sean $C$ y $C'$ dos módulos diferenciales y $d, d'$ sus respectivos operadores borde. Diremos que $f: C \rightarrow C'$ es un \textbf{homomorfismo de módulos diferenciales} si $f$ es un homomorfismo de módulos y además $d'f = fd$.
 \end{definicion}
 
-La anterior definición nos permite preservar la estructura algebraica del grupo diferencial. De esta forma, si tomamos una cadena $c \in C$ que sea un ciclo o un borde y $f:C \rightarrow C'$ es un homomorfismo de grupos diferenciales, $f(c) \in C'$ seguirá siendo un ciclo o un borde de manera correspondiente.
-
-Los grupos diferenciales definen una categoría donde los objetos son los grupos diferenciales y los morfismos son los homomorfismos de grupos diferenciales. Tomamos como ley de composición interna la composición de dichos homomorfismos. Claramente es asociativa pues si $C,C',\bar{C}, \tilde{C} \in \obj()$ y $f: C \to C'$, $g: C' \to \bar{C}$, $h: \bar{C} \to \tilde{C}$, entonces $h \circ (g \circ f)$ se cumple si, y sólo si,
-\begin{gather*}
-	\tilde{d}(h \circ (g \circ f)) 
-	= (\tilde{d}h) \circ (g \circ f) \\
-	=(h\bar{d}) \circ (g \circ f)) 
-	=h \circ (\bar{d} g) \circ f \\
-	=h \circ (g d') \circ f
-	=h \circ g \circ (d' f) \\
-	=h \circ g \circ (fd)
-	=(h \circ g) \circ fd \\
-	=((h \circ g) \circ f) d
-\end{gather*}
-y por tanto $h \circ (g \circ f) = (h \circ g) \circ f$. La propiedad de identidad se sigue de existir el homomorfismo identidad de grupos.
+La anterior definición nos permite preservar la estructura algebraica del módulo diferencial. De esta forma, si tomamos una cadena $c \in C$ que sea un ciclo o un borde y $f:C \rightarrow C'$ es un homomorfismo de módulos diferenciales, $f(c) \in C'$ seguirá siendo un ciclo o un borde de manera correspondiente. En efecto, pues si $z \in Z(C)$, entonces $d'f(z) = f(dz) = f(0) = 0$. Esto es, $f(z) \in \ker d'$. Ahora, si $b \in B(C)$, entonces existe $c \in C$ tal que $dc = b$. En consecuencia, $d'f(c) = f(dc) = f(b)$ y por tanto, $f(b) \in \im d'$.
+%
+%Los grupos diferenciales definen una categoría donde los objetos son los grupos diferenciales y los morfismos son los homomorfismos de grupos diferenciales. Tomamos como ley de composición interna la composición de dichos homomorfismos. Claramente es asociativa pues si $C,C',\bar{C}, \tilde{C} \in \obj()$ y $f: C \to C'$, $g: C' \to \bar{C}$, $h: \bar{C} \to \tilde{C}$, entonces $h \circ (g \circ f)$ se cumple si, y sólo si,
+%\begin{gather*}
+%	\tilde{d}(h \circ (g \circ f)) 
+%	= (\tilde{d}h) \circ (g \circ f)
+%	=(h\bar{d}) \circ (g \circ f)) 
+%	=h \circ (\bar{d} g) \circ f \\
+%	=h \circ (g d') \circ f
+%	=h \circ g \circ (d' f)
+%	=h \circ g \circ (fd)
+%	=(h \circ g) \circ fd \\
+%	=((h \circ g) \circ f) d
+%\end{gather*}
+%y por tanto $h \circ (g \circ f) = (h \circ g) \circ f$. La propiedad de identidad se sigue de existir el homomorfismo identidad de grupos.
 \begin{definicion}
-	Sean $C, C'$ grupos diferenciales y $f:C \rightarrow C'$ un homomorfismo de grupos diferenciales. Definimos la función $f_* = H(f): H(C) \rightarrow H(C')$ tal que 
+	Sean $C, C'$ módulos diferenciales y $f:C \rightarrow C'$ un homomorfismo de módulos diferenciales. Definimos la función $f_* = H(f): H(C;R) \rightarrow H(C';R)$ tal que 
 	\[f_*([c]) = [f(c)] \]
 	Diremos que $H(f)$ es el \textbf{homomorfismo inducido} por $f$.
 \end{definicion}
-\begin{proposicion}
-	En estas condiciones, $H$ es un funtor covariante de la categoría de grupos diferenciales a la categoría de grupos.
-\end{proposicion}
-\begin{proof}
-	Por la definición dada del grupo de homología, es claro que la función objeto $H$ asigna a cada grupo diferencial $C$ un grupo de homología $H(C)$. En cuanto a la función de morfismos, la identidad de grupos diferenciales se preserva pues $H(\id)([c]) = \id_*([c]) = [\id(c)] = [c]$ para todo $c \in C$. Además, si $f,g \in \hom(C)$, entonces $H(g \circ f)([c]) = (g \circ f)_*([c]) = [(g \circ f)(c)] = [g (f (c))] = g_*([f(c)]) = g_* ( f_*([c])) = (H(g) \circ H(f)) ([c])$ para todo $c \in C$, manteniendo la ley de composición.
-\end{proof}
+%\begin{proposicion}
+%	En estas condiciones, $H$ es un funtor covariante de la categoría de grupos diferenciales a la categoría de grupos.
+%\end{proposicion}
+%\begin{proof}
+%	Por la definición dada del grupo de homología, es claro que la función objeto $H$ asigna a cada grupo diferencial $C$ un grupo de homología $H(C)$. En cuanto a la función de morfismos, la identidad de grupos diferenciales se preserva pues $H(\id)([c]) = \id_*([c]) = [\id(c)] = [c]$ para todo $c \in C$. Además, si $f,g \in \hom(C)$, entonces $H(g \circ f)([c]) = (g \circ f)_*([c]) = [(g \circ f)(c)] = [g (f (c))] = g_*([f(c)]) = g_* ( f_*([c])) = (H(g) \circ H(f)) ([c])$ para todo $c \in C$, manteniendo la ley de composición.
+%\end{proof}
 
 \section{Complejos de cadenas}
 
@@ -72,25 +74,26 @@ donde $H_n(C_{\bullet})$ es el \textbf{$n$-ésimo módulo de homología} de $C_{
 
 Luego $H_n(C_{\bullet})=0$ implica que la sucesión $C_{\bullet}$ es exacta en $C_n$. A los elementos de $C_n$ los llamaremos \textbf{n-cadenas} o \textbf{cadenas de dimensión n}. Un \textbf{n-ciclo} o \textbf{ciclo de dimensión n} de $C_{\bullet}$ es un elemento del submódulo $Z_n(C_{\bullet}) = \ker \partial_n$. Un \textbf{n-borde} o \textbf{borde de dimensión n} es un elemento de $B_n(C_{\bullet})= \im{\partial_{n+1}}$. Si la dimensión se sobrentiende en estos casos, no es necesario indicarla de manera explícita. La clase lateral de un ciclo $c$ la notaremos por $[c] = c + \partial C_{n+1}$. Dos $n$-ciclos $c,c' \in C_n$ pertenecientes a la misma clase lateral $[c]$ decimos que son \textbf{homólogos}, es decir, $c \sim c'$.
 
-\begin{definicion}HACER BIEN
-	Sea $\{C_{\bullet}^i, \partial_i\}_{i \in I}$ una familia de complejos de cadenas. Su \textbf{suma directa} \( \bigoplus_{i \in I} C^i \) la definimos como el complejo de cadenas $\bigoplus_{i \in I} C^i_{\bullet}$ cuyos operadores borde vienen dados por $\bigoplus_{i \in I} {\partial}^i_n : \bigoplus_{i \in I} C^i_n \to \bigoplus_{i \in I} C^i_{n-1}$ para todo $n \in \Z$.
+\begin{definicion}
+	Sea $\{C_{\bullet}^i, \partial^i\}_{i \in I}$ una familia de complejos de cadenas. Su \textbf{suma directa} la definimos como el complejo de cadenas $\bigoplus_{i \in I} C^i_{\bullet}$ cuyos operadores borde vienen dados por $\bigoplus_{i \in I} {\partial}^i_n : \bigoplus_{i \in I} C^i_n \to \bigoplus_{i \in I} C^i_{n-1}$ para todo $n \in \Z$.
 \end{definicion}
 \begin{proposicion}
 	\label{prop:hom-free-commute}
-	Sea $\{{C_{\bullet}}_i, \partial_i\}_{i \in I}$ una familia de complejos de cadenas. Entonces su homología conmuta con la suma directa, esto es, $H_n(\bigoplus_{i \in I} {C_{\bullet}}_i) \cong \bigoplus_{i \in I} H_n({C_{\bullet}}_i)$ para todo $n \in \Z$.
+	Sea $\{C_{\bullet}^i, \partial^i\}_{i \in I}$ una familia de complejos de cadenas. Entonces su homología conmuta con la suma directa, esto es, $H_n(\bigoplus_{i \in I} C_{\bullet}^i) \cong \bigoplus_{i \in I} H_n(C_{\bullet}^i)$ para todo $n \in \Z$.
 \end{proposicion}
 \begin{proof}
-	Para demostrar que el homomorfismo $\log$ conmuta con sumas directas, queremos mostrar que para una colección de complejos de cadenas $\{ (C_i, d_i) \}_{i \in I}$, el isomorfismo
-	\[ \phi: H_n \left( \bigoplus_{i \in I} C_i \right) \rightarrow \bigoplus_{i \in I} H_n (C_i) : [(c_i)] \mapsto ([c_i]), \]
-	y su inverso
-	\[ \psi: \bigoplus_{i \in I} H_n (C_i) \rightarrow H_n \left( \bigoplus_{i \in I} C_i \right) : ([c_i]) \mapsto [(c_i)], \]
+	Para demostrar que la homología conmuta con sumas directas, queremos mostrar que para una colección de complejos de cadenas $\{C_{\bullet}^i, \partial^i\}_{i \in I}$, los homomorfismos
+	\begin{align*}
+	\phi: H_n \left( \bigoplus_{i \in I} C_{\bullet}^i \right) \rightarrow \bigoplus_{i \in I} H_n (C_{\bullet}^i) : [(c_i)] \mapsto ([c_i]), \\
+	\psi: \bigoplus_{i \in I} H_n (C_{\bullet}^i) \rightarrow H_n \left( \bigoplus_{i \in I} C_{\bullet}^i \right) : ([c_i]) \mapsto [(c_i)],
+	\end{align*}
 	están bien definidos y son inversos mutuos.
 	
-	En primer lugar, para establecer la bien definición, observamos que $[(c_i)] = [(c_i')]$ si y solo si $[0] = [(c_i - c_i')]$. Esto ocurre si y solo si existe un $b_i \in C_i$ tal que $d_i(b_i) = (c_i - c_i')$, lo cual es equivalente a $c_i + d_i(b_i) = c_i'$ para cada $i \in I$. Por lo tanto, $[(c_i)] = [(c_i')]$ si y solo si $\phi([(c_i)]) = \phi([(c_i')]) = [(c_i' + d_i(b_i))] = [(c_i')]$. De manera similar, $[(c_i)] = [(c_i')]$ si y solo si $\psi([(c_i)]) = \psi([(c_i')])$. Por lo tanto, tanto $\phi$ como $\psi$ están bien definidos.
+	En primer lugar, para comprobar que dichas aplicaciones están bien definidas, observemos que $[(c_i)] = [(c_i')]$ si, y sólo si, $[0] = [(c_i - c_i')]$. Esto ocurre si, y sólo si, existe un $b_i \in C_{\bullet}^i$ tal que $\partial_i(b_i) = (c_i - c_i')$, lo cual es equivalente a $c_i + \partial_i(b_i) = c_i'$ para cada $i \in I$. Por lo tanto, $[(c_i)] = [(c_i')]$ si, y sólo si, $\phi([(c_i)]) = \phi([(c_i')]) = [(c_i' + \partial_i(b_i))] = [(c_i')]$. De manera análoga, $[(c_i)] = [(c_i')]$ si, y sólo si, $\psi([(c_i)]) = \psi([(c_i')])$. Esto implica que tanto $\phi$ como $\psi$ están bien definidos.
 	
-	En segundo lugar, es evidente que tanto $\phi$ como $\psi$ son homomorfismos de grupos abelianos. Además, $\phi$ mapea $[(c_i)]$ a $([c_i])$, y $\psi$ mapea $([c_i])$ a $[(c_i)]$, lo que demuestra que son inversos entre sí.
+	En segundo lugar, es claro que $\phi$ y $\psi$ son homomorfismos de $R$-módulos. Además, $\phi$ lleva la clase de equivalencia $[(c_i)]$ a $([c_i])$, mientras que $\psi$ lleva $([c_i])$ a $[(c_i)]$, lo que demuestra que son inversos el uno del otro.
 	
-	Por lo tanto, $\phi$ es un isomorfismo con $\psi$ como su inverso, estableciendo que $\bigoplus_{i \in I} H_n (C_i) \cong H_n \left( \bigoplus_{i \in I} C_i \right)$.
+	Por lo tanto, $\phi$ es un isomorfismo con $\psi$ como su inverso, estableciendo que $\bigoplus_{i \in I} H_n (C_{\bullet}^i) \cong H_n \left( \bigoplus_{i \in I} C_{\bullet}^i \right)$.
 \end{proof}
 \begin{definicion}
 	Sean $C_{\bullet},C_{\bullet}'$ complejos de cadenas. Una \textbf{aplicación de cadenas} o \textbf{morfismo de cadenas} $f: C_{\bullet} \rightarrow C_{\bullet}'$ es una familia de homomorfismos de $R$-módulos $f_n: C_n \rightarrow C_n'$ tal que $\partial_n'f_n = f_{n-1}\partial_n$ para todo $n \in \Z$.
@@ -106,7 +109,7 @@ Luego $H_n(C_{\bullet})=0$ implica que la sucesión $C_{\bullet}$ es exacta en $
 
 Cuando se sobrentienda del contexto, notaremos simplemente por $\partial$ a los correspondientes $\partial_n$ y $\partial_n'$.
 
-La función $H_n(f) = f_*$ definida por $f_*([c]) = f_*(c + \partial C_{n+1}) = fc + \partial C'_{n+1}$ es un homomorfismo $H_n(f): H_n(C_{\bullet}) \rightarrow H_n(C_{\bullet}')$. Así mismo, cada $H_n$ es un funtor covariante de la categoría de complejos de cadenas y morfismos de cadenas a la categoría de módulos.
+La función $H_n(f) = f_*$ definida por $f_*([c]) = f_*(c + \partial C_{n+1}) = fc + \partial C'_{n+1}$ es un homomorfismo $H_n(f): H_n(C_{\bullet}) \rightarrow H_n(C_{\bullet}')$.% Así mismo, cada $H_n$ es un funtor covariante de la categoría de complejos de cadenas y morfismos de cadenas a la categoría de módulos.
 
 \begin{definicion}
 	\label{def:chain_homotopy}
@@ -146,15 +149,20 @@ Como $H_n({\id_C}_{\bullet}) = \id_{H_n(C_{\bullet})}$, del anterior teorema se 
 	Por ser $s,s'$ homotopías de cadenas tenemos que $\partial s + s\partial = f-g$ y $\partial s' + s'\partial = f'-g'$. Aplicando  $f'$ a la izquierda de la primera expresión y $g$ a la derecha de la segunda nos queda
 	\begin{equation}
 		\begin{cases}
-			 f'\partial s + f's\partial = f' \circ f-f' \circ g \\
-			 \partial s' g + s'\partial g = f' \circ g-g' \circ g 
+			 f'\partial s + f's\partial = f' \circ f-f' \circ g, \\
+			 \partial s' g + s'\partial g = f' \circ g-g' \circ g.
 		\end{cases}
 	\end{equation}
 	Sumando ambas igualdades
-	\[ f'\partial s + f's\partial + \partial s' g + s'\partial g = f' \circ f-f' \circ g + f' \circ g-g' \circ g \]
-	\[ f'\partial s + f's\partial + \partial s' g + s'\partial g = f' \circ f - g' \circ g \]
-	\[ \partial f' s + f's \partial + \partial s' g + s' g \partial = f' \circ f - g' \circ g \]
-	\[ \partial (f' s + s' g) + (f's + s' g) \partial = f' \circ f - g' \circ g \]
+	\begin{align*}
+		f'\partial s + f's\partial + \partial s' g + s'\partial g &= f' \circ f-f' \circ g + f' \circ g-g' \circ g, \\
+		f'\partial s + f's\partial + \partial s' g + s'\partial g &= f' \circ f - g' \circ g, \\ 
+		\partial f' s + f's \partial + \partial s' g + s' g \partial &= f' \circ f - g' \circ g,
+	\end{align*}
+	donde finalmente queda
+	\begin{align*}
+		\partial (f' s + s' g) + (f's + s' g) \partial &= f' \circ f - g' \circ g .
+	\end{align*}
 \end{proof}
 
 \section{Subcomplejos y complejos cociente}
@@ -196,10 +204,10 @@ donde el $n$-ésimo módulo de homología \( H^n(C_{\bullet}) = \ker(\delta^n)/\
 \begin{definicion}
 	Sea $C_{\bullet}$ un complejo de cadenas positivo, $\varepsilon : C_0 \to R$ un aumento de $C_{\bullet}$ y sea $n \in \Z$. Consideremos el complejo positivo $\widetilde{C}_{\bullet}$ tal que $\widetilde{C}_n = C_n$ para todo $n \geq 0$, $\widetilde{C}_n = 0$ para todo $n < -1$ y $\widetilde{C}_{-1}=R$. Consideremos también $\widetilde{\partial}_n = \partial_n$ para todo $n \geq 1$ y $\widetilde{\partial}_0= \epsilon$. Llamaremos a este complejo \textbf{complejo aumentado} de $C_{\bullet}$.
 \end{definicion}
-
-\begin{definicion}
-Sean $f$ y $g$ aplicaciones de cadenas de $C_{\bullet}$ a $C_{\bullet}'$ y sea $s$ una homotopía de cadenas entre ellas. Diremos que $s$ es una \textbf{homotopía de cocadenas} si  está escrita con índices superiores. Esto es, \( s^n: C^n \to C'^{n-1} \) con \( \delta s + s \delta = f - g \).
-\end{definicion}
+%
+%\begin{definicion}
+%Sean $f$ y $g$ aplicaciones de cadenas de $C_{\bullet}$ a $C_{\bullet}'$ y sea $s$ una homotopía de cadenas entre ellas. Diremos que $s$ es una \textbf{homotopía de cocadenas} si  está escrita con índices superiores. Esto es, \( s^n: C^n \to C'^{n-1} \) con \( \delta s + s \delta = f - g \).
+%\end{definicion}
 
 \begin{definicion}
 	Sea $A$ un módulo. Definimos el siguiente complejo positivo donde \( A_0 = A \), \( A_n = 0 \) para \( n \neq 0 \) y \( \partial = 0 \). Un \textbf{complejo sobre \( A \)} es un complejo positivo \( C_{\bullet} \) junto con una aplicación de cadenas \( \varepsilon: C_{\bullet} \to A \) donde \( \varepsilon \) es un homomorfismo de módulos \( \varepsilon: C_0 \to A \) tal que \( \varepsilon \partial = 0: C_1 \to A \).
@@ -209,16 +217,30 @@ Sean $f$ y $g$ aplicaciones de cadenas de $C_{\bullet}$ a $C_{\bullet}'$ y sea $
 \label{def:contr_homotopy}
 Una \textbf{homotopía contráctil} para \( \varepsilon: C_{\bullet} \to A \) es una aplicación de cadenas \( f: A \to C_{\bullet} \) tal que \( \varepsilon f = \id_A \) junto con una homotopía \( s: {\id_C}_{\bullet} \rightarrow f \varepsilon \) donde \( {\id_C}_{\bullet} \simeq f \varepsilon \). En otras palabras, una homotopía contráctil consiste en homomorfismos de módulos \( f: A \to C_0 \) y \( s_n: C_n \to C_{n+1}, n = 0, 1, \dots \), tal que
 
-\[ \varepsilon f = \id_A, \quad \partial_{1} s_0 + f \varepsilon = \id_{C_0}, \quad \partial_{n+1} s_n + s_{n-1} \partial_n = \id_{C_n} \quad n > 0 \]
+\[ \varepsilon f = \id_A, \quad \partial_{1} s_0 + f \varepsilon = \id_{C_0}, \quad \partial_{n+1} s_n + s_{n-1} \partial_n = \id_{C_n} \quad n > 0. \]
 \end{definicion}
 
 Podemos extender el complejo estableciendo \( C_{-1} = A \), \( \partial_0 = \varepsilon: C_0 \to C_{-1} \) y \( s_{-1} = f \). Aplicando la \autoref{def:contr_homotopy}, \( s: {\id_C}_{\bullet} \rightarrow 0 \) es una homotopía de cadenas. Si \( \varepsilon: C_{\bullet} \to A \) tiene una homotopía contráctil, sus grupos de homología son isomorfos por \( \varepsilon_*: H_0(C_{\bullet}) \rightarrow A \) para \( n = 0 \) y \( H_n(C_{\bullet}) = 0 \) para \( n > 0 \).
 
-Los complejos \( C_{\bullet} \) de $\Z$-módulos libres surgen en topología. Si cada \( C_n \) es finitamente generado, entonces cada \( H_n(C_{\bullet}) \) es un grupo abeliano finitamente generado. El teorema de estructura para tales grupos presenta \( H_n(C_{\bullet}) \) como una suma directa
-\[ \Z \oplus \ldots \oplus \Z \oplus \ldots \oplus \Z_{m_1} \oplus \ldots \oplus \Z_{m_k}, \]
-donde el número \( \beta_n \) de sumandos cíclicos infinitos y los enteros \( m_1, \ldots, m_k \) (cada uno divisor del siguiente) dependen solo de \( H_n(C_{\bullet}) \). El entero \( \beta_n \) lo llamaremos el \textbf{n-ésimo número de Betti} de \( C_{\bullet} \) y a los \( \{m_i\} \) los \textbf{n-ésimos coeficientes de torsión}.
+Considérese un complejo de cadenas \( C_{\bullet} = \{ C_n, d_n \}_{n \in \mathbb{Z}} \), donde cada \( C_n \) es un \( \mathbb{Z} \)-módulo libre y \( d_n: C_n \to C_{n-1} \) es el operador diferencial de \( C_{\bullet} \) que cumple \( d_{n-1} \circ d_n = 0 \) para todo \( n \). Este tipo de complejos aparece frecuentemente en el estudio de espacios topológicos.
 
-%\section{Sucesión de Mayer-Vietoris}
+Supóngase además que cada \( C_n \) es finitamente generado. Entonces, el n-ésimo grupo de homología de \( C_{\bullet} \), definido como
+\[ H_n(C_{\bullet}) = \frac{\ker(d_n)}{\im(d_{n+1})}, \]
+es un grupo abeliano finitamente generado. Este resultado se sigue del hecho de que el núcleo y la imagen de los morfismos entre \( \mathbb{Z} \)-módulos libres finitamente generados son también finitamente generados.
+
+El teorema de estructura para grupos abelianos finitamente generados afirma que cualquier grupo abeliano finitamente generado \( G \) puede expresarse como una suma directa de grupos cíclicos de la forma
+\[ G \cong \mathbb{Z}^{\beta} \oplus \mathbb{Z}_{m_1} \oplus \ldots \oplus \mathbb{Z}_{m_k}, \]
+donde \( \beta \) es el rango de \( G \) y cada \( \mathbb{Z}_{m_i} \) es un grupo cíclico de orden \( m_i \), con \( m_1 | m_2 | \ldots | m_k \). Aplicando este teorema al n-ésimo módulo de homología \( H_n(C_{\bullet}) \), obtenemos que
+\[ H_n(C_{\bullet}) \cong \mathbb{Z}^{\beta_n} \oplus \mathbb{Z}_{m_1} \oplus \ldots \oplus \mathbb{Z}_{m_k}, \]
+donde \( \beta_n \) es el rango de \( H_n(C_{\bullet}) \), conocido como el \textbf{n-ésimo número de Betti} de \( C_{\bullet} \), y los \( m_i \) son los \textbf{n-ésimos coeficientes de torsión}, satisfaciendo \( m_1 | m_2 | \ldots | m_k \).
+\begin{definicion}
+	Sea \(C_{\bullet}\) un complejo de cadenas y \(k\) un entero no negativo. El \textbf{$k$-ésimo número de Betti}, \(\beta_k(C_{\bullet})\), se define como el rango del k-ésimo grupo de homología de \(C_{\bullet}\), \(H_k(C_{\bullet})\). Esto es, \(\beta_k(C_{\bullet}) = \rg(H_k(C_{\bullet}))\).
+\end{definicion}
+Los números de Betti \( \beta_n \) proporcionan una medida de la dimensionalidad de la n-ésima homología, mientras que los coeficientes de torsión \( \{m_i\} \) capturan información adicional sobre la estructura algebraica de \( H_n(C_{\bullet}) \). Ambos conjuntos de invariantes son cruciales para el estudio de la topología algebraica, ya que ofrecen una perspectiva profunda sobre la estructura de los espacios topológicos desde el punto de vista homológico.
+%
+%Los complejos \( C_{\bullet} \) de $\Z$-módulos libres aparecen en topología. Si cada \( C_n \) es finitamente generado, entonces cada \( H_n(C_{\bullet}) \) es un grupo abeliano finitamente generado. El teorema de estructura para tales grupos presenta \( H_n(C_{\bullet}) \) como una suma directa
+%\[ \Z \oplus \ldots \oplus \Z \oplus \ldots \oplus \Z_{m_1} \oplus \ldots \oplus \Z_{m_k}, \]
+%donde el número \( \beta_n \) de sumandos cíclicos infinitos y los enteros \( m_1, \ldots, m_k \) (cada uno divisor del siguiente) dependen solo de \( H_n(C_{\bullet}) \). El entero \( \beta_n \) lo llamaremos el \textbf{n-ésimo número de Betti} de \( C_{\bullet} \) y a los \( \{m_i\} \) los \textbf{n-ésimos coeficientes de torsión}.
 
 \endinput
 %--------------------------------------------------------------------

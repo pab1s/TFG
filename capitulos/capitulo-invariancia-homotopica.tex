@@ -32,7 +32,7 @@ Si bien existen distintos procedimientos para construir una subdivisión, nosotr
 
 \begin{definicion}
 	Sea $K$ un complejo. Supongamos que $L_p$ es una subdivisión del $p$-esqueleto de $K$. Sea $\sigma$ un símplice de dimensión $p+1$ de $K$. El conjunto $\bd \sigma$ es el politopo de un subcomplejo del $p$-esqueleto de $L_{\sigma}$. Si $w_{\sigma}$ es un punto del interior de $\sigma$, entonces el cono $x_\sigma \ast L_{\sigma}$ es un complejo cuyo espacio subyacente es $\sigma$. Definimos $L_{p+1}$ como la unión de $L_p$ con los complejos $w_{\sigma} \ast L_{\sigma}$ para todo símplice de dimensión $p+1$ de $K$.
-	Llamaremos a $L_{p+1}$ la \textbf{subdivisión de $K^{p+1}$ obtenida por STARRING $L_p$ de los puntos $w_{\sigma}$}.
+	Llamaremos a $L_{p+1}$ la \textbf{subdivisión de $K^{p+1}$ obtenida estrellando $L_p$ de los puntos $w_{\sigma}$}.
 \end{definicion}
 
 Veamos que $L_{p+1}$ es un complejo. Notemos que $|w_{\sigma} \ast L_{\sigma}|\cap|L_p| = \bd \sigma$, que es el politopo del subcomplejo $L_{\sigma}$ de $|w_{\sigma} \ast L_{\sigma}|$ y $|L_p|$. De manera similar, si $\tau$ es otro símplice de dimensión $p+1$, entonces los espacios $|w_{\sigma} \ast L_{\sigma}|$ y $|w_{\tau} \ast L_{\tau}|$ intersecan en el símplice $\sigma \cap \tau$ de $K$. Esto es, el politopo del subcomplejo de $L_p$ y en consecuencia, también de $L_{\sigma}$ y $L_{\tau}$. Por el \autoref{lem:compl-cons}, $L_{p+1}$ es un complejo.
@@ -47,7 +47,7 @@ Puesto que el complejo $L_{p+1}$ depende de la elección de los puntos $w_{\sigm
 	Esto es, el punto del interior de $\sigma$ cuyas coordenadas baricéntricas con respecto a los vértices de $\sigma$ son iguales.
 \end{definicion}
 \begin{definicion}
-	Sea $K$ un complejo. Definimos la secuencia de subdivisiones de esqueletos de $K$ de la siguiente forma. Sea $L_0 = K^{(0)}$ el $0$-esqueleto de $K$. En general, si $L_p$ es una subdivisión del $p$-esqueleto de $K$, entonces definimos $L_{p+1}$ como la subdivisión del esqueleto $p+1$ obtenido STARRING $L_p$ de los baricentros de los $p+1$ símplices de $K$. Por el \autoref{lem:compl-cons}, la unión de los complejos $L_p$ es una subdivisión de $K$ que llamaremos \textbf{subdivisión baricéntrica} de $K$ y la denotaremos por $\sd K$.
+	Sea $K$ un complejo. Definimos la secuencia de subdivisiones de esqueletos de $K$ de la siguiente forma. Sea $L_0 = K^{(0)}$ el $0$-esqueleto de $K$. En general, si $L_p$ es una subdivisión del $p$-esqueleto de $K$, entonces definimos $L_{p+1}$ como la subdivisión del esqueleto $p+1$ obtenido estrellando $L_p$ de los baricentros de los $p+1$ símplices de $K$. Por el \autoref{lem:compl-cons}, la unión de los complejos $L_p$ es una subdivisión de $K$ que llamaremos \textbf{subdivisión baricéntrica} de $K$ y la denotaremos por $\sd K$.
 \end{definicion}
 \begin{lema}
 	Sea $K$ un complejo simplicial. Entonces el complejo $\sd K$ es igual a la colección de todos los símplices de la forma
@@ -480,7 +480,6 @@ Por lo tanto, al considerar la suma con signos alternados en la expresión de \(
 	\end{gather*}
 	son la identidad para todo $p \in \Z$. En consecuencia, $f_*$ es un isomorfismo.
 \end{proof}
-ULTIMO COROLARIO
 
 \section{Característica de Euler-Poincaré}
 

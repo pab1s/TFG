@@ -10,12 +10,12 @@ En los capítulos previos hemos hecho un arduo esfuerzo en conocer las propiedad
 \begin{definicion}
 	Sea $K$ un complejo simplicial geométrico en $\R^N$. Un complejo simplicial $K'$ diremos que es una \textbf{subdivisión} de $K$ si:
 	\begin{enumerate}
-		\item Cada símplice de $K'$ está contenido en $K$.
+		\item Cada símplice de $K'$ está contenido en algún símplice de $K$.
 		\item Cada símplice de $K$ es igual a la unión finita de símplices de $K'$.
-	\end{enumerate} 
+	\end{enumerate}
 \end{definicion}
 \begin{observacion}
-Nótese que la definición anterior implica que $|K|=|K'|$. Además, la condición de finitud nos garantiza que la topología de los espacios subyacentes es la misma.
+	Nótese que la definición anterior implica que $|K|=|K'|$. Además, la condición de finitud nos garantiza que la topología de los espacios subyacentes es la misma.
 \end{observacion}
 
 \begin{lema}
@@ -24,12 +24,12 @@ Nótese que la definición anterior implica que $|K|=|K'|$. Además, la condici�
 \end{lema}
 \begin{proof}
 	Sea $\{K_i\}_{i \in I}$ una colección de subcomplejos de $K$ indexados por $I$. Queremos ver que efectivamente $K' = \bigcap_{i \in I} K_i$ es un complejo simplicial. En el caso de intersección vacía tenemos que $K'$ es el complejo trivial. Si $K'$ no es vacío, entonces existe algún símplice $\sigma$ perteneciente a la intersección. Por tanto, consideremos una cara $\tau$ de $\sigma$ y veamos existe en $K'$. Es claro que $\sigma \in K_i$ para todo $i \in I$ y por ser $K_i$ un complejo simplicial, todas sus caras pertenecen a $K_i$, luego $\tau \in K'$. En cuanto a la intersección de dos símplices cualesquiera, procederemos por reducción a lo absurdo. Supongamos que existen dos símplices $\sigma, \tau \in K'$ de forma que su intersección no es ni el vacío ni una cara de ambos. Entonces, este hecho se seguiría cumpliendo para cada $K_i$, en contradicción con que $K_i$ es un complejo para todo $i \in I$.
-	
+
 	Para la segunda afirmación, veamos que $K = \bigcup_{\alpha \in A} K_\alpha$ es un complejo simplicial. Si $\sigma$ es un símplice en $K$, entonces existe algún $i \in I$ de forma que $\sigma \in K_i$. Por ser $K_i$ un símplice, todas sus caras están en $K_i$ y, en consecuencia, en $K$. Consideremos ahora dos símplices arbitrarios \(\sigma, \tau\) pertenecientes a \(K_{\alpha}, K_{\beta}\) respectivamente. Por hipótesis, la intersección  \(|K_\alpha| \cap |K_\beta|\) es también el politopo de un complejo simplicial, que denotaremos por \(L_{\alpha \beta}\). Este complejo \(L_{\alpha \beta}\) es subcomplejo tanto de \(K_\alpha\) como de \(K_\beta\). Por tanto, cualquier intersección de símplices \(\sigma \cap \tau\) (si existe) resulta ser un conjunto de símplices que pertenecen a \(L_{\alpha \beta}\) y, por ende, también están contenidos en \(K_{\alpha}\), \(K_{\beta}\), y en la unión \(K\), garantizando que dicha intersección es una cara común o vacía.
 \end{proof}
 
 Si bien existen distintos procedimientos para construir una subdivisión, nosotros seguiremos el siguiente:
- 
+
 \begin{definicion}
 	Sea $K$ un complejo. Supongamos que $L_p$ es una subdivisión del $p$-esqueleto de $K$. Sea $\sigma$ un símplice de dimensión $p+1$ de $K$. El conjunto $\bd \sigma$ es el politopo de un subcomplejo del $p$-esqueleto de $L_{\sigma}$. Si $w_{\sigma}$ es un punto del interior de $\sigma$, entonces el cono $x_\sigma \ast L_{\sigma}$ es un complejo cuyo espacio subyacente es $\sigma$. Definimos $L_{p+1}$ como la unión de $L_p$ con los complejos $w_{\sigma} \ast L_{\sigma}$ para todo símplice de dimensión $p+1$ de $K$.
 	Llamaremos a $L_{p+1}$ la \textbf{subdivisión de $K^{p+1}$ obtenida por STARRING $L_p$ de los puntos $w_{\sigma}$}.
@@ -42,7 +42,7 @@ Puesto que el complejo $L_{p+1}$ depende de la elección de los puntos $w_{\sigm
 \begin{definicion}
 	Sea $\sigma = [v_0, \dots, v_p]$ un $p$-símplice. Definimos el \textbf{baricentro} de $\sigma$ como el punto
 	\[
-	\overline{\sigma} = \sum_{i=0}^{p}\frac{1}{p+1} v_i.
+		\overline{\sigma} = \sum_{i=0}^{p}\frac{1}{p+1} v_i.
 	\]
 	Esto es, el punto del interior de $\sigma$ cuyas coordenadas baricéntricas con respecto a los vértices de $\sigma$ son iguales.
 \end{definicion}
@@ -58,15 +58,8 @@ Puesto que el complejo $L_{p+1}$ depende de la elección de los puntos $w_{\sigm
 \end{lema}
 \begin{proof}
 	Procederemos por inducción. Es inmediato que los símplices de $\sd K$ de la subdivisión de $K^{(0)}$ son de esta forma, pues cada símplice es un vértice de $K$ y sus baricentros coinciden con dicho vértice.
-	
-	Supongamos ahora que cada símplice de $\sd K$ perteneciente a $|K^{(p)}|$ es de esta forma. Sea $\tau$ un símplice de $\sd K$ perteneciente a $|K^{(p+1)}|$ pero no a $|K^{(p)}|$. Entonces $\tau$ pertenece a uno de los complejos $\overline{\sigma} \ast L_{\sigma}$, donde $\sigma$ es un símplice de dimensión $p+1$ de $K$ y $L_{\sigma}$ es la primera subdivisión baricéntrica del complejo formado por las caras propias de $\sigma$. Por hipótesis de inducción, cada símplice de $L_{\sigma}$ es de la forma $[\overline{\sigma}_0,\overline{\sigma}_1,\dots,\overline{\sigma}_n]$, donde $\sigma_0 \succ \sigma_1 \succ \dots \succ \sigma_n$ y $\sigma_0$ es una cara propia de $\sigma$. Concluimos que $\tau$ debe ser de la forma $[\overline{\sigma},\overline{\sigma}_0,\overline{\sigma}_1,\dots,\overline{\sigma}_n]$, como buscábamos.
-\end{proof}
 
-\begin{proposicion}
-	Si $K$ es un complejo simplicial, entonces $|K| = |\sd K|$.
-\end{proposicion}
-\begin{proof}
-	DEMOSTRAR.
+	Supongamos ahora que cada símplice de $\sd K$ perteneciente a $|K^{(p)}|$ es de esta forma. Sea $\tau$ un símplice de $\sd K$ perteneciente a $|K^{(p+1)}|$ pero no a $|K^{(p)}|$. Entonces $\tau$ pertenece a uno de los complejos $\overline{\sigma} \ast L_{\sigma}$, donde $\sigma$ es un símplice de dimensión $p+1$ de $K$ y $L_{\sigma}$ es la primera subdivisión baricéntrica del complejo formado por las caras propias de $\sigma$. Por hipótesis de inducción, cada símplice de $L_{\sigma}$ es de la forma $[\overline{\sigma}_0,\overline{\sigma}_1,\dots,\overline{\sigma}_n]$, donde $\sigma_0 \succ \sigma_1 \succ \dots \succ \sigma_n$ y $\sigma_0$ es una cara propia de $\sigma$. Concluimos que $\tau$ debe ser de la forma $[\overline{\sigma},\overline{\sigma}_0,\overline{\sigma}_1,\dots,\overline{\sigma}_n]$, como buscábamos.
 \end{proof}
 
 \begin{definicion}
@@ -90,7 +83,7 @@ Puesto que el complejo $L_{p+1}$ depende de la elección de los puntos $w_{\sigm
 	\]
 	De manera análoga, si $q = \sum_{j=0}^{n} \mu_j v_j$, entonces
 	\[
-	\|v_i - q\| \leq \max_{0 \leq j \leq n} \|v_i -v_j\|.
+		\|v_i - q\| \leq \max_{0 \leq j \leq n} \|v_i -v_j\|.
 	\]
 	Por consiguiente tenemos que \[\|p-q\| \leq \max_{0\leq i, j\leq n}\|v_i-v_j\|\] para cualesquiera $p,q \in \sigma$ y por tanto, $\diam \sigma \leq \max_{0\leq i, j\leq n}\|v_i-v_j\|$.
 \end{proof}
@@ -105,24 +98,32 @@ Puesto que el complejo $L_{p+1}$ depende de la elección de los puntos $w_{\sigm
 \end{teorema}
 \begin{proof}
 	Procedemos por inducción en el número de subdivisiones. Consideremos la primera subdivisión, $\sd K$. Sea $\mu \in \sd K$ y sean $\overline{\sigma}_0, \overline{\sigma}_1, \ldots, \overline{\sigma}_k$ los vértices de $\mu$, donde $\sigma_0 \prec \sigma_1 \prec \ldots \prec \sigma_k$. Supongamos, por simplicidad, que el diámetro de $\mu$ viene dado por $\diam \mu = \|\overline{\sigma}_0 - \overline{\sigma}_1\|$ conforme al \autoref{lem:char-diam}, donde $\sigma_0 = [v_0, \ldots, v_n]$ y $\sigma_1 = [v_0, \ldots, v_n, v_{n+1}, \ldots, v_s]$.
-	
+
 	Entonces, calculamos:
 	\[
-	\left\|\sum_{i=0}^{n}\frac{1}{n+1}v_{i}-\overline{\sigma_{1}}\right\| = \frac{1}{n+1}\left\|\sum_{i=0}^{n}(v_{i}-\overline{\sigma_{1}})\right\| \leq \max\{\|v_{i}-\overline{\sigma_{1}}\| : i\leq n\}
+		\left\|\sum_{i=0}^{n}\frac{1}{n+1}v_{i}-\overline{\sigma_{1}}\right\| = \frac{1}{n+1}\left\|\sum_{i=0}^{n}(v_{i}-\overline{\sigma_{1}})\right\| \leq \max\{\|v_{i}-\overline{\sigma_{1}}\| : i\leq n\}
 	\]
 	y, de manera similar,
 	\[
-	\|v_{i}-\overline{\sigma_{1}}\| = \left\|v_{i}-\sum_{j=0}^{s}\frac{1}{s+1}p_{j}\right\| = \frac{1}{s+1}\left\|\sum_{j=0}^{s}(v_{i}-v_{j})\right\| \leq \frac{s}{s+1}\max\{\|v_{i}-v_{j}\|\}.
+		\|v_{i}-\overline{\sigma_{1}}\| = \left\|v_{i}-\sum_{j=0}^{s}\frac{1}{s+1}p_{j}\right\| = \frac{1}{s+1}\left\|\sum_{j=0}^{s}(v_{i}-v_{j})\right\| \leq \frac{s}{s+1}\max\{\|v_{i}-v_{j}\|\}.
 	\]
 	Esto implica que
 	\[
-	\diam(\mu) \leq \frac{s}{s+1}\diam(\sigma_{1}) \leq \frac{s}{s+1} \meas (K),
+		\diam(\mu) \leq \frac{s}{s+1}\diam(\sigma_{1}) \leq \frac{s}{s+1} \meas (K),
 	\]
-	donde $\meas K$ es el máximo diámetro de los símplices en $K$. Finalmente, dado que $\dim \sigma_1 = s \leq r = \dim K$, tenemos que
+	donde $\meas(K)$ es el máximo diámetro de los símplices en $K$. Finalmente, dado que $\dim \sigma_1 = s \leq r = \dim K$, tenemos que
 	\[
-	\diam(\mu) \leq \frac{r}{r+1}\meas(K).
+		\diam(\mu) \leq \frac{r}{r+1}\meas(K)
 	\]
-	Por inducción, si asumimos que la propiedad se mantiene para $\sd^{N-1}K$, entonces en $\sd^N K$ el diámetro de cada símplice es aún menor, cumpliendo la condición de que sea menor que $\varepsilon$ para algún $N$ suficientemente grande.
+	para todo $\mu \in \sd K$. O lo que es lo mismo, 
+	\[
+		\meas(\sd K) \leq \frac{r}{r+1}\meas(K).
+	\]
+	Por inducción, si asumimos que la propiedad se mantiene para $\sd^{N-1}K$, entonces en $\sd^N K$ es claro que la siguiente desigualdad se cumple
+	\[
+		\meas(\sd^N K) \leq \frac{r}{r+1} \meas (\sd^{N-1} K) \leq \left( \frac{r}{r+1} \right)^{N} \meas(K),
+	\]
+	donde la primera desigualdad se obtiene de manera análoga al razonamiento anterior, considerando el complejo $\sd^{N-1} K$ y su subdivisión.
 \end{proof}
 
 \section{Teorema de aproximación simplicial}
@@ -153,9 +154,9 @@ El teorema de aproximación simplicial nos proporciona una herramienta para obte
 		\emptyset \neq f \left( \bigcap_{i=0}^p\interior \st (v_i;K) \right) \subseteq \bigcap_{i=0}^p f(\interior \st (v_i;K)) \subseteq \bigcap_{i=0}^p \interior \st (\varphi(v_i);L).
 	\]
 	Luego los vértices $\varphi(v_i)$ están en un mismo símplice de $L$ para todo $i \in \{0,\dots,p\}$ y en consecuencia, $\varphi$ es una aplicación simplicial.
-	
+
 	Consideremos ahora $x \in |K|$ tal que $x \in \interior \sigma$, siendo $\sigma = [v_0, \dots, v_p]$ un símplice de $K$. Además, se tiene que $x \in \bigcap_{i=0}^p\interior \st (v_i;K)$. Siguiendo el razonamiento anterior, $f(x) \in \bigcap_{i=0}^p\interior \st (\varphi(v_i);K)$. Es decir, $\varphi(v_0), \dots, \varphi(v_p)$ son los vértices del símplice soporte de $f(x)$ y $\varphi$ es una aproximación simplicial de $f$.
-	
+
 	Para la otra implicación tomemos $x \in \interior \st (v;K)$. Entonces existe $\tau \in K$ tal que $v$ es un vértice de $\tau$ y $x \in \interior \tau$. Asimismo, $f(x) \in \interior \sigma$ para algún símplice $\sigma$ de $L$. Por ser $\varphi$ una aproximación simplicial, llevará $\tau$ a un símplice $\sigma'$ de $L$ tal que $\varphi(v)$ es vértice de $\sigma'$, pertenece al interior de $\sigma'$ y además pertenece a $\sigma$. Por el \autoref{cor:simpl-soporte}, $\sigma'$ es una cara de $\sigma$ y $\varphi(v) \in \sigma$. Concluimos entonces que $f(x) \in \interior \sigma \subseteq \interior \st(\varphi(v);L)$ y $f(\interior \st(v;K)) \subseteq \interior \st(\varphi(v);L)$.
 \end{proof}
 \begin{corolario}
@@ -164,7 +165,7 @@ El teorema de aproximación simplicial nos proporciona una herramienta para obte
 \end{corolario}
 \begin{proof}
 	Sea $\varphi$ una aproximación simplicial de $f$. Por la \autoref{prop:char-approx-simp}, para todo vértice $v \in K$ se cumple que $f(\interior \st(v;K)) \subseteq \interior \st(\varphi(v);L)$. Esto es, $\interior \st(v;K) \subseteq f^{-1}(\interior \st(w;L))$ donde $w = \varphi(v)$.
-	
+
 	Para el recíproco, tenemos que $\interior \st(v;K) \subseteq f^{-1}(\interior \st(w;L))$. Entonces podemos definir una aplicación entre los vértices de $K$ y $L$ de manera que $\varphi(v) = w$. En consecuencia, $\interior \st(v;K) \subseteq f^{-1}(\interior \st(w;L))$ lo que implica que $f(\interior \st(v;K)) \subseteq \interior \st(\varphi(v);L)$. Finalmente, por la \autoref{prop:char-approx-simp}, $\varphi$ es una aproximación simplicial de $f$.
 \end{proof}
 
@@ -181,13 +182,13 @@ Antes de proceder con la demostración del resultado principal de esta sección,
 
 \begin{proof}
 	Dado que \((X,d)\) es un espacio métrico compacto, podemos extraer un subrecubrimiento finito por abiertos \(\{U_1, \ldots, U_n\} \subseteq \mathcal{U}\). Si para algún \(i \in \{1, \dots, n\}\) se cumple que \(U_i = X\), entonces cualquier \(\varepsilon > 0\) satisfará la condición del lema. En caso contrario, definimos para cada \(i \in \{1, \ldots, n\}\) el conjunto \(C_i := X \setminus U_i\), el cual es no vacío.
-	
+
 	Consideremos la función \( f \colon X \to \mathbb{R} \) de forma que
 	\[
 		f(x) = \frac{1}{n} \sum_{i=1}^{n} d(x, C_i),
 	\]
-	 donde \(d(x, C_i)\) es la distancia de \(x\) al conjunto \(C_i\). Dado que \(f\) es continua en \(X\) y \(X\) es compacto, por el \autoref{cor:teo-weierstrass}, \(f\) alcanza su valor mínimo \(\varepsilon > 0\) en \(X\).
-	
+	donde \(d(x, C_i)\) es la distancia de \(x\) al conjunto \(C_i\). Dado que \(f\) es continua en \(X\) y \(X\) es compacto, por el \autoref{cor:teo-weierstrass}, \(f\) alcanza su valor mínimo \(\varepsilon > 0\) en \(X\).
+
 	Ahora demostramos que este valor es el número de Lebesgue buscado. Para cualquier subconjunto \(V \subseteq X\) con \(\diam V \leq \varepsilon\), existe \(x_0 \in X\) tal que \(V \subseteq \overline{B}_{\varepsilon}(x_0)\), donde \(\overline{B}_{\varepsilon}(x_0)\) denota la bola cerrada de radio \(\varepsilon\) centrada en \(x_0\). Dado que \(f(x_0) \geq \varepsilon\), debe existir al menos un índice \(i\) para el cual \(d(x_0, C_i) \geq \varepsilon\), lo que implica que \(\overline{B}_{\varepsilon}(x_0) \subseteq U_i\) y, por lo tanto, \(V \subseteq U_i\).
 \end{proof}
 \begin{teorema}[Teorema de aproximación simplicial]
@@ -196,7 +197,7 @@ Antes de proceder con la demostración del resultado principal de esta sección,
 \end{teorema}
 \begin{proof}
 	Por la continuidad de $f$ y como consecuencia de la \autoref{prop:estr-abierta-abierto-en-K}, podemos considerar el conjunto $\mathcal{U} = \{f^{-1}(\interior \st(q;L)) : q \in K^{(0)}\}$ tal que $\mathcal{U}$ es un recubrimiento por abiertos de $|K|$.
-	
+
 	Por el \nameref{lem:lebesgue}, sabemos que existe un número $\varepsilon>0$ asociado a $\mathcal{U}$. Por el \autoref{teo:cota-medida-complejo}, podemos considerar $n \in \N$ tal que $\meas(\sd^n K) < \varepsilon/2$. Sea ahora $p$ un vértice de $\sd^n K$ y sean $\sigma,\tau \in \interior \st(p;\sd^n K)$. Si $x \in \interior \sigma$, $y \in \interior \tau$, entonces
 	\[
 		\|x-y\| \leq \|x-p\| + \|y-p\| < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon.
@@ -215,12 +216,12 @@ Antes de proceder con la demostración del resultado principal de esta sección,
 	\label{def:op_subdiv}
 	Sea \(\{C_n(K; R), \partial_n\}\) un complejo de cadenas simpliciales. Llamaremos \textbf{operador de subdivisión} al homomorfismo \({\sd_\#}_n : C_n(K; R) \to C_n(\sd K; R)\) definido por
 	\[
-	{\sd_\#}_n(\sigma) = \sum_{\substack{{\widehat{\sigma} \in  \sd K} \\ {\widehat{\sigma} \subseteq \sigma}}} [\sigma : \widehat{\sigma}] \cdot \widehat{\sigma},
+		{\sd_\#}_n(\sigma) = \sum_{\substack{{\widehat{\sigma} \in  \sd K} \\ {\widehat{\sigma} \subseteq \sigma}}} [\sigma : \widehat{\sigma}] \cdot \widehat{\sigma},
 	\]
 	donde cada \(\widehat{\sigma}\) es un símplice orientado de dimensión $n$ en la subdivisión \(\sd K\) de \(K\). El coeficiente \( [\sigma : \widehat{\sigma}] \) es definido como \(+1\) si la orientación de \(\widehat{\sigma}\), inducida por la orientación de \(\sigma\), coincide con la orientación estándar de \(\widehat{\sigma}\), y \(-1\) si es opuesta. Esta orientación se determina por el orden de los vértices de \(\widehat{\sigma}\) según su aparición en la construcción de \(\sd K\).
 \end{definicion}
 \begin{nota}
-	En ocasiones prescindiremos del subíndice de dimensión de la cadena, notando así todos los homomorfismos ${\sd_\#}_n$ simplemente por $\sd_\#$ cuando se sobrentienda por el contexto. 
+	En ocasiones prescindiremos del subíndice de dimensión de la cadena, notando así todos los homomorfismos ${\sd_\#}_n$ simplemente por $\sd_\#$ cuando se sobrentienda por el contexto.
 \end{nota}
 
 Consideremos un \( n \)-símplice orientado \( \sigma \) con vértices \( v_0, v_1, \ldots, v_n \) y su subdivisión baricéntrica \( \text{sd}_\#(\sigma) \). Queremos expresar de manera explícita la composición \( \partial_n \circ \text{sd}_\#(\sigma) : C_n(K;R) \to C_{n-1}(\sd K;R) \). Veamos que esto se puede escribir como
@@ -233,7 +234,7 @@ Consideremos un \( n \)-símplice orientado \( \sigma \) con vértices \( v_0, v
 Aquí, \( \widehat{\sigma} \) es un símplice de dimensión \( n-1 \) y \( \widehat{\tau} \) es cara únicamente de \( \widehat{\sigma} \) contenida en \( \partial_n\sigma \). Desarrollando la expresión obtenemos
 
 \[
-\partial_n(\text{sd}_\#(\sigma)) = \sum_{\substack{\widehat{\sigma} \in \text{sd} K \\ \widehat{\sigma} \subseteq \sigma}} [\sigma : \widehat{\sigma}] \cdot \widehat{\sigma} = \sum_{\substack{\widehat{\sigma} \in  \sd K \\ \widehat{\sigma} \subseteq \sigma}} [\sigma : \widehat{\sigma}] \sum_{j=0}^n (-1)^j \cdot \widehat{\tau}_j,
+	\partial_n(\text{sd}_\#(\sigma)) = \sum_{\substack{\widehat{\sigma} \in \text{sd} K \\ \widehat{\sigma} \subseteq \sigma}} [\sigma : \widehat{\sigma}] \cdot \widehat{\sigma} = \sum_{\substack{\widehat{\sigma} \in  \sd K \\ \widehat{\sigma} \subseteq \sigma}} [\sigma : \widehat{\sigma}] \sum_{j=0}^n (-1)^j \cdot \widehat{\tau}_j,
 \]
 
 donde cada \( \widehat{\tau}_j \) es el símplice resultante de excluir el \( j \)-ésimo vértice de \( \widehat{\sigma} \). Específicamente, \( \widehat{\tau}_j \) es la cara de \( \widehat{\sigma} \) opuesta al vértice \( v_j \).
@@ -248,33 +249,33 @@ Por lo tanto, al considerar la suma con signos alternados en la expresión de \(
 \begin{proof}
 	Para demostrar que $\{{\sd_\#}_n\}$ es un homomorfismo de complejos de cadenas, necesitamos verificar que el siguiente diagrama
 	\[
-	\xymatrix{
+		\xymatrix{
 		C_n(K) \ar[r]^{{\sd_\#}_n} \ar[d]_{\partial_n} & C_n(\sd K) \ar[d]^{\partial_n} \\
 		C_{n-1}(K) \ar[r]_{{\sd_\#}_{n-1}} & C_{n-1}(\sd K)
-	}
+		}
 	\]
 	conmuta para todo $n \geq 0$.
 	Consideramos un símplice $\sigma$ en $C_n(K)$. Aplicando el operador borde seguido del operador subdivisión obtenemos
-	
+
 	\begin{equation}
 		\label{eq:comp-subdv-borde}
-	\partial_n ({\sd_\#}_n(\sigma)) = \sum_{\substack{\widehat{\sigma} \in \text{sd} K \\ \widehat{\sigma} \subseteq \sigma}} (-1)^{n} [\sigma : \widehat{\sigma}] \cdot \tau.
+		\partial_n ({\sd_\#}_n(\sigma)) = \sum_{\substack{\widehat{\sigma} \in \text{sd} K \\ \widehat{\sigma} \subseteq \sigma}} (-1)^{n} [\sigma : \widehat{\sigma}] \cdot \tau.
 	\end{equation}
-	
+
 	Por otro lado, aplicando primero el operador subdivisión y luego el operador borde,
 	\[
-	{\sd_\#}_{n-1}(\partial_n(\sigma)) = {\sd_\#}_{n-1} \left( \sum_{j=0}^{n} (-1)^j \sigma_j \right) = \sum_{j=0}^{n} (-1)^j {\sd_\#}_{n-1}(\sigma_j),
+		{\sd_\#}_{n-1}(\partial_n(\sigma)) = {\sd_\#}_{n-1} \left( \sum_{j=0}^{n} (-1)^j \sigma_j \right) = \sum_{j=0}^{n} (-1)^j {\sd_\#}_{n-1}(\sigma_j),
 	\]
 	donde $\sigma_j$ es el $j$-ésimo símplice en $C_{n-1}(K)$ que resulta de eliminar el $j$-ésimo vértice de $\sigma$. Veamos entonces que la anterior expresión es igual a
-	
+
 	\begin{equation}
 		\label{eq:comp-borde-subdv}
-	\sum_{j=0}^{n} (-1)^j \sum_{\substack{\sigma_j \in \sd K \\ \widehat{\sigma}_j \subseteq \sigma_j}} [\sigma_j : \widehat{\sigma}_j] \cdot \widehat{\sigma}_j.
+		\sum_{j=0}^{n} (-1)^j \sum_{\substack{\sigma_j \in \sd K \\ \widehat{\sigma}_j \subseteq \sigma_j}} [\sigma_j : \widehat{\sigma}_j] \cdot \widehat{\sigma}_j.
 	\end{equation}
-	
-	Observemos que cada símplice subdividido $\widehat{\sigma}_j$ es un subconjunto de $\sigma_j$, y que cada $\sigma_j$ es a su vez una cara de $\sigma$, por lo que $\widehat{\sigma}_j \subseteq \sigma_j \subseteq \partial \sigma$. Además, como cada $\sigma_j$ se obtiene al eliminar un vértice de $\sigma$, concluimos que $\dim \widehat{\sigma}_j = \dim \sigma_j = n-1$. 
+
+	Observemos que cada símplice subdividido $\widehat{\sigma}_j$ es un subconjunto de $\sigma_j$, y que cada $\sigma_j$ es a su vez una cara de $\sigma$, por lo que $\widehat{\sigma}_j \subseteq \sigma_j \subseteq \partial \sigma$. Además, como cada $\sigma_j$ se obtiene al eliminar un vértice de $\sigma$, concluimos que $\dim \widehat{\sigma}_j = \dim \sigma_j = n-1$.
 	Esto implica que los conjuntos de símplices subdivididos $\widehat{\tau}$ y $\widehat{\sigma}_j$ coinciden. Supongamos entonces que $\widehat{\tau} = \widehat{\sigma}_j$, por lo que $\widehat{\tau}$ es igual al símplice formado por los baricentros de $v_{i_0}, [v_{i_0}, v_{i_1}],\ldots, [v_{i_0}, \ldots, v_{i_{n-1}}]$ tales que $[v_{i_0}] \prec [v_{i_0}, v_{i_1}] \prec \ldots \prec [v_{i_0}, v_{i_1}, \ldots, v_{i_{n-1}}] \prec \sigma_j$.
-	La secuencia $(i_0, i_1, \ldots, i_{n-1})$ es una permutación $P$ de los índices $(0, \ldots, \widehat{j}, \ldots, n-1)$, siendo $\widehat{j}$ el índice del vértice eliminado para formar $\sigma_j$. La signatura de esta permutación, que denotaremos por $\text{sgn}(P)$, determina el coeficiente $[\sigma_j : \widehat{\sigma}_j] = (-1)^{\text{sgn}(P)}$. 
+	La secuencia $(i_0, i_1, \ldots, i_{n-1})$ es una permutación $P$ de los índices $(0, \ldots, \widehat{j}, \ldots, n-1)$, siendo $\widehat{j}$ el índice del vértice eliminado para formar $\sigma_j$. La signatura de esta permutación, que denotaremos por $\text{sgn}(P)$, determina el coeficiente $[\sigma_j : \widehat{\sigma}_j] = (-1)^{\text{sgn}(P)}$.
 	Dado que estamos considerando que $\widehat{\tau}$ es una cara de $\widehat{\sigma}$, y que $\widehat{\sigma}_j$ aparece al eliminar el último vértice, la permutación $P'$ que transforma $(i_0, i_1, \ldots, i_{n-1}, j)$ en $(0, 1, \ldots, n)$ muestra signatura $\text{sgn}(P) + n - j$. Así, tenemos que $[\sigma : \widehat{\sigma}] = (-1)^{\text{sgn}(P)} \cdot (-1)^{n - j}$. Al multiplicar por $(-1)^n$ en la primera expresión, alineamos el signo con el de la última expresión, obteniendo así la conmutatividad del diagrama.
 \end{proof}
 
@@ -300,10 +301,10 @@ Por lo tanto, al considerar la suma con signos alternados en la expresión de \(
 \begin{proposicion}
 	Sea $\{C_n(K;R), \partial_n\}$ un complejo de cadenas simpliciales y  y sean $\{{\sd_\#}_n\}$ sus respectivos operadores subdivisión para todo $n \geq 0$. Entonces dicha familia induce un homomorfismo ${\sd_*}_n: H_n(K;R) \to H_n(\sd K;R)$ que de la misma forma llamaremos \textbf{operador subdivisión}. Si $f: |K| \to |L|$ es una aplicación simplicial, entonces el diagrama
 	\[
-	\xymatrix{
-		H_n(K;R) \ar@{->}[d]^{f_*} \ar@{->}[r]^{\sd_*} & H_n(\sd K;R) \ar@{->}[d]^{f_*} \\
-		H_n(L;R) \ar@{->}[r]^{\sd_*} & H_n(\sd L;R)
-	}
+		\xymatrix{
+			H_n(K;R) \ar@{->}[d]^{f_*} \ar@{->}[r]^{\sd_*} & H_n(\sd K;R) \ar@{->}[d]^{f_*} \\
+			H_n(L;R) \ar@{->}[r]^{\sd_*} & H_n(\sd L;R)
+		}
 	\]
 	es conmutativo.
 \end{proposicion}
@@ -315,9 +316,9 @@ Por lo tanto, al considerar la suma con signos alternados en la expresión de \(
 \end{nota}
 
 \begin{definicion}
-	Sea $\sd_*: H_n(K;R) \to H_n(\sd K;R)$ el operador subdivisión asociado al módulo de homología $H_n(\sd K;R)$. Entonces diremos que 
+	Sea $\sd_*: H_n(K;R) \to H_n(\sd K;R)$ el operador subdivisión asociado al módulo de homología $H_n(\sd K;R)$. Entonces diremos que
 	\[
-	\sd_*^m = \sd_* \circ \sd_* \circ \overset{m\ \text{veces}}{\cdots} \circ \sd_*: H_n(K;R) \to H_n(\sd^m K;R)
+		\sd_*^m = \sd_* \circ \sd_* \circ \overset{m\ \text{veces}}{\cdots} \circ \sd_*: H_n(K;R) \to H_n(\sd^m K;R)
 	\]
 	es el \textbf{$m$-ésimo operador subdivisión} del complejo $K$.
 \end{definicion}
@@ -328,14 +329,14 @@ Por lo tanto, al considerar la suma con signos alternados en la expresión de \(
 \begin{proof}
 	Probaremos el caso $m=1$ y razonaremos por inducción sobre el número $n$ de símplices. Sea $n=1$ el caso base. Entonces $K = \{[v]\}$ donde $v$ es un vértice y el resultado se sigue de manera trivial. Ahora supongamos que se cumple para $n-1$ símplices y veamos que sucede con $n$ de ellos. Por tanto, sea $K$ un complejo con $n$ símplices y sea $\sigma$ un símplice de dimensión máxima en $K$. Como el borde de $\sigma$ está contenido en el complejo $L = K \backslash \{\sigma\}$, el resultado se cumple para $\interior \sigma$ y $L$. Por consiguiente, el diagrama de la sucesión de Mayer-Vietoris
 	\[
-	\xymatrix{
-		\dots \ar@{->}[r] & H_p(\interior \sigma;R) \ar@{->}[r] \ar@{->}[d]^{\sd_*} & H_p(\interior \sigma;R) \oplus H_p(L;R) \ar@{->}[d]^{\sd_*} \ar@{->}[r] & H_p(K;R) \ar@{->}[r] \ar@{->}[d]^{\sd_*} & \dots \\
-		\dots \ar@{->}[r] & H_p(\sd \interior \sigma;R) \ar@{->}[r] & H_p(\sd \interior \sigma;R) \oplus H_p(\sd L;R) \ar@{->}[r] & H_p(\sd K;R) \ar@{->}[r] & \dots
-	}
+		\xymatrix{
+			\dots \ar@{->}[r] & H_p(\interior \sigma;R) \ar@{->}[r] \ar@{->}[d]^{\sd_*} & H_p(\interior \sigma;R) \oplus H_p(L;R) \ar@{->}[d]^{\sd_*} \ar@{->}[r] & H_p(K;R) \ar@{->}[r] \ar@{->}[d]^{\sd_*} & \dots \\
+			\dots \ar@{->}[r] & H_p(\sd \interior \sigma;R) \ar@{->}[r] & H_p(\sd \interior \sigma;R) \oplus H_p(\sd L;R) \ar@{->}[r] & H_p(\sd K;R) \ar@{->}[r] & \dots
+		}
 	\]
 	es conmutativo.
-	
-	Como $\sd \sigma$ es el cono $\overline{\sigma} \ast \sd \bd \sigma$, por la \autoref{prop:char-homol-cono} tenemos que $H_p(\sd \sigma;R) = 0$ para todo entero $p \neq 0$ y $H_0(\sd \sigma;R) \cong R$, donde cualquier vértice sirve de generador. Análogamente $H_p(\sigma;R) = 0$ para todo entero $p \neq 0$ y $H_0(\sigma;R) \cong R$. En consecuencia, $\sd_* : H_0(\sigma;R) \to H_0(\sd \sigma;R)$ es un isomorfismo. Concluimos aplicando el \nameref{lem:cinco}. 
+
+	Como $\sd \sigma$ es el cono $\overline{\sigma} \ast \sd \bd \sigma$, por la \autoref{prop:char-homol-cono} tenemos que $H_p(\sd \sigma;R) = 0$ para todo entero $p \neq 0$ y $H_0(\sd \sigma;R) \cong R$, donde cualquier vértice sirve de generador. Análogamente $H_p(\sigma;R) = 0$ para todo entero $p \neq 0$ y $H_0(\sigma;R) \cong R$. En consecuencia, $\sd_* : H_0(\sigma;R) \to H_0(\sd \sigma;R)$ es un isomorfismo. Concluimos aplicando el \nameref{lem:cinco}.
 \end{proof}
 %\begin{proposicion}
 %	Sea $K$ un complejo simplicial. Por tanto existe una aproximación simplicial $\lambda: \sd^n K \to K$ de la identidad $\id: |K| \to |K|$ tal que $\lambda_* \circ \sd_* = \id_*$.
@@ -391,18 +392,18 @@ Por lo tanto, al considerar la suma con signos alternados en la expresión de \(
 \end{teorema}
 \begin{proof}
 	Consideremos una aproximación simplicial \( \varphi : |\sd^m K| \to |L| \) de la función continua \( f: |K| \to |L| \). Utilizamos el operador de subdivisión \( \sd_\#^m : C(K; R) \to C(\sd^m K; R) \) para definir el homomorfismo inducido \( f_* : H_p(K; R) \to H_p(L; R) \) como la composición \( \varphi_* \circ \sd_\# \).
-	
-	Para asegurar que la definición de \( f_* \) es independiente de la elección de la aproximación simplicial, consideremos otra aproximación simplicial \( \psi : |\sd^n K| \to |L| \) donde \( m \leq n \). Introducimos el operador subdivisión \( \sd_\#^{n-m} : C(\sd^m K; R) \to C(\sd^n K; R) \). Queremos ver que el diagrama 
-	
+
+	Para asegurar que la definición de \( f_* \) es independiente de la elección de la aproximación simplicial, consideremos otra aproximación simplicial \( \psi : |\sd^n K| \to |L| \) donde \( m \leq n \). Introducimos el operador subdivisión \( \sd_\#^{n-m} : C(\sd^m K; R) \to C(\sd^n K; R) \). Queremos ver que el diagrama
+
 	\[
-	\xymatrix{
+		\xymatrix{
 		& H_p(\sd^m K;R) \ar@{->}[rd]^{\varphi_*} \ar@{->}[dd]^{\sd^{n-m}_*} &  \\
 		H_p(K;R) \ar@{->}[ru]^{\sd^m_*} \ar@{->}[rd]_{\sd^n_*} &  & H_p(L;R) \\
-		& H_p(\sd^n K;R) \ar@{->}[ru]_{\psi_*} & 
-	}
+		& H_p(\sd^n K;R) \ar@{->}[ru]_{\psi_*} &
+		}
 	\]
 	es conmutativo. Es decir, debemos verificar que \( \varphi_* \circ \sd^m_* = \psi_* \circ \sd_*^{n-m} \circ \sd_*^m \). Para ello, consideramos una aplicación simplicial \( h : |\sd^n K| \to |\sd^m K| \) y veamos que \( \varphi \circ h \) es una aproximación simplicial de \( f \). Sea \( x \in |\sd^n K| \) y \( \sigma = [v_0, \dots, v_p] \) el símplice soporte de \( x \). Sea \( \tau = [w_0, \dots, w_p] \) el símplice de \( \sd^m K \) que contiene a \( \sigma \) tras \( m-n \) subdivisiones. Entonces, \( x \) está en el interior de \( \tau \) y \( \varphi(x) \) está en el interior de \( [\varphi(w_0), \dots, \varphi(w_p)] \). Como $\varphi$ es una aproximación simplicial de $f$, entonces $\varphi(x)$ pertenece al soporte de $f(x)$ y en consecuencia, \( [\varphi(w_0), \dots, \varphi(w_p)] \) es una cara del soporte de \( f(x) \). Además, \( h(x) \) pertenece al interior de \( [h(v_0), \dots, h(v_p)] \), que es una cara propia de \( \tau \), asegurando que \( \varphi \circ h(x) \) pertenezca al soporte de \( f(x) \). Esto es, \( \varphi \circ h(x) \) es una aproximación simplicial de $f$.
-	
+
 	De acuerdo al \autoref{lem:approx-simpl-contig} y el \autoref{cor:contig-homotopy}, \( \varphi \circ h \) y \( \psi \) son aplicaciones contiguas, implicando que \( \varphi_*h_* = \psi_* \). Como \( h_* \) y \( \sd_*^{n-m} \) son inversas entre sí, concluimos que  \( \psi_* \sd_*^{n-m} \sd_*^m = \varphi_*h_*\sd_*^{n-m} \sd_*^m = \varphi_* \sd_*^m \). Por lo tanto, \( f_* : H_p(K; R) \to H_p(L; R) \) es un homomorfismo bien definido para cada \( p \in \mathbb{Z} \).
 \end{proof}
 
@@ -410,12 +411,12 @@ Por lo tanto, al considerar la suma con signos alternados en la expresión de \(
 	Si $f: |K| \to |L|$, $g: |L| \to |M|$ son aplicaciones continuas, entonces $(g \circ f)_* = g_*f_*$. Además, $H(\id) = \id_*$.
 \end{teorema}
 \begin{proof}
-	Dadas las aplicaciones continuas $f$ y $g$, consideremos las aproximaciones simpliciales $\varphi : |\sd^m K| \to |\sd^n L|$ de $f$ y $\psi : |\sd^n L| \to |M|$ de $g$. A continuación consideremos los operadores subdivisión $\sd_\#^n : |K| \to |\sd^n K|$, $\sd_\#^m : |L| \to |\sd^m L|$ y una aplicación simplicial $h : |\sd^n L| \to |L|$. 
+	Dadas las aplicaciones continuas $f$ y $g$, consideremos las aproximaciones simpliciales $\varphi : |\sd^m K| \to |\sd^n L|$ de $f$ y $\psi : |\sd^n L| \to |M|$ de $g$. A continuación consideremos los operadores subdivisión $\sd_\#^n : |K| \to |\sd^n K|$, $\sd_\#^m : |L| \to |\sd^m L|$ y una aplicación simplicial $h : |\sd^n L| \to |L|$.
 	\[
-	\xymatrix{
+		\xymatrix{
 		H_p(\sd^m K;R) \ar@{->}[r]^{\varphi_*} & H_p(\sd^n L;R) \ar@{->}[rd]^{\psi_*} \ar@/^/@{->}[d]^{h_*} &  \\
 		H_p(K;R) \ar@{->}[r]^{f_*} \ar@{->}[u]^{\sd^m_*} & H_p(L;R) \ar@{->}[r]^{g_*} \ar@/^/@{->}[u]^{\sd^n_*} & H_p(M;R)
-	}
+		}
 	\]
 	Siguiendo un razonamiento análogo al de la demostración anterior, tenemos que $h \circ \varphi$ es una aproximación simplicial de $f$. Además, $\psi \circ \varphi$ es una aproximación simplicial de $g \circ f$. Para comprobarlo, sea $x \in |\sd^m K|$ y sea $\sigma = [v_0, \dots, v_p]$ el $p$-símplice tal que $x \in \interior \sigma$. Por ser $\varphi$ una aproximación simplicial de $f$, tenemos que $[\varphi(v_0), \dots, \varphi(v_p)]$ pertenece al soporte de $f(x)$ en $|\sd^n L|$ y por tanto
 	\[
@@ -437,13 +438,13 @@ Por lo tanto, al considerar la suma con signos alternados en la expresión de \(
 	Sean $f,g$ aplicaciones continuas de $|K|$ a $|L|$ y sea $\varepsilon$ el número de Lebesgue del recubrimiento $\{ \st v : v \in L^{(0)} \}$ de $|L|$. Si se tiene que $d(f(x), g(x)) < \varepsilon$, entonces existe una aplicación $\varphi : |\sd^m K| \to |L|$ que es aproximación simplicial de $f: |\sd^m K| \to |L|$ y $g: |\sd^m K| \to |L|$ al mismo tiempo.
 \end{lema}
 \begin{proof}
-	Consideremos un elemento $x$ de $|K|$ y sus imágenes $f(x), g(x)$ en $|L|$. Entonces el conjunto $\{f(x),g(x)\}$ está contenido en $\interior \st v_i$ para algún vértice de $L$ y por lo tanto, $x$ pertenece a las preimágenes de $\st v_i$ tanto por $f$ como por $g$. Esto implica que 
+	Consideremos un elemento $x$ de $|K|$ y sus imágenes $f(x), g(x)$ en $|L|$. Entonces el conjunto $\{f(x),g(x)\}$ está contenido en $\interior \st v_i$ para algún vértice de $L$ y por lo tanto, $x$ pertenece a las preimágenes de $\st v_i$ tanto por $f$ como por $g$. Esto implica que
 	\[
 		\{ f^{-1}(\interior \st v_i) \cap g^{-1}(\interior \st v_i) : v_i \in L^{(0)} \}
 	\]
 	es un recubrimiento por abiertos de $|K|$. Por el \nameref{lem:lebesgue}, existe un número de Lebesgue $\delta > 0$ que, considerando un natural $m$ lo bastante grande, garantiza que $\meas(\sd^m K) < \delta/2$. Ahora si $w$ es un vértice de $|K|$, entonces su estrella abierta $\st w$ tiene un diámetro menor que $\delta$. En consecuencia, podemos encontrar un vértice $v_j$ de $|L|$ de forma que
 	\[
-		\interior \st w \subset f^{-1}(\interior \st v_i) \cap g^{-1}(\interior \st v_i) 
+		\interior \st w \subset f^{-1}(\interior \st v_i) \cap g^{-1}(\interior \st v_i)
 	\]
 	y en particular,
 	$\interior \st w \subset f^{-1}(\interior \st v_j),\ \interior \st w \subset g^{-1}(\interior \st v_j)$. Finalmente, por el \autoref{cor:char-approx-simp}, existe una aplicación $\varphi : |\sd^m K| \to |L|$ que es aproximación simplicial tanto de $f$ como de $g$.
@@ -454,15 +455,15 @@ Por lo tanto, al considerar la suma con signos alternados en la expresión de \(
 \end{teorema}
 \begin{proof}
 	Consideremos $F: |K| \times [0,1] \to |L|$ una homotopía entre $f$ y $g$ tal que $f_t(x) = F(x,t)$. Consideremos ahora el recubrimiento de $|L|$ dado por las estrellas abiertas de sus vértices y su número de Lebesgue $\varepsilon > 0$ asociado.
-	
+
 	Por ser $|K| \times [0,1]$ un espacio métrico compacto, tenemos que $F$ es uniformemente continua. En consecuencia, para el número de Lebesgue $\varepsilon > 0$, existe $\delta > 0$ tal que para todo $t_i, t_j \in [0,1]$ que cumplan $|t_i - t_j| < \delta$, se cumple que $d(F(x,t_i),F(x,t_j)) < \varepsilon$.
-	
+
 	A continuación, tomemos un natural $n$ que garantice que $\frac{1}{n} < \delta$ y consideremos el conjunto $\{ k \in \Z : 0 \leq k < n \}$. Es claro que $\frac{1}{n}$ pertenece al intervalo $[0,1]$ y por tanto, $|\frac{k+1}{n} - \frac{k}{n}| < \delta$. Es decir,
 	\[
-	d\left(F(x,\frac{k}{n}), F(x, \frac{k+1}{n})\right) = d\left(f_{\frac{k}{n}}(x), f_{\frac{k+1}{n}}(x)\right) < \varepsilon
+		d\left(F(x,\frac{k}{n}), F(x, \frac{k+1}{n})\right) = d\left(f_{\frac{k}{n}}(x), f_{\frac{k+1}{n}}(x)\right) < \varepsilon
 	\]
-	para todo $k$ perteneciente a $\{k \in \Z : 0 \leq k < n\}$ y para todo $x \in |K|$. Aplicando el \autoref{lem:aprox-simpl-f-cont}, podemos garantizar que existen aproximaciones simpliciales $\varphi_1, \dots, \varphi_n : |\sd^m| \to |L|$ tal que $\varphi_i$ es una aproximación simplicial tanto de $f_{\frac{i-1}{n}}$ como de $f_{\frac{i}{n}}$ para todo $i \in \{1, \dots, n\}$. 
-	
+	para todo $k$ perteneciente a $\{k \in \Z : 0 \leq k < n\}$ y para todo $x \in |K|$. Aplicando el \autoref{lem:aprox-simpl-f-cont}, podemos garantizar que existen aproximaciones simpliciales $\varphi_1, \dots, \varphi_n : |\sd^m| \to |L|$ tal que $\varphi_i$ es una aproximación simplicial tanto de $f_{\frac{i-1}{n}}$ como de $f_{\frac{i}{n}}$ para todo $i \in \{1, \dots, n\}$.
+
 	Notando $f_0 = f$ y $f_{\frac{n}{n}} = f_1 = g$, tenemos que $\varphi_1$ aproxima simplicialmente a $f$ y $\varphi_{n}$ a $g$. Por el \autoref{lem:approx-simpl-contig}, tenemos que $\varphi_i$ y $\varphi_{i+1}$ son aplicaciones contiguas para todo $i \in \{1, \dots, n\}$. En consecuencia, si $\sd^m_* : H(K;R) \to H(\sd^m K;R)$ es el operador subdivisión, entonces
 	\[
 		f_* = \varphi_1 \sd^m_* = \varphi_2 \sd^m_* = \dots = \varphi_{n} \sd^m_* = g_*.

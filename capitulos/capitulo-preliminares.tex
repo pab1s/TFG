@@ -3,151 +3,190 @@
 
 \chapter{Preliminares algebraicos}
 La teoría de homología es una rama de la topología que trata de resolver
-problemas topológicos en el ámbito del álgebra. Por este motivo es importante
-conocer muy bien algunas herramientas algebraicas que iremos utilizando con
-frecuencia. En todo el capítulo usaremos como referencia principal
+problemas topológicos en el ámbito del álgebra. Por este motivo es importante conocer
+muy bien algunas herramientas algebraicas que iremos utilizando con frecuencia.
+En todo el capítulo usaremos como referencia principal
 \cite{maclane2012homology}.
 
 \section{Módulos}
 
-La estructura de módulo surge con la idea de generalizar el concepto de espacio
-vectorial sobre un cuerpo a un anillo. Nuestro interés en ellos radica en que
-la teoría de homología se construye sobre módulos y por ello es necesario hacer
-una introducción al campo. Esta sección recoge algunas definiciones y
-resultados de interés vistos en la asginatura de Álgebra Moderna y
-complementada con los contenidos de \cite{dummit2004abstract}.
+La estructura de módulo surge con la idea de generalizar el concepto de espacio vectorial
+sobre un cuerpo a un anillo. Nuestro interés en ellos radica en que la teoría de
+homología se construye sobre módulos y por ello es necesario hacer una
+introducción al campo. Esta sección recoge algunas definiciones y resultados de interés
+vistos en la asginatura de Álgebra Moderna y complementada con los contenidos de
+\cite{dummit2004abstract}.
 
 \begin{definicion}
-	Sea $R$ un anillo con elemento identidad $1 \neq 0$. Un \textbf{$R$-módulo izquierdo} $A$ es un grupo abeliano aditivo junto con una función $p: R \times A \rightarrow A$ con $(r, a) \to ra$ tal que dados $r,r' \in R$, $a,a' \in A$ se tiene
+	Sea \(R\) un anillo con elemento identidad \(1 \neq 0\). Un \textbf{\(R\)-módulo
+	izquierdo} \(A\) es un grupo abeliano aditivo junto con una función \(p: R \times
+	A \rightarrow A\) con \((r, a) \to ra\) tal que dados \(r,r' \in R\), \(a,a' \in A\)
+	se tiene
 	\begin{enumerate}
-		\item $(r+r') a = r a + r' a$,
-		\item $(rr') a = r (r' a)$,
-		\item $r(a+a') = ra + ra'$,
-		\item $1a = a$.
+		\item \((r+r') a = r a + r' a\),
+		\item \((rr') a = r (r' a)\),
+		\item \(r(a+a') = ra + ra'\),
+		\item \(1a = a\).
 	\end{enumerate}
 \end{definicion}
 
-De la definición anterior se sigue que $0a = 0$ y $(-1)a = -a$.
+De la definición anterior se sigue que \(0a = 0\) y \((-1)a = -a\).
 
-De manera análoga, definimos \textbf{$R$-módulo derecho} donde el anillo actúa
-por la derecha en vez de por la izquierda de forma que $p: A \times R
-	\rightarrow A$. Si $R$ es un anillo conmutativo, los $R$-módulos izquierdos y
-derechos coinciden y les llamamos simplemente $R$-módulos. Como los resultados
-de $R$-módulos izquierdos y derechos son análogos, trabajaremos con los
-$R$-módulos izquierdos y nos referiremos a ellos como \textbf{$R$-módulos} o
+De manera análoga, definimos \textbf{\(R\)-módulo derecho} donde el anillo actúa
+por la derecha en vez de por la izquierda de forma que
+\(p: A \times R \rightarrow A\). Si \(R\) es un anillo conmutativo, los \(R\)-módulos
+izquierdos y derechos coinciden y les llamamos simplemente \(R\)-módulos. Como los
+resultados de \(R\)-módulos izquierdos y derechos son análogos, trabajaremos con
+los \(R\)-módulos izquierdos y nos referiremos a ellos como \textbf{\(R\)-módulos} o
 \textbf{módulos} a menos que se indique explícitamente lo contrario.
 
 \begin{ejemplo}
-	El interés de los $R$-módulos subyace en la cantidad de estructuras conocidas que engloba. Si por ejemplo consideramos el $K$-módulo donde $K$ es un cuerpo, éste adquiere la estructura de \textbf{espacio vectorial}. Ahora sea $A$ un $\mathbb{Z}$-módulo. Definimos el producto $p$ de forma que para $n \in \mathbb{Z}$ y $a \in A$ con $n>0$, $na = a + a + \dots + a$ ($n$ veces), $0a=0$ y $(-n)a = -(na)$. Entonces $A$ ha de tener estructura de \textbf{grupo abeliano}. En particular, si $R$ es un anillo entonces es también un $R$-módulo.
+	El interés de los \(R\)-módulos subyace en la cantidad de estructuras conocidas que
+	engloba. Si por ejemplo consideramos el \(K\)-módulo donde \(K\) es un cuerpo, éste
+	adquiere la estructura de \textbf{espacio vectorial}. Ahora sea \(A\) un \(\mathbb{Z}\)-módulo.
+	Definimos el producto \(p\) de forma que para \(n \in \mathbb{Z}\) y \(a \in A\) con
+	\(n>0\), \(na = a + a + \ldots + a\) (\(n\) veces), \(0a=0\) y \((-n)a = -(na)\). Entonces
+	\(A\) ha de tener estructura de \textbf{grupo abeliano}. En particular, si \(R\)
+	es un anillo entonces es también un \(R\)-módulo.
 \end{ejemplo}
 
 \begin{definicion}
-	Sea $A$ un $R$-módulo izquierdo y $S$ un subconjunto de $A$. Diremos que $S$ es un \textbf{submódulo} de $A$, esto es, $S \subset A$, si $S$ es cerrado respecto a la suma y si $r \in R$, $s \in S$ entonces $rs \in S$.
+	Sea \(A\) un \(R\)-módulo izquierdo y \(S\) un subconjunto de \(A\). Diremos que \(S\)
+	es un \textbf{submódulo} de \(A\), esto es, \(S \subset A\), si \(S\) es cerrado
+	respecto a la suma y si \(r \in R\), \(s \in S\) entonces \(rs \in S\).
 \end{definicion}
-De la definición anterior se deduce que $S$ es un $R$-módulo.
+De la definición anterior se deduce que \(S\) es un \(R\)-módulo.
 \begin{definicion}
-	Sea $R$ un $R$-módulo.	Si un submódulo de $R$ es un subconjunto $L \subset R$ cerrado respecto a la suma tal que $rL = \{rl \ : \ l \in L\} \subset L$ para todo $r \in R$, lo llamaremos \textbf{ideal} de $R$.
+	Sea \(R\) un \(R\)-módulo. Si un submódulo de \(R\) es un subconjunto \(L \subset R\)
+	cerrado respecto a la suma tal que \(rL = \{rl \ : \ l \in L\} \subset L\) para
+	todo \(r \in R\), lo llamaremos \textbf{ideal} de \(R\).
 \end{definicion}
 
-Tomando un ideal izquierdo $L$ de $R$ y un $R$-módulo izquierdo $A$, definimos
-el producto del ideal $L$ por el módulo $A$
-\[ LA = \left\lbrace \sum_{i=0}^n l_ia_i \ : \ l_i \in L,\ a_i \in A,\ n \in \mathbb{N} \right\rbrace \]
-donde $LA$ es un submódulo de $A$. En particular, el producto de dos ideales
-izquierdos $LL'$ es también un ideal izquierdo y $(LL')A = L(L'A)$.
+Tomando un ideal izquierdo \(L\) de \(R\) y un \(R\)-módulo izquierdo \(A\), definimos
+el producto del ideal \(L\) por el módulo \(A\)
+\[
+	LA = \left\lbrace \sum_{i=0}^{n} l_{i}a_{i} \ : \ l_{i} \in L,\ a_{i} \in A,\ n
+	\in \mathbb{N}\right\rbrace
+\]
+donde \(LA\) es un submódulo de \(A\). En particular, el producto de dos ideales
+izquierdos \(LL'\) es también un ideal izquierdo y \((LL')A = L(L'A)\).
 \begin{definicion}
-	Sea $A$ un $R$-módulo. Definimos el \textbf{anulador de $A$} como el submódulo $\ann(A) = \{r \in R : ra=0 \ \forall a \in A\}$. De manera análoga, llamaremos \textbf{anulador de $a \in A$} al submódulo $\ann(A) = \{r \in R : ra=0 \ \forall a \in A\}$.
+	Sea \(A\) un \(R\)-módulo. Definimos el \textbf{anulador de \(A\)} como el submódulo
+	\(\ann(A) = \{r \in R : ra=0 \ \forall a \in A\}\). De manera análoga, llamaremos
+	\textbf{anulador de \(a \in A\)} al submódulo
+	\(\ann(A) = \{r \in R : ra=0 \ \forall a \in A\}\).
 \end{definicion}
 \begin{definicion}
-	Sea $A$ un $R$-módulo y sea $a \in A$. El conjunto $Ra = \{r \cdot a : r \in R\}$ es un submódulo de $A$ que denominaremos \textbf{submódulo cíclico generado por $a$}.
+	Sea \(A\) un \(R\)-módulo y sea \(a \in A\). El conjunto
+	\(Ra = \{r \cdot a : r \in R\}\) es un submódulo de \(A\) que denominaremos
+	\textbf{submódulo cíclico generado por \(a\)}.
 \end{definicion}
 \begin{definicion}
-	Sea $A$ un $R$-módulo y sean $a_1, \dots, a_n \in A$. Entonces $Ra_1 + \dots + Ra_n = \{r \cdot a_1 + \dots + r \cdot a_n : r \in R\}$ es un submódulo de $A$ que llamaremos \textbf{submódulo generado por $a_1, \dots, a_n$}.
+	Sea \(A\) un \(R\)-módulo y sean \(a_{1}, \ldots, a_{n} \in A\). Entonces
+	\(Ra_{1} + \ldots + Ra_{n} = \{r \cdot a_{1} + \ldots + r \cdot a_{n} : r \in R\}\)
+	es un submódulo de \(A\) que llamaremos \textbf{submódulo generado por
+	\(a_{1}, \ldots, a_{n}\)}.
 \end{definicion}
 \begin{definicion}
-	Sea $M$ un $R$-módulo. Un submódulo $N$ de $M$ es \textbf{finitamente generado} si existe un subconjunto finito $A \subset M$ tal que $N = RA$.
+	Sea \(M\) un \(R\)-módulo. Un submódulo \(N\) de \(M\) es \textbf{finitamente generado}
+	si existe un subconjunto finito \(A \subset M\) tal que \(N = RA\).
 \end{definicion}
 \begin{definicion}
-	Sean $A$, $B$ $R$-módulos. Definimos el \textbf{homomorfismo de $R$-módulos} de $A$ a $B$ como la aplicación $\alpha: A \rightarrow B$ tal que
+	Sean \(A\), \(B\) \(R\)-módulos. Definimos el \textbf{homomorfismo de \(R\)-módulos}
+	de \(A\) a \(B\) como la aplicación \(\alpha: A \rightarrow B\) tal que
 	\begin{enumerate}
-		\item $\alpha(a+a') = \alpha(a) + \alpha(a')$,
-		\item $\alpha(ra) = r\alpha(a)$
+		\item \(\alpha(a+a') = \alpha(a) + \alpha(a')\),
+		\item \(\alpha(ra) = r\alpha(a)\)
 	\end{enumerate}
-	para todo $a,a' \in A$, $r \in R$.
+	para todo \(a,a' \in A\), \(r \in R\).
 \end{definicion}
 
-Cuando $\alpha: A \rightarrow B$ sea un homomorfismo de $R$-módulos, diremos
-que $A$ es el \textbf{dominio} y $B$ el \textbf{rango}. La \textbf{imagen} de
-$\alpha$ es el conjunto $\im(\alpha) = \{ \alpha(a) : a \in A \}$. El
-\textbf{núcleo} será el conjunto de elementos que se anulan en su imagen, esto
-es, $\ker(\alpha) = \{ a \in A : \alpha(a) = 0 \}$. Diremos que $\alpha$ es un
-\textbf{epimorfismo} cuando $\alpha$ sea sobreyectiva, un \textbf{monomorfismo}
-cuando $\alpha$ sea inyectiva y un \textbf{isomorfismo} si $\alpha$ es un
-epimorfismo y un monomorfismo a la vez. Si existe un isomorfismo entre $A$ y
-$B$ diremos que son \textbf{isomorfos} y lo notaremos $A \cong B$. Un
-homomorfismo $\alpha: A \rightarrow A$ lo llamaremos \textbf{endomorfismo}.
+Cuando \(\alpha: A \rightarrow B\) sea un homomorfismo de \(R\)-módulos, diremos que
+\(A\) es el \textbf{dominio} y \(B\) el \textbf{rango}. La \textbf{imagen} de \(\alpha\)
+es el conjunto \(\im(\alpha) = \{ \alpha(a) : a \in A \}\). El \textbf{núcleo} será
+el conjunto de elementos que se anulan en su imagen, esto es, \(\ker(\alpha) = \{
+a \in A : \alpha(a) = 0 \}\). Diremos que \(\alpha\) es un \textbf{epimorfismo} cuando
+\(\alpha\) sea sobreyectiva, un \textbf{monomorfismo} cuando \(\alpha\) sea inyectiva
+y un \textbf{isomorfismo} si \(\alpha\) es un epimorfismo y un monomorfismo a la
+vez. Si existe un isomorfismo entre \(A\) y \(B\) diremos que son \textbf{isomorfos}
+y lo notaremos \(A \cong B\). Un homomorfismo \(\alpha: A \rightarrow A\) lo llamaremos
+\textbf{endomorfismo}.
 
-Dado que el núcleo y la imagen de un homomorfismo de $R$-módulos coincide con
-el de los grupos abelianos subyacentes, la siguiente caracterización es
-inmediata de la ya conocida para grupos:
+Dado que el núcleo y la imagen de un homomorfismo de \(R\)-módulos coincide con el
+de los grupos abelianos subyacentes, la siguiente caracterización es inmediata de
+la ya conocida para grupos:
 
 \begin{proposicion}
-	Sea $\alpha: A \to B$ un homomorfismo de $R$-módulos. Entonces
+	Sea \(\alpha: A \to B\) un homomorfismo de \(R\)-módulos. Entonces
 	\begin{enumerate}
-		\item $\alpha$ es un monomorfismo si, y sólo si, $\ker(\alpha) = 0$.
-		\item $\alpha$ es un epimorfismo si, y sólo si, $\im(\alpha) = B$.
+		\item \(\alpha\) es un monomorfismo si, y sólo si, \(\ker(\alpha) = 0\).
+		\item \(\alpha\) es un epimorfismo si, y sólo si, \(\im(\alpha) = B\).
 	\end{enumerate}
 \end{proposicion}
 
-Es frecuente escribir el homomorfismo de $R$-módulos $\alpha: A \rightarrow B$
-como $A \xrightarrow{\alpha} B$. Respecto a la notación de la imagen de un
-elemento $a \in A$ por $\alpha$, pondremos $\alpha(a)$ o simplemente $\alpha
-	a$. En cuanto a la imagen de $A$ por $\alpha$, lo representaremos de manera
-análoga por $\alpha(A)$ o $\alpha A$.
+Es frecuente escribir el homomorfismo de \(R\)-módulos \(\alpha: A \rightarrow B\)
+como \(A \xrightarrow{\alpha}B\). Respecto a la notación de la imagen de un elemento
+\(a \in A\) por \(\alpha\), pondremos \(\alpha(a)\) o simplemente \(\alpha a\). En cuanto
+a la imagen de \(A\) por \(\alpha\), lo representaremos de manera análoga por
+\(\alpha(A)\) o \(\alpha A\).
 
-Dados dos homomorfismos de $R$-módulos $\alpha_1, \alpha_2 : A \rightarrow B$,
-su \textbf{suma} $\alpha_1 + \alpha_2$ la definimos como $(\alpha_1 +
-	\alpha_2)(a) = \alpha_1(a) + \alpha_2(a)$ para todo $a \in A$. Además, dados
-dos homomorfismos de $R$-módulos $\alpha: A \rightarrow B$, $\beta: B
-	\rightarrow C$, su \textbf{composición} $\beta \circ \alpha: A \rightarrow C$
-es también un homomorfismo de $R$-módulos. Nótese que para que la composición
-sea posible, el rango de $\alpha$ tiene que ser igual al dominio de $\beta$. En
-ocasiones usaremos la notación por yuxtaposición $\alpha\beta = \alpha \circ
-	\beta$. Llamaremos \textbf{inversa} (por ambos lados) de $\alpha : A
-	\rightarrow B$ al homomorfismo $\alpha^{-1} : B \rightarrow A$ tal que
-$\alpha^{-1} \circ \alpha = \id_A$ y $\alpha \circ \alpha^{-1} = \id_B$. Una
-\textbf{inversa izquierda} de $\alpha$ es una función $\gamma: B \rightarrow A$
-tal que $\gamma \circ \alpha = \id_A$. De manera análoga, el homomorfismo $\theta : B \to A$ es \textbf{inversa derecha} de $\alpha$ si $\alpha \circ \theta = \id_B$.
+Dados dos homomorfismos de \(R\)-módulos
+\(\alpha_{1}, \alpha_{2} : A \rightarrow B\), su \textbf{suma}
+\(\alpha_{1} + \alpha_{2}\) la definimos como
+\((\alpha_{1} + \alpha_{2})(a) = \alpha_{1}(a) + \alpha_{2}(a)\) para todo
+\(a \in A\). Además, dados dos homomorfismos de \(R\)-módulos
+\(\alpha: A \rightarrow B\), \(\beta: B \rightarrow C\), su \textbf{composición} \(\beta
+\circ \alpha: A \rightarrow C\) es también un homomorfismo de \(R\)-módulos. Nótese
+que para que la composición sea posible, el rango de \(\alpha\) tiene que ser igual
+al dominio de \(\beta\). En ocasiones usaremos la notación por yuxtaposición
+\(\alpha\beta = \alpha \circ \beta\). Llamaremos \textbf{inversa} (por ambos lados)
+de \(\alpha : A \rightarrow B\) al homomorfismo \(\alpha^{-1}: B \rightarrow A\) tal
+que \(\alpha^{-1}\circ \alpha = \id_{A}\) y \(\alpha \circ \alpha^{-1}= \id_{B}\). Una
+\textbf{inversa izquierda} de \(\alpha\) es una función \(\gamma: B \rightarrow A\)
+tal que \(\gamma \circ \alpha = \id_{A}\). De manera análoga, el homomorfismo
+\(\theta : B \to A\) es \textbf{inversa derecha} de \(\alpha\) si \(\alpha \circ \theta
+= \id_{B}\).
 
-Si \(T \subseteq B\), el conjunto \(\alpha^{-1}T = \{ s \in A \ : \ \alpha(s)
-\in T \} \) es un submódulo de \(A\), llamado la \textbf{imagen inversa}
-(completa) de \(T\). En particular, \(\ker \alpha = \alpha^{-1}0\), donde \(0\)
-denota el submódulo de \(B\) que consiste solo del elemento cero.
+Si \(T \subseteq B\), el conjunto
+\(\alpha^{-1}T = \{ s \in A \ : \ \alpha(s) \in T \}\) es un submódulo de \(A\), llamado
+la \textbf{imagen inversa} (completa) de \(T\). En particular,
+\(\ker \alpha = \alpha^{-1}0\), donde \(0\) denota el submódulo de \(B\) que consiste solo
+del elemento cero.
 
-Sea \(T \subseteq B\) donde $B$ es un $R$-módulo, llamaremos \textbf{inclusión}
-o \textbf{inyección canónica} al homomorfismo $i: T \rightarrow B$ tal que
-$i(t) = t$ para todo $t \in T$. En particular, $i$ es un monomorfismo. Las
-\textbf{clases laterales} de $T$ en $B$ son los conjuntos $b + T = \{b + t : t
-	\in T\}$ donde $b \in B$. Dos clases laterales $b_1 + T$, $b_2 + T$ son iguales
-si $b_1 - b_2 \in T$. Como $T$ es un submódulo, el grupo abeliano $B/T$ se
-convierte en un $R$-módulo cuando $r(b+T) = rb + T$ para todo $r \in R$. A este
-$R$-módulo lo llamaremos el \textbf{módulo cociente} de $B$ sobre $T$. El
-homomorfismo $\pi: B \rightarrow B/T$ tal que $\pi(b) = b + T$ es un
-epimorfismo que llamaremos \textbf{proyección canónica} de $B$.
+Sea \(T \subseteq B\) donde \(B\) es un \(R\)-módulo, llamaremos \textbf{inclusión} o \textbf{inyección
+canónica} al homomorfismo \(i: T \rightarrow B\) tal que \(i(t) = t\) para todo
+\(t \in T\). En particular, \(i\) es un monomorfismo. Las \textbf{clases laterales}
+de \(T\) en \(B\) son los conjuntos \(b + T = \{b + t : t \in T\}\) donde \(b \in B\). Dos
+clases laterales \(b_{1} + T\), \(b_{2} + T\) son iguales si \(b_{1} - b_{2} \in T\). Como
+\(T\) es un submódulo, el grupo abeliano \(B/T\) se convierte en un \(R\)-módulo
+cuando \(r(b+T) = rb + T\) para todo \(r \in R\). A este \(R\)-módulo lo llamaremos el
+\textbf{módulo cociente} de \(B\) sobre \(T\). El homomorfismo \(\pi: B \rightarrow B/
+T\) tal que \(\pi(b) = b + T\) es un epimorfismo que llamaremos \textbf{proyección
+canónica} de \(B\).
 
-\begin{proposicion}[Teorema de factorización]
-	\label{prop:teo-fact}
-	Sea \( \beta: B \rightarrow B' \) un homomorfismo de módulos con \( T \subset \ker \beta \). Existe entonces un único homomorfismo de módulos \( \beta': B/T \rightarrow B' \) con \( \beta'\pi = \beta \); es decir, el siguiente diagrama con \( \beta(T) = 0 \)
+\begin{proposicion}
+	[Teorema de factorización] \label{prop:teo-fact} Sea \(\beta: B \rightarrow B'\)
+	un homomorfismo de módulos con \(T \subset \ker \beta\). Existe entonces un
+	único homomorfismo de módulos \(\beta': B/T \rightarrow B'\) con
+	\(\beta'\pi = \beta\); es decir, el siguiente diagrama con \(\beta(T) = 0\)
 	\begin{equation}
-		\label{firstisothm}
-		\xymatrix{
-			B \ar[r]^\pi \ar[dr]^\beta & B/T \ar[d]^{\beta'} \\
-			& B'
-		}
+		\label{firstisothm}\xymatrix{ B \ar[r]^\pi \ar[dr]^\beta & B/T \ar[d]^{\beta'} \\ & B' }
 	\end{equation}
-	es conmutativo. Al homomorfismo $\beta'$ lo llamaremos \textbf{homomorfismo inducido} por $\beta$.
+	es conmutativo. Al homomorfismo \(\beta'\) lo llamaremos \textbf{homomorfismo
+	inducido} por \(\beta\).
 \end{proposicion}
 \begin{proof}
-	Consideremos el $R$-módulo $B$ y definamos \( \beta'(b + T) = \beta(b) \). Por estar $T$ contenida en el núcleo de $\beta$, la función está bien definida. En efecto, si $a,b \in B$ entonces $a+T = b+T$ lo que implica que $a-b \in T \subset \ker \beta$. Esto es, $\beta(a-b) = 0$ y por tanto, $\beta(a)=\beta(b)$. Como $\beta$ es un homomorfismo, $$\beta'((ra + sb) + T) = \beta(ra+sb) = r\beta(a) + s\beta(b) = r \beta'(a+T) + s \beta'(b+T)$$ para todo $r,s \in R$, $a,b \in B$. En consecuencia, $\beta'$ también es un homomorfismo de $R$-módulos.
+	Consideremos el \(R\)-módulo \(B\) y definamos \(\beta'(b + T) = \beta(b)\). Por
+	estar \(T\) contenida en el núcleo de \(\beta\), la función está bien definida. En
+	efecto, si \(a,b \in B\) entonces \(a+T = b+T\) lo que implica que \(a-b \in T \subset
+	\ker \beta\). Esto es, \(\beta(a-b) = 0\) y por tanto, \(\beta(a)=\beta(b)\). Como \(\beta\)
+	es un homomorfismo,
+	\[
+		\beta'((ra + sb) + T) = \beta(ra+sb) = r\beta(a) + s\beta(b) = r \beta'(a+T)
+		+ s \beta'(b+T)
+	\]
+	para todo \(r,s \in R\), \(a,b \in B\). En consecuencia, \(\beta'\) también es un homomorfismo
+	de \(R\)-módulos.
 \end{proof}
 %En particular, si \( \beta: B \rightarrow B' \) es un epimorfismo con núcleo \( T \), \( \beta': B/T \rightarrow B' \) es un isomorfismo. Esta afirmación puede expresarse de la siguiente manera: cada \( \beta \) con \( \beta(T) = 0 \) \textit{factoriza de manera única} a través de la proyección \( \pi \). Esta propiedad caracteriza a \( \pi: B \rightarrow B/T \) hasta un isomorfismo de \( B/T \), de la siguiente manera:
 %
@@ -159,15 +198,25 @@ epimorfismo que llamaremos \textbf{proyección canónica} de $B$.
 %	Factorizamos \(\eta\) a través de \(\pi\) y \(\pi\) a través de \(\eta\), así que \(\eta = (\eta' \pi) \eta = 1_\eta\). Pero \(\eta\) factoriza \textit{únicamente} a través de \(\pi\), así que \(\eta' \pi = 1\). Simétricamente, \(\pi' \eta = 1\). Por lo tanto \(\pi' = (\eta')^{-1}\) y \(\eta'\) es el isomorfismo deseado \(\theta\).
 %\end{proof}
 %
-\begin{teorema}[Primer teorema de isomorfía]
-	\label{teo:first-iso}
-	Sea $\beta : B \to B'$ un homomorfismo de $R$-módulos. Entonces
+\begin{teorema}
+	[Primer teorema de isomorfía] \label{teo:first-iso} Sea \(\beta : B \to B'\) un homomorfismo
+	de \(R\)-módulos. Entonces
 	\[
-	\frac{B}{\ker \beta} \cong \im \beta
+		\frac{B}{\ker \beta}\cong \im \beta
 	\]
 \end{teorema}
 \begin{proof}
-	La demostración es análoga a la ya vista para grupos. Construimos un homomorfismo de $R$-módulos $\beta: B \to \im \beta$ donde aplicando el \nameref{prop:teo-fact} con $T = \ker \beta$, obtenemos el homomorfismo inducido $\beta' : B/\ker \beta \to \im \beta$ tal que $\beta'(b+\ker \beta) = \beta(b)$. Veamos que está bien definida y que es biyectiva. Para ello, consideremos que existe otro $c \in B$ tal que $b + \ker B = c + \ker B$ lo cual se cumple si, y sólo si, $(b + \ker B) - (c + \ker B) = (b - c) + \ker \beta = 0$. Esto es, que $b - c \in \ker \beta$ y por tanto $\beta(b-c) = \beta(b) - \beta(c) = 0$. Es decir, $\beta(b) = \beta(c)$. En consecuencia, la aplicación $\beta'$ está bien definida y además es inyectiva. Claramente $\beta: B \to \im \beta$ es sobreyectiva.
+	La demostración es análoga a la ya vista para grupos. Construimos un
+	homomorfismo de \(R\)-módulos \(\beta: B \to \im \beta\) donde aplicando el
+	\nameref{prop:teo-fact} con \(T = \ker \beta\), obtenemos el homomorfismo
+	inducido \(\beta' : B/\ker \beta \to \im \beta\) tal que
+	\(\beta'(b+\ker \beta) = \beta(b)\). Veamos que está bien definida y que es biyectiva.
+	Para ello, consideremos que existe otro \(c \in B\) tal que \(b + \ker B = c + \ker
+	B\) lo cual se cumple si, y sólo si, \((b + \ker B) - (c + \ker B) = (b - c) + \ker
+	\beta = 0\). Esto es, que \(b - c \in \ker \beta\) y por tanto \(\beta(b-c) = \beta
+	(b) - \beta(c) = 0\). Es decir, \(\beta(b) = \beta(c)\). En consecuencia, la aplicación
+	\(\beta'\) está bien definida y además es inyectiva. Claramente
+	\(\beta: B \to \im \beta\) es sobreyectiva.
 \end{proof}
 %Cada homomorfismo \(\alpha: A \rightarrow B\) determina dos módulos cociente
 %\[\text{Coim } \alpha = A / \text{Ker } \alpha, \quad \text{Coker } \alpha = B / \text{Im } \alpha,\]
@@ -188,70 +237,93 @@ epimorfismo que llamaremos \textbf{proyección canónica} de $B$.
 %\subsection{Módulos libres}
 %
 %\begin{definicion}
-%	Sea $A$ un $R$-módulo y $S$ un subconjunto de $A$. Llamaremos \textbf{submódulo generado por $S$} a la intersección de todos los submódulo de $A$ que contienen a $S$ y lo notaremos por $\langle S \rangle$.
+%	Sea \(A\) un \(R\)-módulo y \(S\) un subconjunto de \(A\). Llamaremos \textbf{submódulo generado por \(S\)} a la intersección de todos los submódulo de \(A\) que contienen a \(S\) y lo notaremos por \(\langle S \rangle\).
 %\end{definicion}
 %
 %\begin{definicion}
-%	Sea $A$ un $R$-módulo y $S$ un subconjunto finito de $A$. Si $\langle S \rangle = A$, diremos que $A$ es \textbf{finitamente generado} por $S$.
+%	Sea \(A\) un \(R\)-módulo y \(S\) un subconjunto finito de \(A\). Si \(\langle S \rangle = A\), diremos que \(A\) es \textbf{finitamente generado} por \(S\).
 %\end{definicion}
 %
 %\begin{definicion}
-%	Sea $A$ un $R$-módulo. Una familia de elementos $(e_i)_{i\in I}$ indexada por $I$ diremos que es \textbf{linealmente independiente} si para cada combinación lineal $\sum_{i \in I}r_ie_i=0$ con $r_i \in R$, tenemos que $r_i=0$ salvo un número finito de índices $i$.
+%	Sea \(A\) un \(R\)-módulo. Una familia de elementos \((e_i)_{i\in I}\) indexada por \(I\) diremos que es \textbf{linealmente independiente} si para cada combinación lineal \(\sum_{i \in I}r_ie_i=0\) con \(r_i \in R\), tenemos que \(r_i=0\) salvo un número finito de índices \(i\).
 %\end{definicion}
 
 \begin{definicion}
-	Sea $\{A_i\}_{i \in I}$ una familia de $R$-módulos indexada por $I$. Definimos el \textbf{producto directo} o \textbf{producto directo externo} de $\{A_i\}_{i \in I}$ como el producto cartesiano
+	Sea \(\{A_{i}\}_{i \in I}\) una familia de \(R\)-módulos indexada por \(I\).
+	Definimos el \textbf{producto directo} o \textbf{producto directo externo} de
+	\(\{A_{i}\}_{i \in I}\) como el producto cartesiano
 	\[
-		\prod_{i \in I} A_i = \{(x_i)_{i \in I} : x_i \in A_i \}
+		\prod_{i \in I}A_{i} = \{(x_{i})_{i \in I}: x_{i} \in A_{i} \}
 	\]
 	donde las operaciones se definen componente a componente:
 	\begin{align*}
-		(x_i)_{i \in I} + (y_i)_{i \in I} & = (x_i+y_i)_{i \in I} \\
-		r(x_i)_{i \in I}                  & = (rx_i)_{i \in I}
+		(x_{i})_{i \in I}+ (y_{i})_{i \in I} & = (x_{i}+y_{i})_{i \in I} \\
+		r(x_{i})_{i \in I}                   & = (rx_{i})_{i \in I}
 	\end{align*}
-	para todo $r \in R$, $x_i,y_i \in A_i$, $i \in I$.
+	para todo \(r \in R\), \(x_{i},y_{i} \in A_{i}\), \(i \in I\).
 \end{definicion}
 
 \begin{definicion}
-	Sea $\{A_i\}_{i \in I}$ una familia de $R$-módulos indexada por $I$. Definimos la \textbf{suma directa} o \textbf{suma directa interna} de $\{A_i\}_{i \in I}$ como el submódulo de $\prod_{i \in I} A_i$ tal que
+	Sea \(\{A_{i}\}_{i \in I}\) una familia de \(R\)-módulos indexada por \(I\).
+	Definimos la \textbf{suma directa} o \textbf{suma directa interna} de
+	\(\{A_{i}\}_{i \in I}\) como el submódulo de \(\prod_{i \in I}A_{i}\) tal que
 	\[
-		\bigoplus_{i \in I} A_i = \{(x_i)_{i \in I} : x_i = 0 \ \text{p.c.t.} \ i \in I\}
+		\bigoplus_{i \in I}A_{i} = \{(x_{i})_{i \in I}: x_{i} = 0 \ \text{p.c.t.}\ i
+		\in I\}
 	\]
 \end{definicion}
 \begin{nota}
-	Recordemos que una condición se cumple "para casi todo" (p.c.t.) elemento de un conjunto si se cumple para todo elemento en él salvo en un subconjunto finito de elementos.
+	Recordemos que una condición se cumple "para casi todo" (p.c.t.) elemento de
+	un conjunto si se cumple para todo elemento en él salvo en un subconjunto
+	finito de elementos.
 \end{nota}
 \begin{definicion}
-	Sea $B$ un conjunto y sea $R \langle B \rangle$ el $R$-módulo tal que $R \langle B \rangle = \bigoplus_{b \in B}R_b$ donde $R_b=R$ para todo $b \in B$. Llamaremos a dicho $R$-módulo el \textbf{$R$-módulo libre de base $B$}. De esta forma cada $x \in R \langle B \rangle$ se representa por $x = \sum_{b\in B}\lambda_b \cdot b$ donde $\lambda_b \in R$ son coeficientes no nulos en un número finito de posiciones $b$.
+	Sea \(B\) un conjunto y sea \(R \langle B \rangle\) el \(R\)-módulo tal que \(R \langle
+	B \rangle = \bigoplus_{b \in B}R_{b}\) donde \(R_{b}=R\) para todo \(b \in B\).
+	Llamaremos a dicho \(R\)-módulo el \textbf{\(R\)-módulo libre de base \(B\)}. De
+	esta forma cada \(x \in R \langle B \rangle\) se representa por
+	\(x = \sum_{b\in B}\lambda_{b} \cdot b\) donde \(\lambda_{b} \in R\) son
+	coeficientes no nulos en un número finito de posiciones \(b\).
 \end{definicion}
 \begin{definicion}
-	Sea \( M \) un \( R \)-módulo libre. Si para toda base \( B \) de \( M \), \( B \) tiene la misma cardinalidad, entonces decimos que \( M \) tiene \textbf{rango} \( \rg \, M = |B| \), donde \( B \) es alguna base de \( M \).
+	Sea \(M\) un \(R\)-módulo libre. Si para toda base \(B\) de \(M\), \(B\) tiene la misma cardinalidad,
+	entonces decimos que \(M\) tiene \textbf{rango} \(\rg \, M = |B|\), donde \(B\) es
+	alguna base de \(M\).
 \end{definicion}
 \begin{definicion}
-	Sea \( x \) un elemento de un \( R \)-módulo. Decimos que \( x \) es un\textbf{ elemento de torsión} si existe un \( r \in R \setminus \{0\} \) tal que \( rx = 0 \). Por otro lado, \( x \) es un \textbf{elemento sin torsión} si el único elemento \( r \in R \) que satisface \( rx = 0 \) es \( r = 0 \). Un \( R \)-módulo se clasifica como \textbf{módulo de torsión} si cada uno de sus elementos es un elemento de torsión. Recíprocamente, un \textbf{módulo sin torsión} es aquel cuyos elementos no nulos son elementos sin torsión.
+	Sea \(x\) un elemento de un \(R\)-módulo. Decimos que \(x\) es un\textbf{ elemento de
+	torsión} si existe un \(r \in R \setminus \{0\}\) tal que \(rx = 0\). Por otro lado,
+	\(x\) es un \textbf{elemento sin torsión} si el único elemento \(r \in R\) que satisface
+	\(rx = 0\) es \(r = 0\). Un \(R\)-módulo se clasifica como \textbf{módulo de torsión}
+	si cada uno de sus elementos es un elemento de torsión. Recíprocamente, un \textbf{módulo
+	sin torsión} es aquel cuyos elementos no nulos son elementos sin torsión.
 \end{definicion}
 \begin{definicion}
-	Definimos el \textbf{submódulo de torsión} de un \( R \)-módulo \( M \) como el conjunto \( \tor(M)= \{x \in M : \ann(x) \neq \{0\}\} \). Es decir, el conjunto de todos los elementos de torsión de \( M \).
+	Definimos el \textbf{submódulo de torsión} de un \(R\)-módulo \(M\) como el
+	conjunto \(\tor(M)= \{x \in M : \ann(x) \neq \{0\}\}\). Es decir, el conjunto de
+	todos los elementos de torsión de \(M\).
 \end{definicion}
-\begin{teorema}[Descomposición cíclica primaria]
-	Sea $R$ un DIP y sea $M$ un $R$-módulo finitamente generado. Entonces $M$ se descompone como la suma directa
+\begin{teorema}
+	[Descomposición cíclica primaria] Sea \(R\) un DIP y sea \(M\) un \(R\)-módulo finitamente
+	generado. Entonces \(M\) se descompone como la suma directa
 	\[
-		M \cong R^f \oplus \bigoplus_{i = 1}^k \frac{R}{\langle a_i \rangle}
+		M \cong R^{f} \oplus \bigoplus_{i = 1}^{k} \frac{R}{\langle a_{i} \rangle}
 	\]
-	donde $R^f$ es un módulo libre de rango $f$ y $R/\langle a_1 \rangle, \dots,
-		R/\langle a_k \rangle$ son módulos cíclicos con anuladores $\langle a_1
-		\rangle, \dots, \langle a_k \rangle$. Además, $f$ y los ideales $\langle a_1
-		\rangle, \dots, \langle a_k \rangle$ de $R$ generados por $a_1, \dots, a_k \in
-		R$ están determinados de manera única salvo el orden por $M$.
+	donde \(R^{f}\) es un módulo libre de rango \(f\) y
+	\(R/\langle a_{1} \rangle, \ldots, R/\langle a_{k} \rangle\) son módulos cíclicos
+	con anuladores \(\langle a_{1} \rangle, \ldots, \langle a_{k} \rangle\). Además,
+	\(f\) y los ideales \(\langle a_{1} \rangle, \ldots, \langle a_{k} \rangle\) de \(R\)
+	generados por \(a_{1}, \ldots, a_{k} \in R\) están determinados de manera única
+	salvo el orden por \(M\).
 \end{teorema}
-\begin{teorema}[Propiedad universal de los módulos libres]
-	\label{teo:univ-prop-free-mod}
-	Sean $B$ un conjunto, $M$ un $R$-módulo y $\varphi : B \to M$ una aplicación entre conjuntos. Entonces existe un único homomorfismo de $R$-módulos $\phi : R \langle B \rangle \to M$ de forma que $\phi(b) = \varphi(b)$ para todo $b \in B$. Es decir, el diagrama
+\begin{teorema}
+	[Propiedad universal de los módulos libres] \label{teo:univ-prop-free-mod} Sean
+	\(B\) un conjunto, \(M\) un \(R\)-módulo y \(\varphi : B \to M\) una aplicación entre
+	conjuntos. Entonces existe un único homomorfismo de \(R\)-módulos \(\phi : R \langle
+	B \rangle \to M\) de forma que \(\phi(b) = \varphi(b)\) para todo \(b \in B\). Es
+	decir, el diagrama
 	\[
-		\xymatrix{
-			B \ar@{->}[r]^{\varphi} \ar@{->}[d]^{i} & M \\
-			R \langle B \rangle \ar@{->}[ru]^{\phi} & 
-		}
+		\xymatrix{ B \ar@{->}[r]^{\varphi} \ar@{->}[d]^{i} & M \\ R \langle B \rangle \ar@{->}[ru]^{\phi} & }
 	\]
 	conmuta.
 \end{teorema}
@@ -259,203 +331,279 @@ epimorfismo que llamaremos \textbf{proyección canónica} de $B$.
 \section{Sucesiones exactas}
 
 \begin{definicion}
-	Sea $\{A_i, \alpha_i\}_{i \in \mathbb{Z}}$ una familia de $R$-módulos $A_i$ y homomorfismos entre ellos tal que $\alpha_i: A_i \rightarrow A_{i+1}$. Diremos que la sucesión
-	\[ \cdots \xrightarrow{\alpha_{i-2}} A_{i-1} \xrightarrow{\alpha_{i-1}} A_i \xrightarrow{\alpha_{i}} A_{i+1} \xrightarrow{\alpha_{i+1}} \cdots \]
-	es \textbf{exacta} cuando $\im \alpha_i = \ker \alpha_{i+1}$.
+	Sea \(\{A_{i}, \alpha_{i}\}_{i \in \mathbb{Z}}\) una familia de \(R\)-módulos \(A_{i}\)
+	y homomorfismos entre ellos tal que \(\alpha_{i}: A_{i} \rightarrow A_{i+1}\).
+	Diremos que la sucesión
+	\[
+		\cdots \xrightarrow{\alpha_{i-2}}A_{i-1}\xrightarrow{\alpha_{i-1}}A_{i} \xrightarrow
+		{\alpha_{i}}A_{i+1}\xrightarrow{\alpha_{i+1}}\cdots
+	\]
+	es \textbf{exacta} cuando \(\im \alpha_{i} = \ker \alpha_{i+1}\).
 \end{definicion}
 
 \begin{definicion}
-	Sean $A,B$ y $C$ $R$-módulos y $\sigma: A \rightarrow B$, $\gamma: B \rightarrow C$ homomorfismos entre ellos. Diremos que la \textbf{sucesión exacta} es \textbf{corta} si
-	\[ (\sigma, \gamma): 0 \rightarrow A \xrightarrow{\sigma} B \xrightarrow{\gamma} C \rightarrow 0. \]
+	Sean \(A,B\) y \(C\) \(R\)-módulos y \(\sigma: A \rightarrow B\),
+	\(\gamma: B \rightarrow C\) homomorfismos entre ellos. Diremos que la \textbf{sucesión
+	exacta} es \textbf{corta} si
+	\[
+		(\sigma, \gamma): 0 \rightarrow A \xrightarrow{\sigma}B \xrightarrow{\gamma}C
+		\rightarrow 0.
+	\]
 	Es decir, una sucesión exacta de cinco \(R\)-módulos con los dos módulos
 	exteriores siendo cero (y por lo tanto las dos funciones exteriores triviales).
 \end{definicion}
 
 \begin{proposicion}
-	Sean $A,B$ y $C$ $R$-módulos y $\sigma: A \rightarrow B$, $\gamma: B \rightarrow C$ homomorfismos entre ellos. Entonces
+	Sean \(A,B\) y \(C\) \(R\)-módulos y \(\sigma: A \rightarrow B\),
+	\(\gamma: B \rightarrow C\) homomorfismos entre ellos. Entonces
 	\begin{enumerate}
-		\item La sucesión $0 \to A \overset{\sigma}{\to} B$ es exacta (en $A$) si, y sólo si,
-		      $\sigma$ es inyectiva.
-		\item La sucesión $B \to C \overset{\gamma}{\to} 0$ es exacta (en $C$) si, y sólo si,
-		      $\gamma$ es sobreyectiva.
+		\item La sucesión \(0 \to A \overset{\sigma}{\to}B\) es exacta (en \(A\)) si, y
+			sólo si, \(\sigma\) es inyectiva.
+		\item La sucesión \(B \to C \overset{\gamma}{\to}0\) es exacta (en \(C\)) si, y
+			sólo si, \(\gamma\) es sobreyectiva.
 	\end{enumerate}
 \end{proposicion}
 \begin{proof}
-	El único homomorfismo que cumple $0 \to A$ tiene imagen $0$ en $A$ y por tanto, el núcleo de $\sigma$ será este si, y sólo si, $\sigma$ es inyectiva. De manera similar, el único homomorfismo $C \to 0$ es el homomorfismo nulo para todo elemento de $C$, que es la imagen de $\gamma$ si, y sólo si, $\gamma$ es sobreyectiva.
+	El único homomorfismo que cumple \(0 \to A\) tiene imagen \(0\) en \(A\) y por tanto,
+	el núcleo de \(\sigma\) será este si, y sólo si, \(\sigma\) es inyectiva. De manera
+	similar, el único homomorfismo \(C \to 0\) es el homomorfismo nulo para todo
+	elemento de \(C\), que es la imagen de \(\gamma\) si, y sólo si, \(\gamma\) es sobreyectiva.
 \end{proof}
 \begin{corolario}
-	La sucesión $0 \rightarrow A \xrightarrow{\sigma} B \xrightarrow{\gamma} C \rightarrow 0$ es exacta si, y sólo si, $\sigma$ es inyectiva, $\gamma$ es sobreyectiva y $\im \sigma = \ker \gamma$.
+	La sucesión \(0 \rightarrow A \xrightarrow{\sigma}B \xrightarrow{\gamma}C \rightarrow
+	0\) es exacta si, y sólo si, \(\sigma\) es inyectiva, \(\gamma\) es sobreyectiva y
+	\(\im \sigma = \ker \gamma\).
 \end{corolario}
 
 % PUEDE MEJORARSE CON DUMMIT PROPOSICION 22 DE MODULOS
 Como acabamos de probar, la exactitud en \(A\) significa que \(\sigma\) es un
-monomorfismo, en \(B\) significa que \(\sigma A = \ker \gamma\) y en \(C\) que
-\(\gamma\) es un epimorfismo. Así la sucesión exacta corta puede escribirse
-como \(A \xrightarrow{\sigma} B \xrightarrow{\gamma} C\), con exactitud en
-\(B\). Ahora \(\sigma\) induce un isomorfismo \(\sigma': A \to \sigma A\) y \(\gamma\)
-un isomorfismo \(\gamma': B/\sigma A \to C\); juntos estos proveen un
-isomorfismo de sucesiones exactas cortas, en la forma de un diagrama
-conmutativo
+monomorfismo, en \(B\) significa que \(\sigma A = \ker \gamma\) y en \(C\) que \(\gamma\)
+es un epimorfismo. Así la sucesión exacta corta puede escribirse como
+\(A \xrightarrow{\sigma}B \xrightarrow{\gamma}C\), con exactitud en \(B\). Ahora
+\(\sigma\) induce un isomorfismo \(\sigma': A \to \sigma A\) y \(\gamma\) un
+isomorfismo \(\gamma': B/\sigma A \to C\); juntos estos proveen un isomorfismo de sucesiones
+exactas cortas, en la forma de un diagrama conmutativo
 \begin{equation}
-	\label{exactshortseq-equiv}
-	\xymatrix{
-	0 \ar[r] & A \ar[r]^{\sigma} \ar[d]^{\sigma'} & B \ar[r]^\gamma \ar@{=}[d] & C \ar[r] \ar[d]^{(\gamma')^{-1}} & 0 \\
-	0 \ar[r] & \sigma A \ar[r]_i & B \ar[r] & B/\sigma A \ar[r] & 0.
-	}
+	\label{exactshortseq-equiv}\xymatrix{ 0 \ar[r] & A \ar[r]^{\sigma} \ar[d]^{\sigma'} & B \ar[r]^\gamma \ar@{=}[d] & C \ar[r] \ar[d]^{(\gamma')^{-1}} & 0 \\ 0 \ar[r] & \sigma A \ar[r]_i & B \ar[r] & B/\sigma A \ar[r] & 0. }
 \end{equation}
 
 En resumen, una sucesión exacta corta es simplemente otro nombre para un
 submódulo y su cociente.
 
 \begin{ejemplo}
-	Respecto al \nameref{prop:teo-fact}, la inclusión \(i\) y la proyección \(\pi\) producen una sucesión exacta corta.
-	\[ 0 \rightarrow T \xrightarrow{i} B \xrightarrow{\pi} B/T \rightarrow 0. \]
+	Respecto al \nameref{prop:teo-fact}, la inclusión \(i\) y la proyección \(\pi\) producen
+	una sucesión exacta corta.
+	\[
+		0 \rightarrow T \xrightarrow{i}B \xrightarrow{\pi}B/T \rightarrow 0.
+	\]
 \end{ejemplo}
 %
 %\begin{definicion}
-%	Sea $0 \rightarrow A \xrightarrow{\sigma} B \xrightarrow{\gamma} C \rightarrow 0$ una sucesión exacta corta. Diremos que la sucesión es \textbf{escindible} si existe un homomorfismo $\rho: C \to B$ tal que $\gamma \circ \rho = \id_C$.
+%	Sea \(0 \rightarrow A \xrightarrow{\sigma} B \xrightarrow{\gamma} C \rightarrow 0\) una sucesión exacta corta. Diremos que la sucesión es \textbf{escindible} si existe un homomorfismo \(\rho: C \to B\) tal que \(\gamma \circ \rho = \id_C\).
 %\end{definicion}
 %\begin{observacion}
-%	En las condiciones anteriores, $\rho$ tiene que ser inyectiva.
+%	En las condiciones anteriores, \(\rho\) tiene que ser inyectiva.
 %\end{observacion}
 %
 %\begin{lema}[Lema de escisión]
 %	\label{lem:escision}
-%	Sea $0 \rightarrow A \xrightarrow{\sigma} B \xrightarrow{\gamma} C \rightarrow 0$ una sucesión exacta corta. Son equivalentes las siguientes afirmaciones
+%	Sea \(0 \rightarrow A \xrightarrow{\sigma} B \xrightarrow{\gamma} C \rightarrow 0\) una sucesión exacta corta. Son equivalentes las siguientes afirmaciones
 %	\begin{enumerate}
 %		\item La sucesión es escindible.
-%		\item B = $\im \sigma \oplus C'$ donde $C'$ es un submódulo de $B$ isomorfo a $C$. En particular, $B \cong A \oplus C$.
-%		\item Existe $\eta : B \to A$ tal que $\eta \circ \sigma = \id_A$.
+%		\item B = \(\im \sigma \oplus C'\) donde \(C'\) es un submódulo de \(B\) isomorfo a \(C\). En particular, \(B \cong A \oplus C\).
+%		\item Existe \(\eta : B \to A\) tal que \(\eta \circ \sigma = \id_A\).
 %	\end{enumerate}
 %\end{lema}
 %\begin{proof}
-%	$(a) \implies (b)$. Por ser la sucesión escindible el diagrama
+%	\((a) \implies (b)\). Por ser la sucesión escindible el diagrama
 %	\[
 %		\xymatrix{
 %			C \ar@{->}[r]^{\rho} \ar@/_/@{->}[rr]_{\id} & B \ar@{->}[r]^{\gamma} & C
 %		}
 %	\]
-%	implica que $B = \im \rho \oplus \ker \gamma$ ya que $x = \rho(\gamma(x)) + (x - \rho(\gamma(x)))$ para todo $x \in B$. En consecuencia, $B = C' \oplus \im \rho$. Además, por la exactitud de la sucesión deducimos que $\ker \gamma = \sigma(A)$.
-%	
-%	$(b) \implies (c)$. Es sufiente considerar $B \overset{\pi}{\to} \sigma(A) \overset{\sigma^{-1}}{\to}$ donde $\pi$ es la proyección canónica. Por ser la sucesión exacta, $\sigma$ es inyectiva.
-%	
-%	$(c) \implies (a)$. Siguiendo un razonamiento análogo al anterior, el diagrama
+%	implica que \(B = \im \rho \oplus \ker \gamma\) ya que \(x = \rho(\gamma(x)) + (x - \rho(\gamma(x)))\) para todo \(x \in B\). En consecuencia, \(B = C' \oplus \im \rho\). Además, por la exactitud de la sucesión deducimos que \(\ker \gamma = \sigma(A)\).
+%
+%	\((b) \implies (c)\). Es sufiente considerar \(B \overset{\pi}{\to} \sigma(A) \overset{\sigma^{-1}}{\to}\) donde \(\pi\) es la proyección canónica. Por ser la sucesión exacta, \(\sigma\) es inyectiva.
+%
+%	\((c) \implies (a)\). Siguiendo un razonamiento análogo al anterior, el diagrama
 %	\[
 %	\xymatrix{
 %		A \ar@{->}[r]^{\sigma} \ar@/_/@{->}[rr]_{\id} & B \ar@{->}[r]^{\eta} & A
 %	}
 %	\]
-%	implica que $B = \sigma(A) \oplus \ker \eta$. Por el \nameref{teo:first-iso} y como $\ker \gamma = \sigma(A)$, tenemos que $\ker \eta \cong B/\ker(\gamma) \overset{\overline{\gamma}}{\to} \im \gamma = C$ donde $\overline{\gamma}$ es el isomorfismo inducido por $\gamma$. Finalmente, $\rho = \overline{\gamma}^{-1}$.
+%	implica que \(B = \sigma(A) \oplus \ker \eta\). Por el \nameref{teo:first-iso} y como \(\ker \gamma = \sigma(A)\), tenemos que \(\ker \eta \cong B/\ker(\gamma) \overset{\overline{\gamma}}{\to} \im \gamma = C\) donde \(\overline{\gamma}\) es el isomorfismo inducido por \(\gamma\). Finalmente, \(\rho = \overline{\gamma}^{-1}\).
 %\end{proof}
 
-Para realizar la prueba del siguiente resultado usaremos una estrategia típica en álgebra homológica conocida como persecución de diagramas. Este método consiste en buscar composiciones de aplicaciones equivalentes en diagramas conmutativos, y en explotar las propiedades de los homomorfismos inyectivos, sobreyectivos y biyectivos, así como de las sucesiones exactas.
+Para realizar la prueba del siguiente resultado usaremos una estrategia típica en
+álgebra homológica conocida como persecución de diagramas. Este método consiste
+en buscar composiciones de aplicaciones equivalentes en diagramas conmutativos, y
+en explotar las propiedades de los homomorfismos inyectivos, sobreyectivos y
+biyectivos, así como de las sucesiones exactas.
 
-\begin{lema}[Lema de los cinco]
-	\label{lem:cinco}
-	Consideremos el siguiente diagrama conmutativo de $R$-módulos
+\begin{lema}
+	[Lema de los cinco] \label{lem:cinco} Consideremos el siguiente diagrama conmutativo
+	de \(R\)-módulos
 	\[
-	\xymatrix{
-		A_1 \ar@{->}[r]^{\sigma_1} \ar@{->}[d]^{\phi_1} & A_2 \ar@{->}[r]^{\sigma_2} \ar@{->}[d]^{\phi_2} & A_3 \ar@{->}[r]^{\sigma_3} \ar@{->}[d]^{\phi_3} & A_4 \ar@{->}[r]^{\sigma_4} \ar@{->}[d]^{\phi_4} & A_5 \ar@{->}[d]^{\phi_5} \\
-		B_1 \ar@{->}[r]^{\gamma_1} & B_2 \ar@{->}[r]^{\gamma_2} & B_3 \ar@{->}[r]^{\gamma_3} & B_4 \ar@{->}[r]^{\gamma_4} & B_5
-	}
+		\xymatrix{ A_1 \ar@{->}[r]^{\sigma_1} \ar@{->}[d]^{\phi_1} & A_2 \ar@{->}[r]^{\sigma_2} \ar@{->}[d]^{\phi_2} & A_3 \ar@{->}[r]^{\sigma_3} \ar@{->}[d]^{\phi_3} & A_4 \ar@{->}[r]^{\sigma_4} \ar@{->}[d]^{\phi_4} & A_5 \ar@{->}[d]^{\phi_5} \\ B_1 \ar@{->}[r]^{\gamma_1} & B_2 \ar@{->}[r]^{\gamma_2} & B_3 \ar@{->}[r]^{\gamma_3} & B_4 \ar@{->}[r]^{\gamma_4} & B_5 }
 	\]
-	cuyas filas son exactas. Si además $\phi_2, \phi_4$ son isomorfismos, $\phi_1$ es un epimorfismo y $\phi_5$ es un monomorfismo, entonces $\phi_3$ es un isomorfismo.
+	cuyas filas son exactas. Si además \(\phi_{2}, \phi_{4}\) son isomorfismos, \(\phi
+	_{1}\) es un epimorfismo y \(\phi_{5}\) es un monomorfismo, entonces \(\phi_{3}\)
+	es un isomorfismo.
 \end{lema}
 \begin{proof}
-	Comencemos viendo la inyectividad de \(\phi_3\).
-	Sea \(x \in A_3\) tal que \(\phi_3(x) = 0\). Considerando la conmutatividad y la exactitud de las filas, obtenemos
+	Comencemos viendo la inyectividad de \(\phi_{3}\). Sea \(x \in A_{3}\) tal que
+	\(\phi_{3}(x) = 0\). Considerando la conmutatividad y la exactitud de las filas,
+	obtenemos
 	\[
-	\phi_4(\sigma_3(x)) = \gamma_3(\phi_3(x)) = \gamma_3(0) = 0.
+		\phi_{4}(\sigma_{3}(x)) = \gamma_{3}(\phi_{3}(x)) = \gamma_{3}(0) = 0.
 	\]
-	Dado que \(\phi_4\) es inyectiva, concluimos que \(\sigma_3(x) = 0\). La exactitud en \(A_3\) implica la existencia de \(y \in A_2\) tal que \(\sigma_2(y) = x\). Aplicando \(\phi_2\) y utilizando la conmutatividad, tenemos que 
+	Dado que \(\phi_{4}\) es inyectiva, concluimos que \(\sigma_{3}(x) = 0\). La
+	exactitud en \(A_{3}\) implica la existencia de \(y \in A_{2}\) tal que
+	\(\sigma_{2}(y) = x\). Aplicando \(\phi_{2}\) y utilizando la conmutatividad,
+	tenemos que
 	\[
-	\gamma_2(\phi_2(y)) = \phi_3(\sigma_2(y)) = \phi_3(x) = 0.
+		\gamma_{2}(\phi_{2}(y)) = \phi_{3}(\sigma_{2}(y)) = \phi_{3}(x) = 0.
 	\]
-	La exactitud en \(B_2\) implica que existe \(z \in B_1\) tal que \(\gamma_1(z) = \phi_2(y)\). Como \(\phi_1\) es sobreyectiva, existe \(w \in A_1\) con \(\phi_1(w) = z\). Nuevamente, la conmutatividad del diagrama y la inyectividad de \(\phi_2\) implican que 
+	La exactitud en \(B_{2}\) implica que existe \(z \in B_{1}\) tal que
+	\(\gamma_{1}(z) = \phi_{2}(y)\). Como \(\phi_{1}\) es sobreyectiva, existe
+	\(w \in A_{1}\) con \(\phi_{1}(w) = z\). Nuevamente, la conmutatividad del
+	diagrama y la inyectividad de \(\phi_{2}\) implican que
 	\[
-	\phi_2(\sigma_1(w)) = \gamma_1(\phi_1(w)) = \gamma_1(z) = \phi_2(y),
+		\phi_{2}(\sigma_{1}(w)) = \gamma_{1}(\phi_{1}(w)) = \gamma_{1}(z) = \phi_{2}(
+		y),
 	\]
-	y por tanto, \(\sigma_1(w) = y\). Por la exactitud en \(A_2\), concluimos \(x = \sigma_2(y) = \sigma_2(\sigma_1(w)) = 0\).
-	
-	Veamos ahora la sobreyectividad de \(\phi_3\).
-	Dado cualquier \(x \in B_3\), como \(\phi_4\) es sobreyectiva, existe \(p \in A_4\) tal que \(\phi_4(p) = \gamma_3(x)\). La exactitud y la inyectividad de \(\phi_5\) nos llevan a
+	y por tanto, \(\sigma_{1}(w) = y\). Por la exactitud en \(A_{2}\), concluimos \(x =
+	\sigma_{2}(y) = \sigma_{2}(\sigma_{1}(w)) = 0\).
+
+	Veamos ahora la sobreyectividad de \(\phi_{3}\). Dado cualquier \(x \in B_{3}\), como
+	\(\phi_{4}\) es sobreyectiva, existe \(p \in A_{4}\) tal que
+	\(\phi_{4}(p) = \gamma_{3}(x)\). La exactitud y la inyectividad de \(\phi_{5}\) nos
+	llevan a
 	\[
-	\phi_5(\sigma_4(p)) = \gamma_4(\phi_4(p)) = \gamma_4(\gamma_3(x)) = 0,
+		\phi_{5}(\sigma_{4}(p)) = \gamma_{4}(\phi_{4}(p)) = \gamma_{4}(\gamma_{3}(x))
+		= 0,
 	\]
-	implicando que \( \sigma_4(p) = 0 \). Por exactitud, existe \(r \in A_3\) con \(\sigma_3(r) = p\), y utilizando la conmutatividad, obtenemos
+	implicando que \(\sigma_{4}(p) = 0\). Por exactitud, existe \(r \in A_{3}\) con \(\sigma
+	_{3}(r) = p\), y utilizando la conmutatividad, obtenemos
 	\[
-	\gamma_3(\phi_3(r)) = \phi_4(\sigma_3(r)) = \phi_4(p) = \gamma_3(x).
+		\gamma_{3}(\phi_{3}(r)) = \phi_{4}(\sigma_{3}(r)) = \phi_{4}(p) = \gamma_{3}(
+		x).
 	\]
-	Entonces, \(\phi_3(r) - x\) pertenece a \(\ker \gamma_3 = \im \gamma_2\). En consecuencia, existe \(s \in B_2\) tal que \(\gamma_2(s) = \phi_3(r) - x\). Utilizando la sobreyectividad de \(\phi_2\), encontramos \(t \in A_2\) con \(\phi_2(t) = s\), y por lo tanto,
+	Entonces, \(\phi_{3}(r) - x\) pertenece a \(\ker \gamma_{3} = \im \gamma_{2}\). En
+	consecuencia, existe \(s \in B_{2}\) tal que \(\gamma_{2}(s) = \phi_{3}(r) - x\). Utilizando
+	la sobreyectividad de \(\phi_{2}\), encontramos \(t \in A_{2}\) con
+	\(\phi_{2}(t) = s\), y por lo tanto,
 	\[
-	\phi_3(r - \sigma_2(t)) = \phi_3(r) - \gamma_2(\phi_2(t)) = \phi_3(r) - \gamma_2(s) = x.
+		\phi_{3}(r - \sigma_{2}(t)) = \phi_{3}(r) - \gamma_{2}(\phi_{2}(t)) = \phi_{3}
+		(r) - \gamma_{2}(s) = x.
 	\]
 \end{proof}
 
 \section{Categorías y funtores}
 \label{sec:cat}
 
-La teoría de categorías fue introducida por primera vez por Samuel Eilenberg y Saunders MacLane en \cite{eilenberg1945general}. En particular, las categorías son estructuras algebraicas que capturan la noción de composición. Gracias a ellas podemos analizar y comparar estructuras algebraicas, permitiendo sacar conclusiones comunes y trasladar problemas complejos a otros espacios donde resolverlos es más sencillo. En esta sección haré una breve introducción de las categorías apoyándome en \cite{mac2013categories}.
+La teoría de categorías fue introducida por primera vez por Samuel Eilenberg y Saunders
+MacLane en \cite{eilenberg1945general}. En particular, las categorías son estructuras
+algebraicas que capturan la noción de composición. Gracias a ellas podemos
+analizar y comparar estructuras algebraicas, permitiendo sacar conclusiones comunes
+y trasladar problemas complejos a otros espacios donde resolverlos es más sencillo.
+En esta sección haré una breve introducción de las categorías apoyándome en
+\cite{mac2013categories}.
 
 \begin{definicion}
-	Una \textbf{categoría} $\mathcal{C}$ es una tripleta $(\mathcal{O}, \hom, \circ)$ formada por
+	Una \textbf{categoría} \(\mathcal{C}\) es una tripleta
+	\((\mathcal{O}, \hom, \circ)\) formada por
 	\begin{enumerate}
-		\item Una clase $\mathcal{O}$, cuyos elementos denominamos \textbf{objetos} de $\mathcal{C}$ y notamos por $Obj(\mathcal{C})$.
-		\item Por cada par de objetos $(A,B)$ de $\mathcal{C}$, un conjunto $\hom(A,B)$ cuyos elementos son llamados \textbf{morfismos} de $A$ a $B$. Si $f \in \hom(A,B)$, normalmente escribiremos $f: A \rightarrow B$ o $A \xrightarrow{f} B$.
-		\item Una \textbf{ley de composición} que asocia a cada morfismo $f: A \rightarrow B$ y a cada morfismo $g: B \rightarrow C$ un morfismo $g \circ f : A \rightarrow C$ que satisface
-		\begin{itemize}
-			\item \textbf{Asociatividad}. Si $f: A \rightarrow B$, $g: B \rightarrow C$ y $h : C \rightarrow D$ son morfismos de $\mathcal{C}$, entonces $h \circ (g \circ f) = (h \circ g) \circ f$.
-			\item \textbf{Identidad}. A cada objeto $B$ le podemos asociar un morfismo identidad $\id_B : B \rightarrow B$ tal que si $f: A \rightarrow B$ y $g: B \rightarrow C$ entonces $g \circ \id_B = g$ y $\id_B \circ f = f$.
-		\end{itemize}
-		Llamaremos a este morfismo la \textbf{composición} de $f$ y $g$.
+		\item Una clase \(\mathcal{O}\), cuyos elementos denominamos \textbf{objetos} de
+			\(\mathcal{C}\) y notamos por \(Obj(\mathcal{C})\).
+		\item Por cada par de objetos \((A,B)\) de \(\mathcal{C}\), un conjunto
+			\(\hom(A,B)\) cuyos elementos son llamados \textbf{morfismos} de \(A\) a \(B\).
+			Si \(f \in \hom(A,B)\), normalmente escribiremos \(f: A \rightarrow B\) o \(A \xrightarrow
+			{f}B\).
+		\item Una \textbf{ley de composición} que asocia a cada morfismo
+			\(f: A \rightarrow B\) y a cada morfismo \(g: B \rightarrow C\) un morfismo
+			\(g \circ f : A \rightarrow C\) que satisface
+			\begin{itemize}
+				\item \textbf{Asociatividad}. Si \(f: A \rightarrow B\),
+					\(g: B \rightarrow C\) y \(h : C \rightarrow D\) son morfismos de
+					\(\mathcal{C}\), entonces \(h \circ (g \circ f) = (h \circ g) \circ f\).
+				\item \textbf{Identidad}. A cada objeto \(B\) le podemos asociar un morfismo
+					identidad \(\id_{B} : B \rightarrow B\) tal que si \(f: A \rightarrow B\) y
+					\(g: B \rightarrow C\) entonces \(g \circ \id_{B} = g\) y \(\id_{B} \circ f
+					= f\).
+			\end{itemize}
+			Llamaremos a este morfismo la \textbf{composición} de \(f\) y \(g\).
 	\end{enumerate}
 \end{definicion}
 
 \begin{ejemplo}
-	Como veremos a continuación, la definición anterior nos va a permitir trabajar con un gran número de espacios matemáticos que ya conocemos en el contexto de la teoría de categorías. Algunos de ellos son:
+	Como veremos a continuación, la definición anterior nos va a permitir trabajar
+	con un gran número de espacios matemáticos que ya conocemos en el contexto de
+	la teoría de categorías. Algunos de ellos son:
 	\begin{itemize}
-		\item \textbf{La categoría de espacios topológicos}, donde los objetos son todos los espacios topológicos y los morfismos todas las aplicaciones continuas entre espacios topológicos $f: X \rightarrow Y$.
-		\item \textbf{La categoría de grupos}, donde los objetos son todos los grupos y los morfismos todos los homomorfismos de grupos.
-		\item \textbf{La categoría de conjuntos}, cuyos objetos son todos los conjuntos y sus morfismos todas las aplicaciones entre conjuntos.
-		\item \textbf{La categoría de sucesiones exactas de $R$-módulos de longitud n}. Los objetos son dichas sucesiones $S: A_1 \rightarrow \cdots \rightarrow A_n$. Para dos sucesiones $S$ y $S'$, los morfismos son de la forma $\Gamma : S \rightarrow S'$ tal que $\Gamma = (\gamma_1, \dots, \gamma_n)$ es una tupla donde los $\gamma_i: A_i \rightarrow A_i'$ son homomorfismos de $R$-módulos tal que
-		\begin{equation}
-        \label{exactseqcat}
-            \xymatrix{
-            A_1 \ar[r] \ar[d]_{\gamma_1} & A_2 \ar[r] \ar[d]_{\gamma_2} & \cdots \ar[r] & A_{n-1} \ar[r] \ar[d]_{\gamma_{n-1}} & A_n \ar[d]^{\gamma_n} \\
-            A'_1 \ar[r] & A'_2 \ar[r] & \cdots \ar[r] & A'_{n-1} \ar[r] & A'_n
-            }
-        \end{equation}
-		conmuta para todo $i \in \{ 1, \cdots, n \}$.
+		\item \textbf{La categoría de espacios topológicos}, donde los objetos son todos
+			los espacios topológicos y los morfismos todas las aplicaciones continuas entre
+			espacios topológicos \(f: X \rightarrow Y\).
+		\item \textbf{La categoría de grupos}, donde los objetos son todos los grupos
+			y los morfismos todos los homomorfismos de grupos.
+		\item \textbf{La categoría de conjuntos}, cuyos objetos son todos los conjuntos
+			y sus morfismos todas las aplicaciones entre conjuntos.
+		\item \textbf{La categoría de sucesiones exactas de \(R\)-módulos de longitud
+			n}. Los objetos son dichas sucesiones \(S: A_{1} \rightarrow \cdots \rightarrow
+			A_{n}\). Para dos sucesiones \(S\) y \(S'\), los morfismos son de la forma \(\Gamma
+			: S \rightarrow S'\) tal que \(\Gamma = (\gamma_{1}, \ldots, \gamma_{n})\) es una
+			tupla donde los \(\gamma_{i}: A_{i} \rightarrow A_{i}'\) son homomorfismos de
+			\(R\)-módulos tal que
+			\begin{equation}
+				\label{exactseqcat}\xymatrix{ A_1 \ar[r] \ar[d]_{\gamma_1} & A_2 \ar[r] \ar[d]_{\gamma_2} & \cdots \ar[r] & A_{n-1} \ar[r] \ar[d]_{\gamma_{n-1}} & A_n \ar[d]^{\gamma_n} \\ A'_1 \ar[r] & A'_2 \ar[r] & \cdots \ar[r] & A'_{n-1} \ar[r] & A'_n }
+			\end{equation}
+			conmuta para todo \(i \in \{ 1, \cdots, n \}\).
 	\end{itemize}
 \end{ejemplo}
 
 \begin{definicion}
-	Sea $f \in \hom(A,B)$ un morfismo en la categoría $\mathcal{C}$. Diremos que $f$ es una \textbf{equivalencia} en $\mathcal{C}$ si existe en $\mathcal{C}$ otro morfismo $g \in \hom(B,A)$ tal que $g \circ f = \id_A$ y $f \circ g = \id_B$.
+	Sea \(f \in \hom(A,B)\) un morfismo en la categoría \(\mathcal{C}\). Diremos que
+	\(f\) es una \textbf{equivalencia} en \(\mathcal{C}\) si existe en \(\mathcal{C}\) otro
+	morfismo \(g \in \hom(B,A)\) tal que \(g \circ f = \id_{A}\) y \(f \circ g = \id_{B}\).
 \end{definicion}
 
-Nótese que si $f \in \hom(A,B)$ es una equivalencia en $\mathcal{C}$, $g \in \hom(B,A)$ debe ser única. En efecto, si suponemos que existe $g' \in \hom(B,A)$ tal que $g' \circ f = \id_A$, entonces $g = g'\circ f \circ g = g' \circ \id_B = g'$.
+Nótese que si \(f \in \hom(A,B)\) es una equivalencia en \(\mathcal{C}\),
+\(g \in \hom(B,A)\) debe ser única. En efecto, si suponemos que existe
+\(g' \in \hom(B,A)\) tal que \(g' \circ f = \id_{A}\), entonces \(g = g'\circ f \circ
+g = g' \circ \id_{B} = g'\).
 
-Dentro de la teoría de categorías los funtores tienen un papel principal, pues nos va a permitir llevar objetos y morfismos de una categoría a otra preservando identidades y composiciones.
+Dentro de la teoría de categorías los funtores tienen un papel principal, pues
+nos va a permitir llevar objetos y morfismos de una categoría a otra preservando
+identidades y composiciones.
 
 \begin{definicion}
-	Sean $\mathcal{C}, \mathcal{D}$ dos categorías. Un \textbf{funtor covariante} de $\mathcal{C}$ a $\mathcal{D}$ es una pareja de funciones \textit{denotadas por la misma letra $T$} tal que:
+	Sean \(\mathcal{C}, \mathcal{D}\) dos categorías. Un \textbf{funtor covariante} de
+	\(\mathcal{C}\) a \(\mathcal{D}\) es una pareja de funciones \textit{denotadas por
+	la misma letra \(T\)} tal que:
 	\begin{enumerate}
-		\item Una \textbf{función objeto} que asigna a cada objeto $C \in \mathcal{C}$ un objeto $T(C) \in \mathcal{D}$.
-		\item Una \textbf{función de morfismos} qu asigna a cada morfismo $\gamma: C \rightarrow C'$ de $\mathcal{C}$ un morfismo $T(\gamma): T(C) \rightarrow T(C')$ de $\mathcal{D}$. Este par de funciones satisfacen las siguientes condiciones:
-		\begin{equation}
-			T(1_C) = \id_{T(C)}, \qquad C \in \mathcal{C},
-		\end{equation}
-		\begin{equation}
-			T(\beta \gamma) = T(\beta)T(\gamma), \qquad \beta \gamma \text{ definido en } \mathcal{C}.
-		\end{equation}
+		\item Una \textbf{función objeto} que asigna a cada objeto
+			\(C \in \mathcal{C}\) un objeto \(T(C) \in \mathcal{D}\).
+		\item Una \textbf{función de morfismos} qu asigna a cada morfismo
+			\(\gamma: C \rightarrow C'\) de \(\mathcal{C}\) un morfismo
+			\(T(\gamma): T(C) \rightarrow T(C')\) de \(\mathcal{D}\). Este par de funciones
+			satisfacen las siguientes condiciones:
+			\begin{equation}
+				T(1_{C}) = \id_{T(C)}, \qquad C \in \mathcal{C},
+			\end{equation}
+			\begin{equation}
+				T(\beta \gamma) = T(\beta)T(\gamma), \qquad \beta \gamma \text{ definido
+				en }\mathcal{C}.
+			\end{equation}
 	\end{enumerate}
 \end{definicion}
 
-Es decir, un funtor covariante $T: \mathcal{C} \rightarrow \mathcal{D}$ es una aplicación que preserva el rango, dominio, identidades y composiciones de $\mathcal{C}$ en $\mathcal{D}$.
+Es decir, un funtor covariante \(T: \mathcal{C}\rightarrow \mathcal{D}\) es una
+aplicación que preserva el rango, dominio, identidades y composiciones de
+\(\mathcal{C}\) en \(\mathcal{D}\).
 
 %\section{Transformación natural}
 
 \endinput
 %--------------------------------------------------------------------
-% FIN DEL CAPÍTULO. 
+% FIN DEL CAPÍTULO.
 %--------------------------------------------------------------------

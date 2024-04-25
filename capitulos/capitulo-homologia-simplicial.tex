@@ -236,6 +236,9 @@ es el \textbf{\(p\)-ésimo grupo de homología} de \(K\).
 	\(j-1\) en el primer símplice. La fórmula \(C(g \circ f)=C(g)C(f)\) se sigue directamente
 	de la definición de \(C(f)\).
 \end{proof}
+\begin{observacion}
+	El resultado anterior nos garantiza que $C: \Cat{Csim} \to \Cat{Ch_\bullet(\mathit{R})}$ es un funtor covariante entre la categoría de complejos simpliciales y la categoría de complejos de cadenas.
+\end{observacion}
 
 \begin{definicion}
 	\label{def:chain-map-ind} Sea \(f : |K| \to |L|\) una aplicación simplicial y sea
@@ -250,11 +253,11 @@ es el \textbf{\(p\)-ésimo grupo de homología} de \(K\).
 		H(f) : H_{p}(K;R) \to H_{p}(L;R)
 	\]
 	que notaremos por \(f_{*}\) y que cumple que si \(g: |L| \to |M|\) es otra aplicación
-	simplicial, entonces \((g \circ f)_{*}=f_{*} \circ f_{*}\) e \(\id_{*} = \id\).
+	simplicial, entonces \((g \circ f)_{*}= g_{*} \circ f_{*}\) e \(\id_{*} = \id\).
 \end{corolario}
-%\begin{observacion}
-%	La última implicación del corolario se traduce en que tenemos un funtor covariante que va de la categoría de complejos simpliciales con los homeomorfismos simpliciales a la categoría de grupos abelianos con los homomorfismos.
-%\end{observacion}
+\begin{observacion}
+	La última implicación del corolario se traduce en que tenemos un funtor covariante $H: \Cat{Csim} \to \Cat{RMod}$ que va de la categoría de complejos simpliciales con los homeomorfismos simpliciales a la categoría de $R$-módulos con sus homomorfismos.
+\end{observacion}
 
 \begin{lema}
 	La aplicación de cadenas \(f_{\#} : C_{\bullet}(K;R) \to C_{\bullet}(L;R)\) preserva

@@ -428,39 +428,199 @@ Para ello fijemos un complejo simplicial finito \(K\) en \(\R^{N}\).
 	el homeomorfismo \(h: |K| \rightarrow X\) es una \textbf{triangulación}.
 \end{definicion}
 
+\section{Celdas y complejos celulares}
+
+\begin{definicion}
+	Sea \(X\) un espacio topológico. Diremos que \(X\) es una \textbf{celda} abierta (cerrada) 
+	de dimensión \(p\) o \(p\)-celda si \(X\) es homeomorfo a la bola unidad abierta (cerrada) de dimensión \(p\).
+\end{definicion}
+
+\begin{proposicion}
+	\label{prop:compact-convex-closed-cell}
+	Sea $D$ un subconjunto compacto y convexo de $\R^n$ con interior no vacío. Entonces $D$ es una $n$-celda cerrada y su interior es una $n$-celda abierta.
+\end{proposicion}
+\begin{proof}
+	.
+\end{proof}
+
+\begin{definicion}
+	Sea \((X,\mathcal{E})\), donde \(X\) es un espacio topológico Hausdorff y \(\mathcal{E}\) una colección de celdas abiertas. 
+	Diremos entonces que que \((X,\mathcal{E})\) es un \textbf{CW-complejo} si se cumple que:
+	\begin{enumerate}[font=\bfseries]
+		\item[(C)] Para cada \(p\)-celda \(e \in \mathcal{E}\), existe una aplicación continua 
+		\(f_e : B^p \to X\) de forma que el interior de \(B^p\) es homeomorfo a la celda \(e\) y lleva 
+		la frontera de \(B^p\) en una unión finita de celdas de dimensión menor a \(p\).
+		\item[(W)] Un subconjunto \(F\) de \(X\) es cerrado si \(F \cap \overline{e}\), donde \(\overline{e}\) denota 
+		la clausura de \(e\), es cerrado para todo \(e \in \mathcal{E}\).
+	\end{enumerate}
+	Normalmente denotaremos al CW-complejo \((X,\mathcal{E})\) simplemente por \(X\).
+\end{definicion}
+\begin{observacion}
+	Fue J.H.C. Whitehead quién formuló por primera vez los CW-Complejos en \cite{MR0030759}. En su formulación, la primera condición denotaba la propiedad de clausura finita. Por otro lado, la segunda condición denotaba que la topología empleada era la topología débil (del inglés, \textit{weak}) respecto a la familia de las clausuras de las celdas de $\mathcal{E}$. Si bien esta formulación nos aleja un poco de la intuición original, es una formulación equivalente.
+\end{observacion}
+
+\begin{definicion}
+	Sea \(X\) un espacio topológico. Diremos que una celda \(e \subset X\) es \textbf{regular} si admite 
+	una aplicación característica que sea un homeomorfismo sobre \(\overline{e}\). Además, diremos que un CW-complejo es \textbf{regular} si todas sus celdas son regulares.
+\end{definicion}
+
+\begin{definicion}
+	Sea \(X\) un CW-complejo. Diremos que \(Y \subseteq X\) es un \textbf{subcomplejo} de \(X\) si es 
+	unión de celdas de \(X\) de forma que si \(Y\) contiene una celda, entonces también contiene 
+	su clausura.
+\end{definicion}
+
+\begin{teorema}
+	Sea \(X\) un CW-complejo y sea \(Y\) un subcomplejo de \(X\). Entonces \(Y\) es cerrado en \(X\)  y, además, es un CW-complejo con la topología y la colección de celdas inducidas.
+\end{teorema}
+\begin{proof}
+	Es claro que \(Y\) es Hausdorff. Además, por definición tenemos que \(Y\) es la unión disjunta 
+	de sus celdas. Sea \(e \subseteq Y\) una celda abierta de \(Y\). Como su clausura también está contenida en \(Y\), entonces existe un número finito de celdas de \(X\) con intersección no vacía con \(\overline{e}\) que, a su vez, son celdas de \(Y\). En consecuencia, la condición \((C)\) se cumple. Es más, cualquier aplicación característica \(f_e : \to X\) de \(X\) lo es también de \(Y\) para cualquier celda \(e \subseteq Y\).
+	
+	En cuanto a la condición \((W)\), supongamos que \(S\) es un subconjunto de \(Y\) tal que \(S \cap \overline{e}\) es cerrado en \(\overline{e}\) para toda celda en \(Y\). Sea ahora \(e\) una celda de \(X\) que no esté contenida en \(Y\). Sabemos que \(\overline{e} \backslash e\) está contenido en la unión de un número finito de celdas de \(X\), de las cuales un subconjunto de ellas están contenidas en \(Y\). Llamemos a dichas celdas \(e_1, \ldots, e_n\). Por consiguiente, \(\overline{e}_1 \cup \cdots \cup \overline{e}_n \subseteq Y\) y además,
+	\[
+		S \cap \overline{e} = S \cap (\overline{e}_1 \cup \cdots \cup \overline{e}_n) \cap \overline{e} = \left( (S \cap \overline{e}_1) \cup \cdots \cap (S \cap \overline{e}_n) \right) \cap \overline{e},
+	\]  
+	luego \(S \cap \overline{e}\) es cerrado en \(\overline{e}\). Es decir, \(S\) es cerrado en \(X\) y por tanto en \(Y\). Finalmente, concluimos que \(Y\) es cerrado en \(X\) tomando \(S = Y\).
+\end{proof}
+
+\begin{definicion}
+	Sea \(X\) un CW-complejo. Diremos que el subespacio \(X^{(p)}\) de \(X\) es el \textbf{\(p\)-esqueleto} de \(X\) si es igual a la unión de todas las celdas de dimensión menor o igual que \(p\). En particular, es un subcomplejo de dimensión \(p\) de \(X\).
+\end{definicion}
+
+\begin{teorema}
+	Sea \(X\) un CW-complejo. Entonces las siguientes propiedades son equivalentes:
+	\begin{enumerate}
+		\item \(X\) es conexo por caminos.
+		\item \(X\) es conexo.
+		\item El \(1\)-esqueleto de \(X\) es conexo.
+		\item Algún \(n\)-esqueleto de \(X\) es conexo para algún \(n\).
+	\end{enumerate}
+\end{teorema}
+\begin{proof}
+	Obviamente, \((1) \implies (2)\) y \((3) \implies (4)\), por lo que basta con demostrar que \((2) \implies (3)\) y \((4) \implies (1)\).
+	
+	Para probar \((2) \implies (3)\), demostramos el contrarrecíproco. Supongamos que \(X^{(1)} = X'^{(1)} \cup X''^{(1)}\) es una desconexión del \(1\)-esqueleto de \(X\). Mostramos por inducción en \(n\) que para cada \(n > 1\), el \(n\)-esqueleto \(X^{(n)}\) tiene una desconexión \(X^{(n)} = X'^{(n)} \cup X''^{(n)}\) tal que \(X'^{(n)} \subseteq X'^{(n-1)}\) y \(X''^{(n)} \subseteq X''^{(n-1)}\) para cada \(n\). Supongamos \(X^{(n-1)} = X'^{(n-1)} \cup X''^{(n-1)}\) es una desconexión de \(X^{(n-1)}\) para algún \(n > 1\). Para cada celda \(n\)-dimensional \(e\), la restricción de su aplicación característica \(\Phi \colon D^n \to X^{(n)}\) a \(\partial D^n\) es continua en \(X^{(n-1)}\); dado que \(\partial D^n \cong S^{n-1}\) es conexo, su imagen debe yacer completamente en uno de los conjuntos \(X'^{(n)}\) o \(X''^{(n)}\). Por lo tanto, \(\overline{\Phi(D)}\) tiene una intersección no trivial con \(X'^{(n)}\) o \(X''^{(n)}\), pero no con ambos. Dividimos las \(n\)-celdas en dos colecciones disjuntas \(\mathcal{E}'\) y \(\mathcal{E}''\), según si sus cierres intersectan \(X'^{(n-1)}\) o \(X''^{(n-1)}\), respectivamente, y definimos
+	\[
+	X'^{(n)} = X'^{(n-1)} \cup \left(\bigcup_{e \in \mathcal{E}'} \overline{\Phi(e)} \right),\quad
+	X''^{(n)} = X''^{(n-1)} \cup \left(\bigcup_{e \in \mathcal{E}''} \overline{\Phi(e)} \right).
+	\]
+	Claramente, \(X^{(n)}\) es la unión disjunta de \(X'^{(n)}\) y \(X''^{(n)}\), y ambos conjuntos son no vacíos debido a la hipótesis inductiva. Esto completa la inducción.
+	
+	Ahora, definimos \(X' = \bigcup_n X'^{(n)}\) y \(X'' = \bigcup_n X''^{(n)}\). Como antes, \(X = X' \cup X''\), y ambos conjuntos son no vacíos. Por el mismo argumento que arriba, si \(e\) es cualquier celda de \(X\) de cualquier dimensión, su clausura debe estar contenida en uno de estos conjuntos. Así, \(X'\) y \(X''\) están ambos abiertos y cerrados en \(X\), lo que indica que \(X\) está desconectado.
+	
+	Para demostrar \((4) \Rightarrow (1)\), supongamos que \(X\) es un complejo CW cuyo \(n\)-esqueleto está conectado para algún \(n \geq 0\). Mostramos por inducción en \(k\) que \(X^{(k)}\) está conectado por caminos para cada \(k \geq n\). Primero, necesitamos mostrar que \(X^{(n)}\) en sí mismo está conectado por caminos. Si \(n = 0\), entonces \(X^{(n)}\) es discreto y conectado, así que es un singleton y por lo tanto ciertamente conectado por caminos. En caso contrario, elijamos cualquier punto \(x_0 \in X^{(n)}\) y dejemos que \(S_n\) sea la componente de camino de \(X^{(n)}\) que contiene a \(x_0\). Para cada celda \(e\) de \(X^{(n)}\), notemos que \(\overline{\Phi(e)}\) es la imagen continua de un espacio conectado por caminos, así que es conectado por caminos. Por lo tanto, si \(\overline{\Phi(e)}\) tiene una intersección no trivial con la componente de camino \(S_n\), debe estar contenida en \(S_n\). Se sigue que \(S_n\) es cerrado y abierto en \(X^{(n)}\). Ya que estamos asumiendo que \(X^{(n)}\) es conectado, se sigue que \(S_n = X^{(n)}\).
+	
+	Ahora, supongamos que hemos demostrado que \(X^{(k-1)}\) es conexo por caminos para algún \(k > n\), y dejemos \(S_k\) ser la componente de camino de \(X^{(k)}\) que contiene a \(X^{(k-1)}\). Para cada \(k\)-celda \(e\), su clausura \(\overline{\Phi(e)}\) es un subconjunto de \(X^{(k)}\) conexo por caminos que tiene una intersección no trivial con \(X^{(k-1)}\), por lo tanto, está contenido en \(S_k\). Se sigue que \(X^{(k)} = S_k\), y la inducción está completa.
+\end{proof}
+
+\begin{lema}
+	\label{lem:cw-cl-finite-subcomplex}
+	Sea \(X\) un CW-complejo. Entonces la clausura de cada celda está contenida en un subcomplejo finito.
+\end{lema}
+\begin{proof}
+	Consideremos cualquier \(n\)-celda \(e \in X\) y probemos el lema por inducción. Para el caso \(n=0\), 
+	\(\overline{e} = e\) es trivialmente un subcomplejo finito. Supongamos ahora el lema cierto para 
+	las celdas de dimensión menor o igual que \(n\) 	y veámoslo para \(n+1\). Por la condición \((C)\), 
+	\(\overline{e} \backslash e\) está contenido en la unión de un número finito de celdas de dimensión menor 
+	que \(n+1\). Dichas celdas están contenidas en subcomplejo finitos por hipótesis de inducción. 
+	Sin embargo, la unión de dichos subcomplejos finitos con \(e\) es de hecho un subcomplejo finito 
+	que contiene a \(\overline{e}\).
+\end{proof}
+
+\begin{lema}
+	Sea \(X\) un CW-complejo. Un subconjunto de \(X\) es discreto si, y sólo si, su intersección con cada 
+	celda es finita.
+\end{lema}
+\begin{proof}
+	Sea \(S\) un subconjunto discreto de \(X\). Entonces, la intersección de la clausura de cada 
+	celda \(e\) de \(X\) con \(S\) es un subconjunto discreto de un conjunto compacto, luego es finito. 
+	En consecuencia, \(S \cap e\) también lo es.
+	
+	Para la otra implicación supongamos que \(S\) es un subconjunto cuya intersección con 
+	cualquier celda es finita. Como la clausura de cada celda está contenida en un 
+	subcomplejo finito, entonces por hipótesis tenemos que \(S \cap \overline{e}\) es finito 
+	para cada celda \(e\) de \(X\). Esto significa que \(S \cap \overline{e}\) es cerrado en 
+	\(\overline{e}\) y por la condición \((W)\), \(S\) es cerrado en \(X\). Sin embargo, este argumento 
+	podemos aplicarlo a cualquier subconjunto de \(S\), luego todo subconjunto de \(S\) es cerrado en 
+	\(X\). Por lo tanto, la topología inducida en \(S\) es discreta. 
+\end{proof}
+
+\begin{teorema}
+	Sea \(X\) un CW-complejo. Un subconjunto de \(X\) es compacto si, y sólo si, es cerrado en \(X\) 
+	y está contenido en un subcomplejo finito.
+\end{teorema}
+\begin{proof}
+	Todo subcomplejo finito de \(X\) es compacto pues es unión finita de clausuras de celdas, las 
+	cuales son compactas. En consecuencia, si \(K\) es un subconjunto cerrado de \(X\) contenido 
+	en un subcomplejo finito, entonces es compacto.
+	
+	Supongamos ahora que \(K \subseteq X\) es compacto. Si \(K\) intersecara una cantidad infinita 
+	de celdas, podríamos tomar un punto de cada intersección de forma que tuviéramos un 
+	subconjunto infinito discreto de \(K\), lo cual es imposible. Es decir, \(K\) está contenido 
+	en la unión de un número finito de celdas y por el \autoref{lem:cw-cl-finite-subcomplex}, 
+	está contenido en un subcomplejo finito.
+\end{proof}
+
+\begin{corolario}
+	Un CW-complejo es compacto si, y sólo si, es un complejo finito.
+\end{corolario}
+
+\begin{proposicion}
+	Todo $p$-símplice es una celda cerrada de dimensión $p$.
+\end{proposicion}
+\begin{proof}
+	Inmediato por la \autoref{prop:compact-convex-closed-cell}.
+\end{proof}
+
 \section{Aplicaciones simpliciales}
 
 Cuando trabajemos con complejos simpliciales, será interesante tener en cuenta cuándo
 las transformaciones entre ellos pueden ser continuas o incluso homeomorfismos.
 
 \begin{lema}
+	\label{lem:app-simpl}
 	Sean \(K\) y \(L\) dos complejos simpliciales y sea \(f: K^{(0)}\rightarrow L^{(0)}\)
 	una aplicación entre los conjuntos de vértices de \(K\) y \(L\). Supongamos que
 	siempre que los vértices \(v_{0}, \ldots, v_{n}\) de \(K\) generen un símplice en
 	\(K\), los puntos \(f(v_{0}), \ldots, f(v_{n})\) son vértices de un símplice de \(L\).
 	Entonces podemos extender \(f\) a una aplicación continua
-	\(g:|K| \rightarrow |L|\) tal que
+	\( |f| :|K| \rightarrow |L|\) tal que
 	\[
-		x = \sum_{i=0}^{n}t_{i}v_{i}\quad \implies \quad g(x) = \sum_{i=0}^{n}t_{i}f
+		x = \sum_{i=0}^{n}t_{i}v_{i}\quad \implies \quad |f|(x) = \sum_{i=0}^{n}t_{i}f
 		(v_{i})
 	\]
 	Llamaremos a \(g\) la \textbf{aplicación simplicial} (lineal) inducida por \(f\).
 \end{lema}
-
 \begin{proof}
 	Por hipótesis, los vértices \(f(v_{0}), \ldots, f(v_{n})\) generan un símplice
 	\(\tau\) en \(L\). Por ser \(K\) un complejo simplicial, la suma de sus coeficientes
-	\(t_{i}\), con \(i \in \{0, \ldots, n\}\), es igual a uno, luego \(g(x) = \sum_{i=0}^{n}
-	t_{i}f(v_{i})\) es un punto de \(\tau\). Es decir, \(g\) es una aplicación lineal del
+	\(t_{i}\), con \(i \in \{0, \ldots, n\}\), es igual a uno, luego \(|f|(x) = \sum_{i=0}^{n}
+	t_{i}f(v_{i})\) es un punto de \(\tau\). Es decir, \(|f|\) es una aplicación lineal del
 	símplice \(\sigma\) generado por \(v_{0}, \ldots, v_{n}\) al símplice \(\tau\) generado
-	por \(f(v_{0}), \ldots, f(v_{n})\). Por ser \(g: \sigma \rightarrow \tau\) lineal
+	por \(f(v_{0}), \ldots, f(v_{n})\). Por ser \( |f| : \sigma \rightarrow \tau\) lineal
 	en un espacio de dimensión finita, entonces es continua.
 
-	Ahora tan solo nos queda ver que \(g:|K| \rightarrow |L|\) es continua. Bien, pues
-	por ser \(g: \sigma \rightarrow \tau\) continua, también lo es
-	\(g: \sigma \rightarrow |L|\). Finalmente por el \autoref{lem:cont_poly},
-	\(g:|K| \rightarrow |L|\) es continua.
+	Ahora tan solo nos queda ver que \( |f| :|K| \rightarrow |L|\) es continua. Bien, pues
+	por ser \( |f| : \sigma \rightarrow \tau\) continua, también lo es
+	\( |f| : \sigma \rightarrow |L|\). Finalmente por el \autoref{lem:cont_poly},
+	\( |f| :|K| \rightarrow |L|\) es continua.
 \end{proof}
+%
+%Consideremos las funciones de la forma de \(f\) descrita en \ref{lem:app-simpl}. 
+%Para cualquier complejo \(K\), existe una aplicación identidad \(i_K \colon K \to K\) 
+%que corresponde a la aplicación identidad en los vértices. Dadas dos aplicaciones 
+%\(f \colon K \to L\) y \(g \colon L \to M\), la aplicación compuesta 
+%\(g \circ f \colon K \to M\) corresponde a la composición de las aplicaciones en los 
+%vértices. Por lo tanto, existe una categoría de complejos simpliciales y estas funciones
+%que denotaremos por \(\Cat{Csim}\).
+%
+%Por otro lado, el \autoref{lem:app-simpl} nos garantiza la existencia de un funtor 
+%covariante entre esta categoría y los espacios topológicos.
+%
+%\begin{teorema}
+%	Existe un funtor covariante \(|\cdot| : \Cat{CSim} \to \Cat{Top}\) de la categoría de aplicaciones simpliciales y la categoría de espacios topológicos.
+%\end{teorema}
 
 \begin{lema}
 	\label{lem:homeo_complex} Supongamos que \(f:K^{(0)}\rightarrow L^{(0)}\) es una
@@ -470,7 +630,6 @@ las transformaciones entre ellos pueden ser continuas o incluso homeomorfismos.
 	un homeomorfismo. Diremos entonces que \(g\) es un \textbf{homeomorfismo
 	simplicial} de \(K\) con \(L\).
 \end{lema}
-
 \begin{proof}
 	Por hipótesis, cada símplice \(\sigma \in K\) se identifica con otro símplice
 	\(\tau \in L\). Por tanto, debemos comprobar que la aplicación lineal
@@ -593,6 +752,22 @@ tenemos el siguiente corolario.
 %\begin{ejemplo}
 %	Supongamos que queremos encontrar un complejo simplicial \(K\) que sea homeomorfo al cilindro \(S^1 \times [0,1]\). Una forma de hacerlo sería definiendo \(K\) como una colección de 6 \(2-\)símplices y sus caras tal y como se puede apreciar en la FIGURA ??. Otra forma sería definir un complejo simplicial \(L\) cuyo espacio subyacente sea un rectángulo dotado de una serie de vértices
 %\end{ejemplo}
+
+\section{Variedades y triangulaciones}
+
+\begin{definicion}
+	Sea \(X\) un espacio topológico Hausdorff no vacío. Diremos que \(X\) es una \textbf{\(m\)-variedad} 
+	si cada punto de \(X\) tiene un entorno homeomorfo a un subconjunto abierto de \(\R^m\) con la 
+	topología usual. Análogamente, diremos que \(X\) es una \textbf{\(m\)-variedad con borde} si 
+	cada punto tiene un entorno homeomorfo al semiespacio 
+	\(\mathbb{H}^m = \{ (x_1, x_2, \ldots,x_m) \in \R^m : x_i \geq 0,\ 1 \leq i \leq m \}\).
+\end{definicion}
+\begin{observacion}
+	Nótese que toda \(m\)-variedad es una \(m\)-variedad con borde. Para verlo, consideremos \(x\) 
+	en la \(m\)-variedad y un entorno homeomorfo a un subconjunto abierto de \(\R^m\). Entonces, 
+	tiene un entorno abierto homeomorfo a cualquier bola abierta de \(\R^m\) y en particular, 
+	a una contenida en \(\mathbb{H}\).
+\end{observacion}
 
 \endinput
 %--------------------------------------------------------------------

@@ -175,19 +175,19 @@ canónica} de \(B\).
 	es conmutativo. Al homomorfismo \(\beta'\) lo llamaremos \textbf{homomorfismo
 	inducido} por \(\beta\).
 \end{proposicion}
-\begin{proof}
-	Consideremos el \(R\)-módulo \(B\) y definamos \(\beta'(b + T) = \beta(b)\). Por
-	estar \(T\) contenida en el núcleo de \(\beta\), la función está bien definida. En
-	efecto, si \(a,b \in B\) entonces \(a+T = b+T\) lo que implica que \(a-b \in T \subset
-	\ker \beta\). Esto es, \(\beta(a-b) = 0\) y por tanto, \(\beta(a)=\beta(b)\). Como \(\beta\)
-	es un homomorfismo,
-	\[
-		\beta'((ra + sb) + T) = \beta(ra+sb) = r\beta(a) + s\beta(b) = r \beta'(a+T)
-		+ s \beta'(b+T)
-	\]
-	para todo \(r,s \in R\), \(a,b \in B\). En consecuencia, \(\beta'\) también es un homomorfismo
-	de \(R\)-módulos.
-\end{proof}
+%\begin{proof}
+%	Consideremos el \(R\)-módulo \(B\) y definamos \(\beta'(b + T) = \beta(b)\). Por
+%	estar \(T\) contenida en el núcleo de \(\beta\), la función está bien definida. En
+%	efecto, si \(a,b \in B\) entonces \(a+T = b+T\) lo que implica que \(a-b \in T \subset
+%	\ker \beta\). Esto es, \(\beta(a-b) = 0\) y por tanto, \(\beta(a)=\beta(b)\). Como \(\beta\)
+%	es un homomorfismo,
+%	\[
+%		\beta'((ra + sb) + T) = \beta(ra+sb) = r\beta(a) + s\beta(b) = r \beta'(a+T)
+%		+ s \beta'(b+T)
+%	\]
+%	para todo \(r,s \in R\), \(a,b \in B\). En consecuencia, \(\beta'\) también es un homomorfismo
+%	de \(R\)-módulos.
+%\end{proof}
 %En particular, si \( \beta: B \rightarrow B' \) es un epimorfismo con núcleo \( T \), \( \beta': B/T \rightarrow B' \) es un isomorfismo. Esta afirmación puede expresarse de la siguiente manera: cada \( \beta \) con \( \beta(T) = 0 \) \textit{factoriza de manera única} a través de la proyección \( \pi \). Esta propiedad caracteriza a \( \pi: B \rightarrow B/T \) hasta un isomorfismo de \( B/T \), de la siguiente manera:
 %
 %\begin{proposicion}
@@ -205,19 +205,19 @@ canónica} de \(B\).
 		\frac{B}{\ker \beta}\cong \im \beta
 	\]
 \end{teorema}
-\begin{proof}
-	La demostración es análoga a la ya vista para grupos. Construimos un
-	homomorfismo de \(R\)-módulos \(\beta: B \to \im \beta\) donde aplicando el
-	\nameref{prop:teo-fact} con \(T = \ker \beta\), obtenemos el homomorfismo
-	inducido \(\beta' : B/\ker \beta \to \im \beta\) tal que
-	\(\beta'(b+\ker \beta) = \beta(b)\). Veamos que está bien definida y que es biyectiva.
-	Para ello, consideremos que existe otro \(c \in B\) tal que \(b + \ker B = c + \ker
-	B\) lo cual se cumple si, y sólo si, \((b + \ker B) - (c + \ker B) = (b - c) + \ker
-	\beta = 0\). Esto es, que \(b - c \in \ker \beta\) y por tanto \(\beta(b-c) = \beta
-	(b) - \beta(c) = 0\). Es decir, \(\beta(b) = \beta(c)\). En consecuencia, la aplicación
-	\(\beta'\) está bien definida y además es inyectiva. Claramente
-	\(\beta: B \to \im \beta\) es sobreyectiva.
-\end{proof}
+%\begin{proof}
+%	La demostración es análoga a la ya vista para grupos. Construimos un
+%	homomorfismo de \(R\)-módulos \(\beta: B \to \im \beta\) donde aplicando el
+%	\nameref{prop:teo-fact} con \(T = \ker \beta\), obtenemos el homomorfismo
+%	inducido \(\beta' : B/\ker \beta \to \im \beta\) tal que
+%	\(\beta'(b+\ker \beta) = \beta(b)\). Veamos que está bien definida y que es biyectiva.
+%	Para ello, consideremos que existe otro \(c \in B\) tal que \(b + \ker B = c + \ker
+%	B\) lo cual se cumple si, y sólo si, \((b + \ker B) - (c + \ker B) = (b - c) + \ker
+%	\beta = 0\). Esto es, que \(b - c \in \ker \beta\) y por tanto \(\beta(b-c) = \beta
+%	(b) - \beta(c) = 0\). Es decir, \(\beta(b) = \beta(c)\). En consecuencia, la aplicación
+%	\(\beta'\) está bien definida y además es inyectiva. Claramente
+%	\(\beta: B \to \im \beta\) es sobreyectiva.
+%\end{proof}
 %Cada homomorfismo \(\alpha: A \rightarrow B\) determina dos módulos cociente
 %\[\text{Coim } \alpha = A / \text{Ker } \alpha, \quad \text{Coker } \alpha = B / \text{Im } \alpha,\]
 %llamados la \textbf{coimagen} y el \textbf{conúcleo} de \(\alpha\). Esta definición provee dos sucesiones exactas cortas
@@ -433,71 +433,71 @@ submódulo y su cociente.
 %	\]
 %	implica que \(B = \sigma(A) \oplus \ker \eta\). Por el \nameref{teo:first-iso} y como \(\ker \gamma = \sigma(A)\), tenemos que \(\ker \eta \cong B/\ker(\gamma) \overset{\overline{\gamma}}{\to} \im \gamma = C\) donde \(\overline{\gamma}\) es el isomorfismo inducido por \(\gamma\). Finalmente, \(\rho = \overline{\gamma}^{-1}\).
 %\end{proof}
-
-Para realizar la prueba del siguiente resultado usaremos una estrategia típica en
-álgebra homológica conocida como persecución de diagramas. Este método consiste
-en buscar composiciones de aplicaciones equivalentes en diagramas conmutativos, y
-en explotar las propiedades de los homomorfismos inyectivos, sobreyectivos y
-biyectivos, así como de las sucesiones exactas.
-
-\begin{lema}
-	[Lema de los cinco] \label{lem:cinco} Consideremos el siguiente diagrama conmutativo
-	de \(R\)-módulos
-	\[
-		\xymatrix{ A_1 \ar@{->}[r]^{\sigma_1} \ar@{->}[d]^{\phi_1} & A_2 \ar@{->}[r]^{\sigma_2} \ar@{->}[d]^{\phi_2} & A_3 \ar@{->}[r]^{\sigma_3} \ar@{->}[d]^{\phi_3} & A_4 \ar@{->}[r]^{\sigma_4} \ar@{->}[d]^{\phi_4} & A_5 \ar@{->}[d]^{\phi_5} \\ B_1 \ar@{->}[r]^{\gamma_1} & B_2 \ar@{->}[r]^{\gamma_2} & B_3 \ar@{->}[r]^{\gamma_3} & B_4 \ar@{->}[r]^{\gamma_4} & B_5 }
-	\]
-	cuyas filas son exactas. Si además \(\phi_{2}, \phi_{4}\) son isomorfismos, \(\phi
-	_{1}\) es un epimorfismo y \(\phi_{5}\) es un monomorfismo, entonces \(\phi_{3}\)
-	es un isomorfismo.
-\end{lema}
-\begin{proof}
-	Comencemos viendo la inyectividad de \(\phi_{3}\). Sea \(x \in A_{3}\) tal que
-	\(\phi_{3}(x) = 0\). Considerando la conmutatividad y la exactitud de las filas,
-	obtenemos
-	\[
-		\phi_{4}(\sigma_{3}(x)) = \gamma_{3}(\phi_{3}(x)) = \gamma_{3}(0) = 0.
-	\]
-	Dado que \(\phi_{4}\) es inyectiva, concluimos que \(\sigma_{3}(x) = 0\). La
-	exactitud en \(A_{3}\) implica la existencia de \(y \in A_{2}\) tal que
-	\(\sigma_{2}(y) = x\). Aplicando \(\phi_{2}\) y utilizando la conmutatividad,
-	tenemos que
-	\[
-		\gamma_{2}(\phi_{2}(y)) = \phi_{3}(\sigma_{2}(y)) = \phi_{3}(x) = 0.
-	\]
-	La exactitud en \(B_{2}\) implica que existe \(z \in B_{1}\) tal que
-	\(\gamma_{1}(z) = \phi_{2}(y)\). Como \(\phi_{1}\) es sobreyectiva, existe
-	\(w \in A_{1}\) con \(\phi_{1}(w) = z\). Nuevamente, la conmutatividad del
-	diagrama y la inyectividad de \(\phi_{2}\) implican que
-	\[
-		\phi_{2}(\sigma_{1}(w)) = \gamma_{1}(\phi_{1}(w)) = \gamma_{1}(z) = \phi_{2}(
-		y),
-	\]
-	y por tanto, \(\sigma_{1}(w) = y\). Por la exactitud en \(A_{2}\), concluimos \(x =
-	\sigma_{2}(y) = \sigma_{2}(\sigma_{1}(w)) = 0\).
-
-	Veamos ahora la sobreyectividad de \(\phi_{3}\). Dado cualquier \(x \in B_{3}\), como
-	\(\phi_{4}\) es sobreyectiva, existe \(p \in A_{4}\) tal que
-	\(\phi_{4}(p) = \gamma_{3}(x)\). La exactitud y la inyectividad de \(\phi_{5}\) nos
-	llevan a
-	\[
-		\phi_{5}(\sigma_{4}(p)) = \gamma_{4}(\phi_{4}(p)) = \gamma_{4}(\gamma_{3}(x))
-		= 0,
-	\]
-	implicando que \(\sigma_{4}(p) = 0\). Por exactitud, existe \(r \in A_{3}\) con \(\sigma
-	_{3}(r) = p\), y utilizando la conmutatividad, obtenemos
-	\[
-		\gamma_{3}(\phi_{3}(r)) = \phi_{4}(\sigma_{3}(r)) = \phi_{4}(p) = \gamma_{3}(
-		x).
-	\]
-	Entonces, \(\phi_{3}(r) - x\) pertenece a \(\ker \gamma_{3} = \im \gamma_{2}\). En
-	consecuencia, existe \(s \in B_{2}\) tal que \(\gamma_{2}(s) = \phi_{3}(r) - x\). Utilizando
-	la sobreyectividad de \(\phi_{2}\), encontramos \(t \in A_{2}\) con
-	\(\phi_{2}(t) = s\), y por lo tanto,
-	\[
-		\phi_{3}(r - \sigma_{2}(t)) = \phi_{3}(r) - \gamma_{2}(\phi_{2}(t)) = \phi_{3}
-		(r) - \gamma_{2}(s) = x.
-	\]
-\end{proof}
+%
+%Para realizar la prueba del siguiente resultado usaremos una estrategia típica en
+%álgebra homológica conocida como persecución de diagramas. Este método consiste
+%en buscar composiciones de aplicaciones equivalentes en diagramas conmutativos, y
+%en explotar las propiedades de los homomorfismos inyectivos, sobreyectivos y
+%biyectivos, así como de las sucesiones exactas.
+%
+%\begin{lema}
+%	[Lema de los cinco] \label{lem:cinco} Consideremos el siguiente diagrama conmutativo
+%	de \(R\)-módulos
+%	\[
+%		\xymatrix{ A_1 \ar@{->}[r]^{\sigma_1} \ar@{->}[d]^{\phi_1} & A_2 \ar@{->}[r]^{\sigma_2} \ar@{->}[d]^{\phi_2} & A_3 \ar@{->}[r]^{\sigma_3} \ar@{->}[d]^{\phi_3} & A_4 \ar@{->}[r]^{\sigma_4} \ar@{->}[d]^{\phi_4} & A_5 \ar@{->}[d]^{\phi_5} \\ B_1 \ar@{->}[r]^{\gamma_1} & B_2 \ar@{->}[r]^{\gamma_2} & B_3 \ar@{->}[r]^{\gamma_3} & B_4 \ar@{->}[r]^{\gamma_4} & B_5 }
+%	\]
+%	cuyas filas son exactas. Si además \(\phi_{2}, \phi_{4}\) son isomorfismos, \(\phi
+%	_{1}\) es un epimorfismo y \(\phi_{5}\) es un monomorfismo, entonces \(\phi_{3}\)
+%	es un isomorfismo.
+%\end{lema}
+%\begin{proof}
+%	Comencemos viendo la inyectividad de \(\phi_{3}\). Sea \(x \in A_{3}\) tal que
+%	\(\phi_{3}(x) = 0\). Considerando la conmutatividad y la exactitud de las filas,
+%	obtenemos
+%	\[
+%		\phi_{4}(\sigma_{3}(x)) = \gamma_{3}(\phi_{3}(x)) = \gamma_{3}(0) = 0.
+%	\]
+%	Dado que \(\phi_{4}\) es inyectiva, concluimos que \(\sigma_{3}(x) = 0\). La
+%	exactitud en \(A_{3}\) implica la existencia de \(y \in A_{2}\) tal que
+%	\(\sigma_{2}(y) = x\). Aplicando \(\phi_{2}\) y utilizando la conmutatividad,
+%	tenemos que
+%	\[
+%		\gamma_{2}(\phi_{2}(y)) = \phi_{3}(\sigma_{2}(y)) = \phi_{3}(x) = 0.
+%	\]
+%	La exactitud en \(B_{2}\) implica que existe \(z \in B_{1}\) tal que
+%	\(\gamma_{1}(z) = \phi_{2}(y)\). Como \(\phi_{1}\) es sobreyectiva, existe
+%	\(w \in A_{1}\) con \(\phi_{1}(w) = z\). Nuevamente, la conmutatividad del
+%	diagrama y la inyectividad de \(\phi_{2}\) implican que
+%	\[
+%		\phi_{2}(\sigma_{1}(w)) = \gamma_{1}(\phi_{1}(w)) = \gamma_{1}(z) = \phi_{2}(
+%		y),
+%	\]
+%	y por tanto, \(\sigma_{1}(w) = y\). Por la exactitud en \(A_{2}\), concluimos \(x =
+%	\sigma_{2}(y) = \sigma_{2}(\sigma_{1}(w)) = 0\).
+%
+%	Veamos ahora la sobreyectividad de \(\phi_{3}\). Dado cualquier \(x \in B_{3}\), como
+%	\(\phi_{4}\) es sobreyectiva, existe \(p \in A_{4}\) tal que
+%	\(\phi_{4}(p) = \gamma_{3}(x)\). La exactitud y la inyectividad de \(\phi_{5}\) nos
+%	llevan a
+%	\[
+%		\phi_{5}(\sigma_{4}(p)) = \gamma_{4}(\phi_{4}(p)) = \gamma_{4}(\gamma_{3}(x))
+%		= 0,
+%	\]
+%	implicando que \(\sigma_{4}(p) = 0\). Por exactitud, existe \(r \in A_{3}\) con \(\sigma
+%	_{3}(r) = p\), y utilizando la conmutatividad, obtenemos
+%	\[
+%		\gamma_{3}(\phi_{3}(r)) = \phi_{4}(\sigma_{3}(r)) = \phi_{4}(p) = \gamma_{3}(
+%		x).
+%	\]
+%	Entonces, \(\phi_{3}(r) - x\) pertenece a \(\ker \gamma_{3} = \im \gamma_{2}\). En
+%	consecuencia, existe \(s \in B_{2}\) tal que \(\gamma_{2}(s) = \phi_{3}(r) - x\). Utilizando
+%	la sobreyectividad de \(\phi_{2}\), encontramos \(t \in A_{2}\) con
+%	\(\phi_{2}(t) = s\), y por lo tanto,
+%	\[
+%		\phi_{3}(r - \sigma_{2}(t)) = \phi_{3}(r) - \gamma_{2}(\phi_{2}(t)) = \phi_{3}
+%		(r) - \gamma_{2}(s) = x.
+%	\]
+%\end{proof}
 
 \section{Categorías y funtores}
 \label{sec:cat}
@@ -541,12 +541,12 @@ En esta sección haré una breve introducción de las categorías apoyándome en
 	con un gran número de espacios matemáticos que ya conocemos en el contexto de
 	la teoría de categorías. Algunos de ellos son:
 	\begin{itemize}
-		\item \textbf{La categoría de espacios topológicos}, donde los objetos son todos
+		\item \textbf{La categoría de espacios topológicos} $\Cat{Top}$, donde los objetos son todos
 			los espacios topológicos y los morfismos todas las aplicaciones continuas entre
 			espacios topológicos \(f: X \rightarrow Y\).
-		\item \textbf{La categoría de grupos}, donde los objetos son todos los grupos
+		\item \textbf{La categoría de grupos}  $\Cat{Grp}$, donde los objetos son todos los grupos
 			y los morfismos todos los homomorfismos de grupos.
-		\item \textbf{La categoría de conjuntos}, cuyos objetos son todos los conjuntos
+		\item \textbf{La categoría de conjuntos}  $\Cat{Set}$, cuyos objetos son todos los conjuntos
 			y sus morfismos todas las aplicaciones entre conjuntos.
 		\item \textbf{La categoría de sucesiones exactas de \(R\)-módulos de longitud
 			n}. Los objetos son dichas sucesiones \(S: A_{1} \rightarrow \cdots \rightarrow
@@ -650,26 +650,27 @@ es, \(c \sim c'\).
 \end{definicion}
 
 La anterior definición nos permite preservar la estructura algebraica del módulo
-diferencial. De esta forma, si tomamos una cadena \(c \in C\) que sea un ciclo o un
-borde y \(f:C \rightarrow C'\) es un homomorfismo de módulos diferenciales,
+diferencial. De esta forma, si tomamos una cadena \(c \in C\), que sea un ciclo o un
+borde, y \(f\colon C \to C'\) es un homomorfismo de módulos diferenciales,
 \(f(c) \in C'\) seguirá siendo un ciclo o un borde de manera correspondiente. En efecto,
-pues si \(z \in Z(C)\), entonces \(d'f(z) = f(dz) = f(0) = 0\). Esto es, \(f(z) \in \ker
-d'\). Ahora, si \(b \in B(C)\), entonces existe \(c \in C\) tal que \(dc = b\). En consecuencia,
-\(d'f(c) = f(dc) = f(b)\) y por tanto, \(f(b) \in \im d'\).
-%
-%Los grupos diferenciales definen una categoría donde los objetos son los grupos diferenciales y los morfismos son los homomorfismos de grupos diferenciales. Tomamos como ley de composición interna la composición de dichos homomorfismos. Claramente es asociativa pues si \(C,C',\bar{C}, \tilde{C} \in \obj()\) y \(f: C \to C'\), \(g: C' \to \bar{C}\), \(h: \bar{C} \to \tilde{C}\), entonces \(h \circ (g \circ f)\) se cumple si, y sólo si,
-%\begin{gather*}
-%	\tilde{d}(h \circ (g \circ f))
-%	= (\tilde{d}h) \circ (g \circ f)
-%	=(h\bar{d}) \circ (g \circ f))
-%	=h \circ (\bar{d} g) \circ f \\
-%	=h \circ (g d') \circ f
-%	=h \circ g \circ (d' f)
-%	=h \circ g \circ (fd)
-%	=(h \circ g) \circ fd \\
-%	=((h \circ g) \circ f) d
-%\end{gather*}
-%y por tanto \(h \circ (g \circ f) = (h \circ g) \circ f\). La propiedad de identidad se sigue de existir el homomorfismo identidad de grupos.
+si \(z \in Z(C)\), entonces
+\[
+d'f(z) = f(dz) = f(0) = 0.
+\]
+Esto es, \(f(z) \in \ker d'\). Ahora, si \(b \in B(C)\), entonces existe \(c \in C\) tal que \(dc = b\). En consecuencia,
+\[
+d'f(c) = f(dc) = f(b),
+\]
+y por tanto, \(f(b) \in \operatorname{im} d'\).
+
+Los grupos diferenciales definen una categoría $\Cat{DiffGrp}$ donde los objetos son los grupos diferenciales y los morfismos son los homomorfismos de grupos diferenciales. Tomemos como ley de composición interna la composición de dichos homomorfismos. Claramente es asociativa pues si \(C, C', \bar{C}, \tilde{C} \in \obj()\), y \(f\colon C \to C'\), \(g \colon C' \to \bar{C}\), \(h\colon \bar{C} \to \tilde{C}\), entonces \(h \circ (g \circ f)\) se cumple si, y sólo si,
+\begin{gather*}
+	\tilde{d}(h \circ (g \circ f)) = (\tilde{d}h) \circ (g \circ f) = (h\bar{d}) \circ (g \circ f) = h \circ (\bar{d}g) \circ f \\
+	= h \circ (g d') \circ f = h \circ g \circ (d'f) = h \circ g \circ (fd) = (h \circ g) \circ fd \\
+	= ((h \circ g) \circ f) d
+\end{gather*}
+y por tanto \(h \circ (g \circ f) = (h \circ g) \circ f\). La propiedad de identidad se sigue de existir el homomorfismo identidad de grupos.
+
 \begin{definicion}
 	Sean \(C, C'\) módulos diferenciales y \(f:C \rightarrow C'\) un homomorfismo de módulos
 	diferenciales. Definimos la función \(f_{*} = H(f): H(C;R) \rightarrow H(C';R)\)
@@ -679,12 +680,12 @@ d'\). Ahora, si \(b \in B(C)\), entonces existe \(c \in C\) tal que \(dc = b\). 
 	\]
 	Diremos que \(H(f)\) es el \textbf{homomorfismo inducido} por \(f\).
 \end{definicion}
-%\begin{proposicion}
-%	En estas condiciones, \(H\) es un funtor covariante de la categoría de grupos diferenciales a la categoría de grupos.
-%\end{proposicion}
-%\begin{proof}
-%	Por la definición dada del grupo de homología, es claro que la función objeto \(H\) asigna a cada grupo diferencial \(C\) un grupo de homología \(H(C)\). En cuanto a la función de morfismos, la identidad de grupos diferenciales se preserva pues \(H(\id)([c]) = \id_*([c]) = [\id(c)] = [c]\) para todo \(c \in C\). Además, si \(f,g \in \hom(C)\), entonces \(H(g \circ f)([c]) = (g \circ f)_*([c]) = [(g \circ f)(c)] = [g (f (c))] = g_*([f(c)]) = g_* ( f_*([c])) = (H(g) \circ H(f)) ([c])\) para todo \(c \in C\), manteniendo la ley de composición.
-%\end{proof}
+\begin{proposicion}
+	En estas condiciones, \(H\) es un funtor covariante de la categoría de grupos diferenciales a la categoría de grupos.
+\end{proposicion}
+\begin{proof}
+	Por la definición dada del grupo de homología, es claro que la función objeto \(H\) asigna a cada grupo diferencial \(C\) un grupo de homología \(H(C)\). En cuanto a la función de morfismos, la identidad de grupos diferenciales se preserva pues \(H(\id)([c]) = \id_*([c]) = [\id(c)] = [c]\) para todo \(c \in C\). Además, si \(f,g \in \hom(C)\), entonces \(H(g \circ f)([c]) = (g \circ f)_*([c]) = [(g \circ f)(c)] = [g (f (c))] = g_*([f(c)]) = g_* ( f_*([c])) = (H(g) \circ H(f)) ([c])\) para todo \(c \in C\), manteniendo la ley de composición.
+\end{proof}
 
 \section{Complejos de cadenas}
 

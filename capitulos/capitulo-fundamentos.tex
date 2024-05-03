@@ -14,27 +14,30 @@ La estructura de módulo surge con la idea de generalizar el concepto de espacio
 sobre un cuerpo a un anillo. Nuestro interés en ellos radica en que la teoría de
 homología se construye sobre módulos y por ello es necesario hacer una
 introducción al campo. Esta sección recoge algunas definiciones y resultados de interés
-vistos en la asginatura de Álgebra Moderna y complementada con los contenidos de
+vistos en la asignatura de Álgebra Moderna y complementada con los contenidos de
 \cite{dummit2004abstract}.
 
 \begin{definicion}
 	Sea \(R\) un anillo con elemento identidad \(1 \neq 0\). Un \textbf{\(R\)-módulo
-	izquierdo} \(A\) es un grupo abeliano aditivo junto con una función \(p: R \times
-	A \rightarrow A\) con \((r, a) \to ra\) tal que dados \(r,r' \in R\), \(a,a' \in A\)
+		izquierdo} \(M\) es un grupo abeliano aditivo junto con una función \(p: R \times
+	M \rightarrow M\) con \((r, m) \to rm\) tal que dados \(r,r' \in R\), \(m,m' \in A\)
 	se tiene
 	\begin{enumerate}
-		\item \((r+r') a = r a + r' a\),
-		\item \((rr') a = r (r' a)\),
-		\item \(r(a+a') = ra + ra'\),
-		\item \(1a = a\).
+		\item \((r+r') m = r m + r' m\),
+		
+		\item \((rr') m = r (r' m)\),
+		
+		\item \(r(m+m') = rm + rm'\),
+		
+		\item \(1m = m\).
 	\end{enumerate}
 \end{definicion}
 
-De la definición anterior se sigue que \(0a = 0\) y \((-1)a = -a\).
+De la definición anterior se sigue que \(0m = 0\) y \((-1)m = -m\).
 
 De manera análoga, definimos \textbf{\(R\)-módulo derecho} donde el anillo actúa
 por la derecha en vez de por la izquierda de forma que
-\(p: A \times R \rightarrow A\). Si \(R\) es un anillo conmutativo, los \(R\)-módulos
+\(p: M \times R \rightarrow M\). Si \(R\) es un anillo conmutativo, los \(R\)-módulos
 izquierdos y derechos coinciden y les llamamos simplemente \(R\)-módulos. Como los
 resultados de \(R\)-módulos izquierdos y derechos son análogos, trabajaremos con
 los \(R\)-módulos izquierdos y nos referiremos a ellos como \textbf{\(R\)-módulos} o
@@ -43,137 +46,140 @@ los \(R\)-módulos izquierdos y nos referiremos a ellos como \textbf{\(R\)-módu
 \begin{ejemplo}
 	El interés de los \(R\)-módulos subyace en la cantidad de estructuras conocidas que
 	engloba. Si por ejemplo consideramos el \(K\)-módulo donde \(K\) es un cuerpo, éste
-	adquiere la estructura de \textbf{espacio vectorial}. Ahora sea \(A\) un \(\mathbb{Z}\)-módulo.
-	Definimos el producto \(p\) de forma que para \(n \in \mathbb{Z}\) y \(a \in A\) con
-	\(n>0\), \(na = a + a + \ldots + a\) (\(n\) veces), \(0a=0\) y \((-n)a = -(na)\). Entonces
-	\(A\) ha de tener estructura de \textbf{grupo abeliano}. En particular, si \(R\)
+	adquiere la estructura de \textbf{espacio vectorial}. Ahora sea \(M\) un \(\mathbb{Z}\)-módulo.
+	Definimos el producto \(p\) de forma que para \(n \in \mathbb{Z}\) y \(m \in M\) con
+	\(n>0\), \(nm = m + m + \ldots + m\) (\(n\) veces), \(0m=0\) y \((-n)m = -(nm)\). Entonces
+	\(M\) ha de tener estructura de \textbf{grupo abeliano}. En particular, si \(R\)
 	es un anillo entonces es también un \(R\)-módulo.
 \end{ejemplo}
 
 \begin{definicion}
-	Sea \(A\) un \(R\)-módulo izquierdo y \(S\) un subconjunto de \(A\). Diremos que \(S\)
-	es un \textbf{submódulo} de \(A\), esto es, \(S \subset A\), si \(S\) es cerrado
-	respecto a la suma y si \(r \in R\), \(s \in S\) entonces \(rs \in S\).
+	Sea \(M\) un \(R\)-módulo izquierdo y \(N\) un subconjunto de \(M\). Diremos que \(N\)
+	es un \textbf{submódulo} de \(M\), esto es, \(N \subset M\), si \(N\) es cerrado
+	respecto a la suma y si \(r \in R\), \(n \in N\) entonces \(rn \in N\).
 \end{definicion}
-De la definición anterior se deduce que \(S\) es un \(R\)-módulo.
+De la definición anterior se deduce que \(N\) es un \(R\)-módulo.
 \begin{definicion}
-	Sea \(R\) un \(R\)-módulo. Si un submódulo de \(R\) es un subconjunto \(L \subset R\)
-	cerrado respecto a la suma tal que \(rL = \{rl \ : \ l \in L\} \subset L\) para
-	todo \(r \in R\), lo llamaremos \textbf{ideal} de \(R\).
+	Sea \(R\) un \(R\)-módulo. Si un submódulo de \(R\) es un subconjunto \(I \subset R\)
+	cerrado respecto a la suma tal que
+	\(\langle I \rangle = \{ri \ : \ i \in I\} \subset I\) para todo \(r \in R\), lo llamaremos
+	\textbf{ideal} de \(R\). En particular, si \(I\) consta de un único elemento
+	\(i \in I\), diremos que es el \textbf{ideal generado por \(i\)} y lo denotaremos
+	por \(\langle i \rangle\).
+\end{definicion}
+%Tomando un ideal izquierdo \(I\) de \(R\) y un \(R\)-módulo izquierdo \(M\), definimos
+%el producto del ideal \(I\) por el módulo \(M\)
+%\[
+%	IM = \left\lbrace \sum_{j=0}^{n} i_{j}m_{j} \ : \ i_{j} \in I,\ m_{j} \in M,\ n
+%	\in \N \right\rbrace
+%\]
+%donde \(IM\) es un submódulo de \(M\). En particular, el producto de dos ideales
+%izquierdos \(II'\) es también un ideal izquierdo y \((II')M = I(I'M)\).
+
+\begin{definicion}
+	Sea \(M\) un \(R\)-módulo y sea \(m \in M\). El conjunto
+	\(\langle m \rangle = \{r m : r \in R\}\) es un submódulo de \(M\) que
+	denominaremos \textbf{submódulo cíclico generado por \(m\)}.
+\end{definicion}
+\begin{observacion}
+	Nótese que si \(R\) es un \(R\)-módulo, el submódulo cíclico generado por un
+	elemento es el ideal generado por el mismo elemento.
+\end{observacion}
+
+\begin{definicion}
+	Sea \(M\) un \(R\)-módulo y sean \(S\) un subconjunto de \(M\). Sea
+	\(\langle S \rangle\) el submódulo formado por la intersección de todos los
+	submódulos de \(M\) que contienen a \(S\). Diremos entonces que \(\langle S \rangle\)
+	es el \textbf{submódulo generado por \(S\)} y los elementos de $S$ los llamaremos \textbf{generadores} de \(\langle S \rangle\).
 \end{definicion}
 
-Tomando un ideal izquierdo \(L\) de \(R\) y un \(R\)-módulo izquierdo \(A\), definimos
-el producto del ideal \(L\) por el módulo \(A\)
-\[
-	LA = \left\lbrace \sum_{i=0}^{n} l_{i}a_{i} \ : \ l_{i} \in L,\ a_{i} \in A,\ n
-	\in \mathbb{N}\right\rbrace
-\]
-donde \(LA\) es un submódulo de \(A\). En particular, el producto de dos ideales
-izquierdos \(LL'\) es también un ideal izquierdo y \((LL')A = L(L'A)\).
-\begin{definicion}
-	Sea \(A\) un \(R\)-módulo. Definimos el \textbf{anulador de \(A\)} como el submódulo
-	\(\ann(A) = \{r \in R : ra=0 \ \forall a \in A\}\). De manera análoga, llamaremos
-	\textbf{anulador de \(a \in A\)} al submódulo
-	\(\ann(A) = \{r \in R : ra=0 \ \forall a \in A\}\).
-\end{definicion}
-\begin{definicion}
-	Sea \(A\) un \(R\)-módulo y sea \(a \in A\). El conjunto
-	\(Ra = \{r \cdot a : r \in R\}\) es un submódulo de \(A\) que denominaremos
-	\textbf{submódulo cíclico generado por \(a\)}.
-\end{definicion}
-\begin{definicion}
-	Sea \(A\) un \(R\)-módulo y sean \(a_{1}, \ldots, a_{n} \in A\). Entonces
-	\(Ra_{1} + \ldots + Ra_{n} = \{r \cdot a_{1} + \ldots + r \cdot a_{n} : r \in R\}\)
-	es un submódulo de \(A\) que llamaremos \textbf{submódulo generado por
-	\(a_{1}, \ldots, a_{n}\)}.
-\end{definicion}
 \begin{definicion}
 	Sea \(M\) un \(R\)-módulo. Un submódulo \(N\) de \(M\) es \textbf{finitamente generado}
-	si existe un subconjunto finito \(A \subset M\) tal que \(N = RA\).
-\end{definicion}
-\begin{definicion}
-	Sean \(A\), \(B\) \(R\)-módulos. Definimos el \textbf{homomorfismo de \(R\)-módulos}
-	de \(A\) a \(B\) como la aplicación \(\alpha: A \rightarrow B\) tal que
-	\begin{enumerate}
-		\item \(\alpha(a+a') = \alpha(a) + \alpha(a')\),
-		\item \(\alpha(ra) = r\alpha(a)\)
-	\end{enumerate}
-	para todo \(a,a' \in A\), \(r \in R\).
+	si existe un subconjunto finito \(S \subset M\) tal que \(N = \langle S \rangle\).
 \end{definicion}
 
-Cuando \(\alpha: A \rightarrow B\) sea un homomorfismo de \(R\)-módulos, diremos que
-\(A\) es el \textbf{dominio} y \(B\) el \textbf{rango}. La \textbf{imagen} de \(\alpha\)
-es el conjunto \(\im(\alpha) = \{ \alpha(a) : a \in A \}\). El \textbf{núcleo} será
-el conjunto de elementos que se anulan en su imagen, esto es, \(\ker(\alpha) = \{
-a \in A : \alpha(a) = 0 \}\). Diremos que \(\alpha\) es un \textbf{epimorfismo} cuando
-\(\alpha\) sea sobreyectiva, un \textbf{monomorfismo} cuando \(\alpha\) sea inyectiva
-y un \textbf{isomorfismo} si \(\alpha\) es un epimorfismo y un monomorfismo a la
-vez. Si existe un isomorfismo entre \(A\) y \(B\) diremos que son \textbf{isomorfos}
-y lo notaremos \(A \cong B\). Un homomorfismo \(\alpha: A \rightarrow A\) lo llamaremos
-\textbf{endomorfismo}.
+\begin{definicion}
+	Sean \(M\), \(N\) \(R\)-módulos. Definimos el \textbf{homomorfismo de \(R\)-módulos}
+	de \(M\) a \(N\) como la aplicación \(\alpha: M \rightarrow N\) tal que
+	\begin{enumerate}
+		\item \(\alpha(m+m') = \alpha(m) + \alpha(m')\),
+		
+		\item \(\alpha(rm) = r\alpha(m)\)
+	\end{enumerate}
+	para todo \(m,m' \in M\), \(r \in R\).
+\end{definicion}
+
+Cuando \(\alpha: M \rightarrow N\) sea un homomorfismo de \(R\)-módulos, diremos que
+\(M\) es el \textbf{dominio} y \(N\) el \textbf{rango}. La \textbf{imagen} de
+\(\alpha\) es el conjunto \(\im(\alpha) = \{ \alpha(m) : m \in M \}\). El \textbf{núcleo}
+será el conjunto de elementos que se anulan en su imagen, esto es,
+\(\ker(\alpha) = \{ m \in M : \alpha(m) = 0 \}\). Diremos que \(\alpha\) es un \textbf{epimorfismo}
+cuando \(\alpha\) sea sobreyectiva, un \textbf{monomorfismo} cuando \(\alpha\) sea
+inyectiva y un \textbf{isomorfismo} si \(\alpha\) es un epimorfismo y un monomorfismo
+a la vez. Si existe un isomorfismo entre \(M\) y \(N\) diremos que son \textbf{isomorfos}
+y lo notaremos \(A \cong B\). Un homomorfismo \(\alpha: M \rightarrow M\) lo
+llamaremos \textbf{endomorfismo}.
 
 Dado que el núcleo y la imagen de un homomorfismo de \(R\)-módulos coincide con el
-de los grupos abelianos subyacentes, la siguiente caracterización es inmediata de
-la ya conocida para grupos:
+de los grupos abelianos subyacentes, la siguiente caracterización es inmediata
+de la ya conocida para grupos:
 
 \begin{proposicion}
-	Sea \(\alpha: A \to B\) un homomorfismo de \(R\)-módulos. Entonces
+	Sea \(\alpha: M \to N\) un homomorfismo de \(R\)-módulos. Entonces
 	\begin{enumerate}
 		\item \(\alpha\) es un monomorfismo si, y sólo si, \(\ker(\alpha) = 0\).
-		\item \(\alpha\) es un epimorfismo si, y sólo si, \(\im(\alpha) = B\).
+		
+		\item \(\alpha\) es un epimorfismo si, y sólo si, \(\im(\alpha) = N\).
 	\end{enumerate}
 \end{proposicion}
 
-Es frecuente escribir el homomorfismo de \(R\)-módulos \(\alpha: A \rightarrow B\)
-como \(A \xrightarrow{\alpha}B\). Respecto a la notación de la imagen de un elemento
-\(a \in A\) por \(\alpha\), pondremos \(\alpha(a)\) o simplemente \(\alpha a\). En cuanto
-a la imagen de \(A\) por \(\alpha\), lo representaremos de manera análoga por
-\(\alpha(A)\) o \(\alpha A\).
+Es frecuente escribir el homomorfismo de \(R\)-módulos \(\alpha: M \rightarrow N\) como
+\(M \xrightarrow{\alpha}N\). Respecto a la notación de la imagen de un elemento
+\(m \in M\) por \(\alpha\), pondremos \(\alpha(m)\) o simplemente \(\alpha m\). En
+cuanto a la imagen de \(A\) por \(\alpha\), lo representaremos de manera análoga por
+\(\alpha(M)\) o \(\alpha M\).
 
-Dados dos homomorfismos de \(R\)-módulos
-\(\alpha_{1}, \alpha_{2} : A \rightarrow B\), su \textbf{suma}
-\(\alpha_{1} + \alpha_{2}\) la definimos como
-\((\alpha_{1} + \alpha_{2})(a) = \alpha_{1}(a) + \alpha_{2}(a)\) para todo
-\(a \in A\). Además, dados dos homomorfismos de \(R\)-módulos
-\(\alpha: A \rightarrow B\), \(\beta: B \rightarrow C\), su \textbf{composición} \(\beta
-\circ \alpha: A \rightarrow C\) es también un homomorfismo de \(R\)-módulos. Nótese
-que para que la composición sea posible, el rango de \(\alpha\) tiene que ser igual
-al dominio de \(\beta\). En ocasiones usaremos la notación por yuxtaposición
+Dados dos homomorfismos de \(R\)-módulos \(\alpha_{1}, \alpha_{2}: M \rightarrow N\),
+su \textbf{suma} \(\alpha_{1}+ \alpha_{2}\) la definimos como \((\alpha_{1}+ \alpha_{2}
+)(m) = \alpha_{1}(m) + \alpha_{2}(m)\) para todo \(m \in M\). Además, dados dos homomorfismos
+de \(R\)-módulos \(\alpha: M \rightarrow N\), \(\beta: N \rightarrow P\), su \textbf{composición}
+\(\beta \circ \alpha: M \rightarrow P\) es también un homomorfismo de \(R\)-módulos.
+Nótese que para que la composición sea posible, el rango de \(\alpha\) tiene que
+ser igual al dominio de \(\beta\). En ocasiones usaremos la notación por yuxtaposición
 \(\alpha\beta = \alpha \circ \beta\). Llamaremos \textbf{inversa} (por ambos lados)
-de \(\alpha : A \rightarrow B\) al homomorfismo \(\alpha^{-1}: B \rightarrow A\) tal
-que \(\alpha^{-1}\circ \alpha = \id_{A}\) y \(\alpha \circ \alpha^{-1}= \id_{B}\). Una
-\textbf{inversa izquierda} de \(\alpha\) es una función \(\gamma: B \rightarrow A\)
-tal que \(\gamma \circ \alpha = \id_{A}\). De manera análoga, el homomorfismo
-\(\theta : B \to A\) es \textbf{inversa derecha} de \(\alpha\) si \(\alpha \circ \theta
-= \id_{B}\).
+de \(\alpha : M \rightarrow N\) al homomorfismo \(\alpha^{-1}: N \rightarrow M\) tal
+que \(\alpha^{-1}\circ \alpha = \id_{M}\) y \(\alpha \circ \alpha^{-1}= \id_{N}\).
+Una \textbf{inversa izquierda} de \(\alpha\) es una función \(\gamma: N \rightarrow
+M\) tal que \(\gamma \circ \alpha = \id_{M}\). De manera análoga, el homomorfismo \(\theta
+: M \to N\) es \textbf{inversa derecha} de \(\alpha\) si
+\(\alpha \circ \theta = \id_{N}\).
 
-Si \(T \subseteq B\), el conjunto
-\(\alpha^{-1}T = \{ s \in A \ : \ \alpha(s) \in T \}\) es un submódulo de \(A\), llamado
-la \textbf{imagen inversa} (completa) de \(T\). En particular,
-\(\ker \alpha = \alpha^{-1}0\), donde \(0\) denota el submódulo de \(B\) que consiste solo
-del elemento cero.
+Si \(T \subseteq N\), el conjunto \(\alpha^{-1}T = \{ m \in M \ : \ \alpha(m) \in T
+\}\) es un submódulo de \(M\), llamado la \textbf{imagen inversa} (completa) de \(T\).
+En particular, \(\ker \alpha = \alpha^{-1}0\), donde \(0\) denota el submódulo de
+\(N\) que consiste solo del elemento cero.
 
-Sea \(T \subseteq B\) donde \(B\) es un \(R\)-módulo, llamaremos \textbf{inclusión} o \textbf{inyección
-canónica} al homomorfismo \(i: T \rightarrow B\) tal que \(i(t) = t\) para todo
-\(t \in T\). En particular, \(i\) es un monomorfismo. Las \textbf{clases laterales}
-de \(T\) en \(B\) son los conjuntos \(b + T = \{b + t : t \in T\}\) donde \(b \in B\). Dos
-clases laterales \(b_{1} + T\), \(b_{2} + T\) son iguales si \(b_{1} - b_{2} \in T\). Como
-\(T\) es un submódulo, el grupo abeliano \(B/T\) se convierte en un \(R\)-módulo
-cuando \(r(b+T) = rb + T\) para todo \(r \in R\). A este \(R\)-módulo lo llamaremos el
-\textbf{módulo cociente} de \(B\) sobre \(T\). El homomorfismo \(\pi: B \rightarrow B/
-T\) tal que \(\pi(b) = b + T\) es un epimorfismo que llamaremos \textbf{proyección
-canónica} de \(B\).
+Sea \(T \subseteq N\) donde \(N\) es un \(R\)-módulo, llamaremos \textbf{inclusión} o
+\textbf{inyección canónica} al homomorfismo \(i: T \rightarrow N\) tal que \(i(t) =
+t\) para todo \(t \in T\). En particular, \(i\) es un monomorfismo. Las \textbf{clases
+	laterales} de \(T\) en \(N\) son los conjuntos \(n + T = \{n + t : t \in T\}\) donde \(n
+\in N\). Dos clases laterales \(n_{1}+ T\), \(n_{2}+ T\) son iguales si \(n_{1}- n_{2}\in
+T\). Como \(T\) es un submódulo, el grupo abeliano \(N/T\) se convierte en un \(R\)-módulo
+cuando \(r(n+T) = rn + T\) para todo \(r \in R\). A este \(R\)-módulo lo llamaremos el
+\textbf{módulo cociente} de \(N\) sobre \(T\). El homomorfismo
+\(\pi: N \rightarrow N/ T\) tal que \(\pi(n) = n + T\) es un epimorfismo que
+llamaremos \textbf{proyección canónica} de \(N\).
 
 \begin{proposicion}
-	[Teorema de factorización] \label{prop:teo-fact} Sea \(\beta: B \rightarrow B'\)
+	[Teorema de factorización] \label{prop:teo-fact} Sea \(\beta: M \rightarrow M'\)
 	un homomorfismo de módulos con \(T \subset \ker \beta\). Existe entonces un
-	único homomorfismo de módulos \(\beta': B/T \rightarrow B'\) con
+	único homomorfismo de módulos \(\beta': M/T \rightarrow M'\) con
 	\(\beta'\pi = \beta\); es decir, el siguiente diagrama con \(\beta(T) = 0\)
 	\begin{equation}
-		\label{firstisothm}\xymatrix{ B \ar[r]^\pi \ar[dr]^\beta & B/T \ar[d]^{\beta'} \\ & B' }
+		\label{firstisothm}\xymatrix{ N \ar[r]^\pi \ar[dr]^\beta & M/T \ar[d]^{\beta'} \\ & M' }
 	\end{equation}
 	es conmutativo. Al homomorfismo \(\beta'\) lo llamaremos \textbf{homomorfismo
-	inducido} por \(\beta\).
+		inducido} por \(\beta\).
 \end{proposicion}
 %\begin{proof}
 %	Consideremos el \(R\)-módulo \(B\) y definamos \(\beta'(b + T) = \beta(b)\). Por
@@ -199,10 +205,10 @@ canónica} de \(B\).
 %\end{proof}
 %
 \begin{teorema}
-	[Primer teorema de isomorfía] \label{teo:first-iso} Sea \(\beta : B \to B'\) un homomorfismo
+	[Primer teorema de isomorfía] \label{teo:first-iso} Sea \(\beta : M \to M'\) un homomorfismo
 	de \(R\)-módulos. Entonces
 	\[
-		\frac{B}{\ker \beta}\cong \im \beta
+	\frac{M}{\ker \beta}\cong \im \beta.
 	\]
 \end{teorema}
 %\begin{proof}
@@ -235,41 +241,29 @@ canónica} de \(B\).
 %
 %\[ 1_{\ast}: S/(S \cap T) \cong (S + T)/T. \]
 %\subsection{Módulos libres}
-%
-%\begin{definicion}
-%	Sea \(A\) un \(R\)-módulo y \(S\) un subconjunto de \(A\). Llamaremos \textbf{submódulo generado por \(S\)} a la intersección de todos los submódulo de \(A\) que contienen a \(S\) y lo notaremos por \(\langle S \rangle\).
-%\end{definicion}
-%
-%\begin{definicion}
-%	Sea \(A\) un \(R\)-módulo y \(S\) un subconjunto finito de \(A\). Si \(\langle S \rangle = A\), diremos que \(A\) es \textbf{finitamente generado} por \(S\).
-%\end{definicion}
-%
-%\begin{definicion}
-%	Sea \(A\) un \(R\)-módulo. Una familia de elementos \((e_i)_{i\in I}\) indexada por \(I\) diremos que es \textbf{linealmente independiente} si para cada combinación lineal \(\sum_{i \in I}r_ie_i=0\) con \(r_i \in R\), tenemos que \(r_i=0\) salvo un número finito de índices \(i\).
-%\end{definicion}
 
 \begin{definicion}
-	Sea \(\{A_{i}\}_{i \in I}\) una familia de \(R\)-módulos indexada por \(I\).
+	Sea \(\{M_{i}\}_{i \in I}\) una familia de \(R\)-módulos indexada por \(I\).
 	Definimos el \textbf{producto directo} o \textbf{producto directo externo} de
-	\(\{A_{i}\}_{i \in I}\) como el producto cartesiano
+	\(\{M_{i}\}_{i \in I}\) como el producto cartesiano
 	\[
-		\prod_{i \in I}A_{i} = \{(x_{i})_{i \in I}: x_{i} \in A_{i} \}
+	\prod_{i \in I}M_{i}= \{(x_{i})_{i \in I}: x_{i}\in M_{i}\}
 	\]
 	donde las operaciones se definen componente a componente:
 	\begin{align*}
 		(x_{i})_{i \in I}+ (y_{i})_{i \in I} & = (x_{i}+y_{i})_{i \in I} \\
 		r(x_{i})_{i \in I}                   & = (rx_{i})_{i \in I}
 	\end{align*}
-	para todo \(r \in R\), \(x_{i},y_{i} \in A_{i}\), \(i \in I\).
+	para todo \(r \in R\), \(x_{i},y_{i}\in M_{i}\), \(i \in I\).
 \end{definicion}
 
 \begin{definicion}
-	Sea \(\{A_{i}\}_{i \in I}\) una familia de \(R\)-módulos indexada por \(I\).
+	Sea \(\{M_{i}\}_{i \in I}\) una familia de \(R\)-módulos indexada por \(I\).
 	Definimos la \textbf{suma directa} o \textbf{suma directa interna} de
-	\(\{A_{i}\}_{i \in I}\) como el submódulo de \(\prod_{i \in I}A_{i}\) tal que
+	\(\{M_{i}\}_{i \in I}\) como el submódulo de \(\prod_{i \in I}M_{i}\) tal que
 	\[
-		\bigoplus_{i \in I}A_{i} = \{(x_{i})_{i \in I}: x_{i} = 0 \ \text{p.c.t.}\ i
-		\in I\}
+	\bigoplus_{i \in I}M_{i}= \{(x_{i})_{i \in I}: x_{i}= 0 \ \text{p.c.t.}\ i \in
+	I\}
 	\]
 \end{definicion}
 \begin{nota}
@@ -278,44 +272,14 @@ canónica} de \(B\).
 	finito de elementos.
 \end{nota}
 \begin{definicion}
-	Sea \(B\) un conjunto y sea \(R \langle B \rangle\) el \(R\)-módulo tal que \(R \langle
-	B \rangle = \bigoplus_{b \in B}R_{b}\) donde \(R_{b}=R\) para todo \(b \in B\).
-	Llamaremos a dicho \(R\)-módulo el \textbf{\(R\)-módulo libre de base \(B\)}. De
-	esta forma cada \(x \in R \langle B \rangle\) se representa por
-	\(x = \sum_{b\in B}\lambda_{b} \cdot b\) donde \(\lambda_{b} \in R\) son
-	coeficientes no nulos en un número finito de posiciones \(b\).
+	Sea \(B\) un conjunto y sea \(M\) el \(R\)-módulo tal que \(M = \bigoplus_{b \in B}R_{b}\)
+	donde \(R_{b}=R\) para todo \(b \in B\). Llamaremos a dicho \(R\)-módulo el \textbf{\(R\)-módulo
+		libre de base \(B\)} y lo notaremos por \(R \langle B \rangle\). De esta forma, cada
+	\(x \in R \langle B \rangle\) se representa por \(x = \sum_{b\in B}\lambda_{b}\cdot
+	b\) donde \(\lambda_{b}\in R\) son coeficientes no nulos en un número finito de posiciones
+	\(b\).
 \end{definicion}
-\begin{definicion}
-	Sea \(M\) un \(R\)-módulo libre. Si para toda base \(B\) de \(M\), \(B\) tiene la misma cardinalidad,
-	entonces decimos que \(M\) tiene \textbf{rango} \(\rg \, M = |B|\), donde \(B\) es
-	alguna base de \(M\).
-\end{definicion}
-\begin{definicion}
-	Sea \(x\) un elemento de un \(R\)-módulo. Decimos que \(x\) es un\textbf{ elemento de
-	torsión} si existe un \(r \in R \setminus \{0\}\) tal que \(rx = 0\). Por otro lado,
-	\(x\) es un \textbf{elemento sin torsión} si el único elemento \(r \in R\) que satisface
-	\(rx = 0\) es \(r = 0\). Un \(R\)-módulo se clasifica como \textbf{módulo de torsión}
-	si cada uno de sus elementos es un elemento de torsión. Recíprocamente, un \textbf{módulo
-	sin torsión} es aquel cuyos elementos no nulos son elementos sin torsión.
-\end{definicion}
-\begin{definicion}
-	Definimos el \textbf{submódulo de torsión} de un \(R\)-módulo \(M\) como el
-	conjunto \(\tor(M)= \{x \in M : \ann(x) \neq \{0\}\}\). Es decir, el conjunto de
-	todos los elementos de torsión de \(M\).
-\end{definicion}
-\begin{teorema}
-	[Descomposición cíclica primaria] Sea \(R\) un DIP y sea \(M\) un \(R\)-módulo finitamente
-	generado. Entonces \(M\) se descompone como la suma directa
-	\[
-		M \cong R^{f} \oplus \bigoplus_{i = 1}^{k} \frac{R}{\langle a_{i} \rangle}
-	\]
-	donde \(R^{f}\) es un módulo libre de rango \(f\) y
-	\(R/\langle a_{1} \rangle, \ldots, R/\langle a_{k} \rangle\) son módulos cíclicos
-	con anuladores \(\langle a_{1} \rangle, \ldots, \langle a_{k} \rangle\). Además,
-	\(f\) y los ideales \(\langle a_{1} \rangle, \ldots, \langle a_{k} \rangle\) de \(R\)
-	generados por \(a_{1}, \ldots, a_{k} \in R\) están determinados de manera única
-	salvo el orden por \(M\).
-\end{teorema}
+
 \begin{teorema}
 	[Propiedad universal de los módulos libres] \label{teo:univ-prop-free-mod} Sean
 	\(B\) un conjunto, \(M\) un \(R\)-módulo y \(\varphi : B \to M\) una aplicación entre
@@ -323,31 +287,75 @@ canónica} de \(B\).
 	B \rangle \to M\) de forma que \(\phi(b) = \varphi(b)\) para todo \(b \in B\). Es
 	decir, el diagrama
 	\[
-		\xymatrix{ B \ar@{->}[r]^{\varphi} \ar@{->}[d]^{i} & M \\ R \langle B \rangle \ar@{->}[ru]^{\phi} & }
+	\xymatrix{ B \ar@{->}[r]^{\varphi} \ar@{->}[d]^{i} & M \\ R \langle B \rangle \ar@{->}[ru]^{\phi} & }
 	\]
 	conmuta.
 \end{teorema}
+
+\begin{definicion}
+	Sea \(M\) un \(R\)-módulo libre. Si para toda base \(B\) de \(M\), \(B\) tiene la misma cardinalidad,
+	entonces decimos que \(M\) tiene \textbf{rango} \(\rg \, M = \# B\), donde \(\# B\)
+	es la cardinalidad alguna base de \(M\).
+\end{definicion}
+\begin{definicion}
+	Sea \(x\) un elemento de un \(R\)-módulo. Decimos que \(x\) es un\textbf{ elemento de
+		torsión} si existe un \(r \in R \setminus \{0\}\) tal que \(rx = 0\). Por otro lado,
+	\(x\) es un \textbf{elemento sin torsión} si el único elemento \(r \in R\) que satisface
+	\(rx = 0\) es \(r = 0\). Un \(R\)-módulo se clasifica como \textbf{módulo de torsión}
+	si cada uno de sus elementos es un elemento de torsión. Análogamente, un \textbf{módulo
+		sin torsión} es aquel cuyos elementos no nulos son elementos sin torsión.
+\end{definicion}
+
+\begin{definicion}
+	Sea \(M\) un \(R\)-módulo. Definimos el \textbf{anulador de \(M\)} como el submódulo
+	\(\ann(M) = \{r \in R : rm=0, \ \forall m \in M\}\). De manera análoga, llamaremos
+	\textbf{anulador de \(m \in M\)} al submódulo
+	\(\ann(M) = \{r \in R : rm=0, \ \forall m \in M\}\).
+\end{definicion}
+
+\begin{definicion}
+	Definimos el \textbf{submódulo de torsión} de un \(R\)-módulo \(M\) como el
+	conjunto \(\tor(M)= \{x \in M : \ann(x) \neq \{0\}\}\). Es decir, el conjunto de
+	todos los elementos de torsión de \(M\).
+\end{definicion}
+\begin{teorema}
+	[Descomposición cíclica primaria] \label{teo:desc-cicl-prim} Sea \(R\) un dominio de ideales principales y sea
+	\(M\) un \(R\)-módulo finitamente generado. Entonces \(M\) se descompone como la
+	suma directa
+	\[
+	M \cong R^{f}\oplus \bigoplus_{i = 1}^{k}\frac{R}{\langle r_{i}\rangle}
+	\]
+	donde \(R^{f}\) es un módulo libre de rango \(f\) y
+	\(R/\langle r_{1}\rangle, \ldots, R/\langle r_{k}\rangle\) son módulos cíclicos
+	con anuladores \(\langle r_{1}\rangle, \ldots, \langle r_{k}\rangle\). Además,
+	\(f\) y los ideales \(\langle r_{1}\rangle, \ldots, \langle r_{k}\rangle\) de \(R\)
+	generados por \(r_{1}, \ldots, r_{k}\in R\) están determinados de manera única
+	salvo el orden por \(M\).
+\end{teorema}
+\begin{ejemplo}
+	Consideremos un espacio vectorial $V$. Entonces podemos considerar, por ejemplo, su base canónica y generar todo $V$ a partir de ella. En consecuencia, $V$ es un módulo libre. Además, aplicando el teorema de \nameref{teo:desc-cicl-prim}, es claro que la parte libre de la descomposición es isomorfa a $V$ y por tanto $V$ carece de parte cíclica.
+\end{ejemplo}
 
 \section{Sucesiones exactas}
 
 \begin{definicion}
 	Sea \(\{A_{i}, \alpha_{i}\}_{i \in \mathbb{Z}}\) una familia de \(R\)-módulos \(A_{i}\)
-	y homomorfismos entre ellos tal que \(\alpha_{i}: A_{i} \rightarrow A_{i+1}\).
+	y homomorfismos entre ellos tal que \(\alpha_{i}: A_{i}\rightarrow A_{i+1}\).
 	Diremos que la sucesión
 	\[
-		\cdots \xrightarrow{\alpha_{i-2}}A_{i-1}\xrightarrow{\alpha_{i-1}}A_{i} \xrightarrow
-		{\alpha_{i}}A_{i+1}\xrightarrow{\alpha_{i+1}}\cdots
+	\cdots \xrightarrow{\alpha_{i-2}}A_{i-1}\xrightarrow{\alpha_{i-1}}A_{i}\xrightarrow
+	{\alpha_{i}}A_{i+1}\xrightarrow{\alpha_{i+1}}\cdots
 	\]
-	es \textbf{exacta} cuando \(\im \alpha_{i} = \ker \alpha_{i+1}\).
+	es \textbf{exacta} en \(A_{i}\) cuando \(\im \alpha_{i}= \ker \alpha_{i+1}\). Si la sucesión es exacta para todo $i \in \Z$, diremos que la sucesión es \textbf{exacta larga} o simplemente exacta.
 \end{definicion}
 
 \begin{definicion}
 	Sean \(A,B\) y \(C\) \(R\)-módulos y \(\sigma: A \rightarrow B\),
 	\(\gamma: B \rightarrow C\) homomorfismos entre ellos. Diremos que la \textbf{sucesión
-	exacta} es \textbf{corta} si
+		exacta} es \textbf{corta} si
 	\[
-		(\sigma, \gamma): 0 \rightarrow A \xrightarrow{\sigma}B \xrightarrow{\gamma}C
-		\rightarrow 0.
+	(\sigma, \gamma): 0 \rightarrow A \xrightarrow{\sigma}B \xrightarrow{\gamma}C
+	\rightarrow 0.
 	\]
 	Es decir, una sucesión exacta de cinco \(R\)-módulos con los dos módulos
 	exteriores siendo cero (y por lo tanto las dos funciones exteriores triviales).
@@ -358,9 +366,10 @@ canónica} de \(B\).
 	\(\gamma: B \rightarrow C\) homomorfismos entre ellos. Entonces
 	\begin{enumerate}
 		\item La sucesión \(0 \to A \overset{\sigma}{\to}B\) es exacta (en \(A\)) si, y
-			sólo si, \(\sigma\) es inyectiva.
+		sólo si, \(\sigma\) es inyectiva.
+		
 		\item La sucesión \(B \to C \overset{\gamma}{\to}0\) es exacta (en \(C\)) si, y
-			sólo si, \(\gamma\) es sobreyectiva.
+		sólo si, \(\gamma\) es sobreyectiva.
 	\end{enumerate}
 \end{proposicion}
 \begin{proof}
@@ -376,25 +385,25 @@ canónica} de \(B\).
 \end{corolario}
 
 % PUEDE MEJORARSE CON DUMMIT PROPOSICION 22 DE MODULOS
-Como acabamos de probar, la exactitud en \(A\) significa que \(\sigma\) es un
-monomorfismo, en \(B\) significa que \(\sigma A = \ker \gamma\) y en \(C\) que \(\gamma\)
-es un epimorfismo. Así la sucesión exacta corta puede escribirse como
-\(A \xrightarrow{\sigma}B \xrightarrow{\gamma}C\), con exactitud en \(B\). Ahora
-\(\sigma\) induce un isomorfismo \(\sigma': A \to \sigma A\) y \(\gamma\) un
-isomorfismo \(\gamma': B/\sigma A \to C\); juntos estos proveen un isomorfismo de sucesiones
-exactas cortas, en la forma de un diagrama conmutativo
+Como acabamos de probar, la exactitud en \(A\) significa que \(\sigma\) es un monomorfismo,
+en \(B\) significa que \(\sigma A = \ker \gamma\) y en \(C\) que \(\gamma\) es un
+epimorfismo. Así la sucesión exacta corta puede escribirse como \(A \xrightarrow{\sigma}
+B \xrightarrow{\gamma}C\), con exactitud en \(B\). Ahora \(\sigma\) induce un isomorfismo
+\(\sigma': A \to \sigma A\) y \(\gamma\) un isomorfismo \(\gamma': B/\sigma A \to C\);
+juntos estos proveen un isomorfismo de sucesiones exactas cortas, en la forma de
+un diagrama conmutativo
 \begin{equation}
 	\label{exactshortseq-equiv}\xymatrix{ 0 \ar[r] & A \ar[r]^{\sigma} \ar[d]^{\sigma'} & B \ar[r]^\gamma \ar@{=}[d] & C \ar[r] \ar[d]^{(\gamma')^{-1}} & 0 \\ 0 \ar[r] & \sigma A \ar[r]_i & B \ar[r] & B/\sigma A \ar[r] & 0. }
 \end{equation}
 
-En resumen, una sucesión exacta corta es simplemente otro nombre para un
-submódulo y su cociente.
+En resumen, una sucesión exacta corta es simplemente otro nombre para un submódulo
+y su cociente.
 
 \begin{ejemplo}
 	Respecto al \nameref{prop:teo-fact}, la inclusión \(i\) y la proyección \(\pi\) producen
 	una sucesión exacta corta.
 	\[
-		0 \rightarrow T \xrightarrow{i}B \xrightarrow{\pi}B/T \rightarrow 0.
+	0 \rightarrow T \xrightarrow{i}M \xrightarrow{\pi}M/T \rightarrow 0.
 	\]
 \end{ejemplo}
 %
@@ -409,17 +418,17 @@ submódulo y su cociente.
 %	\label{lem:escision}
 %	Sea \(0 \rightarrow A \xrightarrow{\sigma} B \xrightarrow{\gamma} C \rightarrow 0\) una sucesión exacta corta. Son equivalentes las siguientes afirmaciones
 %	\begin{enumerate}
-%		\item La sucesión es escindible.
-%		\item B = \(\im \sigma \oplus C'\) donde \(C'\) es un submódulo de \(B\) isomorfo a \(C\). En particular, \(B \cong A \oplus C\).
-%		\item Existe \(\eta : B \to A\) tal que \(\eta \circ \sigma = \id_A\).
-%	\end{enumerate}
+	%		\item La sucesión es escindible.
+	%		\item B = \(\im \sigma \oplus C'\) donde \(C'\) es un submódulo de \(B\) isomorfo a \(C\). En particular, \(B \cong A \oplus C\).
+	%		\item Existe \(\eta : B \to A\) tal que \(\eta \circ \sigma = \id_A\).
+	%	\end{enumerate}
 %\end{lema}
 %\begin{proof}
 %	\((a) \implies (b)\). Por ser la sucesión escindible el diagrama
 %	\[
 %		\xymatrix{
-%			C \ar@{->}[r]^{\rho} \ar@/_/@{->}[rr]_{\id} & B \ar@{->}[r]^{\gamma} & C
-%		}
+	%			C \ar@{->}[r]^{\rho} \ar@/_/@{->}[rr]_{\id} & B \ar@{->}[r]^{\gamma} & C
+	%		}
 %	\]
 %	implica que \(B = \im \rho \oplus \ker \gamma\) ya que \(x = \rho(\gamma(x)) + (x - \rho(\gamma(x)))\) para todo \(x \in B\). En consecuencia, \(B = C' \oplus \im \rho\). Además, por la exactitud de la sucesión deducimos que \(\ker \gamma = \sigma(A)\).
 %
@@ -428,8 +437,8 @@ submódulo y su cociente.
 %	\((c) \implies (a)\). Siguiendo un razonamiento análogo al anterior, el diagrama
 %	\[
 %	\xymatrix{
-%		A \ar@{->}[r]^{\sigma} \ar@/_/@{->}[rr]_{\id} & B \ar@{->}[r]^{\eta} & A
-%	}
+	%		A \ar@{->}[r]^{\sigma} \ar@/_/@{->}[rr]_{\id} & B \ar@{->}[r]^{\eta} & A
+	%	}
 %	\]
 %	implica que \(B = \sigma(A) \oplus \ker \eta\). Por el \nameref{teo:first-iso} y como \(\ker \gamma = \sigma(A)\), tenemos que \(\ker \eta \cong B/\ker(\gamma) \overset{\overline{\gamma}}{\to} \im \gamma = C\) donde \(\overline{\gamma}\) es el isomorfismo inducido por \(\gamma\). Finalmente, \(\rho = \overline{\gamma}^{-1}\).
 %\end{proof}
@@ -515,24 +524,27 @@ En esta sección haré una breve introducción de las categorías apoyándome en
 	\((\mathcal{O}, \hom, \circ)\) formada por
 	\begin{enumerate}
 		\item Una clase \(\mathcal{O}\), cuyos elementos denominamos \textbf{objetos} de
-			\(\mathcal{C}\) y notamos por \(Obj(\mathcal{C})\).
+		\(\mathcal{C}\) y notamos por \(Obj(\mathcal{C})\).
+		
 		\item Por cada par de objetos \((A,B)\) de \(\mathcal{C}\), un conjunto
-			\(\hom(A,B)\) cuyos elementos son llamados \textbf{morfismos} de \(A\) a \(B\).
-			Si \(f \in \hom(A,B)\), normalmente escribiremos \(f: A \rightarrow B\) o \(A \xrightarrow
-			{f}B\).
+		\(\hom(A,B)\) cuyos elementos son llamados \textbf{morfismos} de \(A\) a \(B\).
+		Si \(f \in \hom(A,B)\), normalmente escribiremos \(f: A \rightarrow B\) o \(A \xrightarrow
+		{f}B\).
+		
 		\item Una \textbf{ley de composición} que asocia a cada morfismo
-			\(f: A \rightarrow B\) y a cada morfismo \(g: B \rightarrow C\) un morfismo
-			\(g \circ f : A \rightarrow C\) que satisface
-			\begin{itemize}
-				\item \textbf{Asociatividad}. Si \(f: A \rightarrow B\),
-					\(g: B \rightarrow C\) y \(h : C \rightarrow D\) son morfismos de
-					\(\mathcal{C}\), entonces \(h \circ (g \circ f) = (h \circ g) \circ f\).
-				\item \textbf{Identidad}. A cada objeto \(B\) le podemos asociar un morfismo
-					identidad \(\id_{B} : B \rightarrow B\) tal que si \(f: A \rightarrow B\) y
-					\(g: B \rightarrow C\) entonces \(g \circ \id_{B} = g\) y \(\id_{B} \circ f
-					= f\).
-			\end{itemize}
-			Llamaremos a este morfismo la \textbf{composición} de \(f\) y \(g\).
+		\(f: A \rightarrow B\) y a cada morfismo \(g: B \rightarrow C\) un morfismo
+		\(g \circ f : A \rightarrow C\) que satisface
+		\begin{itemize}
+			\item \textbf{Asociatividad}. Si \(f: A \rightarrow B\),
+			\(g: B \rightarrow C\) y \(h : C \rightarrow D\) son morfismos de
+			\(\mathcal{C}\), entonces \(h \circ (g \circ f) = (h \circ g) \circ f\).
+			
+			\item \textbf{Identidad}. A cada objeto \(B\) le podemos asociar un morfismo
+			identidad \(\id_{B}: B \rightarrow B\) tal que si \(f: A \rightarrow B\) y
+			\(g: B \rightarrow C\) entonces \(g \circ \id_{B}= g\) y \(\id_{B}\circ f =
+			f\).
+		\end{itemize}
+		Llamaremos a este morfismo la \textbf{composición} de \(f\) y \(g\).
 	\end{enumerate}
 \end{definicion}
 
@@ -541,23 +553,29 @@ En esta sección haré una breve introducción de las categorías apoyándome en
 	con un gran número de espacios matemáticos que ya conocemos en el contexto de
 	la teoría de categorías. Algunos de ellos son:
 	\begin{itemize}
-		\item \textbf{La categoría de espacios topológicos} $\Cat{Top}$, donde los objetos son todos
-			los espacios topológicos y los morfismos todas las aplicaciones continuas entre
-			espacios topológicos \(f: X \rightarrow Y\).
-		\item \textbf{La categoría de grupos}  $\Cat{Grp}$, donde los objetos son todos los grupos
-			y los morfismos todos los homomorfismos de grupos.
-		\item \textbf{La categoría de conjuntos}  $\Cat{Set}$, cuyos objetos son todos los conjuntos
-			y sus morfismos todas las aplicaciones entre conjuntos.
+		\item \textbf{La categoría de conjuntos} \(\Cat{Set}\), cuyos objetos son todos
+		los conjuntos y sus morfismos todas las aplicaciones entre conjuntos.
+		
+		\item \textbf{La categoría de grupos} \(\Cat{Grp}\), donde los objetos son todos
+		los grupos y los morfismos todos los homomorfismos de grupos.
+		
+		\item \textbf{La categoría de espacios topológicos} \(\Cat{Top}\), donde los objetos
+		son todos los espacios topológicos y los morfismos todas las aplicaciones continuas
+		entre espacios topológicos \(f: X \rightarrow Y\).
+		
+		\item \textbf{La categoría de \(R\)-módulos} \(R\)-\(\Cat{Mod}\), donde los objetos
+		son todos los \(R\)-módulos y los morfismos todos los homomorfismos de módulos.
+		
 		\item \textbf{La categoría de sucesiones exactas de \(R\)-módulos de longitud
-			n}. Los objetos son dichas sucesiones \(S: A_{1} \rightarrow \cdots \rightarrow
-			A_{n}\). Para dos sucesiones \(S\) y \(S'\), los morfismos son de la forma \(\Gamma
-			: S \rightarrow S'\) tal que \(\Gamma = (\gamma_{1}, \ldots, \gamma_{n})\) es una
-			tupla donde los \(\gamma_{i}: A_{i} \rightarrow A_{i}'\) son homomorfismos de
-			\(R\)-módulos tal que
-			\begin{equation}
-				\label{exactseqcat}\xymatrix{ A_1 \ar[r] \ar[d]_{\gamma_1} & A_2 \ar[r] \ar[d]_{\gamma_2} & \cdots \ar[r] & A_{n-1} \ar[r] \ar[d]_{\gamma_{n-1}} & A_n \ar[d]^{\gamma_n} \\ A'_1 \ar[r] & A'_2 \ar[r] & \cdots \ar[r] & A'_{n-1} \ar[r] & A'_n }
-			\end{equation}
-			conmuta para todo \(i \in \{ 1, \cdots, n \}\).
+			n}. Los objetos son dichas sucesiones \(S: A_{1}\rightarrow \cdots \rightarrow
+		A_{n}\). Para dos sucesiones \(S\) y \(S'\), los morfismos son de la forma \(\Gamma
+		: S \rightarrow S'\) tal que \(\Gamma = (\gamma_{1}, \ldots, \gamma_{n})\) es
+		una tupla donde los \(\gamma_{i}: A_{i}\rightarrow A_{i}'\) son homomorfismos
+		de \(R\)-módulos tal que
+		\begin{equation}
+			\label{exactseqcat}\xymatrix{ A_1 \ar[r] \ar[d]_{\gamma_1} & A_2 \ar[r] \ar[d]_{\gamma_2} & \cdots \ar[r] & A_{n-1} \ar[r] \ar[d]_{\gamma_{n-1}} & A_n \ar[d]^{\gamma_n} \\ A'_1 \ar[r] & A'_2 \ar[r] & \cdots \ar[r] & A'_{n-1} \ar[r] & A'_n }
+		\end{equation}
+		conmuta para todo \(i \in \{ 1, \cdots, n \}\).
 	\end{itemize}
 \end{ejemplo}
 
@@ -566,34 +584,36 @@ En esta sección haré una breve introducción de las categorías apoyándome en
 	\(f\) es una \textbf{equivalencia} en \(\mathcal{C}\) si existe en \(\mathcal{C}\) otro
 	morfismo \(g \in \hom(B,A)\) tal que \(g \circ f = \id_{A}\) y \(f \circ g = \id_{B}\).
 \end{definicion}
+\begin{observacion}
+	Nótese que si \(f \in \hom(A,B)\) es una equivalencia en \(\mathcal{C}\),
+	\(g \in \hom(B,A)\) debe ser única. En efecto, si suponemos que existe
+	\(g' \in \hom(B,A)\) tal que \(g' \circ f = \id_{A}\), entonces \(g = g'\circ f \circ
+	g = g' \circ \id_{B}= g'\).
+\end{observacion}
 
-Nótese que si \(f \in \hom(A,B)\) es una equivalencia en \(\mathcal{C}\),
-\(g \in \hom(B,A)\) debe ser única. En efecto, si suponemos que existe
-\(g' \in \hom(B,A)\) tal que \(g' \circ f = \id_{A}\), entonces \(g = g'\circ f \circ
-g = g' \circ \id_{B} = g'\).
-
-Dentro de la teoría de categorías los funtores tienen un papel principal, pues
-nos va a permitir llevar objetos y morfismos de una categoría a otra preservando
+Dentro de la teoría de categorías, los funtores tienen un papel principal, pues
+nos van a permitir llevar objetos y morfismos de una categoría a otra preservando
 identidades y composiciones.
 
 \begin{definicion}
 	Sean \(\mathcal{C}, \mathcal{D}\) dos categorías. Un \textbf{funtor covariante} de
 	\(\mathcal{C}\) a \(\mathcal{D}\) es una pareja de funciones \textit{denotadas por
-	la misma letra \(T\)} tal que:
+		la misma letra \(T\)} tal que:
 	\begin{enumerate}
 		\item Una \textbf{función objeto} que asigna a cada objeto
-			\(C \in \mathcal{C}\) un objeto \(T(C) \in \mathcal{D}\).
+		\(C \in \mathcal{C}\) un objeto \(T(C) \in \mathcal{D}\).
+		
 		\item Una \textbf{función de morfismos} qu asigna a cada morfismo
-			\(\gamma: C \rightarrow C'\) de \(\mathcal{C}\) un morfismo
-			\(T(\gamma): T(C) \rightarrow T(C')\) de \(\mathcal{D}\). Este par de funciones
-			satisfacen las siguientes condiciones:
-			\begin{equation}
-				T(1_{C}) = \id_{T(C)}, \qquad C \in \mathcal{C},
-			\end{equation}
-			\begin{equation}
-				T(\beta \gamma) = T(\beta)T(\gamma), \qquad \beta \gamma \text{ definido
+		\(\gamma: C \rightarrow C'\) de \(\mathcal{C}\) un morfismo
+		\(T(\gamma): T(C) \rightarrow T(C')\) de \(\mathcal{D}\). Este par de funciones
+		satisfacen las siguientes condiciones:
+		\begin{equation}
+			T(1_{C}) = \id_{T(C)}, \qquad C \in \mathcal{C},
+		\end{equation}
+		\begin{equation}
+			T(\beta \gamma) = T(\beta)T(\gamma), \qquad \beta \gamma \text{ definido
 				en }\mathcal{C}.
-			\end{equation}
+		\end{equation}
 	\end{enumerate}
 \end{definicion}
 
@@ -602,14 +622,13 @@ aplicación que preserva el rango, dominio, identidades y composiciones de
 \(\mathcal{C}\) en \(\mathcal{D}\).
 
 %\section{Transformación natural}
-
-Mediante el uso de estructuras algebraicas como módulos y complejos de cadenas,
-la homología asigna a cada espacio topológico una serie de grupos de homología, que
-reflejan características clave como agujeros y vacíos en diferentes dimensiones.
-Estos grupos permiten no sólo discernir la estructura interna de los espacios, sino
-también compararlos de manera abstracta. Usaremos de referencia
-\cite{maclane2012homology}.
-
+%
+%Mediante el uso de estructuras algebraicas como módulos y complejos de cadenas,
+%la homología asigna a cada espacio topológico una serie de grupos de homología, que
+%reflejan características clave como agujeros y vacíos en diferentes dimensiones.
+%Estos grupos permiten no sólo discernir la estructura interna de los espacios, sino
+%también compararlos de manera abstracta. Usaremos de referencia
+%\cite{maclane2012homology}.
 \section{Módulos diferenciales}
 
 Comenzaremos definiendo lo que es un módulo de homología y estableceremos la terminología
@@ -621,13 +640,12 @@ que emplearemos cuando trabajemos con ellos.
 	llamaremos a \(d\) \textbf{operador borde} de \(C\).
 \end{definicion}
 
-Llamaremos a los elementos de \(C\) \textbf{cadenas}. El subgrupo de \textbf{ciclos}
-será \(Z(C) = \ker d\), y el subgrupo de \textbf{bordes} \(B(C) = \im d\). Si nos
-fijamos, el requisito \(d^{2} = 0\) es equivalente a exigir que \(\im{d}\subset \ker
-{d}\).
+Llamaremos a los elementos de \(C\) \textbf{cadenas}. El submódulo de \textbf{ciclos}
+será \(Z(C) = \ker d\), y el submódulo de \textbf{bordes} \(B(C) = \im d\). Si nos
+fijamos, el requisito \(d^{2}= 0\) es equivalente a exigir que \(\im{d}\subset \ker{d}\).
 
 \begin{definicion}
-	Sea \(C\) un grupo diferencial. Definimos el \textbf{\(R\)-módulo de homología} de
+	Sea \(C\) un módulo diferencial. Definimos el \textbf{\(R\)-módulo de homología} de
 	\(C\) como el módulo cociente \(H(C;R)\) tal que
 	\[
 	H(C;R) = \frac{Z(C)}{B(C)}
@@ -650,30 +668,38 @@ es, \(c \sim c'\).
 \end{definicion}
 
 La anterior definición nos permite preservar la estructura algebraica del módulo
-diferencial. De esta forma, si tomamos una cadena \(c \in C\), que sea un ciclo o un
-borde, y \(f\colon C \to C'\) es un homomorfismo de módulos diferenciales,
+diferencial. De esta forma, si tomamos una cadena \(c \in C\), que sea un ciclo o
+un borde, y \(f\colon C \to C'\) es un homomorfismo de módulos diferenciales,
 \(f(c) \in C'\) seguirá siendo un ciclo o un borde de manera correspondiente. En efecto,
 si \(z \in Z(C)\), entonces
 \[
 d'f(z) = f(dz) = f(0) = 0.
 \]
-Esto es, \(f(z) \in \ker d'\). Ahora, si \(b \in B(C)\), entonces existe \(c \in C\) tal que \(dc = b\). En consecuencia,
+Esto es, \(f(z) \in \ker d'\). Ahora, si \(b \in B(C)\), entonces existe \(c \in C\) tal
+que \(dc = b\). En consecuencia,
 \[
 d'f(c) = f(dc) = f(b),
 \]
-y por tanto, \(f(b) \in \operatorname{im} d'\).
+y por tanto, \(f(b) \in \operatorname{im}d'\).
 
-Los grupos diferenciales definen una categoría $\Cat{DiffGrp}$ donde los objetos son los grupos diferenciales y los morfismos son los homomorfismos de grupos diferenciales. Tomemos como ley de composición interna la composición de dichos homomorfismos. Claramente es asociativa pues si \(C, C', \bar{C}, \tilde{C} \in \obj()\), y \(f\colon C \to C'\), \(g \colon C' \to \bar{C}\), \(h\colon \bar{C} \to \tilde{C}\), entonces \(h \circ (g \circ f)\) se cumple si, y sólo si,
+Los grupos diferenciales definen una categoría donde los objetos son los módulos
+diferenciales y los morfismos son los homomorfismos de módulos diferenciales. Tomemos
+como ley de composición interna la composición de dichos homomorfismos.
+Claramente es asociativa pues si \(C, C', \bar{C}, \tilde{C}\in \obj()\), y \(f\colon
+C \to C'\), \(g \colon C' \to \bar{C}\), \(h\colon \bar{C}\to \tilde{C}\), entonces
+\(h \circ (g \circ f)\) se cumple si, y sólo si,
 \begin{gather*}
-	\tilde{d}(h \circ (g \circ f)) = (\tilde{d}h) \circ (g \circ f) = (h\bar{d}) \circ (g \circ f) = h \circ (\bar{d}g) \circ f \\
-	= h \circ (g d') \circ f = h \circ g \circ (d'f) = h \circ g \circ (fd) = (h \circ g) \circ fd \\
-	= ((h \circ g) \circ f) d
+	\tilde{d}(h \circ (g \circ f)) = (\tilde{d}h) \circ (g \circ f) = (h\bar{d}) \circ
+	(g \circ f) = h \circ (\bar{d}g) \circ f \\ = h \circ (g d') \circ f = h \circ
+	g \circ (d'f) = h \circ g \circ (fd) = (h \circ g) \circ fd \\ = ((h \circ g) \circ
+	f) d
 \end{gather*}
-y por tanto \(h \circ (g \circ f) = (h \circ g) \circ f\). La propiedad de identidad se sigue de existir el homomorfismo identidad de grupos.
+y por tanto \(h \circ (g \circ f) = (h \circ g) \circ f\). La propiedad de identidad
+se sigue de existir el homomorfismo identidad de módulos.
 
 \begin{definicion}
 	Sean \(C, C'\) módulos diferenciales y \(f:C \rightarrow C'\) un homomorfismo de módulos
-	diferenciales. Definimos la función \(f_{*} = H(f): H(C;R) \rightarrow H(C';R)\)
+	diferenciales. Definimos la función \(f_{*}= H(f): H(C;R) \rightarrow H(C';R)\)
 	tal que
 	\[
 	f_{*}([c]) = [f(c)]
@@ -681,10 +707,20 @@ y por tanto \(h \circ (g \circ f) = (h \circ g) \circ f\). La propiedad de ident
 	Diremos que \(H(f)\) es el \textbf{homomorfismo inducido} por \(f\).
 \end{definicion}
 \begin{proposicion}
-	En estas condiciones, \(H\) es un funtor covariante de la categoría de grupos diferenciales a la categoría de grupos.
+	En estas condiciones, \(H\) es un funtor covariante de la categoría de módulos
+	diferenciales a la categoría de módulos.
 \end{proposicion}
 \begin{proof}
-	Por la definición dada del grupo de homología, es claro que la función objeto \(H\) asigna a cada grupo diferencial \(C\) un grupo de homología \(H(C)\). En cuanto a la función de morfismos, la identidad de grupos diferenciales se preserva pues \(H(\id)([c]) = \id_*([c]) = [\id(c)] = [c]\) para todo \(c \in C\). Además, si \(f,g \in \hom(C)\), entonces \(H(g \circ f)([c]) = (g \circ f)_*([c]) = [(g \circ f)(c)] = [g (f (c))] = g_*([f(c)]) = g_* ( f_*([c])) = (H(g) \circ H(f)) ([c])\) para todo \(c \in C\), manteniendo la ley de composición.
+	Por la definición dada del módulo de homología, es claro que la función objeto
+	\(H\) asigna a cada grupo diferencial \(C\) un grupo de homología \(H(C;R)\). En cuanto
+	a la función de morfismos, la identidad de grupos diferenciales se preserva
+	pues \(H(\id)([c]) = \id_{*}([c]) = [\id(c)] = [c]\) para todo \(c \in C\). Además,
+	si \(f,g \in \hom(C)\), entonces
+	\begin{align*}
+		H(g \circ f)([c]) & = (g \circ f)_{*}([c]) = [(g \circ f)(c)] = [g (f (c))]         \\
+		& = g_{*}([f(c)]) = g_{*} ( f_{*}([c])) = (H(g) \circ H(f)) ([c])
+	\end{align*}
+	para todo \(c \in C\), manteniendo la ley de composición.
 \end{proof}
 
 \section{Complejos de cadenas}
@@ -692,8 +728,8 @@ y por tanto \(h \circ (g \circ f) = (h \circ g) \circ f\). La propiedad de ident
 \begin{definicion}
 	Sea \(R\) un anillo. Un \textbf{complejo de cadenas} \(C_{\bullet}\) de \(R\)-módulos
 	es una familia \(\{C_{n}, \partial_{n}\}\) donde \(C_{n}\) son \(R\)-módulos y \(\partial
-	_{n} : C_{n} \rightarrow C_{n-1}\) homomorfismos de \(R\)-módulos tales que \(\partial
-	_{n} \partial_{n+1}= 0\) para todo \(n \in \Z\).
+	_{n}: C_{n}\rightarrow C_{n-1}\) homomorfismos de \(R\)-módulos tales que \(\partial
+	_{n}\partial_{n+1}= 0\) para todo \(n \in \Z\).
 \end{definicion}
 \begin{nota}
 	Usualmente notaremos directamente \(\partial\) al homomorfismo \(\partial_{n}\) independientemente
@@ -704,7 +740,7 @@ y por tanto \(h \circ (g \circ f) = (h \circ g) \circ f\). La propiedad de ident
 \end{observacion}
 Un complejo \(C_{\bullet}\) es por tanto una sucesión doblemente infinita
 \[
-C_{\bullet}: \cdots \rightarrow C_{1}\rightarrow C_{0} \rightarrow C_{-1}\rightarrow
+C_{\bullet}: \cdots \rightarrow C_{1}\rightarrow C_{0}\rightarrow C_{-1}\rightarrow
 \cdots
 \]
 donde toda composición de homomorfismos de dicha familia es el homomorfismo nulo.
@@ -712,25 +748,30 @@ La \textbf{homología} \(H(C_{\bullet})\) es la familia de \(R\)-módulos
 \[
 H_{n}(C_{\bullet}) = \frac{\ker \partial_{n}}{\im \partial_{n+1}}
 \]
-donde \(H_{n}(C_{\bullet})\) es el \textbf{\(n\)-ésimo módulo de homología} de \(C_{\bullet}\).
+donde \(H_{n}(C_{\bullet})\) es el \textbf{\(n\)-ésimo módulo de homología} de
+\(C_{\bullet}\).
 
-Luego \(H_{n}(C_{\bullet})=0\) implica que la sucesión \(C_{\bullet}\) es exacta en \(C
-_{n}\). A los elementos de \(C_{n}\) los llamaremos \textbf{n-cadenas} o \textbf{cadenas
-	de dimensión n}. Un \textbf{n-ciclo} o \textbf{ciclo de dimensión n} de \(C_{\bullet}\)
-es un elemento del submódulo \(Z_{n}(C_{\bullet}) = \ker \partial_{n}\). Un
-\textbf{n-borde} o \textbf{borde de dimensión n} es un elemento de
-\(B_{n}(C_{\bullet})= \im{\partial_{n+1}}\). Si la dimensión se sobrentiende en estos
-casos, no es necesario indicarla de manera explícita. La clase lateral de un ciclo
-\(c\) la notaremos por \([c] = c + \partial C_{n+1}\). Dos \(n\)-ciclos
-\(c,c' \in C_{n}\) pertenecientes a la misma clase lateral \([c]\) decimos que son
-\textbf{homólogos}, es decir, \(c \sim c'\).
+Luego \(H_{n}(C_{\bullet})=0\) implica que la sucesión \(C_{\bullet}\) es exacta en
+\(C_{n}\). A los elementos de \(C_{n}\) los llamaremos \textbf{n-cadenas} o \textbf{cadenas
+	de dimensión n}. Un \textbf{n-ciclo} o \textbf{ciclo de dimensión n} de
+\(C_{\bullet}\) es un elemento del submódulo
+\(Z_{n}(C_{\bullet}) = \ker \partial_{n}\). Un \textbf{n-borde} o \textbf{borde de
+	dimensión n} es un elemento de \(B_{n}(C_{\bullet})= \im{\partial_{n+1}}\). La
+clase lateral de un ciclo \(c\) la notaremos por \([c] = c + \partial_{n+a}C_{n+1}\).
+Dos \(n\)-ciclos \(c,c' \in C_{n}\) pertenecientes a la misma clase lateral \([c]\) decimos
+que son \textbf{homólogos}, es decir, \(c \sim c'\).
+
+\begin{nota}
+	Si la dimensión se sobrentiende en estos casos, no la indicaremos de manera
+	explícita.
+\end{nota}
 
 \begin{definicion}
 	Sea \(\{C_{\bullet}^{i}, \partial^{i}\}_{i \in I}\) una familia de complejos de cadenas.
 	Su \textbf{suma directa} la definimos como el complejo de cadenas \(\bigoplus_{i
 		\in I}C^{i}_{\bullet}\) cuyos operadores borde vienen dados por \(\bigoplus_{i
-		\in I}{\partial}^{i}_{n} : \bigoplus_{i \in I}C^{i}_{n} \to \bigoplus_{i \in I}
-	C^{i}_{n-1}\) para todo \(n \in \Z\).
+		\in I}{\partial}^{i}_{n}: \bigoplus_{i \in I}C^{i}_{n}\to \bigoplus_{i \in I}C^{i}
+	_{n-1}\) para todo \(n \in \Z\).
 \end{definicion}
 \begin{proposicion}
 	\label{prop:hom-free-commute} Sea \(\{C_{\bullet}^{i}, \partial^{i}\}_{i \in I}\)
@@ -745,15 +786,15 @@ casos, no es necesario indicarla de manera explícita. La clase lateral de un ci
 	que para una colección de complejos de cadenas
 	\(\{C_{\bullet}^{i}, \partial^{i}\}_{i \in I}\), los homomorfismos
 	\begin{align*}
-		\phi: H_{n} \left( \bigoplus_{i \in I}C_{\bullet}^{i} \right) \rightarrow \bigoplus_{i \in I}H_{n} (C_{\bullet}^{i}) : [(c_{i})] \mapsto ([c_{i}]), \\
-		\psi: \bigoplus_{i \in I}H_{n} (C_{\bullet}^{i}) \rightarrow H_{n} \left( \bigoplus_{i \in I}C_{\bullet}^{i} \right) : ([c_{i}]) \mapsto [(c_{i})],
+		\phi: H_{n}\left( \bigoplus_{i \in I}C_{\bullet}^{i}\right) \rightarrow \bigoplus_{i \in I}H_{n}(C_{\bullet}^{i}) : [(c_{i})] \mapsto ([c_{i}]), \\
+		\psi: \bigoplus_{i \in I}H_{n}(C_{\bullet}^{i}) \rightarrow H_{n}\left( \bigoplus_{i \in I}C_{\bullet}^{i}\right) : ([c_{i}]) \mapsto [(c_{i})],
 	\end{align*}
 	están bien definidos y son inversos mutuos.
 	
 	En primer lugar, para comprobar que dichas aplicaciones están bien definidas, observemos
-	que \([(c_{i})] = [(c_{i}')]\) si, y sólo si, \([0] = [(c_{i} - c_{i}')]\). Esto
-	ocurre si, y sólo si, existe un \(b_{i} \in C_{\bullet}^{i}\) tal que
-	\(\partial_{i}(b_{i}) = (c_{i} - c_{i}')\), lo cual es equivalente a \(c_{i} + \partial
+	que \([(c_{i})] = [(c_{i}')]\) si, y sólo si, \([0] = [(c_{i}- c_{i}')]\). Esto
+	ocurre si, y sólo si, existe un \(b_{i}\in C_{\bullet}^{i}\) tal que
+	\(\partial_{i}(b_{i}) = (c_{i}- c_{i}')\), lo cual es equivalente a \(c_{i}+ \partial
 	_{i}(b_{i}) = c_{i}'\) para cada \(i \in I\). Por lo tanto, \([(c_{i})] = [(c_{i}')
 	]\) si, y sólo si, \(\phi([(c_{i})]) = \phi([(c_{i}')]) = [(c_{i}' + \partial_{i}
 	(b_{i}))] = [(c_{i}')]\). De manera análoga, \([(c_{i})] = [(c_{i}')]\) si, y
@@ -765,37 +806,74 @@ casos, no es necesario indicarla de manera explícita. La clase lateral de un ci
 	mientras que \(\psi\) lleva \(([c_{i}])\) a \([(c_{i})]\), lo que demuestra que son inversos
 	el uno del otro.
 	
-	Por lo tanto, \(\phi\) es un isomorfismo con \(\psi\) como su inverso, estableciendo
-	que \(\bigoplus_{i \in I}H_{n} (C_{\bullet}^{i}) \cong H_{n} \left( \bigoplus_{i
-		\in I}C_{\bullet}^{i} \right)\).
+	Por lo tanto, \(\phi\) es un isomorfismo con \(\psi\) como su inverso, mostrando que
+	\(\bigoplus_{i \in I}H_{n}(C_{\bullet}^{i}) \cong H_{n}\left( \bigoplus_{i \in
+		I}C_{\bullet}^{i}\right)\).
 \end{proof}
+
 \begin{definicion}
 	Sean \(C_{\bullet},C_{\bullet}'\) complejos de cadenas. Una \textbf{aplicación
 		de cadenas} o \textbf{morfismo de cadenas}
 	\(f: C_{\bullet}\rightarrow C_{\bullet}'\) es una familia de homomorfismos de
-	\(R\)-módulos \(f_{n}: C_{n} \rightarrow C_{n}'\) tal que
-	\(\partial_{n}'f_{n} = f_{n-1}\partial_{n}\) para todo \(n \in \Z\).
+	\(R\)-módulos \(f_{n}: C_{n}\rightarrow C_{n}'\) tal que
+	\(\partial_{n}'f_{n}= f_{n-1}\partial_{n}\) para todo \(n \in \Z\).
 \end{definicion}
-
 \begin{equation}
 	\label{chaincomplex}\xymatrix{ \cdots & C_{n-1} \ar[l] \ar[d]^{f_{n-1}} \ar@{..>}[dr] & C_n \ar[l]_{\partial_{n}} \ar[d]^{f_n} \ar@{..>}[dr] & C_{n+1} \ar[l]_{\partial_{n+1}} \ar[d]^{f_{n+1}} & \cdots \ar[l] \\ \cdots & C'_{n-1} \ar[l] & C'_n \ar[l]^{\partial'_{n}} & C'_{n+1} \ar[l]^{\partial'_{n+1}} & \cdots \ar[l] }
 \end{equation}
+Cuando se sobrentienda del contexto, notaremos simplemente por \(\partial\) a los correspondientes
+\(\partial_{n}\) y \(\partial_{n}'\).
 
-Cuando se sobrentienda del contexto, notaremos simplemente por \(\partial\) a los
-correspondientes \(\partial_{n}\) y \(\partial_{n}'\).
+Los complejos de cadenas, junto con sus morfismos, forman una categoría que denotaremos
+por \(R\textbf{-}\Cat{Ch_\bullet}\). Esto se debe a que existe la identidad y se
+cumple la propiedad de asociatividad para la composición de morfismos. En efecto,
+para tres morfismos \(f : C_{\bullet} \to C_{\bullet}'\), \(g : C_{\bullet}' \to C_{\bullet}
+''\) y \(h : C_{\bullet}'' \to \overline{C}_{\bullet}\), se tiene que
+\[
+h_{n} \circ (g_{n} \circ f_{n}) = (h_{n} \circ g_{n}) \circ f_{n}
+\]
+para cada \(n \in \Z\), ya que son homomorfismos de módulos diferenciales. En
+consecuencia, \(h \circ (g \circ f) = (h \circ g) \circ f\).
 
-La función \(H_{n}(f) = f_{*}\) definida por
-\(f_{*}([c]) = f_{*}(c + \partial C_{n+1}) = fc + \partial C'_{n+1}\) es un
-homomorfismo \(H_{n}(f): H_{n}(C_{\bullet}) \rightarrow H_{n}(C_{\bullet}')\).% Así mismo, cada \(H_n\) es un funtor covariante de la categoría de complejos de cadenas y morfismos de cadenas a la categoría de módulos.
+Sea \(f : C_{\bullet} \to C_{\bullet}'\) un morfismo de complejos de cadenas.
+Definimos \(H_{n}(f) = f_{*} : H_{n}(C_{\bullet}) \to H_{n}(C_{\bullet}')\) tal
+que
+\[
+f_{*}([c]) = f_{*}(c + \partial C_{n+1}) = fc + \partial C'_{n+1}.
+\]
+Entonces \(f_{*}\) es un homomorfismo de \(R\)-módulos, como recoge el siguiente resultado.
+
+\begin{proposicion}
+	Cada \(H_{n}\) es un funtor covariante de la categoría de complejos de cadenas y
+	morfismos de cadenas a la categoría de \(R\)-módulos.
+\end{proposicion}
+\begin{proof}
+	Como vimos anteriormente, \(H_{n}\) asigna a cada complejo de cadenas
+	\(C_{\bullet}\) un \(R\)-módulo. Para demostrar que \(H_{n}\) también asigna a cada morfismo
+	de cadenas un homomorfismo de \(R\)-módulos, consideremos
+	\([c], [c'] \in H_{n}(C_{\bullet})\) y \(r, s \in R\). Entonces, podemos ver que
+	\begin{align}
+		f_{*}(r[c] + s[c']) & = f_{*}(r(c + \partial C_{n+1}) + s(c' + \partial C_{n+1}))        \\
+		& = f_{*}(rc + \partial C_{n+1}+ sc' + \partial C_{n+1})             \\
+		& = f_{*}(rc + sc' + \partial C_{n+1})                               \\
+		& = f(rc + sc') + \partial C'_{n+1}                                  \\
+		& = rf(c) + sf(c') + \partial C'_{n+1}                               \\
+		& = r(f(c) + \partial C'_{n+1}) + s(f(c') + \partial C'_{n+1})       \\
+		& = r(f_{*}(c + \partial C_{n+1})) + s(f_{*}(c' + \partial C_{n+1})) \\
+		& = rf_{*}([c]) + sf_{*}([c']).
+	\end{align}
+	Además, si consideramos \(f = \id\) la identidad, es claro que \(\id_{*}\) es la
+	identidad de \(R\)-módulos.
+\end{proof}
 
 \begin{definicion}
 	\label{def:chain_homotopy} Sean \(C_{\bullet},C_{\bullet}'\) complejos de cadenas
 	y \(f,g: C_{\bullet}\rightarrow C_{\bullet}'\) dos aplicaciones de cadenas entre
 	ellos. Una \textbf{homotopía de cadenas} u \textbf{homotopía algebraica} \(s\)
-	es una familia de homomorfismos de módulos \(s_{n}: C_{n} \rightarrow C_{n+1}'\)
+	es una familia de homomorfismos de módulos \(s_{n}: C_{n}\rightarrow C_{n+1}'\)
 	para cada \(n \in \Z\) tal que
 	\begin{equation}
-		\partial_{n+1}'s_{n} + s_{n-1}\partial_{n} = f_{n} - g_{n}
+		\partial_{n+1}'s_{n}+ s_{n-1}\partial_{n}= f_{n}- g_{n}
 	\end{equation}
 	Diremos entonces que \(f\) y \(g\) son \textbf{algebraicamente homotópicas} y escribiremos
 	\(f \simeq g\).
@@ -809,9 +887,9 @@ homomorfismo \(H_{n}(f): H_{n}(C_{\bullet}) \rightarrow H_{n}(C_{\bullet}')\).% 
 	\]
 \end{teorema}
 \begin{proof}
-	Si \(c\) es un ciclo de \(C_{n}\), tenemos que \(\partial_{n} c = 0\). Por la \autoref{def:chain_homotopy}
-	se cumple que \(f_{n}c-g_{n}c = \partial s_{n} c\). Como consecuencia \(f_{n} c\)
-	y \(g_{n} c\) son homólogos lo que implica que \([f_{n} c] = [g_{n} c]\) en
+	Si \(c\) es un ciclo de \(C_{n}\), tenemos que \(\partial_{n}c = 0\). Por la \autoref{def:chain_homotopy}
+	se cumple que \(f_{n}c-g_{n}c = \partial s_{n}c\). Como consecuencia \(f_{n}c\) y
+	\(g_{n}c\) son homólogos lo que implica que \([f_{n}c] = [g_{n}c]\) en
 	\(H_{n}(C_{\bullet}')\), como queríamos demostrar.
 \end{proof}
 
@@ -824,8 +902,8 @@ homomorfismo \(H_{n}(f): H_{n}(C_{\bullet}) \rightarrow H_{n}(C_{\bullet}')\).% 
 	\(f \circ h \simeq{\id_{C'}}_{\bullet}\).
 \end{definicion}
 
-Como \(H_{n}({\id_C}_{\bullet}) = \id_{H_n(C_{\bullet})}\), del anterior teorema se
-deduce lo siguiente.
+Como \(H_{n}({\id_C}_{\bullet}) = \id_{H_n(C_{\bullet})}\), del anterior teorema
+se deduce lo siguiente.
 
 \begin{corolario}
 	\label{cor:equiv-homot} Si \(f: C_{\bullet}\rightarrow C_{\bullet}'\) es una equivalencia
@@ -871,13 +949,13 @@ deduce lo siguiente.
 
 \begin{definicion}
 	Un \textbf{subcomplejo} \(S_{\bullet}\) de \(C_{\bullet}\) es una familia de
-	submódulos \(S_{n} \subset C_{n}\) tal que para cada \(n \in \Z\), \(\partial S_{n}
-	\subset S_{n-1}\).
+	submódulos \(S_{n}\subset C_{n}\) tal que para cada \(n \in \Z\), \(\partial S_{n}\subset
+	S_{n-1}\).
 \end{definicion}
 
-Por tanto, \(S_{\bullet}\) es un complejo en sí con el operador borde \(\partial\)
-inducido de \(C_{\bullet}\) y la inclusión \(i: S_{\bullet}\rightarrow C_{\bullet}\)
-es una aplicación de cadenas.
+Por tanto, \(S_{\bullet}\) es un complejo en sí con el operador borde \(\partial\) inducido
+de \(C_{\bullet}\) y la inclusión \(i: S_{\bullet}\rightarrow C_{\bullet}\) es una aplicación
+de cadenas.
 
 \begin{definicion}
 	Sea \(S_{\bullet}\) un subcomplejo de \(C_{\bullet}\). El \textbf{complejo
@@ -898,8 +976,8 @@ es una aplicación de cadenas.
 	C_{\bullet}\xrightarrow{f}C_{\bullet}' \xrightarrow{g}C_{\bullet}''
 	\]
 	es \textbf{exacta} en \(C_{\bullet}'\) si \(\im(f) = \ker(g)\); es decir, si cada
-	sucesión \(C_{n} \xrightarrow{f_n}{C'}_{n} \xrightarrow{g_n}{C''}_{n}\) de
-	módulos es exacta en \({C'}_{n}\).
+	sucesión \(C_{n}\xrightarrow{f_n}{C'}_{n}\xrightarrow{g_n}{C''}_{n}\) de módulos
+	es exacta en \({C'}_{n}\).
 \end{definicion}
 
 %Para cualquier \( f: C_{\bullet} \to C_{\bullet}', \)
@@ -907,37 +985,36 @@ es una aplicación de cadenas.
 %es una sucesión exacta de complejos.
 
 \begin{definicion}
-	Un complejo \(C_{\bullet}\) es \textbf{positivo} si \(C_{n} = 0\) para todo
-	\(n < 0\) con \(n \in \Z\). Su \(n\)-ésimo módulo de homología es entonces positivo ya
-	que \(H_{n}(C_{\bullet}) = 0\) para todo \(n < 0\). De manera análoga, un complejo
-	\(C_{\bullet}\) es \textbf{negativo} si \(C_{n} = 0\) para todo \(n > 0\) con
-	\(n \in \Z\).
+	Un complejo \(C_{\bullet}\) es \textbf{positivo} si \(C_{n}= 0\) para todo \(n < 0\)
+	con \(n \in \Z\). Su \(n\)-ésimo módulo de homología es entonces positivo ya que \(H
+	_{n}(C_{\bullet}) = 0\) para todo \(n < 0\). De manera análoga, un complejo \(C_{\bullet}\)
+	es \textbf{negativo} si \(C_{n}= 0\) para todo \(n > 0\) con \(n \in \Z\).
 \end{definicion}
-
-Los complejos negativos suelen notarse con índices superiores positivos donde \(C_{-n}\)
-se sustituye por \(C^{n}\) y \(\partial_{-n}: C_{-n}\rightarrow C_{-n-1}\) por \(\delta
-^{n}: C^{n} \rightarrow C^{n+1}\) quedando así
-\[
-0 \to C^{0} \xrightarrow{\delta^0}C^{1} \xrightarrow{\delta^1}C^{2} \to \cdots,
-\quad \delta \circ \delta = 0
-\]
-donde el \(n\)-ésimo módulo de homología \(H^{n}(C_{\bullet}) = \ker(\delta^{n})/\text{Im}
-(\delta^{n-1})\) es positivo en los índices superiores. A dicho complejo lo
-llamaremos \textbf{complejo de cocadenas}.
+%
+%Los complejos negativos suelen notarse con índices superiores positivos donde \(C_{-n}\)
+%se sustituye por \(C^{n}\) y \(\partial_{-n}: C_{-n}\rightarrow C_{-n-1}\) por \(\delta
+%^{n}: C^{n} \rightarrow C^{n+1}\) quedando así
+%\[
+%0 \to C^{0} \xrightarrow{\delta^0}C^{1} \xrightarrow{\delta^1}C^{2} \to \cdots,
+%\quad \delta \circ \delta = 0
+%\]
+%donde el \(n\)-ésimo módulo de homología \(H^{n}(C_{\bullet}) = \ker(\delta^{n})/\text{Im}
+%(\delta^{n-1})\) es positivo en los índices superiores. A dicho complejo lo
+%llamaremos \textbf{complejo de cocadenas}.
 
 \begin{definicion}
 	Sea \(C_{\bullet}\) un complejo positivo de \(R\)-módulos. Denominaremos \textbf{aumento
-		de \(C_{\bullet}\)} al homomorfismo sobreyectivo \(\varepsilon : C_{0} \to R\) de forma
-	que \(\varepsilon \circ \partial_{1} = 0\).
+		de \(C_{\bullet}\)} al homomorfismo sobreyectivo \(\varepsilon : C_{0}\to R\) de forma
+	que \(\varepsilon \circ \partial_{1}= 0\).
 \end{definicion}
 
 \begin{definicion}
-	Sea \(C_{\bullet}\) un complejo de cadenas positivo, \(\varepsilon : C_{0} \to R\)
+	Sea \(C_{\bullet}\) un complejo de cadenas positivo, \(\varepsilon : C_{0}\to R\)
 	un aumento de \(C_{\bullet}\) y sea \(n \in \Z\). Consideremos el complejo positivo
-	\(\widetilde{C}_{\bullet}\) tal que \(\widetilde{C}_{n} = C_{n}\) para todo \(n \geq
-	0\), \(\widetilde{C}_{n} = 0\) para todo \(n < -1\) y \(\widetilde{C}_{-1}=R\). Consideremos
-	también \(\widetilde{\partial}_{n} = \partial_{n}\) para todo \(n \geq 1\) y \(\widetilde
-	{\partial}_{0}= \epsilon\). Llamaremos a este complejo \textbf{complejo
+	\(\widetilde{C}_{\bullet}\) tal que \(\widetilde{C}_{n}= C_{n}\) para todo \(n \geq
+	0\), \(\widetilde{C}_{n}= 0\) para todo \(n < -1\) y \(\widetilde{C}_{-1}=R\). Consideremos
+	también \(\widetilde{\partial}_{n}= \partial_{n}\) para todo \(n \geq 1\) y \(\widetilde
+	{\partial}_{0}= \varepsilon\). Llamaremos a este complejo \textbf{complejo
 		aumentado} de \(C_{\bullet}\).
 \end{definicion}
 %
@@ -946,11 +1023,11 @@ llamaremos \textbf{complejo de cocadenas}.
 %\end{definicion}
 
 \begin{definicion}
-	Sea \(A\) un módulo. Definimos el siguiente complejo positivo donde \(A_{0} = A\),
-	\(A_{n} = 0\) para \(n \neq 0\) y \(\partial = 0\). Un \textbf{complejo sobre \(A\)} es
-	un complejo positivo \(C_{\bullet}\) junto con una aplicación de cadenas \(\varepsilon
+	Sea \(A\) un módulo. Definimos el siguiente complejo positivo donde \(A_{0}= A\), \(A
+	_{n}= 0\) para \(n \neq 0\) y \(\partial = 0\). Un \textbf{complejo sobre \(A\)} es un
+	complejo positivo \(C_{\bullet}\) junto con una aplicación de cadenas \(\varepsilon
 	: C_{\bullet}\to A\) donde \(\varepsilon\) es un homomorfismo de módulos \(\varepsilon
-	: C_{0} \to A\) tal que \(\varepsilon \partial = 0: C_{1} \to A\).
+	: C_{0}\to A\) tal que \(\varepsilon \partial = 0: C_{1}\to A\).
 \end{definicion}
 
 \begin{definicion}
@@ -960,69 +1037,85 @@ llamaremos \textbf{complejo de cocadenas}.
 	homotopía \(s:{\id_C}_{\bullet}\rightarrow f \varepsilon\) donde
 	\({\id_C}_{\bullet}\simeq f \varepsilon\). En otras palabras, una homotopía
 	contráctil consiste en homomorfismos de módulos \(f: A \to C_{0}\) y
-	\(s_{n}: C_{n} \to C_{n+1}, n = 0, 1, \ldots\), tal que
+	\(s_{n}: C_{n}\to C_{n+1}, n = 0, 1, \ldots\), tal que
 	
 	\[
-	\varepsilon f = \id_{A}, \quad \partial_{1}s_{0} + f \varepsilon = \id_{C_0},
-	\quad \partial_{n+1}s_{n} + s_{n-1}\partial_{n} = \id_{C_n}\quad n > 0.
+	\varepsilon f = \id_{A}, \quad \partial_{1}s_{0}+ f \varepsilon = \id_{C_0},
+	\quad \partial_{n+1}s_{n}+ s_{n-1}\partial_{n}= \id_{C_n}\quad n > 0.
 	\]
 \end{definicion}
 
-Podemos extender el complejo estableciendo \(C_{-1}= A\),
-\(\partial_{0} = \varepsilon: C_{0} \to C_{-1}\) y \(s_{-1}= f\). Aplicando la \autoref{def:contr_homotopy},
-\(s:{\id_C}_{\bullet}\rightarrow 0\) es una homotopía de cadenas. Si \(\varepsilon:
-C_{\bullet}\to A\) tiene una homotopía contráctil, sus grupos de homología son
-isomorfos por \(\varepsilon_{*}: H_{0}(C_{\bullet}) \rightarrow A\) para \(n = 0\) y
-\(H_{n}(C_{\bullet}) = 0\) para \(n > 0\).
+Podemos extender el complejo estableciendo \(C_{-1}= A\), \(\partial_{0}= \varepsilon
+: C_{0}\to C_{-1}\) y \(s_{-1}= f\). Aplicando la \autoref{def:contr_homotopy}, \(s:{\id_C}
+_{\bullet}\rightarrow 0\) es una homotopía de cadenas. Si
+\(\varepsilon: C_{\bullet}\to A\) tiene una homotopía contráctil, sus grupos de homología
+son isomorfos por \(\varepsilon_{*}: H_{0}(C_{\bullet}) \rightarrow A\) para \(n = 0\)
+y \(H_{n}(C_{\bullet}) = 0\) para \(n > 0\).
 
-Considérese un complejo de cadenas
-\(C_{\bullet}= \{ C_{n}, d_{n} \}_{n \in \mathbb{Z}}\), donde cada \(C_{n}\) es un \(\mathbb{Z}\)-módulo
-libre y \(d_{n}: C_{n} \to C_{n-1}\) es el operador diferencial de \(C_{\bullet}\) que
-cumple \(d_{n-1}\circ d_{n} = 0\) para todo \(n\). Este tipo de complejos aparece
-frecuentemente en el estudio de espacios topológicos.
+Consideremos un complejo de cadenas \(C_{\bullet}= \{ C_{n}, d_{n}\}_{n \in
+	\mathbb{Z}}\), donde cada \(C_{n}\) es un \(\mathbb{Z}\)-módulo libre y
+\(d_{n}: C_{n}\to C_{n-1}\) es el operador diferencial de \(C_{\bullet}\) que cumple
+\(d_{n-1}\circ d_{n}= 0\) para todo \(n\). Este tipo de complejos aparece frecuentemente
+en el estudio de espacios topológicos.
 
-Supóngase además que cada \(C_{n}\) es finitamente generado. Entonces, el n-ésimo
+Supongamos además que cada \(C_{n}\) es finitamente generado. Entonces, el n-ésimo
 grupo de homología de \(C_{\bullet}\), definido como
 \[
 H_{n}(C_{\bullet}) = \frac{\ker(d_{n})}{\im(d_{n+1})},
 \]
-es un grupo abeliano finitamente generado. Este resultado se sigue del hecho de
-que el núcleo y la imagen de los morfismos entre \(\mathbb{Z}\)-módulos libres
-finitamente generados son también finitamente generados.
+es un grupo abeliano finitamente generado. Este resultado se sigue del hecho de que
+el núcleo y la imagen de los morfismos entre \(\mathbb{Z}\)-módulos libres finitamente
+generados son también finitamente generados.
 
-El teorema de estructura para grupos abelianos finitamente generados afirma que
-cualquier grupo abeliano finitamente generado \(G\) puede expresarse como una suma
-directa de grupos cíclicos de la forma
+El teorema de \nameref{teo:desc-cicl-prim} y, en particular, el teorema de
+estructura para grupos abelianos finitamente generados afirma que cualquier
+grupo abeliano finitamente generado \(G\) puede expresarse como una suma directa
+de grupos cíclicos de la forma
 \[
 G \cong \mathbb{Z}^{\beta}\oplus \mathbb{Z}_{m_1}\oplus \ldots \oplus \mathbb{Z}
 _{m_k},
 \]
 donde \(\beta\) es el rango de \(G\) y cada \(\mathbb{Z}_{m_i}\) es un grupo cíclico
-de orden \(m_{i}\), con \(m_{1} | m_{2} | \ldots | m_{k}\). Aplicando este teorema
-al n-ésimo módulo de homología \(H_{n}(C_{\bullet})\), obtenemos que
+de orden \(m_{i}\), donde \(m_{i}\) divide a \(m_{i+1}\) para cada \(i \in \{1, \ldots,
+k\}\). Aplicando este teorema al n-ésimo módulo de homología \(H_{n}(C_{\bullet})\),
+obtenemos que
 \[
 H_{n}(C_{\bullet}) \cong \mathbb{Z}^{\beta_n}\oplus \mathbb{Z}_{m_1}\oplus \ldots
 \oplus \mathbb{Z}_{m_k},
 \]
 donde \(\beta_{n}\) es el rango de \(H_{n}(C_{\bullet})\), conocido como el \textbf{n-ésimo
 	número de Betti} de \(C_{\bullet}\), y los \(m_{i}\) son los \textbf{n-ésimos
-	coeficientes de torsión}, satisfaciendo \(m_{1} | m_{2} | \ldots | m_{k}\).
+	coeficientes de torsión}, donde \(m_{i}\) divide a \(m_{i+1}\) para cada
+\(i \in \{1, \ldots, k\}\).
+
 \begin{definicion}
 	Sea \(C_{\bullet}\) un complejo de cadenas y \(k\) un entero no negativo. El
-	\textbf{\(k\)-ésimo número de Betti}, \(\beta_{k}(C_{\bullet})\), se define como el
-	rango del k-ésimo grupo de homología de \(C_{\bullet}\), \(H_{k}(C_{\bullet})\). Esto
-	es, \(\beta_{k}(C_{\bullet}) = \rg(H_{k}(C_{\bullet}))\).
+	\textbf{\(k\)-ésimo número de Betti}, \(\beta_{n}(C_{\bullet})\), se define como el
+	rango del \(n\)-ésimo módulo de homología de \(C_{\bullet}\) sobre el dominio de ideales
+	principales \(R\), \(H_{n}(C_{\bullet};R)\). Esto es,
+	\(\beta_{n}(C_{\bullet}) = \rg(H_{n}(C_{\bullet};R))\). Si no hay lugar a confusión
+	lo notaremos simplemente por \(\beta_{n}\).
 \end{definicion}
-Los números de Betti \(\beta_{n}\) proporcionan una medida de la dimensionalidad de
-la n-ésima homología, mientras que los coeficientes de torsión \(\{m_{i}\}\)
-capturan información adicional sobre la estructura algebraica de
-\(H_{n}(C_{\bullet})\). Ambos conjuntos de invariantes son cruciales para el estudio
-de la topología algebraica, ya que ofrecen una perspectiva profunda sobre la
-estructura de los espacios topológicos desde el punto de vista homológico.
-%
-%Los complejos \( C_{\bullet} \) de \(\Z\)-módulos libres aparecen en topología. Si cada \( C_n \) es finitamente generado, entonces cada \( H_n(C_{\bullet}) \) es un grupo abeliano finitamente generado. El teorema de estructura para tales grupos presenta \( H_n(C_{\bullet}) \) como una suma directa
-%\[ \Z \oplus \ldots \oplus \Z \oplus \ldots \oplus \Z_{m_1} \oplus \ldots \oplus \Z_{m_k}, \]
-%donde el número \( \beta_n \) de sumandos cíclicos infinitos y los enteros \( m_1, \ldots, m_k \) (cada uno divisor del siguiente) dependen solo de \( H_n(C_{\bullet}) \). El entero \( \beta_n \) lo llamaremos el \textbf{n-ésimo número de Betti} de \( C_{\bullet} \) y a los \( \{m_i\} \) los \textbf{n-ésimos coeficientes de torsión}.
+
+\begin{definicion}
+	Dado un complejo de cadenas \(C_{\bullet}\) y considerando la descomposición en sumas
+	directas del \(n\)-ésimo módulo de homología \(H_{n}(C_{\bullet};R)\) sobre un dominio
+	de ideales principales \(R\), definimos los \textbf{\(n\)-ésimos coeficientes de
+		torsión} como los \(m_{i} \in R\) donde \(i \in \{1, \ldots, k\}\) que aparecen en
+	la descomposición
+	\[
+	H_{n}(C_{\bullet};R) \cong R^{\beta_n}\oplus \frac{R}{\langle m_{1} \rangle}\oplus
+	\ldots \oplus \frac{R}{\langle m_{k} \rangle},
+	\]
+	donde cada \(m_{i}\) divide a \(m_{i+1}\).
+\end{definicion}
+
+Los números de Betti \(\beta_{n}\) proporcionan una medida de la dimensionalidad
+de la n-ésima homología, mientras que los coeficientes de torsión \(\{m_{i}\}\) representan
+los órdenes de los sumandos cíclicos de torsión en la descomposición de homología
+y reflejan la estructura torsional de \(H_{n}(C_{\bullet};R)\).
+
+La homología con coeficientes en \(\mathbb{Z}\) es fundamental en topología algebraica, proporcionando una rica estructura para el estudio de espacios topológicos. Sin embargo, el uso de coeficientes en otros anillos, particularmente en cuerpos, puede simplificar significativamente los cálculos y aún así ofrecer información valiosa para ciertas aplicaciones. La elección de un cuerpo como coeficientes, por ejemplo \(\Z_2\), reduce la complejidad de los cálculos al evitar problemas relacionados con la torsión, facilitando la manipulación algebraica. Al estudiar la homología con estos coeficientes alternativos, aunque se obtiene una visión menos detallada del espacio, a menudo es suficiente para resolver problemas específicos dentro de un contexto dado, tales como la detección de características topológicas esenciales o la simplificación de la clasificación de espacios topológicos.
 
 \endinput
 %--------------------------------------------------------------------

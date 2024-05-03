@@ -3,7 +3,7 @@
 
 \chapter{Homología persistente}
 
-\section{Complejos de Cech y Vietoris-Rips}
+\section{Complejos de \u Cech y Vietoris-Rips}
 \begin{definicion}
 	Sea \(X\) un espacio topológico y sea \(\mathcal{U} = \{U_v\}_{v \in V}\) un recubrimiento de \(X\). Llamaremos \textbf{nervio} de \(\mathcal{U}\) al complejo simplicial abstracto con conjunto de vértices \(V\) tal que la familia \(v_0, \dots, v_p\) genera un \(p\)-símplice si, y sólo si, \(U_{v_0} \cap \dots \cap U_{v_p} \neq \emptyset\). Lo notaremos por \(N(\mathcal{U})\).
 \end{definicion}
@@ -15,7 +15,7 @@
 	contenidos...
 \end{proof}
 \begin{definicion}
-	Sea \((X,d)\) un espacio métrico y sea \(V\) un subconjunto de puntos de \(X\).Definimos el \textbf{complejo de CEch} \(C(V, \varepsilon)\) como el nervio \(N(\mathcal{B}_\varepsilon)\), donde
+	Sea \((X,d)\) un espacio métrico y sea \(V\) un subconjunto de puntos de \(X\).Definimos el \textbf{complejo de \u Cech} \(C(V, \varepsilon)\) como el nervio \(N(\mathcal{B}_\varepsilon)\), donde
 	\[
 		\mathcal{B}_\varepsilon = \{ B_{\varepsilon}(v) : v \in V \},
 	\]
@@ -47,7 +47,7 @@ A partir de la definición anterior, podemos construir los complejos de cadenas 
 \begin{definicion}
 	Sea \(\mathcal{F}\) una filtración, sea \(p\) un número natural y sean \(i,j \in \{0, \dots, n\}\). Definimos el  \textbf{\((i,j)\)-ésimo \(R\)-módulo de homología persistente de nivel \(p\)} asociado a \(\mathcal{F}\) como
 	\[
-		H_p^{i \to j}(\mathcal{F}) := \im f_p^{i,j}.
+		H_p^{i \to j}(\mathcal{F}) := \im f_p^{i \to j}.
 	\]
 	El rango de \(H_p^{i \to j}(\mathcal{F})\) diremos que es el \textbf{\((i,j)\)-ésimo número de Betti de persistencia de nivel \(p\)} y lo notaremos por \(\beta_p^{i,j}\).
 \end{definicion}
@@ -72,7 +72,7 @@ A partir de la definición anterior, podemos construir los complejos de cadenas 
 	\end{align*}
 	Además, 
 	\begin{align*}
-		H_p^{i,j}(\mathcal{F}) &= \im f_p^{i,j} = \{f_p^{i,j}([z]) : [z] \in H_p(K_i) \} \\ 
+		H_p^{i \to j}(\mathcal{F}) &= \im f_p^{i \to j} = \{f_p^{i \to j}([z]) : [z] \in H_p(K_i) \} \\ 
 							   &= \{[({i_{i,j}}_*)_p(z)] : z \in Z_p(K_i) \}  
 							   = \{\pi_i(z) : z \in Z_p(K_i) \} 
 							   = \im \pi_i.
@@ -81,60 +81,58 @@ A partir de la definición anterior, podemos construir los complejos de cadenas 
 
 \tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
 
-\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
-	%uncomment if require: \path (0,235); %set diagram left start at 0, and has height of 235
-	
-	%Shape: Ellipse [id:dp28793519162441483] 
-	\draw  [fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=1 ] (81,72.52) .. controls (81,21.96) and (104.41,-19.03) .. (133.29,-19.03) .. controls (162.18,-19.03) and (185.59,21.96) .. (185.59,72.52) .. controls (185.59,123.08) and (162.18,164.07) .. (133.29,164.07) .. controls (104.41,164.07) and (81,123.08) .. (81,72.52) -- cycle ;
-	%Shape: Ellipse [id:dp5681689316325549] 
-	\draw  [fill={rgb, 255:red, 169; green, 208; blue, 255 }  ,fill opacity=1 ] (213.98,71.12) .. controls (213.98,20.55) and (237.39,-20.44) .. (266.27,-20.44) .. controls (295.15,-20.44) and (318.56,20.55) .. (318.56,71.12) .. controls (318.56,121.68) and (295.15,162.67) .. (266.27,162.67) .. controls (237.39,162.67) and (213.98,121.68) .. (213.98,71.12) -- cycle ;
-	%Shape: Ellipse [id:dp8309047921029127] 
-	\draw  [fill={rgb, 255:red, 169; green, 208; blue, 255 }  ,fill opacity=1 ] (349.94,72.52) .. controls (349.94,21.96) and (373.35,-19.03) .. (402.24,-19.03) .. controls (431.12,-19.03) and (454.53,21.96) .. (454.53,72.52) .. controls (454.53,123.08) and (431.12,164.07) .. (402.24,164.07) .. controls (373.35,164.07) and (349.94,123.08) .. (349.94,72.52) -- cycle ;
-	%Shape: Ellipse [id:dp6471754723664047] 
-	\draw  [fill={rgb, 255:red, 169; green, 208; blue, 255 }  ,fill opacity=1 ] (484.41,72.52) .. controls (484.41,21.96) and (507.82,-19.03) .. (536.71,-19.03) .. controls (565.59,-19.03) and (589,21.96) .. (589,72.52) .. controls (589,123.08) and (565.59,164.07) .. (536.71,164.07) .. controls (507.82,164.07) and (484.41,123.08) .. (484.41,72.52) -- cycle ;
-	%Shape: Ellipse [id:dp2887350161913229] 
-	\draw  [fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=1 ] (226.68,99.38) .. controls (226.68,64.42) and (244.4,36.09) .. (266.27,36.09) .. controls (288.14,36.09) and (305.86,64.42) .. (305.86,99.38) .. controls (305.86,134.33) and (288.14,162.67) .. (266.27,162.67) .. controls (244.4,162.67) and (226.68,134.33) .. (226.68,99.38) -- cycle ;
-	%Shape: Ellipse [id:dp5997979826300346] 
-	\draw  [fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=1 ] (362.64,100.78) .. controls (362.64,65.83) and (380.37,37.49) .. (402.24,37.49) .. controls (424.1,37.49) and (441.83,65.83) .. (441.83,100.78) .. controls (441.83,135.73) and (424.1,164.07) .. (402.24,164.07) .. controls (380.37,164.07) and (362.64,135.73) .. (362.64,100.78) -- cycle ;
-	%Shape: Ellipse [id:dp7175957985808079] 
-	\draw  [fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=1 ] (505.7,114.81) .. controls (505.7,87.61) and (519.58,65.55) .. (536.71,65.55) .. controls (553.83,65.55) and (567.71,87.61) .. (567.71,114.81) .. controls (567.71,142.02) and (553.83,164.07) .. (536.71,164.07) .. controls (519.58,164.07) and (505.7,142.02) .. (505.7,114.81) -- cycle ;
-	%Straight Lines [id:da9382562350971808] 
-	\draw    (133.29,-19.03) -- (266.27,36.09) ;
-	%Straight Lines [id:da8538877694649378] 
-	\draw    (266.27,36.09) -- (402.24,37.49) ;
-	%Straight Lines [id:da415521229926751] 
-	\draw    (402.24,37.49) -- (536.71,65.55) ;
-	%Straight Lines [id:da5906511807851325] 
-	\draw [fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=1 ] [dash pattern={on 0.84pt off 2.51pt}]  (266.27,16.65) -- (399.25,16.65) ;
-	%Straight Lines [id:da7445210416359846] 
-	\draw  [dash pattern={on 0.84pt off 2.51pt}]  (399.25,16.65) -- (536.71,114.81) ;
-	
-	% Text Node
-	\draw (260.27,-0.47) node [anchor=north west][inner sep=0.75pt]    {\(\alpha \)};
-	% Text Node
-	\draw (375.75,-4.04) node [anchor=north west][inner sep=0.75pt]    {\(f_{p}^{i,j-1}( \alpha )\)};
-	% Text Node
-	\draw (515.12,113.56) node [anchor=north west][inner sep=0.75pt]    {\(f_{p}^{i,j}( \alpha )\)};
-	% Text Node
-	\draw (100.29,-38.98) node [anchor=north west][inner sep=0.75pt]    {\(H_{p}( K_{i-1})\)};
-	% Text Node
-	\draw (242.52,-40.98) node [anchor=north west][inner sep=0.75pt]    {\(H_{p}( K_{i})\)};
-	% Text Node
-	\draw (370.99,-39.38) node [anchor=north west][inner sep=0.75pt]    {\(H_{p}( K_{j-1})\)};
-	% Text Node
-	\draw (510.2,-39.98) node [anchor=north west][inner sep=0.75pt]    {\(H_{p}( K_{j})\)};
-	% Text Node
-	\draw (260,12.4) node [anchor=north west][inner sep=0.75pt]    {\(\bullet \)};
-	% Text Node
-	\draw (393,12.4) node [anchor=north west][inner sep=0.75pt]    {\(\bullet \)};
-	% Text Node
-	\draw (528,108.4) node [anchor=north west][inner sep=0.75pt]    {\(\bullet \)};
-	
-	
-\end{tikzpicture}
+%\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%	%uncomment if require: \path (0,235); %set diagram left start at 0, and has height of 235
+%	
+%	%Shape: Ellipse [id:dp28793519162441483] 
+%	\draw  [fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=1 ] (81,72.52) .. controls (81,21.96) and (104.41,-19.03) .. (133.29,-19.03) .. controls (162.18,-19.03) and (185.59,21.96) .. (185.59,72.52) .. controls (185.59,123.08) and (162.18,164.07) .. (133.29,164.07) .. controls (104.41,164.07) and (81,123.08) .. (81,72.52) -- cycle ;
+%	%Shape: Ellipse [id:dp5681689316325549] 
+%	\draw  [fill={rgb, 255:red, 169; green, 208; blue, 255 }  ,fill opacity=1 ] (213.98,71.12) .. controls (213.98,20.55) and (237.39,-20.44) .. (266.27,-20.44) .. controls (295.15,-20.44) and (318.56,20.55) .. (318.56,71.12) .. controls (318.56,121.68) and (295.15,162.67) .. (266.27,162.67) .. controls (237.39,162.67) and (213.98,121.68) .. (213.98,71.12) -- cycle ;
+%	%Shape: Ellipse [id:dp8309047921029127] 
+%	\draw  [fill={rgb, 255:red, 169; green, 208; blue, 255 }  ,fill opacity=1 ] (349.94,72.52) .. controls (349.94,21.96) and (373.35,-19.03) .. (402.24,-19.03) .. controls (431.12,-19.03) and (454.53,21.96) .. (454.53,72.52) .. controls (454.53,123.08) and (431.12,164.07) .. (402.24,164.07) .. controls (373.35,164.07) and (349.94,123.08) .. (349.94,72.52) -- cycle ;
+%	%Shape: Ellipse [id:dp6471754723664047] 
+%	\draw  [fill={rgb, 255:red, 169; green, 208; blue, 255 }  ,fill opacity=1 ] (484.41,72.52) .. controls (484.41,21.96) and (507.82,-19.03) .. (536.71,-19.03) .. controls (565.59,-19.03) and (589,21.96) .. (589,72.52) .. controls (589,123.08) and (565.59,164.07) .. (536.71,164.07) .. controls (507.82,164.07) and (484.41,123.08) .. (484.41,72.52) -- cycle ;
+%	%Shape: Ellipse [id:dp2887350161913229] 
+%	\draw  [fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=1 ] (226.68,99.38) .. controls (226.68,64.42) and (244.4,36.09) .. (266.27,36.09) .. controls (288.14,36.09) and (305.86,64.42) .. (305.86,99.38) .. controls (305.86,134.33) and (288.14,162.67) .. (266.27,162.67) .. controls (244.4,162.67) and (226.68,134.33) .. (226.68,99.38) -- cycle ;
+%	%Shape: Ellipse [id:dp5997979826300346] 
+%	\draw  [fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=1 ] (362.64,100.78) .. controls (362.64,65.83) and (380.37,37.49) .. (402.24,37.49) .. controls (424.1,37.49) and (441.83,65.83) .. (441.83,100.78) .. controls (441.83,135.73) and (424.1,164.07) .. (402.24,164.07) .. controls (380.37,164.07) and (362.64,135.73) .. (362.64,100.78) -- cycle ;
+%	%Shape: Ellipse [id:dp7175957985808079] 
+%	\draw  [fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=1 ] (505.7,114.81) .. controls (505.7,87.61) and (519.58,65.55) .. (536.71,65.55) .. controls (553.83,65.55) and (567.71,87.61) .. (567.71,114.81) .. controls (567.71,142.02) and (553.83,164.07) .. (536.71,164.07) .. controls (519.58,164.07) and (505.7,142.02) .. (505.7,114.81) -- cycle ;
+%	%Straight Lines [id:da9382562350971808] 
+%	\draw    (133.29,-19.03) -- (266.27,36.09) ;
+%	%Straight Lines [id:da8538877694649378] 
+%	\draw    (266.27,36.09) -- (402.24,37.49) ;
+%	%Straight Lines [id:da415521229926751] 
+%	\draw    (402.24,37.49) -- (536.71,65.55) ;
+%	%Straight Lines [id:da5906511807851325] 
+%	\draw [fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=1 ] [dash pattern={on 0.84pt off 2.51pt}]  (266.27,16.65) -- (399.25,16.65) ;
+%	%Straight Lines [id:da7445210416359846] 
+%	\draw  [dash pattern={on 0.84pt off 2.51pt}]  (399.25,16.65) -- (536.71,114.81) ;
+%	
+%	% Text Node
+%	\draw (260.27,-0.47) node [anchor=north west][inner sep=0.75pt]    {\(\alpha \)};
+%	% Text Node
+%	\draw (375.75,-4.04) node [anchor=north west][inner sep=0.75pt]    {\(f_{p}^{i,j-1}( \alpha )\)};
+%	% Text Node
+%	\draw (515.12,113.56) node [anchor=north west][inner sep=0.75pt]    {\(f_{p}^{i,j}( \alpha )\)};
+%	% Text Node
+%	\draw (100.29,-38.98) node [anchor=north west][inner sep=0.75pt]    {\(H_{p}( K_{i-1})\)};
+%	% Text Node
+%	\draw (242.52,-40.98) node [anchor=north west][inner sep=0.75pt]    {\(H_{p}( K_{i})\)};
+%	% Text Node
+%	\draw (370.99,-39.38) node [anchor=north west][inner sep=0.75pt]    {\(H_{p}( K_{j-1})\)};
+%	% Text Node
+%	\draw (510.2,-39.98) node [anchor=north west][inner sep=0.75pt]    {\(H_{p}( K_{j})\)};
+%	% Text Node
+%	\draw (260,12.4) node [anchor=north west][inner sep=0.75pt]    {\(\bullet \)};
+%	% Text Node
+%	\draw (393,12.4) node [anchor=north west][inner sep=0.75pt]    {\(\bullet \)};
+%	% Text Node
+%	\draw (528,108.4) node [anchor=north west][inner sep=0.75pt]    {\(\bullet \)};
+%\end{tikzpicture}
 
 \begin{definicion}
-	Dada una filtración \(F\), decimos que un elemento \(\alpha \neq 0\) en \(H^p(K_i)\) nace en \(K_i\) si \(\alpha \not\in H^{p-1}(K_{i-1},F)\). Además, decimos que \(\alpha\) muere entrando en \(K_j\) si se fusiona con una clase proveniente de un nivel anterior cuando se desplaza de \(K_j\) a \(K_{j-1}\); es decir, si \(f_{i,j-1}^p(\alpha) \not\in H^{p-1}(K_{i-1},F)\) pero \(f_{i,j}^p(\alpha) \in H^{p-1}(K_j,F)\).
+	Dada una filtración \(\mathcal{F}\), decimos que un elemento \(\alpha \neq 0\) en \(H^p(K_i)\) \textbf{nace} en \(K_i\) si \(\alpha \not\in H^{p-1}(K_{i-1},\mathcal{F})\). Además, decimos que \(\alpha\) \textbf{muere} entrando en \(K_j\) si se fusiona con una clase proveniente de un nivel anterior cuando se desplaza de \(K_j\) a \(K_{j-1}\); es decir, si \(f_{i,j-1}^p(\alpha) \not\in H^{p-1}(K_{i-1},\mathcal{F})\) pero \(f_{i,j}^p(\alpha) \in H^{p-1}(K_j,\mathcal{F})\).
 \end{definicion}
 
 \section{Representación de la homología persistente}
@@ -293,7 +291,7 @@ En la práctica generalmente trabajaremos con módulos de persistencia que cumpl
 	Para concluir, consideremos \(k > N\). En dicho caso, cada \(\lambda_l\) es de grado al menos \(k - N\), pues el grado maximal de \(e_l\) es \(N\). Luego \(x = t^{k-N}x'\), donde \(x'\) es homogéneo de grado \(N\). Como \(0 = \mu(x) = t^{k-N} \mu(x')\), entonces \(x' \in \ker \mu\). Por la segunda parte de la demostración, concluimos que \(x'\) es generado por \(H\) y por tanto, \(x\) también.
 \end{proof}
 
-Para los siguientes dos lemas, fijaremos el \(R[t]\)módulo graduado finitamente presentado \(\mathbf{M} = \oplus_{i \in \N} M_i\) junto con la aplicación \(\mu : R[t]^n \to \mathbf{M}\) cuyo núcleo es finitamente generado. Consideremos además el sistema de generadores \(G = \{g_1, \ldots, g_n\}\) de \(\mathbf{M}\) y sea \(H = \{h_1, \ldots, h_m\}\) un sistema de generadores de \(\ker \mu\). Además, consideremos que tanto los elementos de \(G\) como de \(H\) son homogéneos del grado del respectivo módulo. Finalmente, vamos a asumir que dichos elementos están ordenados por grado en orden no decreciente.
+Para los siguientes dos lemas, fijaremos el \(R[t]\)-módulo graduado finitamente presentado \(\mathbf{M} = \oplus_{i \in \N} M_i\) junto con la aplicación \(\mu : R[t]^n \to \mathbf{M}\) cuyo núcleo es finitamente generado. Consideremos además el sistema de generadores \(G = \{g_1, \ldots, g_n\}\) de \(\mathbf{M}\) y sea \(H = \{h_1, \ldots, h_m\}\) un sistema de generadores de \(\ker \mu\). Además, consideremos que tanto los elementos de \(G\) como de \(H\) son homogéneos del grado del respectivo módulo. Finalmente, vamos a asumir que dichos elementos están ordenados por grado en orden no decreciente.
 
 \begin{lema}
 	Cada \(M_i\) de \(\mathbf{M}\) está finitamente presentado como un \(R\)-módulo.
@@ -381,6 +379,22 @@ Para los siguientes dos lemas, fijaremos el \(R[t]\)módulo graduado finitamente
 	\draw (0,.1) -- (-.1,.1) -- node[left]{\(H_0\)} (-.1,.8) -- (0,.8);
 \end{tikzpicture}
 \end{center}
+
+\section{Estabilidad de los diagramas de persistencia}
+
+\begin{definicion}
+	Sea \(X\) un espacio topológico Hausdorff no vacío. Diremos que \(X\) es una \textbf{\(m\)-variedad} 
+	si cada punto de \(X\) tiene un entorno homeomorfo a un subconjunto abierto de \(\R^m\) con la 
+	topología usual. Análogamente, diremos que \(X\) es una \textbf{\(m\)-variedad con borde} si 
+	cada punto tiene un entorno homeomorfo al semiespacio 
+	\(\mathbb{H}^m = \{ (x_1, x_2, \ldots,x_m) \in \R^m : x_i \geq 0,\ 1 \leq i \leq m \}\).
+\end{definicion}
+\begin{observacion}
+	Nótese que toda \(m\)-variedad es una \(m\)-variedad con borde. Para verlo, consideremos \(x\) 
+	en la \(m\)-variedad y un entorno homeomorfo a un subconjunto abierto de \(\R^m\). Entonces, 
+	tiene un entorno abierto homeomorfo a cualquier bola abierta de \(\R^m\) y en particular, 
+	a una contenida en \(\mathbb{H}\).
+\end{observacion}
 
 \endinput
 %--------------------------------------------------------------------

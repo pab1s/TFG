@@ -23,7 +23,7 @@ vistos en la asignatura de Álgebra Moderna y complementada con los contenidos d
 	M \rightarrow M\) con \((r, m) \to rm\) tal que dados \(r,r' \in R\), \(m,m' \in A\)
 	se tiene
 	\begin{enumerate}
-		\item \((r+r') a = r m + r' m\),
+		\item \((r+r') m = r m + r' m\),
 		
 		\item \((rr') m = r (r' m)\),
 		
@@ -90,12 +90,12 @@ De la definición anterior se deduce que \(N\) es un \(R\)-módulo.
 	Sea \(M\) un \(R\)-módulo y sean \(S\) un subconjunto de \(M\). Sea
 	\(\langle S \rangle\) el submódulo formado por la intersección de todos los
 	submódulos de \(M\) que contienen a \(S\). Diremos entonces que \(\langle S \rangle\)
-	es el \textbf{submódulo generado por \(S\)}.
+	es el \textbf{submódulo generado por \(S\)} y los elementos de $S$ los llamaremos \textbf{generadores} de \(\langle S \rangle\).
 \end{definicion}
 
 \begin{definicion}
 	Sea \(M\) un \(R\)-módulo. Un submódulo \(N\) de \(M\) es \textbf{finitamente generado}
-	si existe un subconjunto finito \(A \subset M\) tal que \(N = \langle A \rangle\).
+	si existe un subconjunto finito \(S \subset M\) tal que \(N = \langle S \rangle\).
 \end{definicion}
 
 \begin{definicion}
@@ -319,7 +319,7 @@ llamaremos \textbf{proyección canónica} de \(N\).
 	todos los elementos de torsión de \(M\).
 \end{definicion}
 \begin{teorema}
-	[Descomposición cíclica primaria] \label{teo:desc-cicl-prim} Sea \(R\) un DIP y sea
+	[Descomposición cíclica primaria] \label{teo:desc-cicl-prim} Sea \(R\) un dominio de ideales principales y sea
 	\(M\) un \(R\)-módulo finitamente generado. Entonces \(M\) se descompone como la
 	suma directa
 	\[
@@ -332,6 +332,9 @@ llamaremos \textbf{proyección canónica} de \(N\).
 	generados por \(r_{1}, \ldots, r_{k}\in R\) están determinados de manera única
 	salvo el orden por \(M\).
 \end{teorema}
+\begin{ejemplo}
+	Consideremos un espacio vectorial $V$. Entonces podemos considerar, por ejemplo, su base canónica y generar todo $V$ a partir de ella. En consecuencia, $V$ es un módulo libre. Además, aplicando el teorema de \nameref{teo:desc-cicl-prim}, es claro que la parte libre de la descomposición es isomorfa a $V$ y por tanto $V$ carece de parte cíclica.
+\end{ejemplo}
 
 \section{Sucesiones exactas}
 
@@ -343,7 +346,7 @@ llamaremos \textbf{proyección canónica} de \(N\).
 	\cdots \xrightarrow{\alpha_{i-2}}A_{i-1}\xrightarrow{\alpha_{i-1}}A_{i}\xrightarrow
 	{\alpha_{i}}A_{i+1}\xrightarrow{\alpha_{i+1}}\cdots
 	\]
-	es \textbf{exacta} en \(A_{i}\) cuando \(\im \alpha_{i}= \ker \alpha_{i+1}\).
+	es \textbf{exacta} en \(A_{i}\) cuando \(\im \alpha_{i}= \ker \alpha_{i+1}\). Si la sucesión es exacta para todo $i \in \Z$, diremos que la sucesión es \textbf{exacta larga} o simplemente exacta.
 \end{definicion}
 
 \begin{definicion}
@@ -581,14 +584,15 @@ En esta sección haré una breve introducción de las categorías apoyándome en
 	\(f\) es una \textbf{equivalencia} en \(\mathcal{C}\) si existe en \(\mathcal{C}\) otro
 	morfismo \(g \in \hom(B,A)\) tal que \(g \circ f = \id_{A}\) y \(f \circ g = \id_{B}\).
 \end{definicion}
+\begin{observacion}
+	Nótese que si \(f \in \hom(A,B)\) es una equivalencia en \(\mathcal{C}\),
+	\(g \in \hom(B,A)\) debe ser única. En efecto, si suponemos que existe
+	\(g' \in \hom(B,A)\) tal que \(g' \circ f = \id_{A}\), entonces \(g = g'\circ f \circ
+	g = g' \circ \id_{B}= g'\).
+\end{observacion}
 
-Nótese que si \(f \in \hom(A,B)\) es una equivalencia en \(\mathcal{C}\),
-\(g \in \hom(B,A)\) debe ser única. En efecto, si suponemos que existe
-\(g' \in \hom(B,A)\) tal que \(g' \circ f = \id_{A}\), entonces \(g = g'\circ f \circ
-g = g' \circ \id_{B}= g'\).
-
-Dentro de la teoría de categorías los funtores tienen un papel principal, pues
-nos va a permitir llevar objetos y morfismos de una categoría a otra preservando
+Dentro de la teoría de categorías, los funtores tienen un papel principal, pues
+nos van a permitir llevar objetos y morfismos de una categoría a otra preservando
 identidades y composiciones.
 
 \begin{definicion}
@@ -707,7 +711,7 @@ se sigue de existir el homomorfismo identidad de módulos.
 	diferenciales a la categoría de módulos.
 \end{proposicion}
 \begin{proof}
-	Por la definición dada del grupo de homología, es claro que la función objeto
+	Por la definición dada del módulo de homología, es claro que la función objeto
 	\(H\) asigna a cada grupo diferencial \(C\) un grupo de homología \(H(C;R)\). En cuanto
 	a la función de morfismos, la identidad de grupos diferenciales se preserva
 	pues \(H(\id)([c]) = \id_{*}([c]) = [\id(c)] = [c]\) para todo \(c \in C\). Además,
@@ -1010,7 +1014,7 @@ de cadenas.
 	\(\widetilde{C}_{\bullet}\) tal que \(\widetilde{C}_{n}= C_{n}\) para todo \(n \geq
 	0\), \(\widetilde{C}_{n}= 0\) para todo \(n < -1\) y \(\widetilde{C}_{-1}=R\). Consideremos
 	también \(\widetilde{\partial}_{n}= \partial_{n}\) para todo \(n \geq 1\) y \(\widetilde
-	{\partial}_{0}= \epsilon\). Llamaremos a este complejo \textbf{complejo
+	{\partial}_{0}= \varepsilon\). Llamaremos a este complejo \textbf{complejo
 		aumentado} de \(C_{\bullet}\).
 \end{definicion}
 %
@@ -1111,12 +1115,7 @@ de la n-ésima homología, mientras que los coeficientes de torsión \(\{m_{i}\}
 los órdenes de los sumandos cíclicos de torsión en la descomposición de homología
 y reflejan la estructura torsional de \(H_{n}(C_{\bullet};R)\).
 
-Aunque el estudio de la homología con coeficientes en \(\Z\) es ampliamente extendido,
-en ciertas situaciones resulta de utilidad emplear coeficientes más simples. Estos
-coeficientes, a pesar de proporcionar menos información, facilitan los cálculos y
-suelen ser suficientes para alcanzar los objetivos específicos de nuestro análisis.
-Por este motivo, trabajaremos con la noción de homología sobre un \(R\)-módulo,
-utilizando en ocasiones espacios vectoriales como anillo de coeficientes.
+La homología con coeficientes en \(\mathbb{Z}\) es fundamental en topología algebraica, proporcionando una rica estructura para el estudio de espacios topológicos. Sin embargo, el uso de coeficientes en otros anillos, particularmente en cuerpos, puede simplificar significativamente los cálculos y aún así ofrecer información valiosa para ciertas aplicaciones. La elección de un cuerpo como coeficientes, por ejemplo \(\Z_2\), reduce la complejidad de los cálculos al evitar problemas relacionados con la torsión, facilitando la manipulación algebraica. Al estudiar la homología con estos coeficientes alternativos, aunque se obtiene una visión menos detallada del espacio, a menudo es suficiente para resolver problemas específicos dentro de un contexto dado, tales como la detección de características topológicas esenciales o la simplificación de la clasificación de espacios topológicos.
 
 \endinput
 %--------------------------------------------------------------------

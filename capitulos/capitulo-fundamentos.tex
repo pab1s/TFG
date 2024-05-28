@@ -98,6 +98,23 @@ De la definición anterior se deduce que \(N\) es un \(R\)-módulo.
 	si existe un subconjunto finito \(S \subset M\) tal que \(N = \langle S \rangle\).
 \end{definicion}
 
+\begin{lema}
+	Sea \( M \) un \( R \)-módulo. \( M \) es finitamente generado por \( n \) elementos si, y sólo si, existe un epimorfismo \( \phi : R^n \to M \).
+\end{lema}
+%\begin{proof}
+%	Sea \( M \) un módulo generado por un conjunto finito de elementos \( \{m_1, \ldots, m_n\} \). Consideremos el homomorfismo \( \phi: R^n \rightarrow M \) definido por
+%	\[
+%	\phi(r_1, \ldots, r_n) = \sum_{i=1}^n r_i m_i.
+%	\]
+%	Este homomorfismo \( \phi \) es claramente sobreyectivo, ya que cada elemento \( m \) en \( M \) puede ser expresado como \( \phi(r_1, \ldots, r_n) \) para algunos \( r_1, \ldots, r_n \in R \).
+%	
+%	Por otro lado, si existe un homomorfismo sobreyectivo \( \phi: R^n \rightarrow M \), entonces, para cada \( m \in M \) existe una \( n \)-tupla \( (r_1, \ldots, r_n) \) en \( R^n \) tal que \( \phi(r_1, \ldots, r_n) = m \). Los elementos \( \phi(e_i) \), donde \( e_i \) es el \( i \)-ésimo vector de la base canónica de \( R^n \), generan \( M \). De aquí se sigue que \( M \) es finitamente generado.
+%\end{proof}
+
+\begin{definicion}
+	Sea \( M \) un \( R \)-módulo finitamente generado por \( n \) elementos y sea \( \phi : R^n \to M \) un epimorfismo. Diremos que \( M \) es \textbf{finitamente presentado} si \( \ker \phi \) es finitamente generado.
+\end{definicion}
+
 \begin{definicion}
 	Sean \(M\), \(N\) \(R\)-módulos. Definimos el \textbf{homomorfismo de \(R\)-módulos}
 	de \(M\) a \(N\) como la aplicación \(\alpha: M \rightarrow N\) tal que
@@ -157,7 +174,7 @@ M\) tal que \(\gamma \circ \alpha = \id_{M}\). De manera análoga, el homomorfis
 Si \(T \subseteq N\), el conjunto \(\alpha^{-1}T = \{ m \in M \ : \ \alpha(m) \in T
 \}\) es un submódulo de \(M\), llamado la \textbf{imagen inversa} (completa) de \(T\).
 En particular, \(\ker \alpha = \alpha^{-1}0\), donde \(0\) denota el submódulo de
-\(N\) que consiste solo del elemento cero.
+\(N\) que consiste solo en el elemento cero.
 
 Sea \(T \subseteq N\) donde \(N\) es un \(R\)-módulo, llamaremos \textbf{inclusión} o
 \textbf{inyección canónica} al homomorfismo \(i: T \rightarrow N\) tal que \(i(t) =
@@ -247,12 +264,12 @@ llamaremos \textbf{proyección canónica} de \(N\).
 	Definimos el \textbf{producto directo} o \textbf{producto directo externo} de
 	\(\{M_{i}\}_{i \in I}\) como el producto cartesiano
 	\[
-	\prod_{i \in I}M_{i}= \{(x_{i})_{i \in I}: x_{i}\in M_{i}\}
+	\prod_{i \in I}M_{i}= \{(x_{i})_{i \in I}: x_{i}\in M_{i}\},
 	\]
 	donde las operaciones se definen componente a componente:
 	\begin{align*}
-		(x_{i})_{i \in I}+ (y_{i})_{i \in I} & = (x_{i}+y_{i})_{i \in I} \\
-		r(x_{i})_{i \in I}                   & = (rx_{i})_{i \in I}
+		(x_{i})_{i \in I}+ (y_{i})_{i \in I} & = (x_{i}+y_{i})_{i \in I}, \\
+		r(x_{i})_{i \in I}                   & = (rx_{i})_{i \in I},
 	\end{align*}
 	para todo \(r \in R\), \(x_{i},y_{i}\in M_{i}\), \(i \in I\).
 \end{definicion}
@@ -263,7 +280,7 @@ llamaremos \textbf{proyección canónica} de \(N\).
 	\(\{M_{i}\}_{i \in I}\) como el submódulo de \(\prod_{i \in I}M_{i}\) tal que
 	\[
 	\bigoplus_{i \in I}M_{i}= \{(x_{i})_{i \in I}: x_{i}= 0 \ \text{p.c.t.}\ i \in
-	I\}
+	I\}.
 	\]
 \end{definicion}
 \begin{nota}
@@ -275,8 +292,7 @@ llamaremos \textbf{proyección canónica} de \(N\).
 	Sea \(B\) un conjunto y sea \(M\) el \(R\)-módulo tal que \(M = \bigoplus_{b \in B}R_{b}\)
 	donde \(R_{b}=R\) para todo \(b \in B\). Llamaremos a dicho \(R\)-módulo el \textbf{\(R\)-módulo
 		libre de base \(B\)} y lo notaremos por \(R \langle B \rangle\). De esta forma, cada
-	\(x \in R \langle B \rangle\) se representa por \(x = \sum_{b\in B}\lambda_{b}\cdot
-	b\) donde \(\lambda_{b}\in R\) son coeficientes no nulos en un número finito de posiciones
+	\(x \in R \langle B \rangle\) se representa por \(x = \sum_{b\in B}\lambda_{b} b\) donde \(\lambda_{b}\in R\) son coeficientes no nulos en un número finito de posiciones
 	\(b\).
 \end{definicion}
 
@@ -521,7 +537,7 @@ En esta sección haré una breve introducción de las categorías apoyándome en
 
 \begin{definicion}
 	Una \textbf{categoría} \(\mathcal{C}\) es una tripleta
-	\((\mathcal{O}, \hom, \circ)\) formada por
+	\((\mathcal{O}, \hom, \circ)\) formada por:
 	\begin{enumerate}
 		\item Una clase \(\mathcal{O}\), cuyos elementos denominamos \textbf{objetos} de
 		\(\mathcal{C}\) y notamos por \(Obj(\mathcal{C})\).
@@ -579,6 +595,18 @@ En esta sección haré una breve introducción de las categorías apoyándome en
 	\end{itemize}
 \end{ejemplo}
 
+También es posible encontrar colecciones propias de una categoría que siguen manteniendo dicha estructura.
+
+\begin{definicion}
+	Una \textbf{subcategoría} \(\mathcal{D}\) de una categoría \(\mathcal{C}\) consiste en:
+	\begin{enumerate}
+		\item Una subclase de objetos de \(\mathcal{C}\), denotada por \(Obj(\mathcal{D})\), tal que cada objeto de \(\mathcal{D}\) es también un objeto de \(\mathcal{C}\).
+		\item Para cada par de objetos \(A, B \in Obj(\mathcal{D})\), un subconjunto de morfismos \(\hom_{\mathcal{D}}(A, B) \subseteq \hom_{\mathcal{C}}(A, B)\) cuyos elementos son también morfismos en \(\mathcal{C}\).
+		\item La ley de composición en \(\mathcal{D}\) es inducida por la ley de composición en \(\mathcal{C}\), y esta composición es cerrada en \(\mathcal{D}\).
+	\end{enumerate}
+	Además, diremos que \(\mathcal{D}\) es una \textbf{subcategoría plena} si para cada par de objetos \(A, B \in Obj(\mathcal{D})\), \(\hom_{\mathcal{D}}(A, B) = \hom_{\mathcal{C}}(A, B)\).
+\end{definicion}
+
 \begin{definicion}
 	Sea \(f \in \hom(A,B)\) un morfismo en la categoría \(\mathcal{C}\). Diremos que
 	\(f\) es una \textbf{equivalencia} en \(\mathcal{C}\) si existe en \(\mathcal{C}\) otro
@@ -597,8 +625,8 @@ identidades y composiciones.
 
 \begin{definicion}
 	Sean \(\mathcal{C}, \mathcal{D}\) dos categorías. Un \textbf{funtor covariante} de
-	\(\mathcal{C}\) a \(\mathcal{D}\) es una pareja de funciones \textit{denotadas por
-		la misma letra \(T\)} tal que:
+	\(\mathcal{C}\) a \(\mathcal{D}\) es una pareja de funciones denotadas por
+		la misma letra \(T\) tal que:
 	\begin{enumerate}
 		\item Una \textbf{función objeto} que asigna a cada objeto
 		\(C \in \mathcal{C}\) un objeto \(T(C) \in \mathcal{D}\).
@@ -620,6 +648,10 @@ identidades y composiciones.
 Es decir, un funtor covariante \(T: \mathcal{C}\rightarrow \mathcal{D}\) es una
 aplicación que preserva el rango, dominio, identidades y composiciones de
 \(\mathcal{C}\) en \(\mathcal{D}\).
+
+\begin{definicion}
+	Sean \(\mathcal{C}, \mathcal{D}\) dos categorías. Diremos que \(\mathcal{C}\) y \(\mathcal{D}\) son \textbf{isomorfas} si existen funtores covariantes $F: \mathcal{C} \to \mathcal{D}$ y $G: \mathcal{D} \to \mathcal{C}$ tales que $G \circ F = \id_\mathcal{C}$ y  $F \circ G = \id_\mathcal{D}$.
+\end{definicion}
 
 %\section{Transformación natural}
 %
@@ -682,10 +714,10 @@ d'f(c) = f(dc) = f(b),
 \]
 y por tanto, \(f(b) \in \operatorname{im}d'\).
 
-Los grupos diferenciales definen una categoría donde los objetos son los módulos
+Los grupos diferenciales definen una categoría $\mathcal{C}$ donde los objetos son los módulos
 diferenciales y los morfismos son los homomorfismos de módulos diferenciales. Tomemos
 como ley de composición interna la composición de dichos homomorfismos.
-Claramente es asociativa pues si \(C, C', \bar{C}, \tilde{C}\in \obj()\), y \(f\colon
+Claramente es asociativa pues si \(C, C', \bar{C}, \tilde{C}\in \obj(\mathcal{C})\), y \(f\colon
 C \to C'\), \(g \colon C' \to \bar{C}\), \(h\colon \bar{C}\to \tilde{C}\), entonces
 \(h \circ (g \circ f)\) se cumple si, y sólo si,
 \begin{gather*}
@@ -740,8 +772,7 @@ se sigue de existir el homomorfismo identidad de módulos.
 \end{observacion}
 Un complejo \(C_{\bullet}\) es por tanto una sucesión doblemente infinita
 \[
-C_{\bullet}: \cdots \rightarrow C_{1}\rightarrow C_{0}\rightarrow C_{-1}\rightarrow
-\cdots
+C_{\bullet}: \cdots \rightarrow C_{1} \xrightarrow{\partial_1} C_{0} \xrightarrow{\partial_0} C_{-1} \rightarrow \cdots
 \]
 donde toda composición de homomorfismos de dicha familia es el homomorfismo nulo.
 La \textbf{homología} \(H(C_{\bullet})\) es la familia de \(R\)-módulos
@@ -789,7 +820,7 @@ que son \textbf{homólogos}, es decir, \(c \sim c'\).
 		\phi: H_{n}\left( \bigoplus_{i \in I}C_{\bullet}^{i}\right) \rightarrow \bigoplus_{i \in I}H_{n}(C_{\bullet}^{i}) : [(c_{i})] \mapsto ([c_{i}]), \\
 		\psi: \bigoplus_{i \in I}H_{n}(C_{\bullet}^{i}) \rightarrow H_{n}\left( \bigoplus_{i \in I}C_{\bullet}^{i}\right) : ([c_{i}]) \mapsto [(c_{i})],
 	\end{align*}
-	están bien definidos y son inversos mutuos.
+	están bien definidos y son inversos uno del otro.
 	
 	En primer lugar, para comprobar que dichas aplicaciones están bien definidas, observemos
 	que \([(c_{i})] = [(c_{i}')]\) si, y sólo si, \([0] = [(c_{i}- c_{i}')]\). Esto
@@ -805,10 +836,6 @@ que son \textbf{homólogos}, es decir, \(c \sim c'\).
 	Además, \(\phi\) lleva la clase de equivalencia \([(c_{i})]\) a \(([c_{i}])\),
 	mientras que \(\psi\) lleva \(([c_{i}])\) a \([(c_{i})]\), lo que demuestra que son inversos
 	el uno del otro.
-	
-	Por lo tanto, \(\phi\) es un isomorfismo con \(\psi\) como su inverso, mostrando que
-	\(\bigoplus_{i \in I}H_{n}(C_{\bullet}^{i}) \cong H_{n}\left( \bigoplus_{i \in
-		I}C_{\bullet}^{i}\right)\).
 \end{proof}
 
 \begin{definicion}
@@ -819,7 +846,11 @@ que son \textbf{homólogos}, es decir, \(c \sim c'\).
 	\(\partial_{n}'f_{n}= f_{n-1}\partial_{n}\) para todo \(n \in \Z\).
 \end{definicion}
 \begin{equation}
-	\label{chaincomplex}\xymatrix{ \cdots & C_{n-1} \ar[l] \ar[d]^{f_{n-1}} \ar@{..>}[dr] & C_n \ar[l]_{\partial_{n}} \ar[d]^{f_n} \ar@{..>}[dr] & C_{n+1} \ar[l]_{\partial_{n+1}} \ar[d]^{f_{n+1}} & \cdots \ar[l] \\ \cdots & C'_{n-1} \ar[l] & C'_n \ar[l]^{\partial'_{n}} & C'_{n+1} \ar[l]^{\partial'_{n+1}} & \cdots \ar[l] }
+	\label{chaincomplex}
+	\xymatrix{
+		\cdots \ar@{->}[r] & C_{n+1} \ar@{->}[r]^{\partial_{n+1}} \ar@{->}[d]^{f_{n+1}} & C_n \ar@{->}[r]^{\partial_{n}} \ar@{->}[d]^{f_n} & C_{n-1} \ar@{->}[r] \ar@{->}[d]^{f_{n-1}} & \cdots \\
+		\cdots \ar@{->}[r] & C'_{n+1} \ar@{->}[r]^{\partial'_{n+1}} & C'_n \ar@{->}[r]^{\partial'_{n}} & C'_{n-1} \ar@{->}[r] & \cdots
+	}
 \end{equation}
 Cuando se sobrentienda del contexto, notaremos simplemente por \(\partial\) a los correspondientes
 \(\partial_{n}\) y \(\partial_{n}'\).
@@ -836,10 +867,9 @@ para cada \(n \in \Z\), ya que son homomorfismos de módulos diferenciales. En
 consecuencia, \(h \circ (g \circ f) = (h \circ g) \circ f\).
 
 Sea \(f : C_{\bullet} \to C_{\bullet}'\) un morfismo de complejos de cadenas.
-Definimos \(H_{n}(f) = f_{*} : H_{n}(C_{\bullet}) \to H_{n}(C_{\bullet}')\) tal
-que
+Definimos \(H_{n}(f) = f_{*} : H_{n}(C_{\bullet}) \to H_{n}(C_{\bullet}')\) dado que 
 \[
-f_{*}([c]) = f_{*}(c + \partial C_{n+1}) = fc + \partial C'_{n+1}.
+f_{*}([c]) = f_{*}(c + \partial C_{n+1}) = fc + \partial C'_{n+1} = [f(c)].
 \]
 Entonces \(f_{*}\) es un homomorfismo de \(R\)-módulos, como recoge el siguiente resultado.
 
@@ -873,7 +903,7 @@ Entonces \(f_{*}\) es un homomorfismo de \(R\)-módulos, como recoge el siguient
 	es una familia de homomorfismos de módulos \(s_{n}: C_{n}\rightarrow C_{n+1}'\)
 	para cada \(n \in \Z\) tal que
 	\begin{equation}
-		\partial_{n+1}'s_{n}+ s_{n-1}\partial_{n}= f_{n}- g_{n}
+		\partial_{n+1}'s_{n}+ s_{n-1}\partial_{n}= f_{n}- g_{n}.
 	\end{equation}
 	Diremos entonces que \(f\) y \(g\) son \textbf{algebraicamente homotópicas} y escribiremos
 	\(f \simeq g\).
@@ -883,7 +913,7 @@ Entonces \(f_{*}\) es un homomorfismo de \(R\)-módulos, como recoge el siguient
 	\label{teo:homot-cad-misma-homologia} Si \(s\) es una homotopía de cadenas entre
 	\(f,g: C_{\bullet}\rightarrow C_{\bullet}'\), entonces
 	\[
-	H_{n}(f) = H_{n}(g) : H_{n}(C_{\bullet}) \rightarrow H_{n}(C_{\bullet}')
+	H_{n}(f) = H_{n}(g) : H_{n}(C_{\bullet}) \rightarrow H_{n}(C_{\bullet}').
 	\]
 \end{teorema}
 \begin{proof}
@@ -1036,8 +1066,8 @@ de cadenas.
 	\(f: A \to C_{\bullet}\) tal que \(\varepsilon f = \id_{A}\) junto con una
 	homotopía \(s:{\id_C}_{\bullet}\rightarrow f \varepsilon\) donde
 	\({\id_C}_{\bullet}\simeq f \varepsilon\). En otras palabras, una homotopía
-	contráctil consiste en homomorfismos de módulos \(f: A \to C_{0}\) y
-	\(s_{n}: C_{n}\to C_{n+1}, n = 0, 1, \ldots\), tal que
+	contráctil consiste en homomorfismos de módulos \(f: A \to C_{0}\) y una homotopía de cadenas formada por los homomorfismos 
+	\(s_{n}: C_{n}\to C_{n+1} \) donde $n \in \N \cup \{0\}$ tal que
 	
 	\[
 	\varepsilon f = \id_{A}, \quad \partial_{1}s_{0}+ f \varepsilon = \id_{C_0},
@@ -1046,7 +1076,7 @@ de cadenas.
 \end{definicion}
 
 Podemos extender el complejo estableciendo \(C_{-1}= A\), \(\partial_{0}= \varepsilon
-: C_{0}\to C_{-1}\) y \(s_{-1}= f\). Aplicando la \autoref{def:contr_homotopy}, \(s:{\id_C}
+: C_{0}\to C_{-1}\) y \(s_{-1}= f\). Aplicando la definición anterior, \(s:{\id_C}
 _{\bullet}\rightarrow 0\) es una homotopía de cadenas. Si
 \(\varepsilon: C_{\bullet}\to A\) tiene una homotopía contráctil, sus grupos de homología
 son isomorfos por \(\varepsilon_{*}: H_{0}(C_{\bullet}) \rightarrow A\) para \(n = 0\)
@@ -1077,7 +1107,7 @@ _{m_k},
 \]
 donde \(\beta\) es el rango de \(G\) y cada \(\mathbb{Z}_{m_i}\) es un grupo cíclico
 de orden \(m_{i}\), donde \(m_{i}\) divide a \(m_{i+1}\) para cada \(i \in \{1, \ldots,
-k\}\). Aplicando este teorema al n-ésimo módulo de homología \(H_{n}(C_{\bullet})\),
+k\}\). Aplicando este teorema al $n$-ésimo módulo de homología \(H_{n}(C_{\bullet})\),
 obtenemos que
 \[
 H_{n}(C_{\bullet}) \cong \mathbb{Z}^{\beta_n}\oplus \mathbb{Z}_{m_1}\oplus \ldots

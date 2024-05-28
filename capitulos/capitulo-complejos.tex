@@ -49,10 +49,9 @@ $T(x) = x - a_{0}$ es una traslación que lleva el plano $P$ al subespacio
 vectorial de $\mathbb{R}^{N}$ con base
 $a_{1}-a_{0}, a_{2}-a_{0}, \ldots, a_{p}-a_{0}$. Si componemos dicha transformación
 con una aplicación lineal que lleve cada vector $a_{1}-a_{0}, a_{2}-a_{0}, \ldots
-, a_{p}-a_{0}$ a los primeros $N$ vectores de la base usual, obtenemos una
+, a_{p}-a_{0}$ a los primeros $N$ vectores de la base usual $\{e_1, \ldots, e_N\}$, obtenemos una
 transformación afín $S: P \rightarrow \R^{N}\times \{0\}$ tal que
-$S(a_{i}) = (0, \overset{i-1}{\ldots}, 0, 1, 0, \overset{i+1}{\ldots}, 0)$ con
-$i \in \{1, \ldots, p\}$.
+$S(a_{i}) = e_i$ para cada $i \in \{1, \ldots, p\}$.
 
 \begin{definicion}
 	\label{def:simplex} Sea $\{a_{0}, \ldots, a_{p}\}$ un conjunto de puntos afínmente
@@ -66,6 +65,82 @@ $i \in \{1, \ldots, p\}$.
 	\textbf{$i$-ésima coordenada baricéntrica} de $x$ respecto a $a_{0}, a_{1}, \ldots
 	, a_{p}$.
 \end{definicion}
+
+\begin{figure}[h]
+	\begin{subfigure}
+		{.24\textwidth}
+		\centering
+		\begin{tikzpicture}
+			% 3-símplice
+			\node[fill, circle, inner sep=1.5pt] (n0) at (0.0, 0.0) {}; % root
+			
+			% DRAW NODES
+			\draw (n0);
+		\end{tikzpicture}
+		\caption{0-símplice}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}
+		{.24\textwidth}
+		\centering
+		\begin{tikzpicture}
+			% 3-símplice
+			\node[fill, circle, inner sep=1.5pt] (n0) at (0.0, 0.0) {}; % root
+			\node[fill, circle, inner sep=1.5pt] (n1) at (1.0, 0.0) {}; % extreme
+			
+			% DRAW TREE
+			\path[draw] (n0)--(n1);
+			
+			% DRAW NODES
+			\draw (n0); \draw (n1);
+		\end{tikzpicture}
+		\caption{1-símplice}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}
+		{.24\textwidth}
+		\centering
+		\begin{tikzpicture}
+			% 3-símplice
+			\node[fill, circle, inner sep=1.5pt] (n0) at (0.0, 0.0) {}; % root
+			\node[fill, circle, inner sep=1.5pt] (n1) at (1.0, 0.0) {}; % extreme
+			\node[fill, circle, inner sep=1.5pt] (n2) at (0.5, 0.87) {}; % extreme
+			
+			% DRAW TREE
+			\fill[fill=gray!20] (n0.center)--(n1.center)--(n2.center); \path[draw] (n0)--(n1);
+			\path[draw] (n1)--(n2); \path[draw] (n2)--(n0);
+			
+			% DRAW NODES
+			\draw (n0); \draw (n1); \draw (n2);
+		\end{tikzpicture}
+		\subcaption{2-símplice}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}
+		{.24\textwidth}
+		\centering
+		\begin{tikzpicture}
+			% 3-símplice
+			\node[fill, circle, inner sep=1.5pt] (n0) at (0.0, 0.0) {}; % root
+			\node[fill, circle, inner sep=1.5pt] (n1) at (1.0, 0.0) {}; % extreme
+			\node[fill, circle, inner sep=1.5pt] (n2) at (0.5, 0.87) {}; % extreme
+			\node[fill, circle, inner sep=1.5pt] (n3) at (1.0, 0.4) {}; % inside
+			
+			% DRAW TREE
+			\fill[fill=gray!60] (n0.center)--(n1.center)--(n2.center); \fill[fill=gray!60]
+			(n0.center)--(n2.center)--(n3.center); \fill[fill=gray!60] (n0.center)--(n1.center)--(n3.center);
+			\fill[fill=gray!60] (n3.center)--(n1.center)--(n2.center); \path[draw] (n0)--(n1);
+			\path[draw] (n1)--(n2); \path[draw] (n2)--(n0); \path[draw] (n0)--(n3);
+			\path[draw] (n1)--(n3); \path[draw] (n2)--(n3);
+			
+			% DRAW NODES
+			\draw (n0); \draw (n1); \draw (n2); \draw (n3);
+		\end{tikzpicture}
+		\caption{3-símplice}
+	\end{subfigure}
+	\caption{Símplices de dimensión $0$, $1$, $2$ y $3$.}
+	\label{fig:simplex}
+\end{figure}
 
 \begin{proposicion}
 	Sea $\sigma$ un $k$-símplice definido como en \ref{def:simplex}. Entonces, para
@@ -143,81 +218,6 @@ En ocasiones, para dos símplices $\sigma$ y $\tau$, escribiremos
 $\tau \preceq \sigma$ si $\tau$ es cara de $\sigma$. En caso de ser cara propia,
 lo notaremos por $\tau \prec \sigma$.
 
-\begin{figure}[h]
-	\begin{subfigure}
-		{.24\textwidth}
-		\centering
-		\begin{tikzpicture}
-			% 3-símplice
-			\node[fill, circle, inner sep=1.5pt] (n0) at (0.0, 0.0) {}; % root
-			
-			% DRAW NODES
-			\draw (n0);
-		\end{tikzpicture}
-		\caption{0-símplice}
-	\end{subfigure}
-	\hfill
-	\begin{subfigure}
-		{.24\textwidth}
-		\centering
-		\begin{tikzpicture}
-			% 3-símplice
-			\node[fill, circle, inner sep=1.5pt] (n0) at (0.0, 0.0) {}; % root
-			\node[fill, circle, inner sep=1.5pt] (n1) at (1.0, 0.0) {}; % extreme
-			
-			% DRAW TREE
-			\path[draw] (n0)--(n1);
-			
-			% DRAW NODES
-			\draw (n0); \draw (n1);
-		\end{tikzpicture}
-		\caption{1-símplice}
-	\end{subfigure}
-	\hfill
-	\begin{subfigure}
-		{.24\textwidth}
-		\centering
-		\begin{tikzpicture}
-			% 3-símplice
-			\node[fill, circle, inner sep=1.5pt] (n0) at (0.0, 0.0) {}; % root
-			\node[fill, circle, inner sep=1.5pt] (n1) at (1.0, 0.0) {}; % extreme
-			\node[fill, circle, inner sep=1.5pt] (n2) at (0.5, 0.87) {}; % extreme
-			
-			% DRAW TREE
-			\fill[fill=gray!20] (n0.center)--(n1.center)--(n2.center); \path[draw] (n0)--(n1);
-			\path[draw] (n1)--(n2); \path[draw] (n2)--(n0);
-			
-			% DRAW NODES
-			\draw (n0); \draw (n1); \draw (n2);
-		\end{tikzpicture}
-		\subcaption{2-símplice}
-	\end{subfigure}
-	\hfill
-	\begin{subfigure}
-		{.24\textwidth}
-		\centering
-		\begin{tikzpicture}
-			% 3-símplice
-			\node[fill, circle, inner sep=1.5pt] (n0) at (0.0, 0.0) {}; % root
-			\node[fill, circle, inner sep=1.5pt] (n1) at (1.0, 0.0) {}; % extreme
-			\node[fill, circle, inner sep=1.5pt] (n2) at (0.5, 0.87) {}; % extreme
-			\node[fill, circle, inner sep=1.5pt] (n3) at (1.0, 0.4) {}; % inside
-			
-			% DRAW TREE
-			\fill[fill=gray!60] (n0.center)--(n1.center)--(n2.center); \fill[fill=gray!60]
-			(n0.center)--(n2.center)--(n3.center); \fill[fill=gray!60] (n0.center)--(n1.center)--(n3.center);
-			\fill[fill=gray!60] (n3.center)--(n1.center)--(n2.center); \path[draw] (n0)--(n1);
-			\path[draw] (n1)--(n2); \path[draw] (n2)--(n0); \path[draw] (n0)--(n3);
-			\path[draw] (n1)--(n3); \path[draw] (n2)--(n3);
-			
-			% DRAW NODES
-			\draw (n0); \draw (n1); \draw (n2); \draw (n3);
-		\end{tikzpicture}
-		\caption{3-símplice}
-	\end{subfigure}
-	\caption{Símplices de dimensión $0$, $1$, $2$ y $3$}
-	\label{fig:simplex}
-\end{figure}
 \begin{proposicion}
 	\label{prop:union-disjunta-simplices} Si $\sigma$ es un símplice, entonces es
 	unión disjunta del interior de todas sus caras.
@@ -467,6 +467,20 @@ Para ello fijemos un complejo simplicial finito $K$ en $\R^{N}$.
 	el homeomorfismo $h: |K| \rightarrow X$ es una \textbf{triangulación}.
 \end{definicion}
 
+\begin{definicion}
+	Sea \(X\) un espacio topológico Hausdorff no vacío. Diremos que \(X\) es una \textbf{\(m\)-variedad} 
+	si cada punto de \(X\) tiene un entorno homeomorfo a un subconjunto abierto de \(\R^m\) con la 
+	topología usual. Análogamente, diremos que \(X\) es una \textbf{\(m\)-variedad con borde} si 
+	cada punto tiene un entorno homeomorfo al semiespacio 
+	\(\mathbb{H}^m = \{ (x_1, x_2, \ldots,x_m) \in \R^m : x_i \geq 0,\ 1 \leq i \leq m \}\).
+\end{definicion}
+\begin{observacion}
+	Nótese que toda \(m\)-variedad es una \(m\)-variedad con borde. Para verlo, consideremos \(x\) 
+	en la \(m\)-variedad y un entorno homeomorfo a un subconjunto abierto de \(\R^m\). Entonces, 
+	tiene un entorno abierto homeomorfo a cualquier bola abierta de \(\R^m\) y en particular, 
+	a una contenida en \(\mathbb{H}\).
+\end{observacion}
+
 \section{Celdas y CW-complejos}
 
 A continuación presentamos una generalización del concepto de complejo
@@ -478,7 +492,7 @@ Iniciaremos esta sección estableciendo la notación que utilizaremos. Denotarem
 la \textbf{bola abierta} centrada en $x_{0}$ y de radio $r$ en el espacio
 $\mathbb{R}^{N}$ con la topología usual por el conjunto
 $B_{r}(x_{0}) = \{ x \in \R^{N} : \| x - x_{0} \| < r \}$. Además, para
-cualquier subconjunto $U$ de $\R^{N}$, definiremos su \textbf{clausura} como
+cualquier subconjunto $U$ de $\R^{N}$, denotaremos su \textbf{clausura} como
 $\overline{U}$ y su \textbf{frontera} como $\bd U$. Por último, la \textbf{esfera
 	unidad} de dimensión $n$ será representada simplemente como $\sphere^{n-1}$.
 
@@ -518,7 +532,7 @@ simpliciales no son más que un caso particular de los CW-complejos.
 		\includegraphics[width=10cm]{img/proof-cell.png}
 		\caption{Esquema que muestra la idea de que cada rayo tan sólo tiene un
 			punto en la frontera en la demostración de la
-			\autoref{prop:compact-convex-closed-cell}. Recurso obtenido de \cite{lee2010introduction}.}
+			\autoref{prop:compact-convex-closed-cell}. Fuente \cite{lee2010introduction}.}
 	\end{figure}
 	A continuación demostraremos que cada semirrecta cerrada que comienza en el origen
 	interseca $\bd D$ en exactamente un punto. Sea $R$ tal semirrecta cerrada. Dado
@@ -529,7 +543,7 @@ simpliciales no son más que un caso particular de los CW-complejos.
 	desde $0$ hasta $x_{0}$ consta enteramente de puntos interiores de $D$,
 	excepto $x_{0}$ mismo. Cualquier punto en este segmento que no sea $x_{0}$ se puede
 	escribir en la forma $\lambda x_{0}$ para $0 \leq \lambda < 1$. Supongamos que
-	$z \in B_{1-\lambda}(x_{0})$, y sea $y = (z - \lambda x_{0})/(1 - \lambda)$.
+	$z \in B_{1-\lambda}(\lambda x_{0})$, y sea $y = (z - \lambda x_{0})/(1 - \lambda)$.
 	En consecuencia $|y| < 1$, por lo que $y \in B_{1}(0) \subseteq D$. Como $y$ y
 	$x_{0}$ están ambos en $D$ y $z = \lambda x_{0} + (1 - \lambda)y$, se sigue de
 	la convexidad que $z \in D$. Así, la bola abierta $B_{1-\lambda}(x_{0})$ está contenida
@@ -543,8 +557,7 @@ simpliciales no son más que un caso particular de los CW-complejos.
 	En palabras, $f(x)$ es el punto donde el segmento de línea que parte del
 	origen hasta $x$ interseca la esfera unidad. Puesto que $f$ es la restricción de
 	una aplicación continua, es continua, por lo que la discusión del párrafo anterior
-	muestra que es biyectiva. Dado que $\partial D$ es compacto, $f$ es un homeomorfismo
-	por el \autoref{lem:closed-map}.
+	muestra que es biyectiva. Dado que $\partial D$ es compacto, el \autoref{lem:closed-map} nos garantiza que $f$ es cerrada. Por ser $f$ biyectiva, continua y cerrada, entonces $f$ es un homeomorfismo.
 	
 	Finalmente, definamos $F : \overline{B}_{1}(0) \to D$ de forma que
 	\[
@@ -570,23 +583,16 @@ simpliciales no son más que un caso particular de los CW-complejos.
 	$\mathcal{E}$ una colección de celdas abiertas. Diremos entonces que que $(X,\mathcal{E}
 	)$ es un \textbf{CW-complejo} si se cumple que:
 	\begin{enumerate}[font=\bfseries]
-		\item[(C)] Para cada $p$-celda $e \in \mathcal{E}$, existe una aplicación
-		continua $f_{e} : B^{p} \to X$ de forma que el interior de $B^{p}$ es
-		homeomorfo a la celda $e$ y lleva la frontera de $B^{p}$ en una unión
+		\item[(C)] Consideremos la bola unidad $B_1(0)$ de dimensión $p$. Para cada $p$-celda $e \in \mathcal{E}$, existe una aplicación
+		continua $f_{e} : \overline{B}_1(0) \to X$ de forma que la restricción a $B_1(0)$ es
+		homeomorfa a la celda $e$ y la restricción a la frontera $\bd \overline{B}_1(0)$ está contenida en una unión
 		finita de celdas de dimensión menor a $p$. A dicha función la llamaremos \textbf{función
 			característica}.
 		
-		\item[(W)] Un subconjunto $F$ de $X$ es cerrado si $F \cap \overline{e}$,
-		donde $\overline{e}$ denota la clausura de $e$, es cerrado para todo $e \in
-		\mathcal{E}$.
+		\item[(W)] Un subconjunto $F$ de $X$ es cerrado si, y sólo si, $F \cap \overline{e}$ es cerrado en $\overline{e}$ para todo $e \in \mathcal{E}$.
 	\end{enumerate}
 	Normalmente denotaremos al CW-complejo $(X,\mathcal{E})$ simplemente por $X$.
 \end{definicion}
-\begin{observacion}
-	En la formulación original de Whitehead, la primera condición denotaba la
-	propiedad de clausura finita. Por otro lado, la segunda condición denotaba que
-	la topología empleada era la topología débil (del inglés, \textit{weak}).% Si bien esta formulación nos aleja un poco de la intuición original, es una formulación equivalente.
-\end{observacion}
 
 \begin{figure}[h!]
 	\centering
@@ -612,13 +618,6 @@ simpliciales no son más que un caso particular de los CW-complejos.
 	\end{tikzpicture}
 	\caption{Visualización de un CW-complejo para $\sphere^{2}$.}
 \end{figure}
-
-\begin{definicion}
-	Sea $X$ un espacio topológico. Diremos que una celda $e \subset X$ es \textbf{regular}
-	si admite una función característica que sea un homeomorfismo sobre $\overline{e}$.
-	Además, diremos que un CW-complejo es \textbf{regular} si todas sus celdas son
-	regulares.
-\end{definicion}
 
 Una propiedad importante de los CW-complejos es que mantienen su estructura en
 subconjuntos bajo ciertas condiciones razonables.
@@ -670,7 +669,7 @@ subconjuntos bajo ciertas condiciones razonables.
 	\label{teo:cw-conexion}
 	Sea $X$ un CW-complejo. Entonces las siguientes propiedades son equivalentes:
 	\begin{enumerate}
-		\item $X$ es conexo por caminos.
+		\item $X$ es conexo por arcos.
 		
 		\item $X$ es conexo.
 		
@@ -714,22 +713,22 @@ subconjuntos bajo ciertas condiciones razonables.
 	
 	Para demostrar $(4) \Rightarrow (1)$, supongamos que $X$ es un CW-complejo cuyo
 	$n$-esqueleto es conexo para algún $n \geq 0$. Mostremos por inducción en $k$
-	que $X^{(k)}$ es conexo por caminos para cada $k \geq n$. Primero, necesitamos
-	mostrar que $X^{(n)}$ en sí mismo es conexo por caminos. Si $n = 0$, entonces
+	que $X^{(k)}$ es conexo por arcos para cada $k \geq n$. Primero, necesitamos
+	mostrar que $X^{(n)}$ en sí mismo es conexo por arcos. Si $n = 0$, entonces
 	$X^{(n)}$ es discreto y conexo, así que es un conjunto unitario y por lo tanto
-	conexo por caminos. En caso contrario, elijamos cualquier punto $x_{0} \in X^{(n)}$
-	y consideremos $S_{n}$ la componente de camino de $X^{(n)}$ que contiene a $x_{0}$.
+	conexo por arcos. En caso contrario, elijamos cualquier punto $x_{0} \in X^{(n)}$
+	y consideremos $S_{n}$ la componente arcoconexa de $X^{(n)}$ que contiene a $x_{0}$.
 	Para cada celda $e$ de $X^{(n)}$, notemos que $\overline{f_e(e)}$ es la imagen
-	continua de un espacio conexo por caminos, así que es conexo por caminos. Por lo
+	continua de un espacio conexo por arcos, así que es conexo por arcos. Por lo
 	tanto, si $\overline{f_e(e)}$ tiene una intersección no trivial con la
-	componente de camino $S_{n}$, debe estar contenida en $S_{n}$. En consecuencia,
+	componente arcoconexa $S_{n}$, debe estar contenida en $S_{n}$. En consecuencia,
 	$S_{n}$ es cerrado y abierto en $X^{(n)}$. Como estamos asumiendo que
 	$X^{(n)}$ es conexo, entonces $S_{n} = X^{(n)}$.
 	
-	Ahora, supongamos que hemos demostrado que $X^{(k-1)}$ es conexo por caminos
-	para algún $k > n$ y sea $S_{k}$ la componente de camino de $X^{(k)}$ que
+	Ahora, supongamos que hemos demostrado que $X^{(k-1)}$ es conexo por arcos
+	para algún $k > n$ y sea $S_{k}$ la componente arcoconexa de $X^{(k)}$ que
 	contiene a $X^{(k-1)}$. Para cada $k$-celda $e$, su clausura
-	$\overline{f_e(e)}$ es un subconjunto de $X^{(k)}$ conexo por caminos que
+	$\overline{f_e(e)}$ es un subconjunto de $X^{(k)}$ conexo por arcos que
 	tiene intersección no trivial con $X^{(k-1)}$ y, por lo tanto, está contenido
 	en $S_{k}$. Se sigue que $X^{(k)}= S_{k}$, completando la inducción.
 \end{proof}
@@ -820,7 +819,7 @@ en condiciones de verificar que efectivamente los complejos simpliciales son CW-
 	algún $\overline{e}_{j}$ para cierto $j \in \{1, \ldots, k\}$. Esto muestra que
 	$x \in \overline{e}_{j}$ y, puesto que $x_{n_i}\in F \cap \overline{e_j}$ para
 	todo $n_{i} \geq n_{0}$, y $F \cap \overline{e_j}$ es cerrado en $\overline{e_j}$,
-	concluimos que $x \in F \cap \overline{e_k}$.
+	concluimos que $x \in F \cap \overline{e_j}$.
 \end{proof}
 
 \section{Aplicaciones simpliciales}
@@ -839,7 +838,7 @@ las transformaciones entre ellos pueden ser continuas o incluso homeomorfismos.
 	x = \sum_{i=0}^{n}t_{i}v_{i}\quad \implies \quad |f|(x) = \sum_{i=0}^{n}t_{i}
 	f (v_{i})
 	\]
-	Llamaremos a $g$ la \textbf{aplicación simplicial} (lineal) inducida por $f$.
+	Llamaremos a $|f|$ la \textbf{aplicación simplicial} (lineal) inducida por $f$.
 \end{lema}
 \begin{proof}
 	Por hipótesis, los vértices $f(v_{0}), \ldots, f(v_{n})$ generan un símplice
@@ -975,7 +974,7 @@ si, y sólo si, $\{f(a_{0}), \ldots, f(a_{p})\} \in \mathcal{T}$.
 	Entonces existe una realización geométrica de $\mathcal{S}$ en $\R^{2N+1}$.
 \end{proposicion}
 \begin{proof}
-	Consideremos un conjunto de puntos $p_{i}\in \R^{2N+1}$ de forma sus componentes
+	Consideremos un conjunto de puntos $p_{i}\in \R^{2N+1}$ de forma que sus componentes
 	son potencias de su índice $i$. Veamos que cualquier conjunto de $2N+2$ de
 	estos puntos es afínmente independiente. Es decir, que los vectores formados
 	por las diferencias entre estos puntos son linealmente independientes.

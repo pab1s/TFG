@@ -1068,15 +1068,15 @@ de cadenas.
 	\({\id_C}_{\bullet}\simeq f \varepsilon\). En otras palabras, una homotopía
 	contráctil consiste en homomorfismos de módulos \(f: A \to C_{0}\) y una homotopía de cadenas formada por los homomorfismos 
 	\(s_{n}: C_{n}\to C_{n+1} \) donde $n \in \N \cup \{0\}$ tal que
-	
 	\[
 	\varepsilon f = \id_{A}, \quad \partial_{1}s_{0}+ f \varepsilon = \id_{C_0},
-	\quad \partial_{n+1}s_{n}+ s_{n-1}\partial_{n}= \id_{C_n}\quad n > 0.
+	\quad \partial_{n+1}s_{n}+ s_{n-1}\partial_{n}= \id_{C_n},
 	\]
+	para todo $n > 0$.
 \end{definicion}
 
 Podemos extender el complejo estableciendo \(C_{-1}= A\), \(\partial_{0}= \varepsilon
-: C_{0}\to C_{-1}\) y \(s_{-1}= f\). Aplicando la definición anterior, \(s:{\id_C}
+: C_{0}\to C_{-1}\) y \(s_{-1}= f\). Por la definición anterior, la homotopía contráctil \(s:{\id_C}
 _{\bullet}\rightarrow 0\) es una homotopía de cadenas. Si
 \(\varepsilon: C_{\bullet}\to A\) tiene una homotopía contráctil, sus grupos de homología
 son isomorfos por \(\varepsilon_{*}: H_{0}(C_{\bullet}) \rightarrow A\) para \(n = 0\)
@@ -1119,8 +1119,8 @@ donde \(\beta_{n}\) es el rango de \(H_{n}(C_{\bullet})\), conocido como el \tex
 \(i \in \{1, \ldots, k\}\).
 
 \begin{definicion}
-	Sea \(C_{\bullet}\) un complejo de cadenas y \(k\) un entero no negativo. El
-	\textbf{\(k\)-ésimo número de Betti}, \(\beta_{n}(C_{\bullet})\), se define como el
+	Sea \(C_{\bullet}\) un complejo de cadenas y \(n\) un entero no negativo. El
+	\textbf{\(n\)-ésimo número de Betti}, \(\beta_{n}(C_{\bullet})\), se define como el
 	rango del \(n\)-ésimo módulo de homología de \(C_{\bullet}\) sobre el dominio de ideales
 	principales \(R\), \(H_{n}(C_{\bullet};R)\). Esto es,
 	\(\beta_{n}(C_{\bullet}) = \rg(H_{n}(C_{\bullet};R))\). Si no hay lugar a confusión

@@ -3,26 +3,27 @@
 
 \chapter{Homología persistente}
 
-Este capítulo se dedica a la homología persistente, un concepto de gran relevancia en la topología computacional que proporciona herramientas poderosas para analizar y entender la estructura subyacente de los datos a través de múltiples escalas. Originada en los trabajos iniciales de matemáticos como Edelsbrunner, Letscher y Zomorodian, la homología persistente permite la identificación y el análisis de características topológicas que persisten a lo largo de variaciones en la escala en la que se observa.
+Este capítulo se dedica a la homología persistente, un concepto de gran relevancia en la topología computacional que proporciona herramientas poderosas para analizar y entender la estructura subyacente de los datos a través de múltiples escalas. Originada en los trabajos iniciales de matemáticos como Edelsbrunner, Letscher y Zomorodian \cite{edelsbrunner2002topological}, la homología persistente permite la identificación y el análisis de características topológicas que persisten a lo largo de variaciones en la escala en la que se observa.
 
-Este capítulo se centrará en detallar los principios teóricos detrás de la homología persistente. En particular, estudiaremos en profundidad el Teorema de Representación, un resultado central en la teoría que muestra cómo transformar el nacimiento y muerte de las clases de homología en constructos algebraicos que se pueden analizar y manipular computacionalmente. Seguiremos como esquema principal los resultados de \cite{zomorodian2004computing} y \cite{dey2022computational}.
+Este capítulo se centrará en detallar los principios teóricos detrás de la homología persistente. En particular, estudiaremos en profundidad el Teorema de correspondencia, un resultado central en la teoría que muestra cómo transformar el nacimiento y muerte de las clases de homología en constructos algebraicos que se pueden analizar y manipular computacionalmente. Seguiremos como esquema principal los resultados de \cite{zomorodian2004computing} y \cite{dey2022computational}.
 
 \section{Complejos de \u Cech y Vietoris-Rips}
 
-La homología persistente es una herramienta poderosa de la topología computacional, comúnmente utilizada para analizar conjuntos de datos representados como nubes de puntos. Aunque la homología en sí de estos conjuntos puede no ser de gran interés debido a su simplicidad o falta de estructura topológica relevante, la homología persistente permite revelar información de interés mediante la construcción de estructuras topológicas a partir de los datos.
+La homología persistente es comúnmente empleada para analizar conjuntos de datos representados como nubes de puntos. Aunque la homología en sí de estos conjuntos puede no ser de gran interés debido a su simplicidad o falta de estructura topológica relevante, la homología persistente permite revelar información de interés mediante la construcción de estructuras topológicas construidas a partir de los datos.
 
 En este contexto, los complejos de Čech y Vietoris-Rips se emplean frecuentemente para capturar la estructura topológica subyacente de las nubes de puntos. Estos complejos dotan de estructura de complejo simplicial a los datos, facilitando su representación, el estudio de su forma y sus características a múltiples escalas.
+%
+%\begin{definicion}
+%	Sea \(X\) un espacio topológico y sea \(\mathcal{U} = \{U_v\}_{v \in V}\) un recubrimiento de \(X\). Llamaremos \textbf{nervio} de \(\mathcal{U}\) al complejo simplicial abstracto con conjunto de vértices \(V\) tal que la familia \(v_0, \dots, v_p\) genera un \(p\)-símplice si, y sólo si, \(U_{v_0} \cap \dots \cap U_{v_p} \neq \emptyset\). Lo notaremos por \(N(\mathcal{U})\).
+%\end{definicion}
+%
+%\begin{teorema}[del Nervio]
+%	Sea \(X\) un espacio topológico y sea \(\mathcal{U} = \{U_v\}_{v \in V}\) un recubrimiento por abiertos numerable de \(X\). Supongamos además que para todo subconjunto no vacío de vértices \(S \subseteq V\) tenemos que \(\bigcap_{s \in S} U_s\) es contráctil o vacío. Entonces \(N(\mathcal{U})\) es homotópicamente equivalente a \(X\).
+%\end{teorema}
+%\begin{proof}
+%	Véase \cite{bjorner2003nerves}.
+%\end{proof}
 
-\begin{definicion}
-	Sea \(X\) un espacio topológico y sea \(\mathcal{U} = \{U_v\}_{v \in V}\) un recubrimiento de \(X\). Llamaremos \textbf{nervio} de \(\mathcal{U}\) al complejo simplicial abstracto con conjunto de vértices \(V\) tal que la familia \(v_0, \dots, v_p\) genera un \(p\)-símplice si, y sólo si, \(U_{v_0} \cap \dots \cap U_{v_p} \neq \emptyset\). Lo notaremos por \(N(\mathcal{U})\).
-\end{definicion}
-
-\begin{teorema}[del Nervio]
-	Sea \(X\) un espacio topológico y sea \(\mathcal{U} = \{U_v\}_{v \in V}\) un recubrimiento por abiertos numerable de \(X\). Supongamos además que para todo subconjunto no vacío de vértices \(S \subseteq V\) tenemos que \(\bigcap_{s \in S} U_s\) es contráctil o vacío. Entonces \(N(\mathcal{U})\) es homotópicamente equivalente a \(X\).
-\end{teorema}
-\begin{proof}
-	contenidos...
-\end{proof}
 \begin{definicion}
 	Sea \((X,d)\) un espacio métrico y sea \(V\) un subconjunto de puntos de \(X\). Definimos el \textbf{complejo de \u Cech} \(C(V, \varepsilon)\) como el nervio \(N(\mathcal{B}_\varepsilon)\), donde
 	\[
@@ -50,7 +51,7 @@ En este contexto, los complejos de Čech y Vietoris-Rips se emplean frecuentemen
 	Dado que \( V \) es finito y cada símplice se define como un subconjunto de \( V \), entonces cada símplice sólo puede tener un número finito de subconjuntos. En consecuencia, el número de caras de cada símplice también es finito.
 \end{proof}
 
-% Tal vez lo de la variedad pseudoriemanniana
+Sin embargo, el complejo de \u Cech es costoso de obtener mediante métodos computaciones. En consecuencia, se propone el complejo de Vietoris-Rips:
 
 \begin{definicion}
 	Sea \((X,d)\) un espacio métrico y sea \(V\) un subconjunto de puntos de \(X\). Definimos el \textbf{complejo de Vietoris-Rips} \(VR(V,\varepsilon)\) como el complejo abstracto cuyo conjunto de vértices es \(V\), de forma que \(\{v_0, v_1, \dots v_p\} \subseteq V\) genera un \(p\)-símplice si, y sólo si, \(d(v_i,v_j) \leq \varepsilon\) para todo \(0 \leq i\), \(j \leq p\).
@@ -72,6 +73,8 @@ En este contexto, los complejos de Čech y Vietoris-Rips se emplean frecuentemen
 	\caption{Representación de los complejos simpliciales \u Cech (izquierda) y Vietoris-Rips (derecha) para un conjunto de puntos en \( \mathbb{R}^2 \). En el complejo de \u Cech, los símplices se forman por la intersección no vacía de círculos de radio \(\varepsilon\) centrados en los puntos. El complejo de Vietoris-Rips conecta puntos que distan hasta \(2\varepsilon\), independientemente de las intersecciones de los círculos. Los símplices de mayor dimensión están coloreados en azul, resaltando las diferencias en la estructura simplicial generada por cada método. Fuente \cite{chazal2021introduction}.}
 \end{figure}
 
+El complejo de Vietoris-Rips es interesante en el estudio de complejos de \u Cech. Este hecho se debe a que estos últimos pueden ser aproximados por complejos de Vietoris-Rips:
+
 \begin{proposicion}
 	Sea \((X,d)\) un espacio métrico y sea \(V\) un subconjunto de puntos de \(X\). Entonces
 	\[
@@ -86,7 +89,7 @@ En este contexto, los complejos de Čech y Vietoris-Rips se emplean frecuentemen
 
 \section{Módulos de homología persistente}
 
-
+El módulo de homología persistente es el objeto central de estudio en este capítulo. A partir de filtraciones de complejos simpliciales, esta estructura nos va a permitir realizar un estudio de la homología simplicial de dicha filtración.
 
 \begin{definicion}
 	Sea \(K\) un complejo simplicial. Una \textbf{filtración} \(\mathcal{F}\) de \(K\) es una familia totalmente ordenada de subcomplejos \(\{K^n\}_{n \in \N}\) tal que \(\emptyset, K \in \mathcal{F}\) y si \(i \leq j\), entonces \(K^i \subseteq K^j\). En particular, llamaremos a dicho orden \textbf{filtro}.
@@ -193,7 +196,7 @@ Aunque intuitivos, los diagramas de persistencia presentan ciertas limitaciones.
 
 Para abordar estos problemas, Zomorodian y Carlsson introdujeron un enfoque innovador mediante el uso del \textbf{código de barras} \cite{zomorodian2004computing}. Este método no solo ofrece una visualización clara y detallada de la vida de cada clase de homología, sino que también facilita la interpretación de su multiplicidad y relevancia en el contexto de los datos analizados. Esta interpretación fue posible ya que demostraron que todo módulo de persistencia puede identificarse de manera biyectiva con una estructura algebraica más general, conocida como \textbf{módulos graduados}, bajo ciertas hipótesis.
 
-A continuación profundizaremos en la aplicación y las implicaciones de estos métodos, explorando en detalle el Teorema de Correspondencia como se discute en \cite{Corbet_2018}.
+A continuación profundizaremos en la aplicación y las implicaciones de estos métodos, explorando en detalle el Teorema de correspondencia como se discute en \cite{Corbet_2018}.
 
 \begin{figure}
 	\centering
@@ -438,7 +441,7 @@ Para los siguientes dos lemas, fijaremos el \(R[t]\)-módulo graduado finitament
 	Por ser \(R[t]^n\) un módulo libre, tenemos que \( x = \sum_{j=0}^m \lambda_j h_j\) y por tanto, \(x \in \ker \mu\) lo que implica que \(y = 0\).
 \end{proof}
 
-\begin{teorema}[Teorema de Correspondencia]
+\begin{teorema}[Teorema de correspondencia]
 	\label{teo:correspondence}
 	Sea \( R \) un anillo unitario. Entonces, un isomorfismo entre la categoría de \(R[t]\)-módulos graduados finitamente presentados y la categoría de módulos de persistencia discretos.
 \end{teorema}
@@ -460,13 +463,13 @@ El Teorema de descomposición de módulos graduados nos dará la clave para repr
 	Véase \cite{webb1985decomposition}.
 \end{proof}
 
-De manera intuitiva, primero hemos construido una única estructura algebraica que contiene todos los complejos de la filtración. Después, hemos seguido calculando una suma directa a partir de los complejos, llegando así a un espacio mucho más grande que está graduado según el orden inducido de la filtración. A continuación, recordamos el momento en que cada símplice entra utilizando un coeficiente polinomial, codificando así el orden de filtración en el anillo de coeficientes polinomiales. A partir de aquí, el \nameref{teo:desc-mod-grad} nos proporciona una factorización simple cuando el anillo base es un cuerpo \( F \). Aquí, el anillo graduado \( F[t] \) es un DIP y sus únicos ideales graduados son homogéneos de la forma \( (t^n) = t^n \cdot R[t] \), donde \( n \geq 0 \). Ahora que hemos transformado los módulos de persistencia discretos en objetos más manejables, queremos parametrizar las clases de isomorfismo de los \( F[t] \)-módulos por objetos más sencillos de interpretar.
+De manera intuitiva, primero hemos construido una única estructura algebraica que contiene todos los complejos de la filtración. Después, hemos seguido calculando una suma directa a partir de los complejos, llegando así a un espacio mucho más grande que está graduado según el orden inducido de la filtración. A continuación, recordamos el momento en que cada símplice entra utilizando un coeficiente polinomial, codificando así el orden de filtración en el anillo de coeficientes polinomiales. A partir de aquí, el \nameref{teo:desc-mod-grad} nos proporciona una factorización simple cuando el anillo base es un cuerpo \( F \). Aquí, el anillo graduado \( F[t] \) es un DIP y sus únicos ideales graduados son homogéneos de la forma \( \langle t^n \rangle = t^n \cdot R[t] \), donde \( n \geq 0 \). Ahora que hemos transformado los módulos de persistencia discretos en objetos más manejables, queremos parametrizar las clases de isomorfismo de los \( F[t] \)-módulos por objetos más sencillos de interpretar.
 
 \begin{definicion}
-	Definimos un \textbf{$\mathcal{P}$-Intervalo} como un par ordenado \( (i, j) \) tal que \( 0 \leq i \leq j \leq \mathbb{Z}^{\infty} = \mathbb{Z} \cup \{+\infty\} \).
+	Definimos un \textbf{$\mathcal{P}$-intervalo} como un par ordenado \( (i, j) \) tal que \( 0 \leq i \leq j \leq \mathbb{Z}^{\infty} = \mathbb{Z} \cup \{+\infty\} \).
 \end{definicion}
 
-Nuestro objetivo ahora es asociar un \( F[t] \)-módulo graduado a un conjunto \( S \) de $\mathcal{P}$-intervalos mediante una biyección \( Q \). Para ello, definimos \( Q(i, j) = t^i F[t]/(t^{j-i}) \) para el $\mathcal{P}$-intervalo \( (i, j) \). Es claro que \( Q(i, +\infty) = t^i F[t] \). Además, para un conjunto de $\mathcal{P}$-intervalos \( S = \{(i_1, j_1), (i_2, j_2), \ldots, (i_n, j_n)\} \), definimos
+Nuestro objetivo ahora es asociar un \( F[t] \)-módulo graduado a un conjunto \( S \) de $\mathcal{P}$-intervalos mediante una biyección \( Q \). Para ello, definimos \( Q(i, j) = t^i F[t]/\langle t^{j-i}\rangle \) para el $\mathcal{P}$-intervalo \( (i, j) \). Es claro que \( Q(i, +\infty) = t^i F[t] \). Además, para un conjunto de $\mathcal{P}$-intervalos \( S = \{(i_1, j_1), (i_2, j_2), \ldots, (i_n, j_n)\} \), definimos
 \[
 Q(S) = \bigoplus_{l=1}^n Q(i_l, j_l).
 \]
@@ -476,7 +479,7 @@ Nuestra correspondencia puede ahora redefinirse como sigue.
 La correspondencia \( S \mapsto Q(S) \) define una biyección entre los conjuntos finitos de $\mathcal{P}$-intervalos y los módulos graduados finitamente generados sobre el anillo graduado \( F[t] \). Consecuentemente, las clases de isomorfismo de los módulos de persistencia de tipo finito sobre \( F \) están en correspondencia biyectiva con los conjuntos finitos de $\mathcal{P}$-intervalos.
 \end{corolario}
 
-En el contexto de filtraciones de complejos simpliciales, este resultado da lugar a la descripción de la homología persistente conocida como \textbf{código de barras}: cada $\mathcal{P}$-intervalo $(i, j)$ describe un ciclo que aparece en la filtración $i$ y especifica su clase de homología hasta que se convierte en borde en el instante $j$.
+En el contexto de filtraciones de complejos simpliciales, este resultado da lugar a la descripción de la homología persistente conocida como \textbf{código de barras}: cada $\mathcal{P}$-intervalo $(i, j)$ describe un ciclo que aparece en la filtración $i$ y especifica su clase de homología hasta que se convierte en borde en el instante $j$. Finalmente, condensamos el desarrollo realizado en el siguiente corolario: 
 
 \begin{figure}
 	\label{fig:barcode}
@@ -506,7 +509,7 @@ En el contexto de filtraciones de complejos simpliciales, este resultado da luga
 \end{figure}
 
 \begin{corolario}
-	Sea $F$ un cuerpo, $K$ un complejo simplicial y $\mathcal{F}$ una filtración discreta finita asociada. Entonces, el $(i,j)$-ésimo número de Betti de persistencia de dimensión $k$, \(\beta_k^{i,j}\), es igual al número de $\mathcal{P}$-intervalos $(i,j)$ asociados al módulo de homología persistente $k$-dimensional  \(H_k^{i \to j}(C_\bullet;F)\).
+	Sea $F$ un cuerpo, $K$ un complejo simplicial y $\mathcal{F}$ una filtración discreta finita asociada. Entonces, el $(i,j)$-ésimo número de Betti de persistencia de dimensión $k$, \(\beta_k^{i \to j}\), es igual al número de $\mathcal{P}$-intervalos $(i,j)$ asociados al módulo de homología persistente $k$-dimensional  \(H_k^{i \to j}(\mathcal{F};F)\).
 \end{corolario}
 \begin{proof}
 	Consideremos la filtración $\mathcal{F}$ del complejo simplicial $K$, donde cada subcomplejo $K^i$ está incluido en $K^{i+1}$ para cada $i \in \{0, \ldots, N\}$, siendo $K^0=\emptyset$ y $K^N = K$. Asociamos a cada $K^i$ el complejo de cadenas orientado $C_\bullet(K^i; F)$ y, así mismo, su módulo de homología $H_k(K^i; F)$ de dimensión $k$.
@@ -522,15 +525,15 @@ En el contexto de filtraciones de complejos simpliciales, este resultado da luga
 	H_k^\bullet(\mathcal{F}; F) \cong \left( \bigoplus_{i=1}^{n-m} t^{a_i} \cdot F[t] \right) \oplus \left( \bigoplus_{j=1}^m t^{b_j} \cdot \frac{F[t]}{ \langle t^{c_j} \rangle} \right)
 	\]
 	donde los números \(a_i\) y \(b_j\) indican en qué parte del complejo aparece un ciclo de dimensión \(k\), mientras que \(c_j\) nos dice cuándo desaparece un ciclo que había surgido en \(b_j\). La duración de una clase de homología, que surge en \(b_j\) y termina en \(c_j\), se mide simplemente como \(b_j - c_j\). Por otro lado, los elementos libres nos dan información sobre los ciclos que comienzan en \(a_i\) y no terminan. Aplicando la imagen inversa por $\mathcal{Q}$ de la descomposición obtenemos los $\mathcal{P}$-intervalos requeridos.
-	
-	Es decir, hemos demostrado que el número de Betti de persistencia $\beta_k^{i,j}$, definido como el rango de $H_k^\bullet(\mathcal{F};F)$ desde el tiempo $i$ hasta justo antes de $j$, es igual al número de $\mathcal{P}$-intervalos $(i, j)$ que muestra la descomposición.
+%	
+%	Es decir, hemos demostrado que el número de Betti de persistencia $\beta_k^{i \to j}$, definido como el rango de $H_k^\bullet(\mathcal{F};F)$ desde el tiempo $i$ hasta justo antes de $j$, es igual al número de $\mathcal{P}$-intervalos $(i, j)$ que muestra la descomposición.
 \end{proof}
+%
+%\begin{ejemplo}
+%	La \autoref{fig:barcode} muestra un ejemplo de representación en código de barras. En este caso, los números de Betti de persistencia nos darían $\beta_0^{0 \to 1} = 6$, $\beta_1^{1 \to \sqrt{3}} = 1$ y $\beta_2^{\sqrt{3} \to 2} = 1$. Es decir, la persistencia nos estaría indicando que, al comienzo de la filtración aparecen $6$ componentes conexas que en el instante $1$ de tiempo se fusionan en una sola con un agujero unidimensional. A continuación, dicho agujero desaparece en el instante $3$ para dar lugar a un vacío bidimensional con un breve periodo de vida.
+%\end{ejemplo}
 
-\begin{ejemplo}
-	La \autoref{fig:barcode} muestra un ejemplo de representación en código de barras. En este caso, los números de Betti de persistencia nos darían $\beta_0^{0 \to 1} = 6$, $\beta_1^{1 \to \sqrt{3}} = 1$ y $\beta_2^{\sqrt{3} \to 2} = 1$. Es decir, la persistencia nos estaría indicando que, al comienzo de la filtración aparecen $6$ componentes conexas que en el instante $1$ de tiempo se fusionan en una sola con un agujero unidimensional. A continuación, dicho agujero desaparece en el instante $3$ para dar lugar a un vacío bidimensional con un breve periodo de vida.
-\end{ejemplo}
-
-Los diagramas de código de barras derivados de la homología persistente han demostrado ser herramientas muy útiles para la extracción de información relevante en campos como el análisis de datos. Este hecho es debido a ciertas propiedades de la homología persistente que la hacen relevante para un uso práctico. Entre ellas destaca su \textbf{estabilidad}, lo que significa que pequeñas perturbaciones en los datos no producen grandes cambios en los diagramas de código de barras. Esto es fundamental porque asegura que las características topológicas que se detectan son inherentes a la estructura de los datos y no artefactos del ruido o de variaciones menores \cite{cohen2005stability, chazal2016structure}. Este hecho contrasta con la homología simplicial, pues dos complejos de \u Cech o Vietoris-Rips con distinto radio pueden tener invariantes topológicos completamente diferentes. Estos métodos no solo ofrecen una representación visual intuitiva de las características de los datos, sino que también proporcionan un marco robusto para la cuantificación y comparación de estructuras topológicas.
+Los diagramas de código de barras derivados de la homología persistente han demostrado ser herramientas muy útiles para la extracción de información relevante en campos como el análisis de datos. Este hecho es debido a ciertas propiedades de la homología persistente que la hacen relevante para un uso práctico. Además de las ya comentadas, también destaca su \textbf{estabilidad}, lo que significa que pequeñas perturbaciones en los datos no producen grandes cambios en los diagramas de código de barras. Esto es fundamental porque asegura que las características topológicas que se detectan son inherentes a la estructura de los datos y no artefactos del ruido o de variaciones menores \cite{cohen2005stability, chazal2016structure}. Dicha propiedad contrasta con la homología simplicial, pues dos complejos de \u Cech o Vietoris-Rips con distinto radio pueden tener invariantes topológicos completamente diferentes. Estos métodos no solo ofrecen una representación visual intuitiva de las características de los datos, sino que también proporcionan un marco robusto para la cuantificación y comparación de estructuras topológicas.
 
 \endinput
 %--------------------------------------------------------------------

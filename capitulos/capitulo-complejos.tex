@@ -259,12 +259,12 @@ de cadenas y ciclos simpliciales que serán indispensables en el estudio de la h
 simplicial.
 
 \begin{definicion}
-	Un \textbf{complejo simplicial} (finito) $K$ en $\mathbb{R}^{N}$ es una
-	colección (finita) de símplices en $\mathbb{R}^{N}$ tal que:
+	Un \textbf{complejo simplicial geométrico} (finito), o simplemente \textbf{complejo simplicial} (finito), \(K\) en \(\mathbb{R}^{N}\), es una
+	colección (finita) de símplices en \(\mathbb{R}^{N}\) tal que:
 	\begin{enumerate}
-		\item Toda cara de un símplice de $K$ está en $K$.
+		\item Toda cara de un símplice de \(K\) está en \(K\).
 		
-		\item La intersección de cualesquiera dos símplices de $K$ o es el vacío o es
+		\item La intersección de cualesquiera dos símplices de \(K\) es o el vacío o
 		una cara de ambos símplices.
 	\end{enumerate}
 \end{definicion}
@@ -400,7 +400,7 @@ Si no hay lugar a confusión, simplemente notaremos al politopo de $K$ por $|K|$
 lo llamaremos el \textbf{poliedro} $|K|$.
 
 A continuación, mencionemos algunas propiedades relevantes de este espacio topológico.
-Para ello fijemos un complejo simplicial finito $K$ en $\R^{N}$.
+Para ello fijaremos un complejo simplicial finito $K$ en $\R^{N}$.
 
 \begin{proposicion}
 	Sea $K$ un complejo simplicial finito. Entonces el poliedro $|K|$ es compacto.
@@ -410,12 +410,7 @@ Para ello fijemos un complejo simplicial finito $K$ en $\R^{N}$.
 	acotados. En consecuencia, $|K|$ es unión finita de conjuntos cerrados y
 	acotados, luego es cerrado y acotado en $\R^{N}$. Por lo tanto, es compacto.
 \end{proof}
-%\begin{proposicion}
-%	Si el poliedro \(|K|\) es conexo, entonces es arco conexo.
-%\end{proposicion}
-%\begin{proof}
-%	DEMOSTRAR DE 2.1A DL TFG ANTIGUO...
-%\end{proof}
+
 \begin{proposicion}
 	Sea $K$ un complejo simplicial. \label{prop:simpl-soporte} Si $x \in |K|$, entonces
 	existe un único símplice en $K$ tal que $x$ pertenece a su interior.
@@ -432,11 +427,22 @@ Para ello fijemos un complejo simplicial finito $K$ en $\R^{N}$.
 	de $\rho$. En consecuencia, $\rho = \mu$. De manera análoga obtenemos
 	$\tau = \mu$ y por tanto, $\rho = \tau$.
 \end{proof}
+
 \begin{definicion}
 	Sea $K$ un complejo simplicial y sea $x \in |K|$. Llamaremos \textbf{símplice
 		soporte de $x$} al único símplice que contiene a $x$ en su interior y lo notaremos
 	por $\sop(x)$.
 \end{definicion}
+%
+%En consecuencia de la anterior definición, podemos definir las \textbf{coordenadas baricéntricas de un complejo simplicial} como aquellas que coinciden con las del símplice al que pertenece y son $0$ para el resto de vértices del complejo simplicial.
+%
+%\begin{lema}
+%	El poliedro \(|K|\) es Hausdorff.
+%\end{lema}
+%\begin{proof}
+%	Dados \(x_0 \neq x_1\) en $|K|$, existe al menos un vértice \(v\) tal que \(t_v x_0 \neq t_v x_1\), donde $t_v$ es la coordenada baricéntrica respecto a $v$ en $|K|$. Entonces podemos escoger un radio \(r\) entre estos dos números de forma que los conjuntos \(\{x : t_v x < r\}\) y \(\{x : t_v x > r\}\) son los conjuntos abiertos disjuntos requeridos.
+%\end{proof}
+
 \begin{corolario}
 	\label{cor:simpl-soporte} Sean $\sigma, \tau$ símplices de $K$ tal que $\interior
 	\sigma \cap \tau$ es no vacía. Entonces $\sigma$ es una cara de $\tau$.
@@ -461,25 +467,59 @@ Para ello fijemos un complejo simplicial finito $K$ en $\R^{N}$.
 	cerrado en $\sigma$ por la continuidad de $f|_{\sigma}$. Concluimos que
 	$f^{-1}(C)$ es cerrado en $|K|$ por definición.
 \end{proof}
+
+Para finalizar esta sección, comentaremos la principal utilidad del estudio de complejos simpliciales introduciendo el concepto de triangulación.
+
 \begin{definicion}
 	Un espacio topológico $X$ es \textbf{triangulable} si existe un complejo
 	simplicial $K$ cuyo espacio subyacente es homeomorfo a $X$. Diremos entonces que
 	el homeomorfismo $h: |K| \rightarrow X$ es una \textbf{triangulación}.
 \end{definicion}
 
+La triangulación nos permite representar un espacio topológico usando un complejo simplicial, lo que es útil porque muchos espacios topológicos importantes pueden ser triangulados. En el \autoref{chapter:homology}, veremos que estudiar ciertas propiedades topológicas en estos complejos es más sencillo y manejable.
+
+El siguiente ejemplo muestra la triangulación de una esfera en $\R^3$ por el método de "proyección radial". Para ello, recordemos el siguiente resultado:
+
+\begin{proposicion}
+	\label{lem:closed-map}
+	Sean $X,Y$ espacios topológicos tales que $X$ es compacto e $Y$ es Hausdorff. Si además $f: X\to Y$ es una aplicación continua, entonces $f$ es cerrada. En particular, si $f$ es biyectiva, entonces es un homeomorfismo.
+\end{proposicion}
+
+\begin{ejemplo}
+	Consideremos el complejo simplicial \(K\), que es un tetraedro en \(\mathbb{R}^3\). Denotamos su poliedro asociado por \(|K|\). Supongamos que el origen de \(\mathbb{R}^3\) es el centro de \(|K|\) y que \(\mathbb{S}^2\) es la esfera unidad con radio \(1\). Definimos la función \(f: |K| \to \mathbb{S}^2\) por
+	\[
+	f(t) = \frac{t}{\|t\|}
+	\]
+	que es continua en todo \(|K|\), pues \(0 \not \in |K|\). Para cada \(s \in \mathbb{S}^2\), definimos \(g: \mathbb{S}^2 \to |K|\) tal que
+	\[
+	g(s) = t = s \cdot \sup\{\lambda : \lambda s \in \text{envolvente convexa de }|K|\}
+	\]
+	donde el supremo asegura que \(t\) está en la frontera de \(|K|\). De este modo, se verifica que \(g(f(t)) = t\) para todo \(t \in |K|\). Por lo tanto, \(f\) es una biyección continua desde un conjunto compacto hacia un espacio Hausdorff, luego es un homeomorfismo y en consecuencia, una triangulación de la esfera $\mathbb{S}^2$.
+\end{ejemplo}
+
+En particular, las esferas pertenecen a una familia de espacios topológicos conocidos como \textbf{variedades topológicas}. Estos espacios son el objeto central de estudio en la topología, siendo el objetivo su clasificación bajo homeomorfismo.
+
 \begin{definicion}
-	Sea \(X\) un espacio topológico Hausdorff no vacío. Diremos que \(X\) es una \textbf{\(m\)-variedad} 
+	Sea \(X\) un espacio topológico Hausdorff no vacío. Diremos que \(X\) es una \textbf{\(m\)-variedad} o \textbf{variedad de dimensión $n$}
 	si cada punto de \(X\) tiene un entorno homeomorfo a un subconjunto abierto de \(\R^m\) con la 
-	topología usual. Análogamente, diremos que \(X\) es una \textbf{\(m\)-variedad con borde} si 
-	cada punto tiene un entorno homeomorfo al semiespacio 
-	\(\mathbb{H}^m = \{ (x_1, x_2, \ldots,x_m) \in \R^m : x_i \geq 0,\ 1 \leq i \leq m \}\).
+	topología usual.% Análogamente, diremos que \(X\) es una \textbf{\(m\)-variedad con borde} si 
+	%cada punto tiene un entorno homeomorfo al semiespacio 
+	%\(\mathbb{H}^m = \{ (x_1, x_2, \ldots,x_m) \in \R^m : x_i \geq 0,\ 1 \leq i \leq m \}\).
 \end{definicion}
-\begin{observacion}
-	Nótese que toda \(m\)-variedad es una \(m\)-variedad con borde. Para verlo, consideremos \(x\) 
-	en la \(m\)-variedad y un entorno homeomorfo a un subconjunto abierto de \(\R^m\). Entonces, 
-	tiene un entorno abierto homeomorfo a cualquier bola abierta de \(\R^m\) y en particular, 
-	a una contenida en \(\mathbb{H}\).
-\end{observacion}
+%\begin{observacion}
+%	Nótese que toda \(m\)-variedad es una \(m\)-variedad con borde. Para verlo, consideremos \(x\) 
+%	en la \(m\)-variedad y un entorno homeomorfo a un subconjunto abierto de \(\R^m\). Entonces, 
+%	tiene un entorno abierto homeomorfo a cualquier bola abierta de \(\R^m\) y en particular, 
+%	a una contenida en \(\mathbb{H}\).
+%\end{observacion}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=120mm]{img/manifolds.jpg}
+	\caption{Ejemplos de variedades de dimensión 2: (a) Esfera, (b) Toro, (c) Banda de Möbius y (d) Botella de Klein. Fuente \cite{deng2020topology}.}
+\end{figure}
+
+Aunque existen un gran número de resultados fundamentales relacionados con el estudio de las variedades topológicas, este análisis escapa de los contenidos de este trabajo. Sin embargo, veremos que estos espacios serán necesarios en la aplicación experimental realizada para comprender cómo las redes neuronales transforman los datos desde el punto de vista de la topología.
 
 \section{Celdas y CW-complejos}
 
@@ -503,15 +543,7 @@ $\overline{U}$ y su \textbf{frontera} como $\bd U$. Por último, la \textbf{esfe
 \end{definicion}
 
 Sería interesante disponer de resultados que nos digan cuándo un subconjunto dado
-puede ser una celda. Para ello, recordemos el siguiente resultado de topología básica:
-
-\begin{lema}
-	\label{lem:closed-map} Sean $X,Y$ espacios topológicos y sea $f : X \to Y$ una
-	aplicación continua entre ellos. Si $X$ es compacto e $Y$ es Hausdorff, entonces
-	$f$ es una aplicación cerrada.
-\end{lema}
-
-La siguiente proposición será de gran utilidad para ver que los complejos
+puede ser una celda. La siguiente proposición será de gran utilidad para ver que los complejos
 simpliciales no son más que un caso particular de los CW-complejos.
 
 \begin{proposicion}
@@ -551,19 +583,19 @@ simpliciales no son más que un caso particular de los CW-complejos.
 	
 	Ahora definamos una aplicación $f : \bd D \to \sphere^{n-1}$ por
 	\[
-	f(x) = \frac{x}{|x|}.
+	f(x) = \frac{x}{\|x\|}.
 	\]
 	
-	En palabras, $f(x)$ es el punto donde el segmento de línea que parte del
+	Básicamente, $f(x)$ es el punto donde el segmento de línea que parte del
 	origen hasta $x$ interseca la esfera unidad. Puesto que $f$ es la restricción de
 	una aplicación continua, es continua, por lo que la discusión del párrafo anterior
-	muestra que es biyectiva. Dado que $\partial D$ es compacto, el \autoref{lem:closed-map} nos garantiza que $f$ es cerrada. Por ser $f$ biyectiva, continua y cerrada, entonces $f$ es un homeomorfismo.
+	muestra que es biyectiva. Dado que $\bd D$ es compacto, la \autoref{lem:closed-map} nos garantiza que $f$ es cerrada. Por ser $f$ biyectiva, continua y cerrada, entonces $f$ es un homeomorfismo.
 	
 	Finalmente, definamos $F : \overline{B}_{1}(0) \to D$ de forma que
 	\[
 	F(x) =
 	\begin{cases}
-		|x| f^{-1}\left( \frac{x}{|x|}\right), & x \neq 0; \\
+		\|x\| f^{-1}\left( \frac{x}{\|x\|}\right), & x \neq 0; \\
 		0,                                     & x = 0.
 	\end{cases}
 	\]
@@ -574,7 +606,7 @@ simpliciales no son más que un caso particular de los CW-complejos.
 	$0$ al punto $f^{-1}(\omega) \in \bd D$. Por convexidad, $F$ toma sus valores en
 	$D$. La aplicación $F$ es inyectiva, ya que puntos en rayos distintos van a rayos
 	distintos, y cada segmento radial se lleva linealmente a su imagen. Es sobreyectiva
-	porque cada punto $y \in D$ está en algún rayo desde $0$. Por el
+	porque cada punto $y \in D$ está en algún rayo desde $0$. Por la
 	\autoref{lem:closed-map}, $F$ es un homeomorfismo.
 \end{proof}
 
@@ -589,7 +621,7 @@ simpliciales no son más que un caso particular de los CW-complejos.
 		finita de celdas de dimensión menor a $p$. A dicha función la llamaremos \textbf{función
 			característica}.
 		
-		\item[(W)] Un subconjunto $F$ de $X$ es cerrado si, y sólo si, $F \cap \overline{e}$ es cerrado en $\overline{e}$ para todo $e \in \mathcal{E}$.
+		\item[(W)] Un subconjunto $F$ de $X$ es cerrado si, y sólo si, $F \cap \overline{e}$ es cerrado en $\overline{e}$ con la topología inducida de $X$ para todo $e \in \mathcal{E}$.
 	\end{enumerate}
 	Normalmente denotaremos al CW-complejo $(X,\mathcal{E})$ simplemente por $X$.
 \end{definicion}
@@ -643,7 +675,7 @@ subconjuntos bajo ciertas condiciones razonables.
 	cualquier celda $e \subseteq Y$.
 	
 	En cuanto a la condición $(W)$, supongamos que $S$ es un subconjunto de $Y$ tal
-	que $S \cap \overline{e}$ es cerrado en $\overline{e}$ para toda celda en $Y$.
+	que $S \cap \overline{e}$ es cerrado en $\overline{e}$ con la topología inducida de $Y$ para toda celda en $Y$.
 	Sea ahora $e$ una celda de $X$ que no esté contenida en $Y$. Sabemos que $\overline
 	{e}\backslash e$ está contenido en la unión de un número finito de celdas de $X$,
 	de las cuales un subconjunto de ellas están contenidas en $Y$. Llamemos a dichas
@@ -654,7 +686,7 @@ subconjuntos bajo ciertas condiciones razonables.
 	) \cap \overline{e}= \left( (S \cap \overline{e}_{1}) \cup \cdots \cap (S \cap
 	\overline{e}_{n}) \right) \cap \overline{e},
 	\]
-	luego $S \cap \overline{e}$ es cerrado en $\overline{e}$. Es decir, $S$ es
+	luego $S \cap \overline{e}$ es cerrado en $\overline{e}$ con la topología inducida de $Y$. Es decir, $S$ es
 	cerrado en $X$ y por tanto en $Y$. Finalmente, concluimos que $Y$ es cerrado
 	en $X$ tomando $S = Y$.
 \end{proof}

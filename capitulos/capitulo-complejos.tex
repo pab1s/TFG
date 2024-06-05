@@ -235,20 +235,6 @@ lo notaremos por $\tau \prec \sigma$.
 	unión del interior de dos caras es disjunta.
 \end{proof}
 
-Dado un símplice $\sigma$ podemos definir un orden sobre sus vértices. Dos
-órdenes de $\sigma$ los consideraremos equivalentes si podemos pasar de uno a
-otro con un número par de permutaciones. Así, los ordenamientos posibles para
-los vértices de $\sigma$ se pueden agrupar en dos clases de equivalencia
-distintas, que definimos como las \textbf{orientaciones del símplice} $\sigma$.
-
-\begin{definicion}
-	Decimos que un símplice $\sigma = [a_{0}, a_{1}, \ldots, a_{p}]$ está \textbf{orientado}
-	si se le ha asignado una de estas orientaciones. Utilizaremos $[a_{0}a_{1}\ldots
-	a_{p}]$ para denotar la clase de equivalencia dada por la orientación $a_{0}< a
-	_{1}< \cdots < a_{p}$ del símplice generado por los vértices $a_{0},a_{1},\ldots
-	, a_{p}$.
-\end{definicion}
-
 \section{Complejos simpliciales}
 
 La importancia de los complejos simpliciales reside en su capacidad para
@@ -486,7 +472,7 @@ El siguiente ejemplo muestra la triangulación de una esfera en $\R^3$ por el m�
 \end{proposicion}
 
 \begin{ejemplo}
-	Consideremos el complejo simplicial \(K\), que es un tetraedro en \(\mathbb{R}^3\). Denotamos su poliedro asociado por \(|K|\). Supongamos que el origen de \(\mathbb{R}^3\) es el centro de \(|K|\) y que \(\mathbb{S}^2\) es la esfera unidad con radio \(1\). Definimos la función \(f: |K| \to \mathbb{S}^2\) por
+	Consideremos el complejo simplicial \(K\), que es un tetraedro en \(\mathbb{R}^3\). Denotamos su poliedro asociado por \(|K|\). Supongamos que el origen de \(\mathbb{R}^3\) es el centro de \(|K|\) y que \(\mathbb{S}^2\) es la esfera unidad con radio \(1\) con la topología inducida de la usual. Definimos la función \(f: |K| \to \mathbb{S}^2\) por
 	\[
 	f(t) = \frac{t}{\|t\|}
 	\]
@@ -497,7 +483,7 @@ El siguiente ejemplo muestra la triangulación de una esfera en $\R^3$ por el m�
 	donde el supremo asegura que \(t\) está en la frontera de \(|K|\). De este modo, se verifica que \(g(f(t)) = t\) para todo \(t \in |K|\). Por lo tanto, \(f\) es una biyección continua desde un conjunto compacto hacia un espacio Hausdorff, luego es un homeomorfismo y en consecuencia, una triangulación de la esfera $\mathbb{S}^2$.
 \end{ejemplo}
 
-En particular, las esferas pertenecen a una familia de espacios topológicos conocidos como \textbf{variedades topológicas}. Estos espacios son el objeto central de estudio en la topología, siendo el objetivo su clasificación bajo homeomorfismo.
+En particular, las esferas pertenecen a una familia de espacios topológicos conocidos como \textbf{variedades topológicas}. Estos espacios son el objeto central de estudio en la topología, siendo el objetivo su clasificación bajo homeomorfismos.
 
 \begin{definicion}
 	Sea \(X\) un espacio topológico Hausdorff no vacío. Diremos que \(X\) es una \textbf{\(m\)-variedad} o \textbf{variedad de dimensión $n$}

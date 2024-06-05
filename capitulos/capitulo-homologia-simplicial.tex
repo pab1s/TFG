@@ -12,6 +12,23 @@ profundizamos en las propiedades teóricas y aplicaciones prácticas de la
 homología simplicial siguiendo los contenidos de \cite{rafael2003elementos}.
 
 \section{Homología simplicial orientada}
+
+Dado un símplice $\sigma$, podemos definir un orden sobre sus vértices. Dos
+órdenes de $\sigma$ los consideraremos equivalentes si podemos pasar de uno a
+otro con un número par de permutaciones. 
+Además, en el caso donde $\sigma$ sea un $0$-símplice, claramente existe una única orientación.
+Así, los ordenamientos posibles para
+los vértices de $\sigma$ se pueden agrupar en dos clases de equivalencia
+distintas, que definimos como las \textbf{orientaciones del símplice} $\sigma$.
+
+\begin{definicion}
+	Decimos que un símplice $\sigma = [a_{0}, a_{1}, \ldots, a_{p}]$ está \textbf{orientado}
+	si se le ha asignado una de estas orientaciones. Utilizaremos $[a_{0}a_{1}\ldots
+	a_{p}]$ para denotar la clase de equivalencia dada por la orientación $a_{0}< a
+	_{1}< \cdots < a_{p}$ del símplice generado por los vértices $a_{0},a_{1},\ldots
+	, a_{p}$.
+\end{definicion}
+
 Consideremos \(\Sigma_{p}\) el conjunto de todos los símplices de dimensión \(p\) de
 un complejo simplicial geométrico \(K\) y el conjunto de sus clases de equivalencia por la relación de orientación. Para cada \(\sigma \in \Sigma_{p}\), definimos
 \(\Sigma_{p}^{+}\) y \(\Sigma_{p}^{-}\) como los conjuntos que contienen, respectivamente,

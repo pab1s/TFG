@@ -2,6 +2,7 @@
 % !TeX encoding = utf8
 
 \chapter{Homología simplicial}
+\label{chapter:homology}
 
 Este capítulo se centra en la homología simplicial, una rama de estudio crucial
 de la topología algebraica que utiliza complejos simpliciales para analizar y
@@ -11,16 +12,32 @@ profundizamos en las propiedades teóricas y aplicaciones prácticas de la
 homología simplicial siguiendo los contenidos de \cite{rafael2003elementos}.
 
 \section{Homología simplicial orientada}
+
+Dado un símplice $\sigma$, podemos definir un orden sobre sus vértices. Dos
+órdenes de $\sigma$ los consideraremos equivalentes si podemos pasar de uno a
+otro con un número par de permutaciones. 
+Además, en el caso donde $\sigma$ sea un $0$-símplice, claramente existe una única orientación.
+Así, los ordenamientos posibles para
+los vértices de $\sigma$ se pueden agrupar en dos clases de equivalencia
+distintas, que definimos como las \textbf{orientaciones del símplice} $\sigma$.
+
+\begin{definicion}
+	Decimos que un símplice $\sigma = [a_{0}, a_{1}, \ldots, a_{p}]$ está \textbf{orientado}
+	si se le ha asignado una de estas orientaciones. Utilizaremos $[a_{0}a_{1}\ldots
+	a_{p}]$ para denotar la clase de equivalencia dada por la orientación $a_{0}< a
+	_{1}< \cdots < a_{p}$ del símplice generado por los vértices $a_{0},a_{1},\ldots
+	, a_{p}$.
+\end{definicion}
+
 Consideremos \(\Sigma_{p}\) el conjunto de todos los símplices de dimensión \(p\) de
-un complejo simplicial \(K\). Para cada \(\sigma \in \Sigma_{p}\), definimos
+un complejo simplicial geométrico \(K\) y el conjunto de sus clases de equivalencia por la relación de orientación. Para cada \(\sigma \in \Sigma_{p}\), definimos
 \(\Sigma_{p}^{+}\) y \(\Sigma_{p}^{-}\) como los conjuntos que contienen, respectivamente,
 un símplice orientado \(\sigma^{+}\) y el símplice con orientación opuesta
 \(\sigma^{-}\). En lo que sigue, \(R\) siempre será un \textbf{anillo unitario conmutativo}, a menos que se indique de manera explícita lo contrario.
 
 \begin{definicion}
-	Sea \(K\) un complejo simplicial y sea \(R\) un anillo. Consideremos el conjunto. Definimos
-	\(C_{p}(K;R)\), el \textbf{\(R\)-módulo de las \(p\)-cadenas simpliciales orientadas}
-	de \(K\), como el cociente del \(R\)-módulo libre generado por
+	Sea \(K\) un complejo simplicial y sea \(R\) un anillo. Consideremos los conjuntos definidos anteriormente. Definimos el \textbf{\(R\)-módulo de las \(p\)-cadenas simpliciales orientadas}
+	de \(K\), \(C_{p}(K;R)\), como el cociente del \(R\)-módulo libre generado por
 	\(\Sigma_{p}^{+}\cup \Sigma_{p}^{-}\) sobre el submódulo generado por el
 	conjunto \(\{\sigma^{+}+ \sigma^{-}: \sigma \in \Sigma_{p}\}\). Esto es,
 	\[
@@ -364,6 +381,37 @@ relevantes en homología.
 	\(K\) o símplices de la forma \([w,v_{0},\ldots,v_{p}]\), donde
 	\([v_{0}, \ldots, v_{p}] \in K\). Lo denotaremos por \(w \ast K\).
 \end{definicion}
+
+\begin{figure}[h]
+	\centering % This centers the figure
+	\begin{tikzpicture}
+		% Define the style for the nodes
+		\tikzstyle{every node}
+		=[circle, draw, fill=black, inner sep=0pt, minimum width=4pt]
+		
+		% Nodes definition with labels
+		\node (a) at (-2, 0) [label=left:a] {}; \node (b) at (2, 0) [label=right:b] {};
+		\node (w) at (0, 3.5) [label=above:w] {}; \node (c) at (2, 1.5) [label=below right:c]
+		{}; \node (d) at (4, 1.5) [label=right:d] {};
+		
+		% Draw the gray-filled area
+		\fill[gray] (a.center) -- (b.center) -- (c.center) -- cycle;
+		
+		% Draw the translucent light blue-filled areas
+		\filldraw[fill=blue, opacity=0.1] (a.center) -- (w.center) -- (c.center) --
+		cycle; \filldraw[fill=blue, opacity=0.1] (b.center) -- (w.center) -- (c.center)
+		-- cycle; \filldraw[fill=blue, opacity=0.1] (a.center) -- (w.center) -- (b.center)
+		-- cycle; \filldraw[fill=blue, opacity=0.1] (c.center) -- (d.center) -- (w.center)
+		-- cycle;
+		
+		% Draw the tetrahedron edges
+		\draw (a.center) -- (b.center); \draw (b.center) -- (w.center); \draw (w.center)
+		-- (a.center); \draw (a.center) -- (c.center); \draw (b.center) -- (c.center);
+		\draw (w.center) -- (c.center); \draw (c.center) -- (d.center); \draw (w.center) -- (d.center); 
+	\end{tikzpicture}
+	\caption{Cono sobre el complejo formado por el \(2\)-símplice \([a,b,c]\), el $1$-símplice $[c,d]$ y todas sus caras con vértice \(w\).}
+\end{figure}
+
 \begin{lema}
 	El cono \(w \ast K\) es un complejo simplicial.
 \end{lema}
@@ -394,35 +442,7 @@ relevantes en homología.
 	\(\interior \sigma \cap \interior \tau = \emptyset\) por el mismo argumento
 	recién dado.
 \end{proof}
-\begin{figure}[h]
-	\centering % This centers the figure
-	\begin{tikzpicture}
-		% Define the style for the nodes
-		\tikzstyle{every node}
-		=[circle, draw, fill=black, inner sep=0pt, minimum width=4pt]
-		
-		% Nodes definition with labels
-		\node (a) at (-2, 0) [label=left:a] {}; \node (b) at (2, 0) [label=right:b] {};
-		\node (w) at (0, 3.5) [label=above:w] {}; \node (c) at (2, 1.5) [label=right:c]
-		{};
-		
-		% Draw the gray-filled area
-		\fill[gray] (a.center) -- (b.center) -- (c.center) -- cycle;
-		
-		% Draw the translucent light blue-filled areas
-		\filldraw[fill=blue, opacity=0.1] (a.center) -- (w.center) -- (c.center) --
-		cycle; \filldraw[fill=blue, opacity=0.1] (b.center) -- (w.center) -- (c.center)
-		-- cycle; \filldraw[fill=blue, opacity=0.1] (a.center) -- (w.center) -- (b.center)
-		-- cycle;
-		
-		% Draw the tetrahedron edges
-		\draw (a.center) -- (b.center); \draw (b.center) -- (w.center); \draw (w.center)
-		-- (a.center); \draw (a.center) -- (c.center); \draw (b.center) -- (c.center);
-		\draw (w.center) -- (c.center);
-	\end{tikzpicture}
-	\caption{Cono sobre el complejo formado por el \(2\)-símplice \([a,b,c]\) y todas
-		sus caras con vértice \(w\).}
-\end{figure}
+
 \begin{proposicion}
 	\label{prop:char-homol-cono} Sea \(K\) un complejo simplicial y sea \(w \ast K\) el
 	cono sobre \(K\) de vértice \(w\). Entonces la homología orientada de \(w \ast K\)
@@ -447,15 +467,15 @@ relevantes en homología.
 	\[
 	s_{p}([v_{0}\ldots v_{p}]) =
 	\begin{cases}
-		[wv_{0}\ldots v_{p}] \  & \text{si}\ v_{i}\neq w \quad 0 \leq i \leq p,\quad p \geq 0 \\
-		0 \                     & \text{en caso contrario}
+		[wv_{0}\ldots v_{p}] \  & \text{si}\ v_{i}\neq w \quad 0 \leq i \leq p,\quad p \geq 0, \\
+		0 \                     & \text{en caso contrario},
 	\end{cases}
 	\]
 	induce una extensión lineal. Dicha familia está bien definida para
 	\(C_{p}(w \ast K;R)\). Veamos que \(\partial_{p+1}s_{p}+ s_{p-1}\partial_{p}= \id_{C_p(w
 		\ast K;R)}- f_{p}\varepsilon_{p}\) se cumple, por lo que \(s\) es una homotopía
-	de cadenas. Para el caso en que \(p \in \Z\) es menor que \(0\) se cumple de manera
-	trivial. Si \(p = 0\) distinguimos dos casos. Cuando \(v \neq w\) tenemos que \((\partial
+	de cadenas. Para el caso en que \(p \in \Z\) es menor que \(0\), se cumple de manera
+	trivial. Si \(p = 0\), distinguimos dos casos. Cuando \(v \neq w\) tenemos que \((\partial
 	_{1}s_{0}+s_{-1}\partial_{0})(v) = \partial_{1}[w,v] = v-w = (\id_{0}- f_{0}\varepsilon
 	_{0})(v)\). Por el contrario si \(v = w\), \((\partial_{1}s_{0}+s_{-1}\partial_{0})
 	(v) = 0\) y también \((\id_{0}- f_{0}\varepsilon_{0})(v) = \id_{0}(w) - (f_{0}\varepsilon
@@ -497,7 +517,7 @@ relevantes en homología.
 \end{corolario}
 \begin{corolario}
 	Sea \(\sigma\) un \(n\)-símplice y sea \(\bd \sigma\) su borde. Entonces
-	\(\widetilde{H}_{p}(\bd \sigma;R) = 0\) es trivial si \(p = n-1\) y
+	\(\widetilde{H}_{p}(\bd \sigma;R) = 0\) es trivial si \(p \neq n-1\) y
 	\(\widetilde{H}_{n-1}(\bd \sigma; R) \cong R\). Además, para el caso no trivial,
 	un generador es la clase de la cadena \(\partial(\sigma)\).
 \end{corolario}
@@ -523,7 +543,7 @@ la sucesión de Mayer-Vietoris es una herramienta esencial en la topología alge
 y la teoría de homología. Esta sucesión permite analizar la homología de un
 complejo simplicial a partir de la homología de sus subcomplejos, de manera análoga
 a como el teorema de Seifert-van Kampen describe el grupo fundamental de un espacio
-topológico a partir de subespacios abiertos y conexos por caminos.
+topológico a partir de subespacios abiertos y conexos por arcos.
 \begin{lema}
 	[Lema de la serpiente] \label{lem:zig-zag} Sean \(A_{\bullet}= \{A_{n},\partial_{A}
 	\}, B_{\bullet}= \{B_{n},\partial_{A}\}\) y \(C_{\bullet}= \{C_{n},\partial_{C}\}\)
@@ -532,11 +552,32 @@ topológico a partir de subespacios abiertos y conexos por caminos.
 	0 \to A_{\bullet}\overset{f}{\to}B_{\bullet}\overset{g}{\to}C_{\bullet}\to 0
 	\]
 	es exacta. Existe entonces una sucesión exacta de homología
-	\begin{equation}
-		\label{eq:long-exact-hom}\cdots \to H_{p}(A_{\bullet};R) \overset{f_*}{\to}H_{p}
-		(B_{\bullet};R) \overset{g_*}{\to}H_{p}(C_{\bullet};R) \overset{\partial_*}{\to}
-		H_{p-1}(A_{\bullet};R) \overset{f_*}{\to}H_{p-1}(B_{\bullet};R) \to \cdots
-	\end{equation}
+%	\begin{equation}
+%		\label{eq:long-exact-hom}\cdots \to H_{p}(A_{\bullet};R) \overset{f_*}{\to}H_{p}
+%		(B_{\bullet};R) \overset{g_*}{\to}H_{p}(C_{\bullet};R) \overset{\partial_*}{\to}
+%		H_{p-1}(A_{\bullet};R) \overset{f_*}{\to}H_{p-1}(B_{\bullet};R) \to \cdots
+%	\end{equation}
+	\begin{center}
+	\begin{tikzpicture}[>=triangle 60]
+		\matrix[matrix of math nodes,column sep={80pt,between origins},row sep={40pt,between origins},nodes={asymmetrical rectangle}] (s)
+		{
+			|[name=02]| \cdots &|[name=A]| H_{p}(A_{\bullet};R) &|[name=B]| H_{p}(B_{\bullet};R) &|[name=C]| H_{p}(C_{\bullet};R) \\
+			%
+			&|[name=A']| H_{p-1}(A_{\bullet};R) &|[name=B']| H_{p-1}(B_{\bullet};R) &|[name=C']| H_{p-1}(C_{\bullet};R)  &|[name=01]| \cdots \\
+		};
+		\draw[->]
+		(A) edge node[auto] {\(f_*\)} (B)
+		(B) edge node[auto] {\(g_*\)} (C)
+		(02) edge (A)
+		(C') edge (01)
+		(A') edge node[auto] {\(f_*\)} (B')
+		(B') edge node[auto] {\(g_*\)} (C')
+		;
+		\draw[->,gray,rounded corners] (C) -- ++(2,0) -- ++(0,-0.7) -- ($(B)!.5!(B')$) node[auto,text=black,pos=1.0]
+		{\(\partial_*\)} -|
+		($(A'.west)+(-.5,0)$) -- (A');
+	\end{tikzpicture}
+	\end{center}
 	donde \(\partial_{*}\) es el operador borde inducido en \(B_{\bullet}\) que
 	llamaremos \textbf{operador conector}.
 \end{lema}
@@ -574,13 +615,13 @@ topológico a partir de subespacios abiertos y conexos por caminos.
 	implica que
 	\[
 	f(b_{p}- b_{p}' - \partial_{B}b_{p+1}) = c_{p}- c_{p}' - \partial_{C}g(b_{p+1}
-	) = c_{p}- c_{p}' - \partial_{C}c_{p+1}= 0
+	) = c_{p}- c_{p}' - \partial_{C}c_{p+1}= 0.
 	\]
 	En consecuencia, podemos tomar \(a_{p}\) tal que
 	\(f(a_{p}) = b_{p}- b_{p}' - \partial_{B}b_{p+1}\) luego
 	\[
 	f(\partial_{A}a_{p}) = \partial_{B}f(a_{p}) = \partial_{B}(b_{p}- b_{p}') - 0
-	= f(a_{p-1}- a_{p-1}')
+	= f(a_{p-1}- a_{p-1}').
 	\]
 	Por ser \(f\) inyectiva, \(\partial_{A}a_{p}= a_{p-1}- a_{p-1}'\), como buscábamos.
 	
@@ -602,7 +643,7 @@ topológico a partir de subespacios abiertos y conexos por caminos.
 	_{p+1}\in C_{p}\). Escojamos \(b_{p+1}\) de manera que \(g(b_{p+1}) = c_{p+1}\). Entonces
 	\[
 	g(b_{p}- \partial_{B}b_{p+1}) = g(b_{p}) - \partial_{C}g(b_{p+1}) = g(b_{p})
-	- \partial_{C}c_{p+1}= 0
+	- \partial_{C}c_{p+1}= 0,
 	\]
 	luego \(b_{p}- \partial_{B}b_{p+1}= f(a_{p})\) para algún \(a_{p}\). Ahora, \(a_{p}\)
 	es un ciclo pues
@@ -628,10 +669,10 @@ topológico a partir de subespacios abiertos y conexos por caminos.
 	los cálculos obtenemos que
 	\[
 	\partial_{B}(b_{p}- f(a_{p})) = \partial_{B}(b_{p}) - \partial_{B}(f(a_{p}))
-	= \partial_{B}(b_{p}) - f(a_{p-1}) = 0
+	= \partial_{B}(b_{p}) - f(a_{p-1}) = 0,
 	\]
 	\[
-	g_{*}[b_{p}- f(a_{p})] = [g(b_{p}) - 0] = [c_{p}] = \alpha
+	g_{*}[b_{p}- f(a_{p})] = [g(b_{p}) - 0] = [c_{p}] = \alpha.
 	\]
 	
 	\textit{Paso 5}. Finalmente obtengamos la exactitud para
@@ -639,7 +680,7 @@ topológico a partir de subespacios abiertos y conexos por caminos.
 	\(\beta = [a_{p-1}]\) donde \(f(a_{p-1}) = \partial_{B}b_{p}\) para algún \(b_{p}\)
 	por definición. En consecuencia,
 	\[
-	f_{*}(\beta) = [f(a_{p-1})] = [\partial_{B}b_{p}] = 0
+	f_{*}(\beta) = [f(a_{p-1})] = [\partial_{B}b_{p}] = 0.
 	\]
 	
 	Consideremos ahora el caso donde \(f_{*}(\beta) = 0\). Sea \(\beta = [a_{p-1}]\). Entonces
@@ -656,16 +697,16 @@ topológico a partir de subespacios abiertos y conexos por caminos.
 Una consecuencia importante del resultado anterior es su naturalidad, un concepto
 de gran interés en teoría de categorías.
 \begin{teorema}
-	Consideremos el siguiente diagrama conmutativo
+	Sean \(\alpha : A_\bullet \to A_\bullet'\), \(\beta : B_\bullet \to B_\bullet'\) y \(\gamma : C_\bullet \to C_\bullet'\) aplicaciones de cadenas. Consideremos el siguiente diagrama conmutativo
 	\[
 	\xymatrix{ 0 \ar@{->}[r] & A_{\bullet} \ar@{->}[r]^{f} \ar@{->}[d]^{\alpha} & B_{\bullet} \ar@{->}[r]^{g} \ar@{->}[d]^{\beta} & C_{\bullet} \ar@{->}[r] \ar@{->}[d]^{\gamma} & 0 \\ 0 \ar@{->}[r] & A'_{\bullet} \ar@{->}[r]^{f'} & B'_{\bullet} \ar@{->}[r]^{g'} & C'_{\bullet} \ar@{->}[r] & 0 }
 	\]
 	donde las sucesiones horizontales son sucesiones exactas de complejos de cadenas.
 	Entonces el diagrama
 	\[
-	\xymatrix{ {} \ar@{->}[r] & H_p(A_{\bullet};R) \ar@{->}[r]^{f_*} \ar@{->}[d]^{\alpha_*} & H_p(B_{\bullet};R) \ar@{->}[r]^{g_*} \ar@{->}[d]^{\beta_*} & H_p(C_{\bullet};R) \ar@{->}[r]^{\partial_*} \ar@{->}[d]^{\gamma_*} & H_{p-1}(A_{\bullet};R) \ar@{->}[r] \ar@{->}[d]^{\alpha_*} & {} \\ {} \ar@{->}[r] & H_p(A'_{\bullet};R) \ar@{->}[r]^{f'_*} & H_p(B'_{\bullet};R) \ar@{->}[r]^{g'_*} & H_p(C'_{\bullet};R) \ar@{->}[r]^{\partial'_*} & H_{p-1}(A'_{\bullet};R) \ar@{->}[r] & . }
+	\xymatrix{ {} \ar@{->}[r] & H_p(A_{\bullet};R) \ar@{->}[r]^{f_*} \ar@{->}[d]^{\alpha_*} & H_p(B_{\bullet};R) \ar@{->}[r]^{g_*} \ar@{->}[d]^{\beta_*} & H_p(C_{\bullet};R) \ar@{->}[r]^{\partial_*} \ar@{->}[d]^{\gamma_*} & H_{p-1}(A_{\bullet};R) \ar@{->}[r] \ar@{->}[d]^{\alpha_*} & {} \\ {} \ar@{->}[r] & H_p(A'_{\bullet};R) \ar@{->}[r]^{f'_*} & H_p(B'_{\bullet};R) \ar@{->}[r]^{g'_*} & H_p(C'_{\bullet};R) \ar@{->}[r]^{\partial'_*} & H_{p-1}(A'_{\bullet};R) \ar@{->}[r] & }
 	\]
-	es conmutativo, siendo \(\alpha, \beta, \gamma\) aplicaciones de cadenas.
+	es conmutativo.
 \end{teorema}
 \begin{proof}
 	Es claro que el diagrama
@@ -791,7 +832,7 @@ Uno de los resultados más destacados en la teoría de homología simplicial es 
 
 \begin{teorema}
 	\label{teo:comp-conex-iso-R}
-	Sea \( K \) un complejo simplicial y \( R \) un anillo. Supongamos que el poliedro \( |K| \) de \( K \) es conexo. Entonces \( H_0(K; R) \cong R \).
+	Sea \( K \) un complejo simplicial y \( R \) un anillo unitario conmutativo. Supongamos que el poliedro \( |K| \) de \( K \) es conexo. Entonces \( H_0(K; R) \cong R \).
 \end{teorema}
 \begin{proof}
 	Consideremos el complejo de cadenas aumentado \( \widetilde{C}(K; R) \) y su respectiva homología reducida \( \widetilde{H}(K; R) \). Es claro que el submódulo de bordes del complejo aumentado \( B_0(K; R) \) está contenido en \( \ker \widetilde{\partial}_0 \), dado que \( \widetilde{\partial}_0 \circ \widetilde{\partial}_1 = 0 \).
@@ -823,7 +864,7 @@ Uno de los resultados más destacados en la teoría de homología simplicial es 
 \end{proof}
 
 \begin{corolario}
-	Sea \(K\) un complejo simplicial y sea \(R\) un anillo. Entonces \(H_0(K; R) \cong R^s\), donde \(s\) es el número de componentes conexas del poliedro \(|K|\).
+	Sea \(K\) un complejo simplicial y sea \(R\) un anillo unitario conmutativo. Entonces \(H_0(K; R) \cong R^s\), donde \(s\) es el número de componentes conexas del poliedro \(|K|\).
 \end{corolario}
 \begin{proof}
 	Procederemos por inducción sobre el número de componentes conexas de \(|K|\). Si \(|K|\) es conexo, entonces el resultado se sigue del \autoref{teo:comp-conex-iso-R}. Supongamos ahora que podemos descomponer \(K\) en subcomplejos \(K_1, \ldots, K_{s}\) disjuntos dos a dos. Por la \nameref{prop:mayer-vietoris}, tenemos que la sucesión

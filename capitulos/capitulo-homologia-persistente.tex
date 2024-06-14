@@ -44,20 +44,17 @@ En este contexto, los complejos de \u Cech y Vietoris-Rips se emplean frecuentem
 	Dado que \( V \) es finito y cada símplice se define como un subconjunto de \( V \), entonces cada símplice sólo puede tener un número finito de subconjuntos. En consecuencia, el número de caras de cada símplice también es finito.
 \end{proof}
 
-El siguiente teorema será de utilidad para comprender y estudiar el espacio topológico que definen los complejos de \u Cech.
+El siguiente teorema será de utilidad para comprender y estudiar el espacio topológico que definen los complejos de \u Cech. Por motivos de espacio simplemente lo enunciaremos. Una demostración del teorema enunciado de forma más general puede encontrarse en \cite{hatcher2002algebraic}.
 
 \begin{teorema}[Teorema del nervio] \label{teo:nerve}
 	Sea \(X\) un espacio topológico finito y sea \(\mathcal{U} = \{U_v\}_{v \in V}\) un recubrimiento por abiertos de \(X\). Supongamos además que para todo subconjunto no vacío de vértices \(S \subseteq V\) tenemos que \(\bigcap_{s \in S} U_s\) es contráctil o vacío. Entonces, el politopo de la realización geométrica del nervio de $\mathcal{U}$, \(|N(\mathcal{U})|\), es homotópicamente equivalente a \(X\).
 \end{teorema}
-\begin{proof}
-	Una demostración del teorema enunciado de forma más general puede encontrarse en \cite{hatcher2002algebraic}.
-\end{proof}
 
 Claramente, la intersección de bolas abiertas es vacía o contráctil (pues es convexa). Por el \nameref{teo:nerve}, tenemos que el poliedro de la realización geométrica del complejo de \u Cech es homotópicamente equivalente al subespacio métrico formado por la unión de dichas bolas. En consecuencia, el estudio de la topología del complejo de \u Cech se resume al estudio de las bolas que recubren sus vértices.
 Sin embargo, el complejo de \u Cech es costoso de obtener mediante métodos computacionales. Por ello, se propone el complejo de Vietoris-Rips para resolver este problema.
 
 \begin{definicion}
-	Sea \((X,d)\) un espacio métrico y sea \(V\) un subconjunto de puntos de \(X\). Dado \(\varepsilon > 0\), definimos el \textbf{complejo de Vietoris-Rips} \(VR(V,\varepsilon)\) como el complejo abstracto cuyo conjunto de vértices es \(V\), de forma que \(\{v_0, v_1, \dots v_p\} \subseteq V\) genera un \(p\)-símplice si, y sólo si, \(d(v_i,v_j) \leq \varepsilon\) para todo \(0 \leq i\), \(j \leq p\).
+	Sea \((X,d)\) un espacio métrico y sea \(V\) un subconjunto de puntos de \(X\). Dado \(\varepsilon > 0\), definimos el \textbf{complejo de Vietoris-Rips} \(VR(V,\varepsilon)\) como el complejo abstracto cuyo conjunto de vértices es \(V\), de forma que \(\{v_0, v_1, \dots v_p\} \subseteq V\) genera un \(p\)-símplice si, y solo si, \(d(v_i,v_j) \leq \varepsilon\) para todo \(0 \leq i\), \(j \leq p\).
 \end{definicion}
 
 \begin{proposicion}

@@ -5,7 +5,7 @@
 
 Este capítulo se dedica a la homología persistente, un concepto de gran relevancia en la topología computacional que proporciona herramientas poderosas para analizar y entender la estructura subyacente de los datos a través de múltiples escalas. Originada en los trabajos iniciales de matemáticos como Edelsbrunner, Letscher y Zomorodian \cite{edelsbrunner2002topological}, la homología persistente permite la identificación y el análisis de características topológicas que persisten a lo largo de variaciones en la escala en la que se observa.
 
-Este capítulo se centrará en detallar los principios teóricos detrás de la homología persistente. En particular, estudiaremos en profundidad el Teorema de correspondencia, un resultado central en la teoría que muestra cómo transformar el nacimiento y muerte de las clases de homología en constructos algebraicos que se pueden analizar y manipular computacionalmente. Seguiremos como esquema principal los resultados de \cite{zomorodian2004computing} y \cite{dey2022computational}.
+Este capítulo se centrará en detallar los principios teóricos detrás de la homología persistente. En particular, estudiaremos en profundidad el Teorema de correspondencia, un resultado central en la teoría que muestra cómo transformar el nacimiento y muerte de las clases de homología en objetos matemáticos más sencillos de analizar y manipular computacionalmente. Seguiremos como esquema principal los resultados de \cite{zomorodian2004computing} y \cite{dey2022computational}.
 
 \section{Complejos de \u Cech y Vietoris-Rips}
 
@@ -14,11 +14,11 @@ La homología persistente es comúnmente empleada para analizar conjuntos de dat
 En este contexto, los complejos de \u Cech y Vietoris-Rips se emplean frecuentemente para capturar la estructura topológica subyacente de las nubes de puntos. Estos complejos dotan de estructura de complejo simplicial a los datos, facilitando su representación, el estudio de su forma y sus características a múltiples escalas.
 
 \begin{definicion}
-	Sea \(X\) un espacio topológico y sea \(\mathcal{U} = \{U_v\}_{v \in V}\) un recubrimiento de \(X\). Llamaremos \textbf{nervio} de \(\mathcal{U}\) al complejo simplicial abstracto con conjunto de vértices \(V\) tal que la familia \(v_0, \dots, v_p\) genera un \(p\)-símplice si, y sólo si, \(U_{v_0} \cap \dots \cap U_{v_p} \neq \emptyset\). Lo notaremos por \(N(\mathcal{U})\).
+	Sea \(X\) un espacio topológico y sea \(\mathcal{U} = \{U_v\}_{v \in V}\) un recubrimiento de \(Y \subseteq X\) por puntos \(v \in V\) de \(Y\). Llamaremos \textbf{nervio} de \(\mathcal{U}\) al complejo simplicial abstracto con conjunto de vértices \(V\) tal que la familia \(v_0, \dots, v_p\) genera un \(p\)-símplice si, y sólo si, \(U_{v_0} \cap \dots \cap U_{v_p} \neq \emptyset\). Lo notaremos por \(N(\mathcal{U})\).
 \end{definicion}
 
 \begin{definicion}
-	Sea \((X,d)\) un espacio métrico y sea \(V\) un subconjunto de puntos de \(X\). Definimos el \textbf{complejo de \u Cech} \(C(V, \varepsilon)\) como el nervio \(N(\mathcal{B}_\varepsilon)\), donde
+	Sea \((X,d)\) un espacio métrico y sea \(V\) un subconjunto de puntos de \(X\). Dado \(\varepsilon > 0\), definimos el \textbf{complejo de \u Cech} \(C(V, \varepsilon)\) como el nervio \(N(\mathcal{B}_\varepsilon)\), donde
 	\[
 		\mathcal{B}_\varepsilon = \{ B_{\varepsilon}(v) : v \in V \},
 	\]
@@ -54,10 +54,10 @@ El siguiente teorema será de utilidad para comprender y estudiar el espacio top
 \end{proof}
 
 Claramente, la intersección de bolas abiertas es vacía o contráctil (pues es convexa). Por el \nameref{teo:nerve}, tenemos que el poliedro de la realización geométrica del complejo de \u Cech es homotópicamente equivalente al subespacio métrico formado por la unión de dichas bolas. En consecuencia, el estudio de la topología del complejo de \u Cech se resume al estudio de las bolas que recubren sus vértices.
-Sin embargo, el complejo de \u Cech es costoso de obtener mediante métodos computaciones. Por ello, se propone el complejo de Vietoris-Rips para resolver este problema.
+Sin embargo, el complejo de \u Cech es costoso de obtener mediante métodos computacionales. Por ello, se propone el complejo de Vietoris-Rips para resolver este problema.
 
 \begin{definicion}
-	Sea \((X,d)\) un espacio métrico y sea \(V\) un subconjunto de puntos de \(X\). Definimos el \textbf{complejo de Vietoris-Rips} \(VR(V,\varepsilon)\) como el complejo abstracto cuyo conjunto de vértices es \(V\), de forma que \(\{v_0, v_1, \dots v_p\} \subseteq V\) genera un \(p\)-símplice si, y sólo si, \(d(v_i,v_j) \leq \varepsilon\) para todo \(0 \leq i\), \(j \leq p\).
+	Sea \((X,d)\) un espacio métrico y sea \(V\) un subconjunto de puntos de \(X\). Dado \(\varepsilon > 0\), definimos el \textbf{complejo de Vietoris-Rips} \(VR(V,\varepsilon)\) como el complejo abstracto cuyo conjunto de vértices es \(V\), de forma que \(\{v_0, v_1, \dots v_p\} \subseteq V\) genera un \(p\)-símplice si, y sólo si, \(d(v_i,v_j) \leq \varepsilon\) para todo \(0 \leq i\), \(j \leq p\).
 \end{definicion}
 
 \begin{proposicion}
@@ -73,7 +73,7 @@ Sin embargo, el complejo de \u Cech es costoso de obtener mediante métodos comp
 \begin{figure}
 	\centering
 	\includegraphics[width=110mm]{img/cech-vr.png}
-	\caption{Representación de los complejos simpliciales \u Cech (izquierda) y Vietoris-Rips (derecha) para un conjunto de puntos en \( \mathbb{R}^2 \). En el complejo de \u Cech, los símplices se forman por la intersección no vacía de círculos de radio \(\varepsilon\) centrados en los puntos. El complejo de Vietoris-Rips conecta puntos que distan hasta \(2\varepsilon\), independientemente de las intersecciones de los círculos. Los símplices de mayor dimensión están coloreados en azul, resaltando las diferencias en la estructura simplicial generada por cada método. Fuente \cite{chazal2021introduction}.}
+	\caption{Representación de complejos simpliciales \u Cech (izquierda) y Vietoris-Rips (derecha) para un conjunto de puntos en \( \mathbb{R}^2 \). En el complejo de \u Cech, los símplices se forman por la intersección no vacía de círculos de radio \(\varepsilon\) centrados en los puntos. El complejo de Vietoris-Rips conecta puntos que distan hasta \(2\varepsilon\), independientemente de las intersecciones de los círculos. Los símplices de mayor dimensión están coloreados en azul, resaltando las diferencias en la estructura simplicial generada por cada método. Fuente \cite{chazal2021introduction}.}
 \end{figure}
 
 El complejo de Vietoris-Rips es interesante en el estudio de complejos de \u Cech. Este hecho se debe a que estos últimos pueden ser aproximados en cierto sentido por complejos de Vietoris-Rips:
@@ -187,6 +187,12 @@ A partir de la definición anterior, podemos construir los complejos de cadenas 
 
 La homología persistente facilita la interpretación de la homología en los distintos niveles de la filtración, permitiendo un análisis cuantitativo de su evolución. Al observar el nacimiento y desaparición de las clases de homología mediante los módulos de homología persistente, se obtiene información detallada de la estructura topológica general de la filtración.
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{img/persistence-diagram.png}
+	\caption{Diagrama de persistencia para la homología de dimensión 1 de la filtración de Vietoris-Rips de 2000 puntos i.i.d. en un toro. El gráfico destaca dos puntos significativos que representan las clases de equivalencia de los ciclos unidimensionales del toro, destacando su persistencia topológica. Fuente \cite{divol2019}.}
+\end{figure}
+
 \begin{definicion}
 	Dada una filtración \(\mathcal{F}\), decimos que un elemento \(\alpha \neq 0\) en \(H_p(K^i;R)\) \textbf{nace} en \(K^i\) si \(\alpha \not\in H_{p}^{i-1 \to i}(\mathcal{F};R)\). Además, decimos que \(\alpha\) \textbf{muere} en \(K^j\) si se fusiona con una clase proveniente de una dimensión anterior cuando se desplaza de \(K^{j-1}\) a \(K^{j}\). Esto es, si \(f^{i \to j-1}_p(\alpha) \not\in H_{p}^{i-1 \to j-1}(\mathcal{F};R)\) pero \(f^{i \to j}_p(\alpha) \in H_{p}^{i-1 \to j}(\mathcal{F};R)\).
 \end{definicion}
@@ -200,12 +206,6 @@ Aunque intuitivos, los diagramas de persistencia presentan ciertas limitaciones.
 Para abordar estos problemas, Zomorodian y Carlsson introdujeron un enfoque innovador mediante el uso del \textbf{código de barras} \cite{zomorodian2004computing}. Este método no solo ofrece una visualización clara y detallada de la vida de cada clase de homología, sino que también facilita la interpretación de su multiplicidad y relevancia en el contexto de los datos analizados. Esta interpretación fue posible ya que demostraron que todo módulo de persistencia puede identificarse de manera biyectiva con una estructura algebraica más general, conocida como \textbf{módulos graduados}, bajo ciertas hipótesis.
 
 A continuación profundizaremos en la aplicación y las implicaciones de estos métodos, explorando en detalle el Teorema de correspondencia como se discute en \cite{Corbet_2018}.
-
-\begin{figure}
-	\centering
-	\includegraphics[width=\textwidth]{img/persistence-diagram.png}
-	\caption{Diagrama de persistencia para la homología de dimensión 1 de la filtración de Vietoris-Rips de 2000 puntos i.i.d. en un toro. El gráfico destaca dos puntos significativos que representan las clases de equivalencia de los ciclos unidimensionales del toro, destacando su persistencia topológica. Fuente \cite{divol2019}.}
-\end{figure}
 
 \begin{definicion}
 	Sea \( \mathcal{M} = \{\{M_i\}_{i \in \N}, \{f_{i,j}\}_{i \leq j \in \N}\} \) una familia de \( R \)-módulos. Diremos que dicha familia es un \textbf{módulo de persistencia discreto} sobre \( R \) si para cada \( i \leq j \) existe un homomorfismo de \( R \)-módulos \( f_{i,j}: M_i \to M_j \) tal que:
@@ -272,7 +272,7 @@ h_{i,j} \circ (\theta_i \circ (\psi_i \circ \varphi_i)) &= ((h_{i,j} \circ \thet
 	\[
 	R = \bigoplus_{n=0}^{\infty} R_n,
 	\]
-	donde \( R_m R_n \subseteq R_{m+n} \) para todos \( m, n \in \mathbb{Z} \). Los elementos de \( R_n \) distintos de cero se denominan \textbf{homogéneos de grado \( n \)}.
+	donde \( R_m R_n \subseteq R_{m+n} \) para todo \( m, n \in \mathbb{Z} \), siendo el anillo \(R_m R_n = \{ r_m r_n : r_m \in R_m, r_n \in R_n \}\). Los elementos de \( R_n \) distintos de cero se denominan \textbf{homogéneos de grado \( n \)}.
 \end{definicion}
 
 \begin{definicion}
@@ -280,7 +280,7 @@ h_{i,j} \circ (\theta_i \circ (\psi_i \circ \varphi_i)) &= ((h_{i,j} \circ \thet
 	\[
 	M = \bigoplus_{n=0}^{\infty} M_n,
 	\]
-	donde \( M_n \) son grupos abelianos y \( R_m M_n \subseteq M_{m+n} \) para todos \( m, n \in \mathbb{Z} \). Un elemento de \( M_n \) distinto de cero se llama \textbf{homogéneo de grado \( n \)}.
+	donde \( M_n \) son grupos abelianos y \( R_m M_n \subseteq M_{m+n} \) para todo \( m, n \in \mathbb{Z} \), siendo \(R_m M_n\) el \(R_m\)-módulo con grupo abeliano \( M_n \). Un elemento de \( M_n \) distinto de cero se llama \textbf{homogéneo de grado \( n \)}.
 \end{definicion}
 
 Los módulos graduados no son más que un tipo particular de módulos. Para cada módulo graduado \( M \), el morfismo identidad \( \mathrm{id}_M : M \to M \) es simplemente el morfismo identidad de $R$-módulos. Este morfismo es claramente un homomorfismo de módulos graduados que preserva la graduación. Consideremos ahora dos módulos graduados \( M \), \( N \) y un homomorfismo de módulos graduados \( f: M \to N \). Si tenemos otro módulo graduado \( P \) y un homomorfismo \( g: N \to P \), su composición \( g \circ f \) es la composición de homomorfismos de $R$-módulos. Por lo tanto, la asociatividad de la composición se sigue directamente de la asociatividad de la composición de homomorfismos de $R$-módulos. En consecuencia, los módulos graduados sobre \( R \) junto con los homomorfismos de módulos graduados forman una categoría, que denotaremos por \( R\text{-}\mathbf{GrMod} \).
@@ -446,7 +446,7 @@ Para los siguientes dos lemas, fijaremos el \(R[t]\)-módulo graduado finitament
 
 \begin{teorema}[Teorema de correspondencia]
 	\label{teo:correspondence}
-	Sea \( R \) un anillo unitario. Entonces, un isomorfismo entre la categoría de \(R[t]\)-módulos graduados finitamente presentados y la categoría de módulos de persistencia discretos.
+	Sea \( R \) un anillo unitario. Entonces, existe un isomorfismo entre la categoría de \(R[t]\)-módulos graduados finitamente presentados y la categoría de módulos de persistencia discretos.
 \end{teorema}
 \begin{proof}
 	Estas categorías son subcategorías de \(R[t]\)-\(\Cat{GrMod}\) y \(R\)-\(\Cat{PersMod}\) respectivamente. Restringiendo \(\alpha\) y \(\beta\) a dichas subcategorías, por el \autoref{lem:alpha-finito-presentado} tenemos que \(\alpha\) es un funtor covariante de los módulos de persistencia discretos de tipo finitamente presentados a los \(R[t]\)-módulos graduados finitamente presentados. Así mismo, por los lemas \ref{lem:finit-pres} y \ref{lem:beta-finito-presentado}, \(\beta\) es un funtor covariante de los \(R[t]\)-módulos graduados finitamente presentados a los módulos de persistencia discretos de tipo finitamente presentados. En consecuencia, estas subcategorías son isomorfas.
@@ -469,7 +469,7 @@ El Teorema de descomposición de módulos graduados nos dará la clave para repr
 De manera intuitiva, primero hemos construido una única estructura algebraica que contiene todos los complejos de la filtración. Después, hemos seguido calculando una suma directa a partir de los complejos, llegando así a un espacio mucho más grande que está graduado según el orden inducido de la filtración. A continuación, recordamos el momento en que cada símplice entra utilizando un coeficiente polinomial, codificando así el orden de filtración en el anillo de coeficientes polinomiales. A partir de aquí, el \nameref{teo:desc-mod-grad} nos proporciona una factorización simple cuando el anillo base es un cuerpo \( F \). Aquí, el anillo graduado \( F[t] \) es un DIP y sus únicos ideales graduados son homogéneos de la forma \( \langle t^n \rangle = t^n \cdot R[t] \), donde \( n \geq 0 \). Ahora que hemos transformado los módulos de persistencia discretos en objetos más manejables, queremos parametrizar las clases de isomorfismo de los \( F[t] \)-módulos por objetos más sencillos de interpretar.
 
 \begin{definicion}
-	Definimos un \textbf{$\mathcal{P}$-intervalo} como un par ordenado \( (i, j) \) tal que \( 0 \leq i \leq j \leq \mathbb{Z}^{\infty} = \mathbb{Z} \cup \{+\infty\} \).
+	Definimos un \textbf{$\mathcal{P}$-intervalo} como un par ordenado \( (i, j) \) tal que \( 0 \leq i \leq j\) donde \( i,j \in \mathbb{Z}^{\infty} = \mathbb{Z} \cup \{+\infty\} \).
 \end{definicion}
 
 Nuestro objetivo ahora es asociar un \( F[t] \)-módulo graduado a un conjunto \( S \) de $\mathcal{P}$-intervalos mediante una biyección \( Q \). Para ello, definimos \( Q(i, j) = t^i F[t]/\langle t^{j-i}\rangle \) para el $\mathcal{P}$-intervalo \( (i, j) \). Es claro que \( Q(i, +\infty) = t^i F[t] \). Además, para un conjunto de $\mathcal{P}$-intervalos \( S = \{(i_1, j_1), (i_2, j_2), \ldots, (i_n, j_n)\} \), definimos

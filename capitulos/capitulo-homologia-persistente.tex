@@ -206,9 +206,10 @@ La homología persistente facilita la interpretación de la homología en los di
 		K^2 &= K^1 \cup \{[0, e_1], [0, e_2], [0, e_3]\}, \\
 		K^3 &= K^2 \cup \{[0, e_1, e_2], [0, e_1, e_3], [0, e_2, e_3]\}.
 	\end{align*}
+	
 	Consideremos además las cadenas de $\mathbb{R}$-módulos asociadas, donde cada $C_p(K^j;\mathbb{R})$ es un espacio vectorial con cuerpo $\mathbb{R}$ para cada dimensión $p \in \mathbb{Z}$.
 	
-	En $K^1$, el módulo de cadenas $C_0(K^1; \mathbb{R})$ es generado por los puntos $\{ [0], [e_1], [e_2], [e_3] \}$, lo que resulta en un espacio vectorial $\mathbb{R}^4$, mientras que los módulos $C_1(K^1; \mathbb{R})$ y $C_2(K^1; \mathbb{R})$ son ambos cero, debido a la ausencia de 1-símplices y 2-símplices.
+	En $K^1$, el módulo de cadenas $C_0(K^1; \mathbb{R})$ es generado por los 0-símplices $\{ [0], [e_1], [e_2], [e_3] \}$, lo que resulta en un espacio vectorial $\mathbb{R}^4$, mientras que los módulos $C_1(K^1; \mathbb{R})$ y $C_2(K^1; \mathbb{R})$ son ambos cero, debido a la ausencia de 1-símplices y 2-símplices.
 	
 	En cuanto a $K^2$, el módulo $C_0(K^2; \mathbb{R})$ conserva la misma estructura que $C_0(K^1; \mathbb{R})$, pues no se añaden nuevos 0-símplices. Sin embargo, $C_1(K^2; \mathbb{R})$ se genera ahora a partir de las aristas $\{ [0, e_1], [0, e_2], [0, e_3] \}$, formando un espacio vectorial isomorfo a $\mathbb{R}^3$. El módulo $C_2(K^2; \mathbb{R})$ sigue siendo nulo debido a la falta de 2-símplices.
 	
@@ -513,33 +514,6 @@ La correspondencia \( S \mapsto Q(S) \) define una biyección entre los conjunto
 
 En el contexto de filtraciones de complejos simpliciales, este resultado da lugar a la descripción de la homología persistente conocida como \textbf{código de barras}: cada $\mathcal{P}$-intervalo $(i, j)$ describe un ciclo que nace en la filtración $i$ y especifica su clase de homología hasta que se convierte en borde (es decir, hasta que muere) en el instante $j$.% Finalmente, condensamos el desarrollo realizado en el siguiente corolario: 
 
-\begin{figure}[h]
-	\label{fig:barcode}
-	\centering
-\begin{tikzpicture}[scale=3]
-	% Vertical dashed lines
-	\draw[dashed, lightgray] (0,0) -- (0,.8);
-	\draw[dashed, lightgray] (1,0) -- (1,.8);
-	\draw[dashed, lightgray] ({sqrt(3)},0) -- ({sqrt(3)},.9);
-	\draw[dashed, lightgray] (2,0) -- (2,.9);
-	% Axis
-	\draw [-latex,shorten >=-3pt] (-.2,0) -- (3,0) node [below] {\(\phantom{\sqrt{3}}t\phantom{\sqrt{3}}\)};
-	\foreach \x in  {0,1,2}
-	\node at (\x,0) {\(\bullet\)}
-	node at (\x,0) [below] {\(\phantom{\sqrt{3}}\x\phantom{\sqrt{3}}\)};
-	\node at ({sqrt(3)},0) {\(\bullet\)}
-	node at ({sqrt(3)},0) [below] {\(\sqrt{3}\)};
-	% Horizontal lines
-	\draw [{*[fill=white]}-,shorten <=-2.4pt] (0,.2) -- (3,.2);
-	\foreach \x in  {.3,.4,...,.7}
-	\draw [{*[fill=white]}-*,shorten >=-2.4pt,shorten <=-2.4pt] (0,\x) -- (1,\x) ;
-	\draw [{*[fill=white]}-*,shorten >=-2.4pt,shorten <=-2.4pt] (1,.8) --  node [above] {\(H_1\)} ({sqrt(3)},.8) ;
-	\draw [{*[fill=white]}-*,shorten >=-2.4pt,shorten <=-2.4pt] ({sqrt(3)},.9) -- node [above] {\(H_2\)} (2,.9) ;
-	\draw (0,.1) -- (-.1,.1) -- node[left]{\(H_0\)} (-.1,.8) -- (0,.8);
-\end{tikzpicture}
-\caption{Ejemplo de código de barras mostrando la persistencia de clases de homología a través del tiempo. Cada línea horizontal representa una clase de homología que persiste a través de un intervalo específico, indicando la escala a la que dichas características topológicas son detectables.}
-\end{figure}
-
 %\begin{corolario}
 %	Sea $F$ un cuerpo, $K$ un complejo simplicial y $\mathcal{F}$ una filtración discreta finita asociada. Entonces, el $(i,j)$-ésimo número de Betti de persistencia de dimensión $k$, \(\beta_k^{i \to j}\), es igual al número de $\mathcal{P}$-intervalos $(i,j)$ asociados al módulo de homología persistente $k$-dimensional  \(H_k^{i \to j}(\mathcal{F};F)\).
 %\end{corolario}
@@ -566,6 +540,33 @@ En el contexto de filtraciones de complejos simpliciales, este resultado da luga
 %\end{ejemplo}
 %
 Los diagramas de código de barras derivados de la homología persistente han demostrado ser herramientas muy útiles para la extracción de información relevante en campos como el análisis de datos. Este hecho es debido a ciertas propiedades de la homología persistente que la hacen relevante para un uso práctico. Además de las ya comentadas, también destaca su \textbf{estabilidad}, lo que significa que pequeñas perturbaciones en los datos no producen grandes cambios en los diagramas de código de barras. Esto es fundamental porque asegura que las características topológicas que se detectan son inherentes a la estructura de los datos y no consecuencia del ruido o de variaciones menores \cite{cohen2005stability, chazal2016structure}. Dicha propiedad contrasta con la homología simplicial, pues dos complejos de \u Cech o Vietoris-Rips con distinto radio pueden tener invariantes topológicos completamente diferentes. Estos métodos no solo ofrecen una representación visual intuitiva de las características de los datos, sino que también proporcionan un marco robusto para la cuantificación y comparación de estructuras topológicas.
+
+\begin{figure}[h]
+	\label{fig:barcode}
+	\centering
+	\begin{tikzpicture}[scale=3]
+		% Vertical dashed lines
+		\draw[dashed, lightgray] (0,0) -- (0,.8);
+		\draw[dashed, lightgray] (1,0) -- (1,.8);
+		\draw[dashed, lightgray] ({sqrt(3)},0) -- ({sqrt(3)},.9);
+		\draw[dashed, lightgray] (2,0) -- (2,.9);
+		% Axis
+		\draw [-latex,shorten >=-3pt] (-.2,0) -- (3,0) node [below] {\(\phantom{\sqrt{3}}t\phantom{\sqrt{3}}\)};
+		\foreach \x in  {0,1,2}
+		\node at (\x,0) {\(\bullet\)}
+		node at (\x,0) [below] {\(\phantom{\sqrt{3}}\x\phantom{\sqrt{3}}\)};
+		\node at ({sqrt(3)},0) {\(\bullet\)}
+		node at ({sqrt(3)},0) [below] {\(\sqrt{3}\)};
+		% Horizontal lines
+		\draw [{*[fill=white]}-,shorten <=-2.4pt] (0,.2) -- (3,.2);
+		\foreach \x in  {.3,.4,...,.7}
+		\draw [{*[fill=white]}-*,shorten >=-2.4pt,shorten <=-2.4pt] (0,\x) -- (1,\x) ;
+		\draw [{*[fill=white]}-*,shorten >=-2.4pt,shorten <=-2.4pt] (1,.8) --  node [above] {\(H_1\)} ({sqrt(3)},.8) ;
+		\draw [{*[fill=white]}-*,shorten >=-2.4pt,shorten <=-2.4pt] ({sqrt(3)},.9) -- node [above] {\(H_2\)} (2,.9) ;
+		\draw (0,.1) -- (-.1,.1) -- node[left]{\(H_0\)} (-.1,.8) -- (0,.8);
+	\end{tikzpicture}
+	\caption{Ejemplo de código de barras mostrando la persistencia de clases de homología a través del tiempo. Cada línea horizontal representa una clase de homología que persiste a través de un intervalo específico, indicando la escala a la que dichas características topológicas son detectables.}
+\end{figure}
 
 \endinput
 %--------------------------------------------------------------------

@@ -11,9 +11,11 @@
 \usepackage[outline]{contour} % glow around text
 \contourlength{1.4pt}
 \usetikzlibrary{arrows,arrows.meta,calc}
+\usepackage{adjustbox}
 
 \usepackage{algorithm}
 \usepackage{algpseudocode}
+\usepackage{csquotes}
 % COLORS
 \usepackage{xcolor}
 \colorlet{myred}{red!80!black}
@@ -112,16 +114,20 @@
 % -------------------------------------------------------------------
 \mainmatter % activa la numeración de capítulos, resetea la numeración de las páginas y usa números arábigos
 
-\part{Fundamento matemático} % Dividir un TFG en partes OPCIONAL
-% Añadir tantos capítulos como sea necesario
+\part{Fundamento matemático}
 \input{capitulos/capitulo-fundamentos}
 \input{capitulos/capitulo-complejos}
 \input{capitulos/capitulo-homologia-simplicial}
 %\input{capitulos/capitulo-invariancia-homotopica}
 \input{capitulos/capitulo-homologia-persistente}
 
-\cleardoublepage\part{Informática}
+\cleardoublepage\part{Aprendizaje profundo}
+\input{capitulos/capitulo-vision-artificial}
+\input{capitulos/capitulo-ann}
 \input{capitulos/capitulo-conceptos-dl}
+
+\cleardoublepage\part{Análisis de datos topológico para el estudio de CNNs}
+\input{capitulos/capitulo-tda}
 \input{capitulos/capitulo-metodologia}
 \input{capitulos/capitulo-resultados}
 \input{capitulos/capitulo-conclusion}

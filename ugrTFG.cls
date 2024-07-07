@@ -260,7 +260,7 @@
 	
 	\begin{minipage}[t]{0.25\textwidth}
 		\flushleft
-		\textbf{Responsable de tutorización}
+		\textbf{Responsables de tutorización}
 	\end{minipage}
 	\begin{minipage}[t]{0.45\textwidth}
 		\flushleft

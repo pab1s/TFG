@@ -5,7 +5,7 @@
 
 Este capítulo se dedica a la homología persistente, un concepto de gran relevancia en la topología computacional que proporciona herramientas poderosas para analizar y entender la estructura subyacente de los datos a través de múltiples escalas. Originada en los trabajos iniciales de matemáticos como Edelsbrunner, Letscher y Zomorodian \cite{edelsbrunner2002topological}, la homología persistente permite la identificación y el análisis de características topológicas que persisten a lo largo de variaciones en la escala en la que se observa.
 
-Este capítulo se centrará en detallar los principios teóricos detrás de la homología persistente. En particular, estudiaremos en profundidad el Teorema de correspondencia, un resultado central en la teoría que muestra cómo transformar el nacimiento y muerte de las clases de homología en constructos algebraicos que se pueden analizar y manipular computacionalmente. Seguiremos como esquema principal los resultados de \cite{zomorodian2004computing} y \cite{dey2022computational}.
+Este capítulo se centrará en detallar los principios teóricos detrás de la homología persistente. En particular, estudiaremos en profundidad el Teorema de correspondencia, un resultado central en la teoría que muestra cómo transformar el nacimiento y muerte de las clases de homología en objetos matemáticos más sencillos de analizar y manipular computacionalmente. Seguiremos como esquema principal los resultados de \cite{zomorodian2004computing} y \cite{dey2022computational}.
 
 \section{Complejos de \u Cech y Vietoris-Rips}
 
@@ -14,11 +14,11 @@ La homología persistente es comúnmente empleada para analizar conjuntos de dat
 En este contexto, los complejos de \u Cech y Vietoris-Rips se emplean frecuentemente para capturar la estructura topológica subyacente de las nubes de puntos. Estos complejos dotan de estructura de complejo simplicial a los datos, facilitando su representación, el estudio de su forma y sus características a múltiples escalas.
 
 \begin{definicion}
-	Sea \(X\) un espacio topológico y sea \(\mathcal{U} = \{U_v\}_{v \in V}\) un recubrimiento de \(X\). Llamaremos \textbf{nervio} de \(\mathcal{U}\) al complejo simplicial abstracto con conjunto de vértices \(V\) tal que la familia \(v_0, \dots, v_p\) genera un \(p\)-símplice si, y sólo si, \(U_{v_0} \cap \dots \cap U_{v_p} \neq \emptyset\). Lo notaremos por \(N(\mathcal{U})\).
+	Sea \(X\) un espacio topológico y sea \(\mathcal{U} = \{U_v\}_{v \in V}\) un recubrimiento de \(X\) por puntos \(v \in V\). Llamaremos \textbf{nervio} de \(\mathcal{U}\) al complejo simplicial abstracto con conjunto de vértices \(V\) tal que la familia \(v_0, \dots, v_p \in V\) genera un \(p\)-símplice si, y sólo si, \(U_{v_0} \cap \dots \cap U_{v_p} \neq \emptyset\). Lo notaremos por \(N(\mathcal{U})\).
 \end{definicion}
 
 \begin{definicion}
-	Sea \((X,d)\) un espacio métrico y sea \(V\) un subconjunto de puntos de \(X\). Definimos el \textbf{complejo de \u Cech} \(C(V, \varepsilon)\) como el nervio \(N(\mathcal{B}_\varepsilon)\), donde
+	Sea \((X,d)\) un espacio métrico y sea \(V\) un subconjunto de puntos finito de \(X\). Dado \(\varepsilon > 0\), definimos el \textbf{complejo de \u Cech} \(C(V, \varepsilon)\) como el nervio \(N(\mathcal{B}_\varepsilon)\), donde
 	\[
 		\mathcal{B}_\varepsilon = \{ B_{\varepsilon}(v) : v \in V \},
 	\]
@@ -29,35 +29,32 @@ En este contexto, los complejos de \u Cech y Vietoris-Rips se emplean frecuentem
 	El complejo de \u Cech \(C(V, \varepsilon)\) es un complejo simplicial abstracto.
 \end{proposicion}
 \begin{proof}
-	Sea \( V = \{x_i\}_{i=1}^M \) un subconjunto de puntos en el espacio métrico \( X \). Definimos \( \mathcal{B}_\varepsilon = \{B_\varepsilon(x) : x \in V \} \) como un recubrimiento por abiertos de \( V \) para algún \(\varepsilon > 0\). Veamos que el nervio \( N(\mathcal{B}_\varepsilon) \) de \( \mathcal{B}_\varepsilon \) es el complejo abstracto cuyos vértices son los conjuntos \( B_\varepsilon(x) \) y los símplices se forman por colecciones de estos conjuntos que tienen intersecciones no vacías.
+	Sea \( V = \{v_i\}_{i=1}^M \) un subconjunto de puntos en el espacio métrico \( X \). Fijado cierto \(\varepsilon > 0\), definimos \( \mathcal{B}_\varepsilon = \{B_\varepsilon(v) : v \in V \} \) como un recubrimiento por abiertos por puntos de \( V \) del subespacio topológico $Y = \bigcup_{v \in V} B_\varepsilon(v)$. Veamos que el nervio \( N(\mathcal{B}_\varepsilon) \) de \( \mathcal{B}_\varepsilon \) es el complejo abstracto cuyos vértices son los conjuntos \( B_\varepsilon(x) \) y los símplices se forman por colecciones de estos conjuntos que tienen intersecciones no vacías.
 	
-	Supongamos que tenemos un símplice \( \sigma = \{x_{i_1}, \ldots, x_{i_k}\} \) en \( N(\mathcal{B}_\varepsilon) \). Esto implica que
+	Supongamos que tenemos un símplice \( \sigma = \{v_{i_1}, \ldots, v_{i_k}\} \) en \( N(\mathcal{B}_\varepsilon) \). Esto implica que
 	\[
-	\bigcap_{j=1}^k B_\varepsilon(x_{i_j}) \neq \emptyset.
+	\bigcap_{j=1}^k B_\varepsilon(v_{i_j}) \neq \emptyset.
 	\]
-	Consideremos ahora cualquier subconjunto de bolas de la forma  \(\{B_\varepsilon(x_{i_j})\}_{j \in J}\) donde \( J \subseteq \{1, \ldots, k\} \). Es claro que por ser $\sigma$ un símplice, 
+	Consideremos ahora cualquier subconjunto de bolas de la forma  \(\{B_\varepsilon(v_{i_j})\}_{j \in J}\) donde \( J \subseteq \{1, \ldots, k\} \). Es claro que por ser $\sigma$ un símplice, 
 	\[
-	\bigcap_{j \in \{1, \ldots, k\} \setminus J} B_\varepsilon(x_{i_j}) \neq \emptyset,
+	\bigcap_{j \in \{1, \ldots, k\} \setminus J} B_\varepsilon(v_{i_j}) \neq \emptyset,
 	\]
 	por lo que el conjunto de vértices restantes también forma un símplice en \( N(\mathcal{B}_\varepsilon) \). Por lo tanto, todas las caras de cualquier símplice \( \sigma \) son también símplices en \( N(\mathcal{B}_\varepsilon) \). Es decir, el nervio \( N(\mathcal{B}_\varepsilon) \) es cerrado bajo inclusiones.
 	
 	Dado que \( V \) es finito y cada símplice se define como un subconjunto de \( V \), entonces cada símplice sólo puede tener un número finito de subconjuntos. En consecuencia, el número de caras de cada símplice también es finito.
 \end{proof}
 
-El siguiente teorema será de utilidad para comprender y estudiar el espacio topológico que definen los complejos de \u Cech.
+El siguiente teorema será de utilidad para comprender y estudiar el espacio topológico que definen los complejos de \u Cech. Por motivos de espacio, no trataremos la prueba y simplemente enunciaremos el resultado. Una demostración del teorema enunciado de forma más general puede encontrarse en \cite{hatcher2002algebraic}.
 
 \begin{teorema}[Teorema del nervio] \label{teo:nerve}
-	Sea \(X\) un espacio topológico finito y sea \(\mathcal{U} = \{U_v\}_{v \in V}\) un recubrimiento por abiertos de \(X\). Supongamos además que para todo subconjunto no vacío de vértices \(S \subseteq V\) tenemos que \(\bigcap_{s \in S} U_s\) es contráctil o vacío. Entonces, el politopo de la realización geométrica del nervio de $\mathcal{U}$, \(|N(\mathcal{U})|\), es homotópicamente equivalente a \(X\).
+	Sea \(X\) un espacio métrico y sea \(\mathcal{U} = \{U_v\}_{v \in V}\) un recubrimiento por abiertos finito de \(X\). Supongamos además que para todo subconjunto no vacío de vértices \(S \subseteq V\) tenemos que \(\bigcap_{s \in S} U_s\) es contráctil o vacío. Entonces, el politopo de la realización geométrica del nervio de $\mathcal{U}$, \(|N(\mathcal{U})|\), es homotópicamente equivalente a \(X\).
 \end{teorema}
-\begin{proof}
-	Una demostración del teorema enunciado de forma más general puede encontrarse en \cite{hatcher2002algebraic}.
-\end{proof}
 
 Claramente, la intersección de bolas abiertas es vacía o contráctil (pues es convexa). Por el \nameref{teo:nerve}, tenemos que el poliedro de la realización geométrica del complejo de \u Cech es homotópicamente equivalente al subespacio métrico formado por la unión de dichas bolas. En consecuencia, el estudio de la topología del complejo de \u Cech se resume al estudio de las bolas que recubren sus vértices.
-Sin embargo, el complejo de \u Cech es costoso de obtener mediante métodos computaciones. Por ello, se propone el complejo de Vietoris-Rips para resolver este problema.
+Sin embargo, el complejo de \u Cech es costoso de obtener mediante métodos computacionales. Por ello, se propone el complejo de Vietoris-Rips para resolver este problema.
 
 \begin{definicion}
-	Sea \((X,d)\) un espacio métrico y sea \(V\) un subconjunto de puntos de \(X\). Definimos el \textbf{complejo de Vietoris-Rips} \(VR(V,\varepsilon)\) como el complejo abstracto cuyo conjunto de vértices es \(V\), de forma que \(\{v_0, v_1, \dots v_p\} \subseteq V\) genera un \(p\)-símplice si, y sólo si, \(d(v_i,v_j) \leq \varepsilon\) para todo \(0 \leq i\), \(j \leq p\).
+	Sea \((X,d)\) un espacio métrico y sea \(V\) un subconjunto de puntos de \(X\). Dado \(\varepsilon > 0\), definimos el \textbf{complejo de Vietoris-Rips} \(VR(V,\varepsilon)\) como el complejo abstracto cuyo conjunto de vértices es \(V\), de forma que \(\{v_0, v_1, \dots v_p\} \subseteq V\) genera un \(p\)-símplice si, y solo si, \(d(v_i,v_j) \leq \varepsilon\) para todo \(0 \leq i\), \(j \leq p\).
 \end{definicion}
 
 \begin{proposicion}
@@ -73,7 +70,7 @@ Sin embargo, el complejo de \u Cech es costoso de obtener mediante métodos comp
 \begin{figure}
 	\centering
 	\includegraphics[width=110mm]{img/cech-vr.png}
-	\caption{Representación de los complejos simpliciales \u Cech (izquierda) y Vietoris-Rips (derecha) para un conjunto de puntos en \( \mathbb{R}^2 \). En el complejo de \u Cech, los símplices se forman por la intersección no vacía de círculos de radio \(\varepsilon\) centrados en los puntos. El complejo de Vietoris-Rips conecta puntos que distan hasta \(2\varepsilon\), independientemente de las intersecciones de los círculos. Los símplices de mayor dimensión están coloreados en azul, resaltando las diferencias en la estructura simplicial generada por cada método. Fuente \cite{chazal2021introduction}.}
+	\caption{Representación de complejos simpliciales \u Cech (izquierda) y Vietoris-Rips (derecha) para un conjunto de puntos en \( \mathbb{R}^2 \). En el complejo de \u Cech, los símplices se forman por la intersección no vacía de círculos de radio \(\varepsilon\) centrados en los puntos. El complejo de Vietoris-Rips conecta puntos que distan hasta \(2\varepsilon\), independientemente de las intersecciones de los círculos. Los símplices de mayor dimensión están coloreados en azul, resaltando las diferencias en la estructura simplicial generada por cada método. Fuente \cite{chazal2021introduction}.}
 \end{figure}
 
 El complejo de Vietoris-Rips es interesante en el estudio de complejos de \u Cech. Este hecho se debe a que estos últimos pueden ser aproximados en cierto sentido por complejos de Vietoris-Rips:
@@ -187,9 +184,51 @@ A partir de la definición anterior, podemos construir los complejos de cadenas 
 
 La homología persistente facilita la interpretación de la homología en los distintos niveles de la filtración, permitiendo un análisis cuantitativo de su evolución. Al observar el nacimiento y desaparición de las clases de homología mediante los módulos de homología persistente, se obtiene información detallada de la estructura topológica general de la filtración.
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{img/persistence-diagram.png}
+	\caption{Diagrama de persistencia para la homología de dimensión 1 de la filtración de Vietoris-Rips de 2000 puntos i.i.d. en un toro. El gráfico destaca dos puntos significativos que representan las clases de equivalencia de los ciclos unidimensionales del toro, destacando su persistencia topológica. Fuente \cite{divol2019}.}
+\end{figure}
+
 \begin{definicion}
 	Dada una filtración \(\mathcal{F}\), decimos que un elemento \(\alpha \neq 0\) en \(H_p(K^i;R)\) \textbf{nace} en \(K^i\) si \(\alpha \not\in H_{p}^{i-1 \to i}(\mathcal{F};R)\). Además, decimos que \(\alpha\) \textbf{muere} en \(K^j\) si se fusiona con una clase proveniente de una dimensión anterior cuando se desplaza de \(K^{j-1}\) a \(K^{j}\). Esto es, si \(f^{i \to j-1}_p(\alpha) \not\in H_{p}^{i-1 \to j-1}(\mathcal{F};R)\) pero \(f^{i \to j}_p(\alpha) \in H_{p}^{i-1 \to j}(\mathcal{F};R)\).
 \end{definicion}
+
+\begin{ejemplo}
+	\label{ex:pers-homology}
+	Consideremos un conjunto de vértices $\{0, e_1, e_2, e_3\} = V$ formado por los vectores de la base usual y el vector nulo en $\mathbb{R}^3$ con la topología usual. Definamos el complejo simplicial $K$ a partir del 2-símplice formado por dichos vectores y todas sus caras. A continuación, vamos a estudiar la filtración inducida por inclusiones $\mathcal{K}$:
+	\[
+	\emptyset = K^0 \to K^1 \to K^2 \to K^3 \to K^4 = K,
+	\]
+	donde 
+	\begin{align*}
+		K^1 &= \{[0], [e_1], [e_2], [e_3]\}, \\
+		K^2 &= K^1 \cup \{[0, e_1], [0, e_2], [0, e_3]\}, \\
+		K^3 &= K^2 \cup \{[0, e_1, e_2], [0, e_1, e_3], [0, e_2, e_3]\}.
+	\end{align*}
+	
+	Consideremos además las cadenas de $\mathbb{R}$-módulos asociadas, donde cada $C_p(K^j;\mathbb{R})$ es un espacio vectorial con cuerpo $\mathbb{R}$ para cada dimensión $p \in \mathbb{Z}$.
+	
+	En $K^1$, el módulo de cadenas $C_0(K^1; \mathbb{R})$ es generado por los 0-símplices $\{ [0], [e_1], [e_2], [e_3] \}$, lo que resulta en un espacio vectorial $\mathbb{R}^4$, mientras que los módulos $C_1(K^1; \mathbb{R})$ y $C_2(K^1; \mathbb{R})$ son ambos cero, debido a la ausencia de 1-símplices y 2-símplices.
+	
+	En cuanto a $K^2$, el módulo $C_0(K^2; \mathbb{R})$ conserva la misma estructura que $C_0(K^1; \mathbb{R})$, pues no se añaden nuevos 0-símplices. Sin embargo, $C_1(K^2; \mathbb{R})$ se genera ahora a partir de las aristas $\{ [0, e_1], [0, e_2], [0, e_3] \}$, formando un espacio vectorial isomorfo a $\mathbb{R}^3$. El módulo $C_2(K^2; \mathbb{R})$ sigue siendo nulo debido a la falta de 2-símplices.
+	
+	Llegando a $K^3$, observamos que $C_2(K^3; \mathbb{R})$ ahora se genera por $\{ [0, e_1, e_2], [0, e_1, e_3], [0, e_2, e_3] \}$, generando otro espacio isomorfo a $\mathbb{R}^3$. Los módulos $C_0(K^3; \mathbb{R})$ y $C_1(K^3; \mathbb{R})$ son idénticos a sus pares en $K^2$, pues tienen los mismos símplices de dimensión 1 y 2.
+	
+	Finalmente, en $K^4 = K$, todos los módulos $C_p(K^4; \mathbb{R})$ para $p \in \{ 0, 1, 2 \}$ son idénticos a los de $K^3$. Sin embargo, $K^4$ tiene un 3-símplice formado por todos sus vértices, de forma que $C_3(K^4; \R) = \R$.
+	
+	En $K^2$, todos los 1-símplices son ciclos porque no existen 2-símplices que puedan generar bordes, de modo que $Z_1(K^2) = C_1(K^2)$ y $B_1(K^2) = 0$. En $K^3$, todos los 2-símplices son ciclos, ya que no hay 3-símplices en esta etapa; así, $Z_2(K^3) = C_2(K^3)$ y los bordes de $C_1(K^3)$ son generados por las aristas de los 2-símplices, indicando cierta interacción entre ellos.
+	
+	En $K^4$, el único 3-símplice forma un ciclo por sí mismo, puesto que $C_4(K^4) = 0$ y, por lo tanto, $Z_3(K^4) = C_3(K^4)$. Los bordes de los 2-símplices en $C_2(K^4)$ resultan de aplicar $\partial_3$ al 3-símplice, produciendo una combinación de todos los 2-símplices, por lo tanto, $B_2(K^4)$ se compone de estos bordes.
+	
+	Para \(K^1\), tenemos \(H_0(K^1; \R) = \mathbb{R}^4\), mostrando cuatro componentes conexas. En \(K^2\), la homología se simplifica a \(H_0(K^2; \R) = \mathbb{R}\), indicando que todos los vértices forman una única componente conexa, mientras que \(H_1(K^2; \R) = 0\) y \(H_2(K^2; \R) = 0\) dado que no hay 2-símplices. En \(K^3\), la homología permanece sin cambios para \(H_0\) y \(H_2\), pero todos los posibles 1-ciclos se convierten en bordes de los 2-símplices, lo que resulta en \(H_1(K^3; \R) = 0\).
+	
+	Finalmente, en \(K^4\), observamos que \(H_0(K^4; \R) = \mathbb{R}\), \(H_1(K^4; \R) = 0\), \(H_2(K^4; \R) = 0\) y \(H_3(K^4; \R) = \mathbb{R}\), indicando la presencia de una cavidad tridimensional que no es el borde de ningún símplice de mayor dimensión.
+	
+	Tras este exhaustivo estudio de la homología de la filtración, por fin estamos en condiciones de estudiar el nacimiento o muerte de las clases de homología. Por ejemplo, podemos observar que en el instante 1 de la filtración nacen cuatro clases de homología de dimensión 0, pues $H_0(K^1;\R) = \R^4$. Sin embargo, en el segundo instante de la filtración, $H_0(K^2; \R) = \R$, lo que implica la muerte de tres clases de homología de dimensión 0. De esta forma, tendríamos que el módulo de homología persistente $H_0^{1 \to 2}(\mathcal{K}; \R) = \im {i_*}^{1 \to 2} = \R$, siendo $i^{1 \to 2}_* : H_0(K^1;\R) \to H_0(K^2;\R)$ el homomorfismo de inclusión inducido. En consecuencia, es claro que $(1,2)$-ésimo número de Betti de persistencia de dimensión 0 es 1.
+\end{ejemplo}
+
+Como hemos visto en el \autoref{ex:pers-homology}, el estudio de la homología persistente requiere de un amplio estudio de la homología de la filtración a todos sus niveles. Esta información a menudo es numerosa y difícil de interpretar, por lo que en la siguiente sección mostraremos una representación de la homología persistente que facilite su estudio e interpretación.
 
 \section{Representación de la homología persistente}
 
@@ -200,12 +239,6 @@ Aunque intuitivos, los diagramas de persistencia presentan ciertas limitaciones.
 Para abordar estos problemas, Zomorodian y Carlsson introdujeron un enfoque innovador mediante el uso del \textbf{código de barras} \cite{zomorodian2004computing}. Este método no solo ofrece una visualización clara y detallada de la vida de cada clase de homología, sino que también facilita la interpretación de su multiplicidad y relevancia en el contexto de los datos analizados. Esta interpretación fue posible ya que demostraron que todo módulo de persistencia puede identificarse de manera biyectiva con una estructura algebraica más general, conocida como \textbf{módulos graduados}, bajo ciertas hipótesis.
 
 A continuación profundizaremos en la aplicación y las implicaciones de estos métodos, explorando en detalle el Teorema de correspondencia como se discute en \cite{Corbet_2018}.
-
-\begin{figure}
-	\centering
-	\includegraphics[width=\textwidth]{img/persistence-diagram.png}
-	\caption{Diagrama de persistencia para la homología de dimensión 1 de la filtración de Vietoris-Rips de 2000 puntos i.i.d. en un toro. El gráfico destaca dos puntos significativos que representan las clases de equivalencia de los ciclos unidimensionales del toro, destacando su persistencia topológica. Fuente \cite{divol2019}.}
-\end{figure}
 
 \begin{definicion}
 	Sea \( \mathcal{M} = \{\{M_i\}_{i \in \N}, \{f_{i,j}\}_{i \leq j \in \N}\} \) una familia de \( R \)-módulos. Diremos que dicha familia es un \textbf{módulo de persistencia discreto} sobre \( R \) si para cada \( i \leq j \) existe un homomorfismo de \( R \)-módulos \( f_{i,j}: M_i \to M_j \) tal que:
@@ -272,7 +305,7 @@ h_{i,j} \circ (\theta_i \circ (\psi_i \circ \varphi_i)) &= ((h_{i,j} \circ \thet
 	\[
 	R = \bigoplus_{n=0}^{\infty} R_n,
 	\]
-	donde \( R_m R_n \subseteq R_{m+n} \) para todos \( m, n \in \mathbb{Z} \). Los elementos de \( R_n \) distintos de cero se denominan \textbf{homogéneos de grado \( n \)}.
+	donde \( R_m R_n \subseteq R_{m+n} \) para todo \( m, n \in \mathbb{Z} \), siendo el anillo \(R_m R_n = \{ r_m r_n : r_m \in R_m, r_n \in R_n \}\). Los elementos de \( R_n \) distintos de cero se denominan \textbf{homogéneos de grado \( n \)}.
 \end{definicion}
 
 \begin{definicion}
@@ -280,7 +313,7 @@ h_{i,j} \circ (\theta_i \circ (\psi_i \circ \varphi_i)) &= ((h_{i,j} \circ \thet
 	\[
 	M = \bigoplus_{n=0}^{\infty} M_n,
 	\]
-	donde \( M_n \) son grupos abelianos y \( R_m M_n \subseteq M_{m+n} \) para todos \( m, n \in \mathbb{Z} \). Un elemento de \( M_n \) distinto de cero se llama \textbf{homogéneo de grado \( n \)}.
+	donde \( M_n \) son grupos abelianos y \( R_m M_n \subseteq M_{m+n} \) para todo \( m, n \in \mathbb{Z} \), siendo \(R_m M_n\) el \(R_m\)-módulo con grupo abeliano \( M_n \). Un elemento de \( M_n \) distinto de cero se llama \textbf{homogéneo de grado \( n \)}.
 \end{definicion}
 
 Los módulos graduados no son más que un tipo particular de módulos. Para cada módulo graduado \( M \), el morfismo identidad \( \mathrm{id}_M : M \to M \) es simplemente el morfismo identidad de $R$-módulos. Este morfismo es claramente un homomorfismo de módulos graduados que preserva la graduación. Consideremos ahora dos módulos graduados \( M \), \( N \) y un homomorfismo de módulos graduados \( f: M \to N \). Si tenemos otro módulo graduado \( P \) y un homomorfismo \( g: N \to P \), su composición \( g \circ f \) es la composición de homomorfismos de $R$-módulos. Por lo tanto, la asociatividad de la composición se sigue directamente de la asociatividad de la composición de homomorfismos de $R$-módulos. En consecuencia, los módulos graduados sobre \( R \) junto con los homomorfismos de módulos graduados forman una categoría, que denotaremos por \( R\text{-}\mathbf{GrMod} \).
@@ -446,13 +479,13 @@ Para los siguientes dos lemas, fijaremos el \(R[t]\)-módulo graduado finitament
 
 \begin{teorema}[Teorema de correspondencia]
 	\label{teo:correspondence}
-	Sea \( R \) un anillo unitario. Entonces, un isomorfismo entre la categoría de \(R[t]\)-módulos graduados finitamente presentados y la categoría de módulos de persistencia discretos.
+	Sea \( R \) un anillo unitario. Entonces, existe un isomorfismo entre la categoría de \(R[t]\)-módulos graduados finitamente presentados y la categoría de módulos de persistencia discretos.
 \end{teorema}
 \begin{proof}
 	Estas categorías son subcategorías de \(R[t]\)-\(\Cat{GrMod}\) y \(R\)-\(\Cat{PersMod}\) respectivamente. Restringiendo \(\alpha\) y \(\beta\) a dichas subcategorías, por el \autoref{lem:alpha-finito-presentado} tenemos que \(\alpha\) es un funtor covariante de los módulos de persistencia discretos de tipo finitamente presentados a los \(R[t]\)-módulos graduados finitamente presentados. Así mismo, por los lemas \ref{lem:finit-pres} y \ref{lem:beta-finito-presentado}, \(\beta\) es un funtor covariante de los \(R[t]\)-módulos graduados finitamente presentados a los módulos de persistencia discretos de tipo finitamente presentados. En consecuencia, estas subcategorías son isomorfas.
 \end{proof}
 
-El Teorema de descomposición de módulos graduados nos dará la clave para representar los módulos de persistencia.
+El Teorema de descomposición de módulos graduados nos dará la clave para representar los módulos de persistencia. La idea general de la prueba consiste en aplicar el \nameref{teo:desc-cicl-prim} y ajustar la graduación mediante las potencias de $t$ para garantizar el isomorfismo. Dicha demostración hace uso de algunos resultados que, por motivo de extensión, no trataremos en el presente trabajo. Para el lector interesado en los detalles de la prueba véase \cite{webb1985decomposition}.
 
 \begin{teorema}[Teorema de descomposición de módulos graduados]
 	\label{teo:desc-mod-grad}
@@ -462,14 +495,11 @@ El Teorema de descomposición de módulos graduados nos dará la clave para repr
 	\]
 	donde \( a_i, b_j, c_j \in \mathbb{N} \), y para cada \( j \), \( t^{c_j} \) es un elemento homogéneo tal que divide a \( t^{c_{j+1}} \).
 \end{teorema}
-\begin{proof}
-	Véase \cite{webb1985decomposition}.
-\end{proof}
 
 De manera intuitiva, primero hemos construido una única estructura algebraica que contiene todos los complejos de la filtración. Después, hemos seguido calculando una suma directa a partir de los complejos, llegando así a un espacio mucho más grande que está graduado según el orden inducido de la filtración. A continuación, recordamos el momento en que cada símplice entra utilizando un coeficiente polinomial, codificando así el orden de filtración en el anillo de coeficientes polinomiales. A partir de aquí, el \nameref{teo:desc-mod-grad} nos proporciona una factorización simple cuando el anillo base es un cuerpo \( F \). Aquí, el anillo graduado \( F[t] \) es un DIP y sus únicos ideales graduados son homogéneos de la forma \( \langle t^n \rangle = t^n \cdot R[t] \), donde \( n \geq 0 \). Ahora que hemos transformado los módulos de persistencia discretos en objetos más manejables, queremos parametrizar las clases de isomorfismo de los \( F[t] \)-módulos por objetos más sencillos de interpretar.
 
 \begin{definicion}
-	Definimos un \textbf{$\mathcal{P}$-intervalo} como un par ordenado \( (i, j) \) tal que \( 0 \leq i \leq j \leq \mathbb{Z}^{\infty} = \mathbb{Z} \cup \{+\infty\} \).
+	Definimos un \textbf{$\mathcal{P}$-intervalo} como un par ordenado \( (i, j) \) tal que \( 0 \leq i \leq j\) donde \( i,j \in \mathbb{Z}^{\infty} = \mathbb{Z} \cup \{+\infty\} \).
 \end{definicion}
 
 Nuestro objetivo ahora es asociar un \( F[t] \)-módulo graduado a un conjunto \( S \) de $\mathcal{P}$-intervalos mediante una biyección \( Q \). Para ello, definimos \( Q(i, j) = t^i F[t]/\langle t^{j-i}\rangle \) para el $\mathcal{P}$-intervalo \( (i, j) \). Es claro que \( Q(i, +\infty) = t^i F[t] \). Además, para un conjunto de $\mathcal{P}$-intervalos \( S = \{(i_1, j_1), (i_2, j_2), \ldots, (i_n, j_n)\} \), definimos
@@ -483,33 +513,6 @@ La correspondencia \( S \mapsto Q(S) \) define una biyección entre los conjunto
 \end{corolario}
 
 En el contexto de filtraciones de complejos simpliciales, este resultado da lugar a la descripción de la homología persistente conocida como \textbf{código de barras}: cada $\mathcal{P}$-intervalo $(i, j)$ describe un ciclo que nace en la filtración $i$ y especifica su clase de homología hasta que se convierte en borde (es decir, hasta que muere) en el instante $j$.% Finalmente, condensamos el desarrollo realizado en el siguiente corolario: 
-
-\begin{figure}[h]
-	\label{fig:barcode}
-	\centering
-\begin{tikzpicture}[scale=3]
-	% Vertical dashed lines
-	\draw[dashed, lightgray] (0,0) -- (0,.8);
-	\draw[dashed, lightgray] (1,0) -- (1,.8);
-	\draw[dashed, lightgray] ({sqrt(3)},0) -- ({sqrt(3)},.9);
-	\draw[dashed, lightgray] (2,0) -- (2,.9);
-	% Axis
-	\draw [-latex,shorten >=-3pt] (-.2,0) -- (3,0) node [below] {\(\phantom{\sqrt{3}}t\phantom{\sqrt{3}}\)};
-	\foreach \x in  {0,1,2}
-	\node at (\x,0) {\(\bullet\)}
-	node at (\x,0) [below] {\(\phantom{\sqrt{3}}\x\phantom{\sqrt{3}}\)};
-	\node at ({sqrt(3)},0) {\(\bullet\)}
-	node at ({sqrt(3)},0) [below] {\(\sqrt{3}\)};
-	% Horizontal lines
-	\draw [{*[fill=white]}-,shorten <=-2.4pt] (0,.2) -- (3,.2);
-	\foreach \x in  {.3,.4,...,.7}
-	\draw [{*[fill=white]}-*,shorten >=-2.4pt,shorten <=-2.4pt] (0,\x) -- (1,\x) ;
-	\draw [{*[fill=white]}-*,shorten >=-2.4pt,shorten <=-2.4pt] (1,.8) --  node [above] {\(H_1\)} ({sqrt(3)},.8) ;
-	\draw [{*[fill=white]}-*,shorten >=-2.4pt,shorten <=-2.4pt] ({sqrt(3)},.9) -- node [above] {\(H_2\)} (2,.9) ;
-	\draw (0,.1) -- (-.1,.1) -- node[left]{\(H_0\)} (-.1,.8) -- (0,.8);
-\end{tikzpicture}
-\caption{Ejemplo de código de barras mostrando la persistencia de clases de homología a través del tiempo. Cada línea horizontal representa una clase de homología que persiste a través de un intervalo específico, indicando la escala a la que dichas características topológicas son detectables.}
-\end{figure}
 
 %\begin{corolario}
 %	Sea $F$ un cuerpo, $K$ un complejo simplicial y $\mathcal{F}$ una filtración discreta finita asociada. Entonces, el $(i,j)$-ésimo número de Betti de persistencia de dimensión $k$, \(\beta_k^{i \to j}\), es igual al número de $\mathcal{P}$-intervalos $(i,j)$ asociados al módulo de homología persistente $k$-dimensional  \(H_k^{i \to j}(\mathcal{F};F)\).
@@ -536,7 +539,34 @@ En el contexto de filtraciones de complejos simpliciales, este resultado da luga
 %	La \autoref{fig:barcode} muestra un ejemplo de representación en código de barras. En este caso, los números de Betti de persistencia nos darían $\beta_0^{0 \to 1} = 6$, $\beta_1^{1 \to \sqrt{3}} = 1$ y $\beta_2^{\sqrt{3} \to 2} = 1$. Es decir, la persistencia nos estaría indicando que, al comienzo de la filtración aparecen $6$ componentes conexas que en el instante $1$ de tiempo se fusionan en una sola con un agujero unidimensional. A continuación, dicho agujero desaparece en el instante $3$ para dar lugar a un vacío bidimensional con un breve periodo de vida.
 %\end{ejemplo}
 %
-Los diagramas de código de barras derivados de la homología persistente han demostrado ser herramientas muy útiles para la extracción de información relevante en campos como el análisis de datos. Este hecho es debido a ciertas propiedades de la homología persistente que la hacen relevante para un uso práctico. Además de las ya comentadas, también destaca su \textbf{estabilidad}, lo que significa que pequeñas perturbaciones en los datos no producen grandes cambios en los diagramas de código de barras. Esto es fundamental porque asegura que las características topológicas que se detectan son inherentes a la estructura de los datos y no artefactos del ruido o de variaciones menores \cite{cohen2005stability, chazal2016structure}. Dicha propiedad contrasta con la homología simplicial, pues dos complejos de \u Cech o Vietoris-Rips con distinto radio pueden tener invariantes topológicos completamente diferentes. Estos métodos no solo ofrecen una representación visual intuitiva de las características de los datos, sino que también proporcionan un marco robusto para la cuantificación y comparación de estructuras topológicas.
+Los diagramas de código de barras derivados de la homología persistente han demostrado ser herramientas muy útiles para la extracción de información relevante en campos como el análisis de datos. Este hecho es debido a ciertas propiedades de la homología persistente que la hacen relevante para un uso práctico. Además de las ya comentadas, también destaca su \textbf{estabilidad}, lo que significa que pequeñas perturbaciones en los datos no producen grandes cambios en los diagramas de código de barras. Esto es fundamental porque asegura que las características topológicas que se detectan son inherentes a la estructura de los datos y no consecuencia del ruido o de variaciones menores \cite{cohen2005stability, chazal2016structure}. Dicha propiedad contrasta con la homología simplicial, pues dos complejos de \u Cech o Vietoris-Rips con distinto radio pueden tener invariantes topológicos completamente diferentes. Estos métodos no solo ofrecen una representación visual intuitiva de las características de los datos, sino que también proporcionan un marco robusto para la cuantificación y comparación de estructuras topológicas.
+
+\begin{figure}[h]
+	\label{fig:barcode}
+	\centering
+	\begin{tikzpicture}[scale=3]
+		% Vertical dashed lines
+		\draw[dashed, lightgray] (0,0) -- (0,.8);
+		\draw[dashed, lightgray] (1,0) -- (1,.8);
+		\draw[dashed, lightgray] ({sqrt(3)},0) -- ({sqrt(3)},.9);
+		\draw[dashed, lightgray] (2,0) -- (2,.9);
+		% Axis
+		\draw [-latex,shorten >=-3pt] (-.2,0) -- (3,0) node [below] {\(\phantom{\sqrt{3}}t\phantom{\sqrt{3}}\)};
+		\foreach \x in  {0,1,2}
+		\node at (\x,0) {\(\bullet\)}
+		node at (\x,0) [below] {\(\phantom{\sqrt{3}}\x\phantom{\sqrt{3}}\)};
+		\node at ({sqrt(3)},0) {\(\bullet\)}
+		node at ({sqrt(3)},0) [below] {\(\sqrt{3}\)};
+		% Horizontal lines
+		\draw [{*[fill=white]}-,shorten <=-2.4pt] (0,.2) -- (3,.2);
+		\foreach \x in  {.3,.4,...,.7}
+		\draw [{*[fill=white]}-*,shorten >=-2.4pt,shorten <=-2.4pt] (0,\x) -- (1,\x) ;
+		\draw [{*[fill=white]}-*,shorten >=-2.4pt,shorten <=-2.4pt] (1,.8) --  node [above] {\(H_1\)} ({sqrt(3)},.8) ;
+		\draw [{*[fill=white]}-*,shorten >=-2.4pt,shorten <=-2.4pt] ({sqrt(3)},.9) -- node [above] {\(H_2\)} (2,.9) ;
+		\draw (0,.1) -- (-.1,.1) -- node[left]{\(H_0\)} (-.1,.8) -- (0,.8);
+	\end{tikzpicture}
+	\caption{Ejemplo de código de barras mostrando la persistencia de clases de homología a través del tiempo. Cada línea horizontal representa una clase de homología que persiste a través de un intervalo específico, indicando la escala a la que dichas características topológicas son detectables.}
+\end{figure}
 
 \endinput
 %--------------------------------------------------------------------

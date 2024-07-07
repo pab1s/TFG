@@ -472,13 +472,13 @@ El siguiente ejemplo muestra la triangulación de una esfera en $\R^3$ por el m�
 \end{proposicion}
 
 \begin{ejemplo}
-	Consideremos el complejo simplicial \(K\), que es un tetraedro en \(\mathbb{R}^3\). Denotamos su poliedro asociado por \(|K|\). Supongamos que el origen de \(\mathbb{R}^3\) es el centro de \(|K|\) y que \(\mathbb{S}^2\) es la esfera unidad con radio \(1\) con la topología inducida de la usual. Definimos la función \(f: |K| \to \mathbb{S}^2\) por
+	Consideremos el complejo simplicial \(K\), que es un tetraedro en \(\mathbb{R}^3\) formado por símplices de dimensión 2. Denotamos su poliedro asociado por \(|K|\). Supongamos que el origen de \(\mathbb{R}^3\) es el centro de \(|K|\) y que \(\mathbb{S}^2\) es la esfera unidad con radio \(1\) con la topología inducida de la usual. Definimos la función \(f: |K| \to \mathbb{S}^2\) por
 	\[
 	f(t) = \frac{t}{\|t\|}
 	\]
 	que es continua en todo \(|K|\), pues \(0 \not \in |K|\). Para cada \(s \in \mathbb{S}^2\), definimos \(g: \mathbb{S}^2 \to |K|\) tal que
 	\[
-	g(s) = t = s \cdot \sup\{\lambda : \lambda s \in \text{envolvente convexa de }|K|\}
+	g(s) = t = s \cdot \sup\{\lambda : \lambda s \in \text{envolvente convexa de }|K|\},
 	\]
 	donde el supremo asegura que \(t\) está en la frontera de \(|K|\). De este modo, se verifica que \(g(f(t)) = t\) para todo \(t \in |K|\). Por lo tanto, \(f\) es una biyección continua desde un conjunto compacto hacia un espacio Hausdorff, luego es un homeomorfismo y en consecuencia, una triangulación de la esfera $\mathbb{S}^2$.
 \end{ejemplo}

@@ -5,8 +5,44 @@
 
 % Francisco Torralbo Torralbo
 
-\documentclass[print, color]{ugrTFG}
-\usetikzlibrary{arrows,calc}
+\documentclass[print, color, tikz]{ugrTFG}
+\usepackage{nicematrix}
+\usepackage{listofitems} % for \readlist to create arrays
+\usepackage[outline]{contour} % glow around text
+\contourlength{1.4pt}
+\usetikzlibrary{arrows,arrows.meta,calc}
+\usepackage{adjustbox}
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{csquotes}
+
+% COLORS
+\usepackage{xcolor}
+\colorlet{myred}{red!80!black}
+\colorlet{myblue}{blue!80!black}
+\colorlet{mygreen}{green!60!black}
+\colorlet{myorange}{orange!70!red!60!black}
+\colorlet{mydarkred}{red!30!black}
+\colorlet{mydarkblue}{blue!40!black}
+\colorlet{mydarkgreen}{green!30!black}
+
+% STYLES
+\tikzset{
+	>=latex, % for default LaTeX arrow head
+	node/.style={thick,circle,draw=myblue,minimum size=20,inner sep=0.5,outer sep=0.6},
+	node in/.style={node,green!20!black,draw=mygreen!30!black,fill=mygreen!25},
+	node hidden/.style={node,blue!20!black,draw=myblue!30!black,fill=myblue!20},
+	node convol/.style={node,orange!20!black,draw=myorange!30!black,fill=myorange!20},
+	node out/.style={node,red!20!black,draw=myred!30!black,fill=myred!20},
+	connect/.style={thick,mydarkblue}, %,line cap=round
+	connect arrow/.style={-{Latex[length=4,width=3.5]},thick,mydarkblue,shorten <=0.5,shorten >=1},
+	node 1/.style={node in}, % node styles, numbered for easy mapping with \nstyle
+	node 2/.style={node hidden},
+	node 3/.style={node out}
+}
+\def\nstyle{int(\lay<\Nnodlen?min(2,\lay):3)} % map layer number onto 1, 2, or 3
+
 
 % Importamos paquetes
 %\setlength{\parskip}{5pt}%
@@ -37,7 +73,7 @@
 
 \newcommand{\miTitulo}{Aplicación de la topología algebraica en redes neuronales\xspace}
 \newcommand{\miNombre}{Pablo Olivares Martínez\xspace}
-\newcommand{\miGrado}{Grado en Ingeniería Informática y Matemáticas}
+\newcommand{\miGrado}{Doble Grado en Ingeniería Informática y Matemáticas}
 \newcommand{\miFacultad}{Facultad de Ciencias \\ E.T.S. de Ingenierías Informática y de Telecomunicación}
 \newcommand{\miUniversidad}{Universidad de Granada}
 
@@ -79,16 +115,28 @@
 % -------------------------------------------------------------------
 \mainmatter % activa la numeración de capítulos, resetea la numeración de las páginas y usa números arábigos
 
-\part{Fundamento teórico} % Dividir un TFG en partes OPCIONAL
-% Añadir tantos capítulos como sea necesario
+\part{Fundamento matemático}
+\label{part:math}
 \input{capitulos/capitulo-fundamentos}
 \input{capitulos/capitulo-complejos}
 \input{capitulos/capitulo-homologia-simplicial}
 %\input{capitulos/capitulo-invariancia-homotopica}
 \input{capitulos/capitulo-homologia-persistente}
 
-%\cleardoublepage\part{Segunda parte}
-%\input{capitulos/capitulo-ejemplo}
+\cleardoublepage\part{Aprendizaje profundo}
+\label{part:deep-learning}
+\input{capitulos/capitulo-vision-artificial}
+\input{capitulos/capitulo-ann}
+\input{capitulos/capitulo-conceptos-dl}
+
+\cleardoublepage\part{Análisis de datos topológico para el estudio de CNNs}
+\label{part:proposal}
+\input{capitulos/capitulo-tda}
+\input{capitulos/capitulo-metodologia}
+\input{capitulos/capitulo-resultados}
+
+\cleardoublepage\part{Conclusiones y trabajo futuro}
+\input{capitulos/capitulo-conclusion}
 
 % -------------------------------------------------------------------
 % APPENDIX: Opcional
@@ -116,7 +164,7 @@
 % BIBLIOGRAFÍA
 %-------------------------------------------------------------------
 
-\bibliographystyle{alpha-es} 
+\bibliographystyle{abbrv} 
 \begin{small} 
   \bibliography{library.bib}
 \end{small}

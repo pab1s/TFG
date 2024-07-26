@@ -1,0 +1,186 @@
+% !TeX root = ../tfg.tex
+% !TeX encoding = utf8
+
+\chapter{Aprendizaje automático y visión artificial}
+\label{chapter:concepts}
+
+La \textbf{inteligencia artificial} (IA) se define en
+\cite{russell2016artificial} como el campo de estudio de la informática que se
+centra en la creación de agentes inteligentes, es decir, sistemas que perciben
+su entorno y toman acciones que maximizan sus posibilidades de éxito en algún
+objetivo o tarea.
+
+La IA abarca una amplia variedad de problemas y aplicaciones, entre los que destacan:
+
+\begin{itemize}
+	\item \textbf{Resolución de Problemas y Búsqueda}: La IA desarrolla algoritmos
+	para encontrar soluciones óptimas o satisfactorias en espacios de búsqueda complejos.
+	Esto incluye problemas clásicos como el ajedrez
+	\cite{silver2017masteringchessshogiselfplay}, el rompecabezas del cubo de Rubik
+	\cite{rubik} o la planificación de rutas \cite{bast2016route}.
+	
+	\item \textbf{Representación del Conocimiento y Razonamiento}: Este área se centra
+	en cómo representar información sobre el mundo de manera que un ordenador pueda
+	utilizarla para resolver problemas complejos y tomar decisiones. Ejemplos
+	incluyen sistemas expertos \cite{giarratano1989expert} y razonamiento basado
+	en casos \cite{aamodt1994case}.
+	
+	\item \textbf{Aprendizaje Automático}: Como veremos posteriormente, el
+	aprendizaje automático se enfoca en el desarrollo de algoritmos que permitan
+	a los ordenadores aprender a partir de los datos y mejorar con la
+	experiencia.
+	
+	\item \textbf{Procesamiento del Lenguaje Natural (NLP)}: El NLP busca permitir
+	que los ordenadores comprendan, interpreten y respondan al lenguaje humano
+	de manera útil. Algunas aplicaciones de este campo incluyen la traducción automática
+	\cite{bahdanau2016neuralmachinetranslationjointly}, el análisis de
+	sentimientos \cite{dang2020sentiment} y la implementación de agentes
+	conversacionales \cite{brown2020languagemodelsfewshotlearners}.
+	
+	\item \textbf{Visión Artificial}: Este campo se enfoca en que los ordenadores sean
+	capaces de interpretar y comprender el contenido de imágenes y vídeos.
+	Aplicaciones incluyen el reconocimiento facial, la conducción autónoma y la detección
+	de objetos.
+	
+	\item \textbf{Robótica}: La IA aplicada a la robótica busca diseñar agentes que
+	interactúen con el mundo físico. Esto incluye tareas como la navegación
+	\cite{chen2019learningnavigatesimulationspatial}, la manipulación de objetos
+	\cite{fu2024mobilealohalearningbimanual} y la interacción humano-robot \cite{10295118}.
+\end{itemize}
+
+Es importante destacar que los problemas que aborda la IA pueden involucrar
+múltiples áreas. Por ejemplo, un sistema de conducción autónoma requiere la
+integración de visión artificial para interpretar el entorno, aprendizaje automático
+para mejorar su desempeño a partir de la experiencia y toma de decisiones, y
+algoritmos de planificación para determinar la mejor ruta a seguir. Esta interrelación
+de diferentes áreas y técnicas permite a los sistemas de IA abordar problemas complejos
+y dinámicos de manera más eficaz.
+
+\section{Aprendizaje automático}
+
+El \textbf{aprendizaje automático} o \textbf{\textit{machine learning}} es la
+subdisciplina de la IA que se centra en el desarrollo de algoritmos y técnicas
+que permiten a los ordenadores aprender y hacer predicciones o tomar decisiones
+basadas en datos \cite{hastie2009elements}. Esta capacidad de aprendizaje se logra
+a través de la construcción de modelos que pueden mejorar su rendimiento en tareas
+específicas mediante la experiencia y los datos disponibles. Este enfoque supuso
+un cambio de paradigma respecto al diseño de algoritmos tradicional, donde su desempeño
+dependía explícitamente del conocimiento sobre el problema de los ingenieros que
+lo implementaban.
+
+Existen varios paradigmas del aprendizaje automático en función del nivel de supervisión
+humana necesaria durante el proceso de aprendizaje. Los tres tipos principales
+son:
+
+\begin{itemize}
+	\item \textbf{Aprendizaje supervisado}: En este tipo, el algoritmo aprende a
+	partir de un conjunto de datos etiquetados \cite{abu2012learning}. Cada ejemplo
+	en el conjunto de datos incluye una entrada y una salida esperada. El
+	objetivo es que el modelo aprenda a identificar las salidas correctas a
+	partir de las entradas para poder hacer predicciones sobre datos nuevos. Aplicaciones
+	comunes incluyen la clasificación y la regresión.
+	
+	\item \textbf{Aprendizaje no supervisado}: A diferencia del aprendizaje supervisado,
+	en el aprendizaje no supervisado los datos no están etiquetados
+	\cite{ghahramani2003unsupervised}. El objetivo es descubrir estructuras o patrones
+	ocultos en los datos. Las técnicas de agrupamiento o \textit{clustering} y la
+	reducción de dimensionalidad son ejemplos comunes de aprendizaje no supervisado.
+	
+	\item \textbf{Aprendizaje por refuerzo}: En este enfoque, un agente aprende a
+	tomar decisiones mediante la interacción con un entorno dinámico
+	\cite{sutton2018reinforcement}. El agente recibe recompensas o penalizaciones
+	en función de las acciones que realiza, y su objetivo es maximizar la
+	recompensa acumulada a lo largo del tiempo. Este tipo de aprendizaje es especialmente
+	útil en problemas de toma de decisiones secuenciales, como en juegos y
+	robótica.
+\end{itemize}
+
+El aprendizaje automático se utiliza para abordar una amplia variedad de problemas
+en diferentes dominios. Algunos de los problemas más destacados incluyen:
+
+\begin{itemize}
+	\item \textbf{Clasificación}: El objetivo de la clasificación es asignar una etiqueta
+	a una entrada entre un conjunto de etiquetas posibles. Ejemplos de problemas
+	de clasificación incluyen el reconocimiento de imágenes \cite{Schroff_2015},
+	el filtrado de \textit{spam} \cite{dada2019machine} y el diagnóstico médico
+	\cite{singhal2022largelanguagemodelsencode}.
+	
+	\item \textbf{Regresión}: La regresión se centra en predecir un valor continuo
+	a partir de una entrada. Un ejemplo clásico es la predicción de precios de
+	viviendas basándose en características como el tamaño y la ubicación
+	\cite{wang2021deep}.
+	
+	\item \textbf{Agrupamiento (\textit{Clustering})}: Este problema implica agrupar
+	un conjunto de datos en subconjuntos, o clusters, de tal manera que los datos
+	en el mismo \textit{cluster} sean más similares entre sí que con los datos
+	de otros \textit{clusters}. Aplicaciones incluyen segmentación de mercado
+	\cite{kim2006customer} y análisis de imágenes
+	\cite{radford2016unsupervisedrepresentationlearningdeep}.
+	
+	\item \textbf{Reducción de Dimensionalidad}: La reducción de dimensionalidad se
+	utiliza para simplificar modelos complejos reduciendo el número de variables
+	en el análisis de datos. Técnicas como el Análisis de Componentes
+	Principales (PCA) \cite{WOLD198737} o \textit{Locally Linear Embedding} (LLE)
+	\cite{roweis2000nonlinear} son comunes en este campo.
+	
+	\item \textbf{Detección de Anomalías}: También conocido como detección de \textit{outliers},
+	este problema implica identificar datos que no se ajustan al comportamiento normal
+	esperado. Es crucial en áreas como la detección de fraudes
+	\cite{phua2010comprehensive} y la monitorización de sistemas
+	\cite{nashif2018heart}.
+\end{itemize}
+
+El avance en el aprendizaje automático ha llevado a desarrollos significativos en
+múltiples campos, transformando la manera en que se analizan los datos y se
+toman decisiones en el mundo real.
+
+\section{Visión artificial}
+
+Como hemos comentado anteriormente de manera breve, la \textbf{visión artificial}
+es la rama de la IA cuyo objetivo es comprender el mundo que percibimos a partir
+de una o más imágenes y reconstruir propiedades suyas como su forma, iluminación
+o distribución de colores \cite{szeliski2022computer}. Su objetivo final es desarrollar
+sistemas que puedan interpretar y comprender el entorno visual de manera efectiva.
+
+La visión artificial es un campo muy diverso que integra métodos de varias áreas
+del conocimiento para lograr su objetivo principal. Como resultado, abarca una amplia
+gama de aplicaciones y tareas. Algunas de las más destacadas incluyen:
+
+\begin{itemize}
+	\item \textbf{Clasificación de objetos}: identificar y categorizar objetos en una
+	imagen, lo que es fundamental en aplicaciones como la detección de alimentos
+	en mal estado \cite{hossain2018automatic} o la clasificación de productos en
+	una tienda \textit{online} \cite{kannan2011improving}.
+	
+	\item \textbf{Generación de imágenes}: crear imágenes a partir de modelos o datos,
+	lo que tiene aplicaciones en la creación de gráficos 3D
+	\cite{li2023neuralangelohighfidelityneuralsurface}, la síntesis de imágenes para
+	la publicidad \cite{6777138} o la creación de contenido en redes sociales \cite{coary2016consumer}.
+	
+	\item \textbf{Reconstrucción de entornos 3D}: reconstruir entornos tridimensionales
+	a partir de imágenes 2D, lo que es fundamental en aplicaciones como la
+	creación de modelos 3D de edificios \cite{lewis1998generation} o el mapeo en
+	un entorno desconocido \cite{snavely2011scene}.
+	
+	\item \textbf{Detección de objetos}: detectar la presencia de objetos en una imagen,
+	lo que es fundamental en aplicaciones como la seguridad en espacios públicos
+	\cite{perez2020object} o la detección de anomalías en la producción
+	industrial \cite{tina_dasci_arcelor}.
+	
+	\item \textbf{Segmentación de imágenes}: dividir una imagen en regiones significativas,
+	lo que es fundamental en aplicaciones como la medicina \cite{Havaei_2017}, la
+	agricultura \cite{chiu2020agriculture} o la minería \cite{thurley2013automated}.
+\end{itemize}
+
+La visión artificial es un campo en constante evolución que se ha desarrollado significativamente
+en las últimas décadas, al punto de haber superado a los seres humanos en
+ciertas aplicaciones específicas, como el reconocimiento de imágenes \cite{5206848}
+y la detección de objetos \cite{wang2022yolov7trainablebagoffreebiessets}. Sin
+embargo, aún quedan numerosos desafíos por abordar, especialmente en contextos
+más complejos y variados, como la interpretación de escenas en tiempo real y la comprensión
+de imágenes en condiciones adversas.
+
+\endinput
+%--------------------------------------------------------------------
+% FIN DEL CAPÍTULO.
+%--------------------------------------------------------------------

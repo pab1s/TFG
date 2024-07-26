@@ -222,6 +222,12 @@
 				{\normalsize\textrm{\miNombre}} 
 				\bigskip
 				
+				\textsf{\normalsize{Tutorizado por:}}\\
+				{\normalsize\textrm{Miguel Ortega Titos}} 
+				\\
+				{\normalsize\textrm{Julián Luengo Martín}} 
+				\bigskip
+				
 				\textsf{\normalsize{Curso académico \miCurso}}
 			\end{flushleft}  
 		\end{addmargin}       

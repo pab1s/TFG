@@ -6,13 +6,105 @@
 %*******************************************************
 
 \selectlanguage{english}
-\chapter{Summary}
+\chapter{Abstract}
 
-An english summary of the project (around 800 and 1500 words are recommended).
+This Bachelor's Thesis explores the integration of Topological Data Analysis (TDA)
+with convolutional neural networks (CNNs) to clarify and enhance our
+understanding of how CNNs manipulate data. Given the common perception of CNNs as
+\enquote{black boxes} due to the opacity on their internal decision-making
+processes, this work adopts an alternative approach through the application of persistent
+homology techniques, a key tool in TDA. This allows for a detailed analysis of the
+data structure during CNN processing, facilitating greater transparency and
+understanding of these networks' internal workings from a topological point of view.
 
-File: \texttt{preliminares/summary.tex}
+The study focuses on the applicability of persistent homology to provide an additional
+layer of explainability and optimization to deep learning models. The underlying
+theory is explored, and implementations are carried out in practical cases using
+advanced network architectures such as ResNet, EfficientNet and DenseNet. Through
+controlled experiments, it is demonstrated that topological regulation not only
+improves the performance of CNNs in image classification and transfer learning
+tasks, but also offers new insights into the data structure throughout the learning
+process.
 
+Specific results indicate that different configurations in CNN models significantly
+influence the topological characteristics of the data. The dynamics of the
+architectures studied show an initial tendency to simplify the data, possibly to
+remove noise and irrelevant details. However, as learning progresses, the
+topological complexity of the data increases, suggesting a deliberate strategy to
+develop richer and more detailed representations, thereby facilitating better
+differentiation between classes.
+
+The implementation of a topological regularizer in selected models such as
+EfficientNet-B0 and DenseNet-121 has proven to be particularly promising. This approach
+adjusts the topological complexity of the data in a way that reflects a significant
+improvement in the accuracy and efficacy of classification. Moreover, it is observed
+that knowledge transfer markedly improves when the data topology is appropriately
+manipulated, suggesting that topological modifications could be an effective
+strategy for optimizing CNNs.
+
+In conclusion, this document not only enhances the understanding of CNNs'
+internal mechanisms through TDA but also marks a step towards more transparent
+and reliable artificial intelligence (AI) models. The findings shows the utility
+of TDA in the field of deep learning, proposing a new alternatives for
+explainability and efficiency that may be interesting to consider in the future
+evolution of computer vision and data science.
+
+\bigskip
+\textbf{Keywords}: convolutional neural networks, topological data analysis,
+persistent homology, AI explainability, optimization of deep learning models, transfer
+learning.
 
 % Al finalizar el resumen en inglés, volvemos a seleccionar el idioma español para el documento
-\selectlanguage{spanish} 
+\selectlanguage{spanish}
+\chapter{Resumen}
+
+Este Trabajo de Fin de Grado (TFG) explora la integración del Análisis de Datos
+Topológico (TDA) con redes neuronales convolucionales (CNNs) para clarificar y
+mejorar nuestra comprensión de cómo las CNNs manipulan los datos. Dada la percepción
+común de las CNNs como \enquote{cajas negras} debido a la opacidad en sus
+procesos de toma de decisiones internos, este trabajo adopta un enfoque alternativo
+mediante la aplicación de técnicas de homología persistente, una herramienta
+clave en TDA. Esto permite un análisis detallado de la estructura de datos durante
+el procesamiento en las CNNs, facilitando una mayor transparencia y
+entendimiento de los mecanismos internos de estas redes desde un punto de vista
+topológico.
+
+El estudio se centra en la aplicabilidad de la homología persistente para
+proporcionar una mayor explicabilidad y optimización de los modelos de
+aprendizaje profundo. Se explora la teoría matemática subyacente, para
+posteriormente realizar implementaciones en casos prácticos utilizando
+arquitecturas de CNNs avanzadas como ResNet, EfficientNet y DenseNet. A través
+de experimentos controlados, se demuestra que la regulación topológica no solo mejora
+el rendimiento de las CNNs en tareas de clasificación de imágenes y de transferencia
+de conocimiento, sino que también ofrece nuevas perspectivas sobre la estructura
+de los datos a lo largo del proceso de aprendizaje.
+
+Los resultados indican que las diferentes configuraciones en los modelos de CNNs
+influyen significativamente en las características topológicas de los datos. La dinámica
+de las arquitecturas estudiadas muestra una tendencia inicial a simplificar los datos,
+posiblemente para eliminar ruido y detalles irrelevantes. Sin embargo, a medida
+que avanza el aprendizaje, la complejidad topológica de los datos aumenta,
+sugiriendo una estrategia deliberada para obtener representaciones más ricas y
+detalladas, facilitando así una mejor diferenciación entre clases.
+
+La implementación de un regularizador topológico en modelos como EfficientNet-B0
+y DenseNet-121 ha demostrado ser particularmente prometedora. Este enfoque
+ajusta la complejidad topológica de los datos de manera que refleja una mejora
+significativa en la precisión y eficacia de la clasificación. Además, se observa
+que la transferencia de conocimiento mejora considerablemente cuando la
+topología de los datos se manipula adecuadamente, sugiriendo que las modificaciones
+topológicas podrían ser una estrategia efectiva para optimizar las CNNs.
+
+En conclusión, este documento no solo mejora la comprensión de los mecanismos
+internos de las CNNs a través de TDA, sino que también marca un paso hacia modelos
+de inteligencia artificial (IA) más transparentes y confiables. Los hallazgos
+destacan la utilidad del TDA en el campo del aprendizaje profundo, proponiendo nuevas
+alternativas para la explicabilidad y eficiencia que pueden ser interesantes de considerar
+en la evolución futura de la visión artificial y la ciencia de datos.
+
+\bigskip
+\textbf{Palabras clave}: redes neuronales convolucionales, análisis de datos
+topológico, homología persistente, explicabilidad en IA, optimización de modelos
+de aprendizaje profundo, transferencia de conocimiento.
+
 \endinput

@@ -16,6 +16,7 @@
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \usepackage{csquotes}
+
 % COLORS
 \usepackage{xcolor}
 \colorlet{myred}{red!80!black}
@@ -72,7 +73,7 @@
 
 \newcommand{\miTitulo}{Aplicación de la topología algebraica en redes neuronales\xspace}
 \newcommand{\miNombre}{Pablo Olivares Martínez\xspace}
-\newcommand{\miGrado}{Grado en Ingeniería Informática y Matemáticas}
+\newcommand{\miGrado}{Doble Grado en Ingeniería Informática y Matemáticas}
 \newcommand{\miFacultad}{Facultad de Ciencias \\ E.T.S. de Ingenierías Informática y de Telecomunicación}
 \newcommand{\miUniversidad}{Universidad de Granada}
 
@@ -115,6 +116,7 @@
 \mainmatter % activa la numeración de capítulos, resetea la numeración de las páginas y usa números arábigos
 
 \part{Fundamento matemático}
+\label{part:math}
 \input{capitulos/capitulo-fundamentos}
 \input{capitulos/capitulo-complejos}
 \input{capitulos/capitulo-homologia-simplicial}
@@ -122,14 +124,18 @@
 \input{capitulos/capitulo-homologia-persistente}
 
 \cleardoublepage\part{Aprendizaje profundo}
+\label{part:deep-learning}
 \input{capitulos/capitulo-vision-artificial}
 \input{capitulos/capitulo-ann}
 \input{capitulos/capitulo-conceptos-dl}
 
 \cleardoublepage\part{Análisis de datos topológico para el estudio de CNNs}
+\label{part:proposal}
 \input{capitulos/capitulo-tda}
 \input{capitulos/capitulo-metodologia}
 \input{capitulos/capitulo-resultados}
+
+\cleardoublepage\part{Conclusiones y trabajo futuro}
 \input{capitulos/capitulo-conclusion}
 
 % -------------------------------------------------------------------
@@ -158,7 +164,7 @@
 % BIBLIOGRAFÍA
 %-------------------------------------------------------------------
 
-\bibliographystyle{alpha-es} 
+\bibliographystyle{abbrv} 
 \begin{small} 
   \bibliography{library.bib}
 \end{small}

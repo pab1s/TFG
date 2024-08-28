@@ -1,26 +1,54 @@
-Plantilla TFG
-=============
+# Exploring CNNs through Topological Data Analysis
 
-## Introducción
-Este repositorio contiene una plantilla para la realización de un TFG mediante LaTeX que cumple con los [requisitos para la memoria de TFG](https://grados.ugr.es/matematicas/pages/infoacademica/tfg/requisitostfg/!) del Grado de Matemáticas de la Universidad de Granada.
+## Overview
 
-Estos requisitos, según las [instrucciones](https://grados.ugr.es/matematicas/pages/infoacademica/tfg/requisitosTFG) para el curso 2023-2024 son los siguientes:
+This repository contains the LaTeX source for the bachelor's thesis "Exploring Convolutional Neural Networks through Topological Data Analysis". The thesis investigates the integration of Topological Data Analysis (TDA) with convolutional neural networks (CNNs) to enhance our understanding of how CNNs process and manipulate data.
 
-- La  memoria  debe  realizarse  con  un  procesador  de  texto  científico,  preferiblemente (La)TeX.
-- La portada  debe contener  el  logo  de  la UGR,  incluir  el  título del TFG, el nombre del estudiante y especificar el grado, la facultad y el curso actual. La contraportada contendrá además el nombre del responsable o los responsables de la tutorización.
-- La memoria debe necesariamente incluir:
-  - Declaración explícita firmada en la que se asume la originalidad del trabajo, entendida en el sentido de que no ha utilizado fuentes sin citarlas debidamente. Esta declaración se puede descargar en la web del Grado y ha sido incorporada a esta plantilla,
-	- un índice detallado de capítulos y secciones,
-	- un resumen amplio en inglés del trabajo realizado (se recomienda entre 800 y 1500 palabras),
-	- una introducción en la que se describan claramente los objetivos previstos inicialmente en la propuesta de TFG, indicando si han sido o no alcanzados, los antecedentes importantes para el desarrollo, los resultados obtenidos, en su caso y las principales fuentes consultadas,
-	- una bibliografía final que incluya todas las referencias utilizadas.
-- Se recomienda que la extensión de la memoria tenga unas 50 páginas, sin incluir posibles apéndices.
+## Author
 
-## Opciones de la plantilla
-La plantilla hace uso de la clase `scrbook` del paquete `KOMA-Script` que normalmente viene instalado por defecto en las distribuciones de TeX más usuales. Dicha plantilla tiene las siguientes características:
-- Tamaño de impresión: a4.
-- Tipografía: [URW Palladio](http://www.tug.dk/FontCatalogue/urwpalladio/) (serif), [Cabin](http://www.tug.dk/FontCatalogue/cabin/) (sans-serif) e [Inconsolata](http://www.tug.dk/FontCatalogue/inconsolata/) (monospace). 
+[Pablo Olivares Martínez](mailto:pablolivares1502@gmail.com)
 
-El fichero principal de la plantilla es `libro.tex`. Al inicio del mismo (entre las líneas 13-32) es necesario modificar los datos del TFG: título, autor, grado, facultad y tutores mediante los comandos `\miTitulo`, `\miNombre`, `\miGrado`, `\miFacultad`, `\miUniversidad`, `\miTutor`.
+## Abstract
 
-En el fichero `libro.pdf` se puede encontrar más información sobre la estructura de la plantilla y ejemplos de su uso.
+This Bachelor's Thesis explores the integration of Topological Data Analysis (TDA) with convolutional neural networks (CNNs) to clarify and enhance our understanding of how CNNs manipulate data. By applying persistent homology techniques, a key tool in TDA, this work provides a detailed analysis of the data structure during CNN processing, offering greater transparency and understanding of these networks' internal workings from a topological perspective.
+
+The study demonstrates that topological regularization not only improves the performance of CNNs in image classification and transfer learning tasks but also offers new insights into the data structure throughout the learning process. Implementations are carried out using advanced network architectures such as ResNet, DenseNet, and EfficientNet.
+
+**NOTE:** The thesis is written in Spanish.
+
+## Repository Structure
+
+- `capitulos/`: Contains individual chapter files
+- `img/`: Stores images and diagrams used in the thesis
+- `preliminares/`: Includes preliminary sections like introduction and abstract
+- `scripts/`: Contains Python scripts for generating plots
+- `tfg.tex`: The main LaTeX document
+- `library.bib`: Bibliography file
+
+## Compiling the Thesis
+
+Ensure you have a LaTeX distribution installed (e.g., [TeX Live](https://www.tug.org/texlive/), [MiKTeX](https://miktex.org/)). Then run:
+
+```bash
+pdflatex tfg.tex
+bibtex tfg
+pdflatex tfg.tex
+pdflatex tfg.tex
+```
+
+This will generate `tfg.pdf`, which is the compiled thesis.
+
+## Related Code Repository
+
+The code implementation for this thesis is available in a separate repository: [tda-nn-analysis](https://github.com/pab1s/tda-nn-analysis)
+
+This repository contains the Python code for:
+- Implementing TDA techniques
+- CNN models (ResNet, EfficientNet, DenseNet)
+- Experiments and analysis scripts
+
+Please refer to the README in the code repository for detailed instructions on setting up and running the experiments.
+
+## Contact
+
+For any queries regarding this thesis, please write me to this email: [pablolivares1502@gmail.com](mailto:pablolivares1502@gmail.com).

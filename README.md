@@ -4,6 +4,8 @@
 
 This repository contains the LaTeX source for the bachelor's thesis "Exploring Convolutional Neural Networks through Topological Data Analysis". The thesis investigates the integration of Topological Data Analysis (TDA) with convolutional neural networks (CNNs) to enhance our understanding of how CNNs process and manipulate data.
 
+**NOTE:** The thesis is written in Spanish.
+
 ## Author
 
 [Pablo Olivares Martínez](mailto:pablolivares1502@gmail.com)
@@ -13,8 +15,6 @@ This repository contains the LaTeX source for the bachelor's thesis "Exploring C
 This Bachelor's Thesis explores the integration of Topological Data Analysis (TDA) with convolutional neural networks (CNNs) to clarify and enhance our understanding of how CNNs manipulate data. By applying persistent homology techniques, a key tool in TDA, this work provides a detailed analysis of the data structure during CNN processing, offering greater transparency and understanding of these networks' internal workings from a topological perspective.
 
 The study demonstrates that topological regularization not only improves the performance of CNNs in image classification and transfer learning tasks but also offers new insights into the data structure throughout the learning process. Implementations are carried out using advanced network architectures such as ResNet, DenseNet, and EfficientNet.
-
-**NOTE:** The thesis is written in Spanish.
 
 ## Repository Structure
 
